@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>xuexue&#39;s blog</title>
+  <title>设计模式-观察者模式 | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="xuexue&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="简单的说模式就是一种惯性的思维方式，用于解决同一类问题。">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式-观察者模式">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/设计模式-观察者模式/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
+<meta property="og:description" content="简单的说模式就是一种惯性的思维方式，用于解决同一类问题。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-18T03:51:40.388Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xuexue&#39;s blog">
+<meta name="twitter:title" content="设计模式-观察者模式">
+<meta name="twitter:description" content="简单的说模式就是一种惯性的思维方式，用于解决同一类问题。">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -155,33 +160,92 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-设计模式-观察者模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-设计模式-观察者模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
       	 
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/18/设计模式-观察者模式/">设计模式-观察者模式</a>
+    <h1 class="article-title" itemprop="name">
+      设计模式-观察者模式
     </h1>
   
 
       	 
+		<br>
+		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+		<span class="icon-sort"></span>
+		<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+		</span>
+		</a>
+		
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>简单的说模式就是一种惯性的思维方式，用于解决同一类问题。
-        
-          <a class="article-more-a" href="/2019/03/18/设计模式-观察者模式/#more">more >></a>
-        
+        <p>简单的说模式就是一种惯性的思维方式，用于解决同一类问题。 <a id="more"></a></p>
+<h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><p>模式：我们处理大量问题时，在很多不同的问题中<strong>重复出现的一种性质</strong>，它使得我们可以使用一种方法来描述问题实质并用<strong>本质上相同，但细节永不会重复</strong>的方法去解决，这种性质就叫模式。简单的说模式就是一种惯性的思维方式，用于解决同一类问题；</p>
+<p>观察者模式（Observer）：何谓观察者模式？观察者模式定义了对象之间的一对多依赖关系，这样一来，<strong>当一个对象改变状态时，它的所有依赖者都会收到通知并且自动更新</strong>。</p>
+<p>在这里，<strong>发生改变的对象称之为观察目标，而被通知的对象称之为观察者</strong>。一个观察目标可以对应多个观察者，而且这些观察者之间没有相互联系，所以么可以根据需要增加和删除观察者，使得系统更易于扩展。</p>
+<p>所以观察者提供了一种对象设计，让主题和观察者之间以<strong>松耦合</strong>的方式结合。</p>
+<h2 id="简单例子"><a href="#简单例子" class="headerlink" title="简单例子"></a>简单例子</h2><p>观察者模式具备：事件的源、事件对象、事件处理对象；</p>
+<p>以西游记为例，唐僧就是事件源，孙悟空、猪八戒、沙僧都是事件处理对象，事件对象包含有关事件和事件的源信息（就是记录唐僧发生事件的信息）；</p>
+<p>先写事件对象类：</p>
+<p>TangEvent（记录唐僧发生事件的信息）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TangEvent</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String eventStr;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TangEvent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TangEvent</span><span class="params">(String eventStr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.eventStr = eventStr;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getEventStr</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> eventStr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接着写可以处理唐僧发生事件的接口类（Apprentice），只要是唐僧的徒弟就可以处理唐僧发生的事件，徒弟的功能就是观察唐僧看是否有事件需要处理：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Apprentice</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lookTS</span><span class="params">(TangEvent e)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再写可以处理事件的具体徒弟类，实现徒弟接口：</p>
+<p>孙悟空实现类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SunApprentice</span> <span class="keyword">implements</span> <span class="title">Apprentice</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lookTS</span><span class="params">(TangEvent e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"白骨精"</span>.equals(e.getEventStr())) &#123;</span><br><span class="line">            System.out.println(<span class="string">"三打白骨精!"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"女儿国王"</span>.equals(e.getEventStr())) &#123;</span><br><span class="line">            System.out.println(<span class="string">"全凭师父定力！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>猪八戒实现类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ZhuApprentice</span> <span class="keyword">implements</span> <span class="title">Apprentice</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lookTS</span><span class="params">(TangEvent e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"白骨精"</span>.equals(e.getEventStr())) &#123;</span><br><span class="line">            System.out.println(<span class="string">"白骨精不是妖怪!"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"女儿国王"</span>.equals(e.getEventStr())) &#123;</span><br><span class="line">            System.out.println(<span class="string">"将师父留在女儿国吧！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>沙僧实现类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShaApprentice</span> <span class="keyword">implements</span> <span class="title">Apprentice</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lookTS</span><span class="params">(TangEvent e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"白骨精"</span>.equals(e.getEventStr())) &#123;</span><br><span class="line">            System.out.println(<span class="string">"千万别误伤好人!"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"女儿国王"</span>.equals(e.getEventStr())) &#123;</span><br><span class="line">            System.out.println(<span class="string">"担心师父在女儿国王那有事！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写事件源类（三要素：私有的监听者列表，公有的向监听者列表添加监听者的方法，公有的发生事情的方法）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tang</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Apprentice&gt; list = <span class="keyword">new</span> ArrayList&lt;Apprentice&gt;();<span class="comment">//私有的监听者列表</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addTangListener</span><span class="params">(Apprentice apprentice)</span> </span>&#123;<span class="comment">//公有的向监听者列表添加监听者的方法</span></span><br><span class="line">        <span class="keyword">this</span>.list.add(apprentice);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">tangAction</span><span class="params">(String s)</span> </span>&#123;<span class="comment">//公有的发生事情的方法</span></span><br><span class="line">        TangEvent tangEvent = <span class="keyword">new</span> TangEvent(s);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.list.size(); i++) &#123;</span><br><span class="line">            Apprentice apprentice = <span class="keyword">this</span>.list.get(i);</span><br><span class="line">            apprentice.lookTS(tangEvent);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后写一个Run类，事件源添加监听者实现类的实例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Run</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Tang tang = <span class="keyword">new</span> Tang();</span><br><span class="line">        SunApprentice sun = <span class="keyword">new</span> SunApprentice();</span><br><span class="line">        ZhuApprentice zhu = <span class="keyword">new</span> ZhuApprentice();</span><br><span class="line">        ShaApprentice sha = <span class="keyword">new</span> ShaApprentice();</span><br><span class="line">        <span class="comment">//事件源加监听者实现类的实例</span></span><br><span class="line">        tang.addTangListener(sun);</span><br><span class="line">        tang.addTangListener(zhu);</span><br><span class="line">        tang.addTangListener(sha);</span><br><span class="line">        tang.tangAction(<span class="string">"白骨精"</span>);</span><br><span class="line">        tang.tangAction(<span class="string">"女儿国王"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至此，一个简单的观察者模式小例子完成。其实，在java中，我们不必像上面那样全都需要自己手动写，最后那个Run</p>
+<p>才需要我们自己完成。</p>
+<h2 id="事件源添加监听者接口实例"><a href="#事件源添加监听者接口实例" class="headerlink" title="事件源添加监听者接口实例"></a>事件源添加监听者接口实例</h2><p>四种方法：</p>
+<p>1、自己加自己</p>
+<p>2、自己加别人（实现接口）</p>
+<p>3、自己加别人（适配器）</p>
+<p>4、参数匿名类（适配器）</p>
+<p>以Java Swing为例，先看代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFrame</span> <span class="keyword">extends</span> <span class="title">JFrame</span> <span class="keyword">implements</span> <span class="title">MouseListener</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> JPanel bodyPanel = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> JButton b1 = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> JButton b2 = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> JButton b3 = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> JButton b4 = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.bodyPanel = (JPanel)<span class="keyword">this</span>.getContentPane();</span><br><span class="line">        <span class="keyword">this</span>.bodyPanel.setLayout(<span class="keyword">new</span> GridLayout(<span class="number">2</span>, <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.b1 = <span class="keyword">new</span> JButton(<span class="string">"b1"</span>);</span><br><span class="line">        <span class="keyword">this</span>.b1.addMouseListener(<span class="keyword">this</span>);<span class="comment">//自己加自己</span></span><br><span class="line">        <span class="keyword">this</span>.bodyPanel.add(<span class="keyword">this</span>.b1);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.b2 = <span class="keyword">new</span> JButton(<span class="string">"b2"</span>);</span><br><span class="line">        MyListener1 myListener1 = <span class="keyword">new</span> MyListener1();</span><br><span class="line">        <span class="keyword">this</span>.b2.addMouseListener(myListener1);<span class="comment">//自己加别人（实现接口）</span></span><br><span class="line">        <span class="keyword">this</span>.bodyPanel.add(<span class="keyword">this</span>.b2);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.b3 = <span class="keyword">new</span> JButton(<span class="string">"b3"</span>);</span><br><span class="line">        <span class="keyword">this</span>.b3.addMouseListener(<span class="keyword">new</span> MyListener2());<span class="comment">//自己加别人（适配器）</span></span><br><span class="line">        <span class="keyword">this</span>.bodyPanel.add(<span class="keyword">this</span>.b3);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.b4 = <span class="keyword">new</span> JButton(<span class="string">"b4"</span>);</span><br><span class="line">        <span class="keyword">this</span>.b4.addMouseListener(<span class="keyword">new</span> MouseAdapter() &#123;<span class="comment">//参数匿名类（适配器）</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseEntered</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line">                b4.setBackground(Color.BLACK);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseExited</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line">               b4.setBackground(Color.ORANGE);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">this</span>.bodyPanel.add(<span class="keyword">this</span>.b4);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.setBounds(<span class="number">10</span>, <span class="number">10</span>, <span class="number">400</span>, <span class="number">400</span>);</span><br><span class="line">        <span class="keyword">this</span>.setTitle(<span class="string">"监听者模式"</span>);</span><br><span class="line">        <span class="keyword">this</span>.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyFrame</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        MyFrame frame = <span class="keyword">new</span> MyFrame();</span><br><span class="line">        frame.setVisible(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseClicked</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mousePressed</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseReleased</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseEntered</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(e.getSource() == <span class="keyword">this</span>.b1) &#123;</span><br><span class="line">            <span class="keyword">this</span>.b1.setBackground(Color.RED);</span><br><span class="line">            <span class="keyword">this</span>.b4.setBackground(Color.BLUE);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseExited</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(e.getSource() == <span class="keyword">this</span>.b1) &#123;</span><br><span class="line">            <span class="keyword">this</span>.b1.setBackground(Color.BLUE);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyListener1</span> <span class="keyword">implements</span> <span class="title">MouseListener</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseClicked</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mousePressed</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseReleased</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseEntered</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line">        JButton b2 = (JButton)e.getSource();</span><br><span class="line">        b2.setBackground(Color.BLUE);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseExited</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line">        JButton b2 = (JButton)e.getSource();</span><br><span class="line">        b2.setBackground(Color.GREEN);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyListener2</span> <span class="keyword">extends</span> <span class="title">MouseAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseEntered</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line">        JButton b3 = (JButton)e.getSource();</span><br><span class="line">        b3.setBackground(Color.YELLOW);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseExited</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line">        JButton b3 = (JButton)e.getSource();</span><br><span class="line">        b3.setBackground(Color.PINK);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从代码也可以看出，适配器里面其实是一些空实现的方法，可以避免代码出现过多的空方法。</p>
+
       
      
 
       
-    </p></div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
     <div class="article-info article-info-index">
       
       
@@ -200,16 +264,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/18/设计模式-观察者模式/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/18/设计模式-观察者模式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/09/C语言入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">零基础入门C语言</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -224,90 +347,56 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
- 
-  
-    <article id="post-C语言入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-      	 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/09/C语言入门/">零基础入门C语言</a>
-    </h1>
-  
-
-      	 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>轻松入门C语言，通俗易懂的小例子理解C语言的三大结构
-        
-          <a class="article-more-a" href="/2019/03/09/C语言入门/#more">more >></a>
-        
-      
-     
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C语言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/09/C语言入门/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About"><span class="toc-number">1.</span> <span class="toc-text">About</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单例子"><span class="toc-number">2.</span> <span class="toc-text">简单例子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件源添加监听者接口实例"><span class="toc-number">3.</span> <span class="toc-text">事件源添加监听者接口实例</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
+  
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 来必力City版安装代码 -->
+
+  <!-- 这一句是适配样式 -->
+  <section class="duoshuo" id="comments">
+    <!-- 以下是 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80MzA5MC8xOTYzNg==">
+      <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+           if (typeof LivereTower === 'function') { return; }
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+      </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+  </section>
+
+
  
-  
-  
-
-
           </div>
         </div>
       </div>
@@ -333,8 +422,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
