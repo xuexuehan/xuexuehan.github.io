@@ -19,7 +19,8 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/07/阿里云部署SpringBoot项目/1.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/04/07/阿里云部署SpringBoot项目/2.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/04/07/阿里云部署SpringBoot项目/3.PNG">
-<meta property="og:updated_time" content="2019-04-07T11:34:59.449Z">
+<meta property="og:image" content="http://yoursite.com/2019/04/07/阿里云部署SpringBoot项目/4.PNG">
+<meta property="og:updated_time" content="2019-04-07T11:54:20.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里云部署SpringBoot项目">
 <meta name="twitter:description" content="阿里云部署Spring Boot 项目详细步骤">
@@ -210,24 +211,32 @@
 <p>链接：<a href="https://pan.baidu.com/s/1IyQqgMepQj4kQthiE9FITA" target="_blank" rel="noopener">https://pan.baidu.com/s/1IyQqgMepQj4kQthiE9FITA</a>     提取码：uizg </p>
 <ul>
 <li><p>解压文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt</span><br><span class="line">tar -zxvf jdk的文件名</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt</span><br><span class="line">tar -zxvf jdk的文件名</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将jdk移动到/home目录：mv jdk1.8.0_171/  /home/</p>
 </li>
 <li><p>配置环境变量：</p>
 <p>vim /etc/profile</p>
 <p>在末尾行添加，打开后按 i 编辑, 按 ctrl+c 停止编辑，然后 :wq 保存退出</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/home/jdk1.8.0_171</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/home/jdk1.8.0_171</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:</span><br></pre></td></tr></table></figure>
 <p>使更改的配置立即生效：source /etc/profile</p>
 </li>
 <li><p>java -vsion查看JDK版本信息，如果显示出1.8.0证明成功</p>
 </li>
 </ul>
 <h2 id="阿里云发布项目"><a href="#阿里云发布项目" class="headerlink" title="阿里云发布项目"></a>阿里云发布项目</h2><p>将打包后的项目用WinSCP从本机上传至云服务器，然后向mysql云服务器执行项目sql脚本，在阿里云添加安全组规则，开放端口号8080和80，进入上传项目的目录下执行命令：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//后台进程执行项目</span></span><br><span class="line">nohup java -jar spring-boot-<span class="number">10</span>-bill-<span class="number">0.0</span>.1-SNAPSHOT.jar --serverport=<span class="number">80</span> &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//后台进程执行项目</span><br><span class="line">nohup java -jar spring-boot-10-bill-0.0.1-SNAPSHOT.jar --serverport=80 &amp;</span><br></pre></td></tr></table></figure>
 <p>停止运行项目：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查看进程</span></span><br><span class="line">ps -ef|grep java</span><br><span class="line"><span class="comment">//找到项目的进程id，杀死该进程</span></span><br><span class="line">kill -<span class="number">9</span> 进程id</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//查看进程</span><br><span class="line">ps -ef|grep java</span><br><span class="line">//找到项目的进程id，杀死该进程</span><br><span class="line">kill -9 进程id</span><br></pre></td></tr></table></figure>
 <p>至此，项目部署完毕，可以通过云服务器的ip地址访问项目。当然如果买了域名，挂到云服务器的ip地址下，就可以解析ip，直接通过域名访问。</p>
+<h2 id="MySQL中文乱码"><a href="#MySQL中文乱码" class="headerlink" title="MySQL中文乱码"></a>MySQL中文乱码</h2><p>部署完项目，访问时可能会出现中文乱码问题，首先登录mysql；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>查看数据库编码：</span><br><span class="line">show variables like '%char%';</span><br></pre></td></tr></table></figure>
+<p>如果character_set_database 和  character_set_server显示字符编码为latin1,此时修改mysql配置文件/etc/my.cnf：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">character-set-server=utf8 </span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8 </span><br><span class="line">[mysql]</span><br><span class="line">default-character-set=utf8</span><br></pre></td></tr></table></figure>
+<p>然后再重启，登录mysql，查看字符编码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like '%char%';</span><br></pre></td></tr></table></figure>
+<p><img src="/2019/04/07/阿里云部署SpringBoot项目/4.PNG" alt></p>
+<p>出现如上图字符编码为utf-8,则成功。</p>
 
       
      
@@ -363,7 +372,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#购买云服务器"><span class="toc-number">1.</span> <span class="toc-text">购买云服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装配置MySQL"><span class="toc-number">2.</span> <span class="toc-text">安装配置MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装配置JDK"><span class="toc-number">3.</span> <span class="toc-text">安装配置JDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阿里云发布项目"><span class="toc-number">4.</span> <span class="toc-text">阿里云发布项目</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#购买云服务器"><span class="toc-number">1.</span> <span class="toc-text">购买云服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装配置MySQL"><span class="toc-number">2.</span> <span class="toc-text">安装配置MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装配置JDK"><span class="toc-number">3.</span> <span class="toc-text">安装配置JDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阿里云发布项目"><span class="toc-number">4.</span> <span class="toc-text">阿里云发布项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL中文乱码"><span class="toc-number">5.</span> <span class="toc-text">MySQL中文乱码</span></a></li></ol>
                     </div>
                 </span>
             </div>
