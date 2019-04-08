@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/4 | xuexue&#39;s blog</title>
+  <title>利用西门子数据集获取函数调用序列 | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="xuexue&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/04/index.html">
+  <meta name="description" content="利用pvtrace工具获取测试集 replace 的函数调用关系图">
+<meta name="keywords" content="软件缺陷定位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用西门子数据集获取函数调用序列">
+<meta property="og:url" content="http://yoursite.com/2019/04/08/利用西门子数据集获取函数调用序列/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
+<meta property="og:description" content="利用pvtrace工具获取测试集 replace 的函数调用关系图">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/利用西门子数据集获取函数调用序列/1.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/利用西门子数据集获取函数调用序列/2.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/08/利用西门子数据集获取函数调用序列/3.PNG">
+<meta property="og:updated_time" content="2019-04-08T13:27:47.292Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xuexue&#39;s blog">
+<meta name="twitter:title" content="利用西门子数据集获取函数调用序列">
+<meta name="twitter:description" content="利用pvtrace工具获取测试集 replace 的函数调用关系图">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/08/利用西门子数据集获取函数调用序列/1.PNG">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -155,36 +164,137 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-利用西门子数据集获取函数调用序列" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/08/利用西门子数据集获取函数调用序列/" class="archive-article-date">
-  	<time datetime="2019-04-08T08:07:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+      	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/08/利用西门子数据集获取函数调用序列/">利用西门子数据集获取函数调用序列</a>
+    <h1 class="article-title" itemprop="name">
+      利用西门子数据集获取函数调用序列
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      	 
+		<br>
+		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+		<span class="icon-sort"></span>
+		<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+		</span>
+		</a>
+		
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>利用pvtrace工具获取测试集 replace 的函数调用关系图<a id="more"></a></p>
+<h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><p><a href="https://xuexuehan.github.io/2019/04/08/%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7%E5%AE%9A%E4%BD%8D%E8%A5%BF%E9%97%A8%E5%AD%90%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BB%8B%E7%BB%8D/" target="_blank" rel="noopener">西门子数据集的目录结构</a>参见此篇博文，本篇博文主要介绍根据需求<strong>编写测试脚本</strong>，<strong>利用pvtrace工具</strong>动态的将测试用例传入程序并<strong>获取函数调用关系图</strong>。由于在西门子的7个子测试集中，<strong>replace测试集含有的函数最多</strong>，因此本篇博文选用replace测试集作为例子，其他数据集也一样操作。</p>
+<h2 id="测试脚本范例理解"><a href="#测试脚本范例理解" class="headerlink" title="测试脚本范例理解"></a>测试脚本范例理解</h2><p><a href="https://xuexuehan.github.io/2019/04/08/%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7%E5%AE%9A%E4%BD%8D%E8%A5%BF%E9%97%A8%E5%AD%90%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BB%8B%E7%BB%8D/" target="_blank" rel="noopener">上篇博文</a>已经介绍replace数据集给我们提供了范例脚本，存储在scripts目录中，该脚本用于运行source.alt / source.orig 目录中被测程序的正确原型，但是研究软件缺陷定位不可能只运行正确的程序，将测试用例动态传入错误版本的程序并分析其运行结果更为重要，下面我们介绍如何<strong>利用套件中已经给出的范例脚本修改得到自己需要的运行脚本</strong>。</p>
+<p>打开scripts目录下的runall.sh脚本，部分截图如下：</p>
+<p><img src="/2019/04/08/利用西门子数据集获取函数调用序列/1.PNG" alt></p>
+<p>可以看出，该脚本的功能：</p>
+<ul>
+<li><strong>遍历inputs文件夹下的所有测试用例</strong>（replace测试集的inputs文件夹下包含3个子文件夹，里面的测试用例共计5542个）；</li>
+<li>将每个<strong>测试用例依次传入被测程序中，并指定输出结果存放的路径</strong>；</li>
+</ul>
+<p>如果想要将该脚本修改为<strong>执行错误版本程序的脚本</strong>，我们需要修改：</p>
+<ul>
+<li><strong>可执行程序的路径</strong>；</li>
+<li><strong>程序执行结果存放的路径</strong>；</li>
+</ul>
+<p>手工修改该脚本中5542个路径显然不可行，需要<strong>手工编写程序使其自动修改路径</strong>，生成新的脚本文件。</p>
+<p>在实际情况中，仅仅获取被测程序的运行结果通过与否是不足够的，根据需求还应获取程序执行信息（这里我示范的是获取程序的函数调用关系图）。</p>
+<p>我们还需要了解pvtrace工具的使用，这个工具可以获取程序的函数调用关系，通过Graphviz 可以将函数调用关系可视化展示，下面介绍下<strong>pvtrace和Graphviz的安装</strong>：</p>
+<ul>
+<li><p>安装pvtrace：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>进入fl文件目录下：</span><br><span class="line">wget http://www.mtjones.com/developerworks/pvtrace.zip</span><br><span class="line"><span class="meta">#</span>解压下载包，如果出现命令找不到，需下载压缩工具</span><br><span class="line">yum install -y unzip zip 或者 sudo apt-get install zip</span><br><span class="line">unzip pvtrace.zip</span><br><span class="line">cd pvtrace</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装Graphviz：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install graphviz</span><br></pre></td></tr></table></figure>
+<p>这里给出pvtrace和Graphviz的使用介绍链接：</p>
+<p><a href="http://www.voidcn.com/article/p-xlemghrq-xb.html" target="_blank" rel="noopener">http://www.voidcn.com/article/p-xlemghrq-xb.html</a></p>
+<p><a href="https://www.ibm.com/developerworks/cn/linux/l-graphvis/" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/linux/l-graphvis/</a></p>
+</li>
+</ul>
+<p>如果需要获取函数调用关系，为了避免路径出错，我们直接将pvtrace路径下的instrument.c文件拷贝到跟源码文件同级目录下，在<strong>GCC编译代码文件时需要加入指定编译选项</strong>即可：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -g -finstrument-functions replace.c instrument.c -o replace.exe</span><br></pre></td></tr></table></figure>
+<h2 id="简单获取函数动态调用关系图示例"><a href="#简单获取函数动态调用关系图示例" class="headerlink" title="简单获取函数动态调用关系图示例"></a>简单获取函数动态调用关系图示例</h2><p>这里先简单介绍下，如何获取函数动态调用关系图：</p>
+<ul>
+<li><p>将pvtrace路径下的instrument.c文件拷贝到source.alt / source.orig目录下，然后将源程序代码replace.c和instrument.c一起编译，命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd source.alt/source.orig</span><br><span class="line">gcc -g -finstrument-functions replace.c instrument.c -o replace.exe</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将scripts目录中的脚本进行修改（命名为runV1.sh），这里示例一个测试用例，后面写代码批量修改路径：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">replace.exe '-?' 'a&amp;'  &lt; ../../inputs/temp-test/1.inp.1.1 &gt; ../../outputs/t1</span><br><span class="line">pvtrace replace.exe</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行脚本文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ./runV1.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>source.alt / source.orig目录下生成graph.dot文件，用graphviz将它可视化：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dot -Tpng graph.dot -o graph.png</span><br></pre></td></tr></table></figure>
+<p>执行命令后会报错，打开graph.dot文件将第一行的graph.dot改为graph即可，再执行上面命令；</p>
+</li>
+<li><p>执行完后，目录下会生成一个graph.png的图，这个图就是程序replace.c在传入t1这个测试用例生成的函数调用关系图：</p>
+<p><img src="/2019/04/08/利用西门子数据集获取函数调用序列/2.PNG" alt></p>
+</li>
+<li><p>从上图还可以看到函数之间调用的次数，当然，我们如果需要数据处理的话，利用graph.dot文件就够了，这个文件里包含函数之间调用关系，调用顺序，调用次数，这些信息根据需要自己进行处理；</p>
+</li>
+</ul>
+<h2 id="生成测试脚本"><a href="#生成测试脚本" class="headerlink" title="生成测试脚本"></a>生成测试脚本</h2><p>下面我参考<a href="https://blog.csdn.net/mangoer_ys/article/details/25974067#commentBox" target="_blank" rel="noopener">这篇博文</a>根据范例脚本生成错误版本执行的脚本，脚本生成使用lua语言实现。</p>
+<ul>
+<li><p>首先初始化，指定子套件名称”replace”，测试用例个数5542和错误版本程序个数32；</p>
+ <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SUITE_NAME = <span class="string">"replace"</span></span><br><span class="line">CASE_NUM = <span class="number">5542</span></span><br><span class="line">VERSION_NUM = <span class="number">32</span>  <span class="comment">--should be 32 in replace</span></span><br><span class="line"><span class="comment">--VARIABLES--</span></span><br><span class="line">buff = &#123;&#125;</span><br><span class="line">i = <span class="number">0</span></span><br><span class="line">j = <span class="number">0</span></span><br><span class="line">k = <span class="number">0</span></span><br><span class="line">line_num = <span class="number">0</span></span><br><span class="line">tmp = <span class="string">""</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接着我们要<strong>将范例给的的runall.sh 读入</strong>，以便在下一步的文本分析中可以按行进行文本匹配，下面的程序段完成了将范例给出的runall.sh 文本读入，并按行存储至一个缓冲字符串数组buff 中：</p>
+ <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--SAVE ORIG SCRIPT INTO BUFFER--</span></span><br><span class="line">file = <span class="built_in">io</span>.<span class="built_in">open</span>(<span class="string">"runall.sh"</span>, <span class="string">"r"</span>)</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> file:<span class="built_in">lines</span>() <span class="keyword">do</span></span><br><span class="line">	i = i + <span class="number">1</span>;</span><br><span class="line">	buff[i] = line</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">line_num = i</span><br><span class="line">file:<span class="built_in">close</span>()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后就是<strong>将buff 数组中的每一行进行文本匹配</strong>，将”/source.alt/source.orig/”字段全部替换为”/../../versions.alt/versions.orig/vX/”(其中”X”为相应的错误版本号)，将”/inputs/”字段全部替换为”/../../inputs/”，将”/outputs/”字段全部替换为”/../../newoutputs/vX”(其中”X”为相应的错误版本号)，其余保持不变，实现代码如下：</p>
+ <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--GENERATE RUN SCRIPT FOR VERSIONS--</span></span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span>, VERSION_NUM <span class="keyword">do</span></span><br><span class="line">	k = <span class="number">1</span></span><br><span class="line">	file = <span class="built_in">io</span>.<span class="built_in">open</span>(<span class="string">"run_v"</span>..i..<span class="string">".sh"</span>, <span class="string">"w"</span>)</span><br><span class="line">	<span class="keyword">for</span> j = <span class="number">1</span>, line_num <span class="keyword">do</span></span><br><span class="line">		tmp = buff[j]</span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">string</span>.<span class="built_in">find</span>(tmp, <span class="string">"/source.alt/source.orig/"</span>) ~=<span class="literal">nil</span> <span class="keyword">then</span></span><br><span class="line">			tmp = <span class="built_in">string</span>.<span class="built_in">gsub</span>(tmp,<span class="string">"/source.alt/source.orig/"</span>, <span class="string">"/../../versions.alt/versions.orig/v"</span>..i..<span class="string">"/"</span>) <span class="comment">--modefy paths--</span></span><br><span class="line">			tmp = <span class="built_in">string</span>.<span class="built_in">gsub</span>(tmp,<span class="string">"/inputs/"</span>, <span class="string">"/../../inputs/"</span>)</span><br><span class="line">			tmp = <span class="built_in">string</span>.<span class="built_in">gsub</span>(tmp,<span class="string">"/outputs/"</span>, <span class="string">"/../../newoutputs/v"</span>..i..<span class="string">"/"</span>)</span><br><span class="line">			tmp = tmp..<span class="string">"\ncd ../../../versions.alt/versions.orig/v"</span>..i..<span class="string">" &amp;&amp; pvtrace replace.exe"</span></span><br><span class="line">			tmp = tmp..<span class="string">"\nmv trace.txt ./tra"</span>..k.. <span class="string">" &amp;&amp; mv graph.dot ./tra"</span>..k</span><br><span class="line">			k = k + <span class="number">1</span></span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		file:<span class="built_in">write</span>(tmp..<span class="string">"\n"</span>)</span><br><span class="line">		tmp = <span class="string">""</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line">	file:<span class="built_in">close</span>()</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p> 上面这段代码为每次错误版本都生成了一个名为run_vX.sh 的运行脚本，其中X为相应的错误版本号。并且在每个测试用例执行之后，进入错误版本目录下运行命令pvtrace replace.exe，生成函数调用关系trace.txt和graph.dot文件，因为每个测试用例运行生成的dot文件名都是graph、txt文件名都是trace，因此<strong>为了避免覆盖需要将各个版本的每个测试用例生成的dot和txt文件移入对应的文件夹</strong>（下面需要<strong>在每个版本文件夹下建立5542个名为traX的文件夹—X为相对应执行的测试用例</strong>）；</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下面是用python代码在每个错误版本程序文件夹下生成5542个存放dot和txt的文件夹</span></span><br><span class="line"><span class="comment">#make_dir.py</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> shutil</span><br><span class="line">dir = os.getcwd()</span><br><span class="line"><span class="keyword">for</span> index1 <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">33</span>):</span><br><span class="line">	<span class="keyword">if</span> index1 &gt; <span class="number">0</span>:</span><br><span class="line">		new_dir = dir + <span class="string">'/v'</span>+ str(index1)	</span><br><span class="line">		<span class="keyword">for</span> index2 <span class="keyword">in</span> range(<span class="number">5543</span>):</span><br><span class="line">			<span class="keyword">if</span> index2 &gt; <span class="number">0</span>:</span><br><span class="line">				os.mkdir(new_dir + <span class="string">'/tra'</span> + str(index2))</span><br><span class="line">	<span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p> 执行命令：python make_dir.py即可生成文件夹；</p>
+<p> 接着在versions.alt/versions.orig目录下<strong>建立一个存放shell脚本的文件夹sh</strong>，并<strong>将范例脚本runall.sh拷贝至sh目录下</strong>；</p>
+<p> 最后我们就可以执行前面的lua程序了，完整代码链接如下：</p>
+<p> 链接：<a href="https://pan.baidu.com/s/1aEO52uidTEVSKNJuzg2_mg" target="_blank" rel="noopener">https://pan.baidu.com/s/1aEO52uidTEVSKNJuzg2_mg</a>    提取码：kqyz </p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>运行make_sh.lua程序</span><br><span class="line">lua make_sh.lua</span><br></pre></td></tr></table></figure>
+<p> 运行完后，可以在sh目录下发现生成的错误版本相对应的32个sh脚本，如下图：</p>
+<p> <img src="/2019/04/08/利用西门子数据集获取函数调用序列/3.PNG" alt></p>
+</li>
+</ul>
+<h2 id="批量编译"><a href="#批量编译" class="headerlink" title="批量编译"></a>批量编译</h2><p>在执行错误版本的测试脚本之前，首先需要对错误版本的代码进行自动批量编译，在这里，我们使用makefile 进行自动编译，makefile的结构如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">replace:</span><br><span class="line">	gcc -g -finstrument-functions replace.c instrument.c -o replace.exe</span><br></pre></td></tr></table></figure>
+<p>由于我对makefile还不熟悉，因此采用的笨办法，将这个makefile文件在每个错误版本文件夹下拷贝一份，然后再写代码自动编译（在编译之前需要修改程序源码使其编译通过，修改方式参考<a href="https://xuexuehan.github.io/2019/04/08/%E8%BD%AF%E4%BB%B6%E7%BC%BA%E9%99%B7%E5%AE%9A%E4%BD%8D%E8%A5%BF%E9%97%A8%E5%AD%90%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BB%8B%E7%BB%8D/" target="_blank" rel="noopener">这篇博文</a>。</p>
+
+      
+     
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -196,7 +306,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -209,215 +319,140 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/08/利用西门子数据集获取函数调用序列/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/08/软件缺陷定位西门子数据集介绍/" class="archive-article-date">
-  	<time datetime="2019-04-08T01:25:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/08/软件缺陷定位西门子数据集介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">软件缺陷定位西门子数据集介绍</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/08/软件缺陷定位西门子数据集介绍/">软件缺陷定位西门子数据集介绍</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">软件缺陷定位</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/软件测试//" class="article-tag-list-link color5">软件测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About"><span class="toc-number">1.</span> <span class="toc-text">About</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试脚本范例理解"><span class="toc-number">2.</span> <span class="toc-text">测试脚本范例理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单获取函数动态调用关系图示例"><span class="toc-number">3.</span> <span class="toc-text">简单获取函数动态调用关系图示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#生成测试脚本"><span class="toc-number">4.</span> <span class="toc-text">生成测试脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#批量编译"><span class="toc-number">5.</span> <span class="toc-text">批量编译</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/阿里云部署SpringBoot项目/" class="archive-article-date">
-  	<time datetime="2019-04-07T09:07:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/阿里云部署SpringBoot项目/">阿里云部署SpringBoot项目</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring-Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/Spring-Boot基础总结/" class="archive-article-date">
-  	<time datetime="2019-04-07T06:53:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/Spring-Boot基础总结/">Spring Boot基础总结</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring-Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/SQL必知必会/" class="archive-article-date">
-  	<time datetime="2019-04-07T06:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/SQL必知必会/">SQL必知必会</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/专业课//" class="article-tag-list-link color4">专业课</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+
+  <!-- 来必力City版安装代码 -->
+
+  <!-- 这一句是适配样式 -->
+  <section class="duoshuo" id="comments">
+    <!-- 以下是 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80MzA5MC8xOTYzNg==">
+      <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+           if (typeof LivereTower === 'function') { return; }
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+      </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+  </section>
 
 
+ 
           </div>
         </div>
       </div>
@@ -444,8 +479,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
