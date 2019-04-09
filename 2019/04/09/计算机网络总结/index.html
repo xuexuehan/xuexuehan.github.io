@@ -6,15 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | xuexue&#39;s blog</title>
+  <title>计算机网络总结 | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="xuexue&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="计算机网络基础总结">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络总结">
+<meta property="og:url" content="http://yoursite.com/2019/04/09/计算机网络总结/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
+<meta property="og:description" content="计算机网络基础总结">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/1.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/2.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/3.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/4.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/5.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/6.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/7.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/8.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/9.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/10.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/11.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/12.PNG">
+<meta property="og:updated_time" content="2019-04-09T13:30:10.220Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xuexue&#39;s blog">
+<meta name="twitter:title" content="计算机网络总结">
+<meta name="twitter:description" content="计算机网络基础总结">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/09/计算机网络总结/1.PNG">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -155,36 +173,301 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-计算机网络总结" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/09/计算机网络总结/" class="archive-article-date">
-  	<time datetime="2019-04-09T08:26:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+      	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/09/计算机网络总结/">计算机网络总结</a>
+    <h1 class="article-title" itemprop="name">
+      计算机网络总结
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      	 
+		<br>
+		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+		<span class="icon-sort"></span>
+		<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+		</span>
+		</a>
+		
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>计算机网络基础总结  <a id="more"></a></p>
+<h2 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h2><p><img src="/2019/04/09/计算机网络总结/1.PNG" alt></p>
+<p>1、五层协议：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">应用层<br>（用户对用户）</th>
+<th>任务：提供系统与用户的接口<br>功能：文件传输、访问和管理、电子邮件服务<br>协议：FTP、SMTP、POP3、HTTP、DNS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">传输层<br>（应用对应用、进程对进程）</td>
+<td>传输单位：报文段（TCP）或用户数据报（UDP）<br>任务：负责主机中两个<strong>进程之间的通信</strong><br>功能：为端到端连接提供可靠的传输服务；<br>为端到端连接提供流量控制、差错控制、服务质量等管理服务<br>协议：TCP、UDP</td>
+</tr>
+<tr>
+<td style="text-align:center">网络层<br>（主机对主机）</td>
+<td>传输单位：数据报<br>所实现的硬件：路由器<br>任务：<strong>将传输层传下来的报文段封装成分组</strong>；<br>选择适当的路由，使传输层传下来的分组能够交付到目的主机<br>协议：ICMP、ARP、RARP、IP、IGMP</td>
+</tr>
+<tr>
+<td style="text-align:center">数据链路层<br></td>
+<td>传输单位 ：帧<br>所实现的硬件：交换机、网桥<br>任务：<strong>将网络层交下来的IP数据报组装成帧</strong><br>功能：链路连接的建立拆除、分离；<br>帧定界和帧同步；差错检测<br></td>
+</tr>
+<tr>
+<td style="text-align:center">物理层<br></td>
+<td>传输单位：比特<br>所实现的硬件：集线器、中继器<br>任务：透明地传输比特流<br>功能：<strong>为数据端设备提供传送数据通路</strong></td>
+</tr>
+</tbody>
+</table>
+<p>2、OSI：</p>
+<ul>
+<li>表示层 ：数据压缩、加密以及数据描述，这使得应用程序不必关心在各台主机中数据内部格式不同的问题；</li>
+<li>会话层 ：建立及管理会话；</li>
+</ul>
+<p>五层协议没有表示层和会话层，而是将这些功能留给应用程序开发者处理；</p>
+<p>3、TCP/IP：</p>
+<p>将五层协议中<strong>数据链路层和物理层合并为网络接口层</strong>；</p>
+<p>TCP/IP 体系结构不严格遵循 OSI 分层概念，应用层可能会直接使用 IP 层或者网络接口层；</p>
+<h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><p>1、物理层的作用：实现相邻计算机节点之间<strong>比特流的透明传送</strong>，尽可能<strong>屏蔽掉具体传输介质和物理设备的差异</strong>；</p>
+<p>2、透明传送比特流：表示经实际电路传送后的比特流没有发生变化，对传送的比特流来说，这个电路好像是看不见的；</p>
+<p>3、数据传输方式：</p>
+<ul>
+<li>电路交换：通信之前要在通信双方之间建立一条被双方独占的物理通路；</li>
+<li>报文交换：采用存储转发的传输方式；</li>
+<li>分组交换：采用存储转发的传输方式，可能出现失序、丢失或重复分组现象；</li>
+</ul>
+<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><p>1、数据链路层（链路层）：两台<strong>主机之间的数据传输</strong>，总是在一段一段的链路上传送的，这就需要使用专门的链路层的协议。 在两个相邻节点之间传送数据时，数据链路层<strong>将网络层交下来的IP数据报组装成帧</strong>；</p>
+<p>2、数据链路层：<strong>封装成帧、透明传输、差错检测</strong>；</p>
+<p>2、封装成帧：将网络层传下来的分组<strong>添加首部和尾部，用于标记帧的开始和结束</strong>；</p>
+<p>3、透明传输：当两个主机互相传送信息时，网络层的分组必须封装成帧，并<strong>以帧的格式进行传送</strong>；</p>
+<p>帧定界：将一段数据的前后分别添加首部和尾部，就构成了帧，首部和尾部中含有很多控制信息，这些信息的重要作用之一是确定帧的界限；</p>
+<p>4、差错检测：目前数据链路层广泛使用<strong>循环冗余检验（CRC）</strong>来检查比特差错；</p>
+<p>5、信道复用技术：</p>
+<ul>
+<li>频分复用：所有主机在相同的时间占用不同的频率带宽资源；</li>
+<li>时分复用：所有主机在不同的时间占用相同的频率带宽资源；</li>
+<li>统计时分复用：是对时分复用的一种改进，不固定每个用户在时分复用帧中的位置，只要有数据就集中起来组成统计时分复用帧然后发送；</li>
+<li>波分复用：光的频分复用。由于光的频率很高，因此习惯上用波长而不是频率来表示所使用的光载波；</li>
+<li>码分复用：为每个用户分配 m bit 的码片，并且所有的码片正交；</li>
+</ul>
+<p>6、CSMA/CD（载波监听多路访问 / 冲突检测）协议：每个站在发送数据报之前要<strong>先检测一下总线上是否有其他计算机在发送数据</strong>，若有，则暂时不发送数据，以免发生冲突；若没有，则发送数据。计算机<strong>在发送数据的同时检测信道上是否有冲突发生</strong>，若有，则采用截断二进制指数类型退避算法来等待一段随机时间后再次重发。（<strong>先听后发、边听边发、冲突停发、随机重发</strong>）；</p>
+<p>7、PPP点对点协议：互联网用户通常需要连接到某个 ISP （互联网服务提供商）之后才能接入到互联网，PPP 协议是用户计算机和 ISP 进行通信时所使用的数据链路层协议；</p>
+<p>8、MAC 地址是链路层地址，长度为 6 字节（48 位），用于<strong>唯一标识网络适配器</strong>（网卡）；</p>
+<p>9、局域网：局域网是一种典型的广播信道，主要特点是网络为一个单位所拥有，且地理范围和站点数目均有限；</p>
+<p>10、广域网：由一些结点交换机以及连接这些交换机的链路组成；</p>
+<p>11、以太网：采用总线拓扑结构，所i有计算机共享一条总线，信息以广播方式发送；</p>
+<p>12、交换机（多端口的网桥）：具有<strong>自学习能力，学习的是交换表的内容，交换表中存储着 MAC 地址到接口的映射</strong>，由于这种自学习能力，因此交换机是一种即插即用设备，不需要网络管理员手动配置交换表内容；</p>
+<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>1、网络层：负责为分组交换网上的不同主机提供通信服务。在发送数据时，网络层把运输层产生的<strong>报文段或用户数据报封装成分组和包进行传送</strong>。在TCP/IP体系结构中，由于网络层使用IP协议，因此分组也叫IP数据报，简称数据报；</p>
+<p>2、网络层向上只提供<strong>简单灵活的、无连接的、尽最大努力交付的</strong>数据报服务。使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络；</p>
+<p>3、与 IP 协议配套使用的还有三个协议：</p>
+<ul>
+<li>地址解析协议 ARP（Address Resolution Protocol）</li>
+<li>网际控制报文协议 ICMP（Internet Control Message Protocol）</li>
+<li>网际组管理协议 IGMP（Internet Group Management Protocol）</li>
+</ul>
+<p>4、IP数据报格式：</p>
+<p><img src="/2019/04/09/计算机网络总结/2.PNG" alt></p>
+<p>5、IP地址编址方式：</p>
+<ul>
+<li><p>分类：由两部分组成，网络号和主机号，其中不同分类具有不同的网络号长度，并且是固定的；</p>
+<p>IP 地址 ::= {&lt; 网络号 &gt;, &lt; 主机号 &gt;}</p>
+<p><img src="/2019/04/09/计算机网络总结/3.PNG" alt></p>
+</li>
+<li><p>子网划分：<strong>从主机号借用若干个比特作为子网号</strong>（子网号绝不能全1和全0），而主机号也就相应减少了若干个比特，网络号不变，把两级 IP 地址划分为三级 IP 地址；</p>
+<p>IP 地址 ::= {&lt; 网络号 &gt;, &lt; 子网号 &gt;, &lt; 主机号 &gt;}</p>
+<p>子网掩码：<strong>1对应于IP地址中的网络号和子网号，0对应于主机号</strong>，<strong>子网掩码与IP地址逐位“与”可得到网络地址</strong>；</p>
+</li>
+<li><p>无分类编址（CIDR）：为解决IP地址耗尽，使用各种长度的“网络前缀”来代替分类编址中的网络号和子网号；</p>
+<p>IP 地址 ::= {&lt; 网络前缀号 &gt;, &lt; 主机号 &gt;}</p>
+</li>
+</ul>
+<p>6、地址解析协议<strong>ARP：将IP地址转为物理（MAC）地址</strong>，每个主机都有一个 ARP 高速缓存，里面有本局域网上的各主机和路由器的 IP 地址到 MAC 地址的映射表。；</p>
+<p>7、网际控制报文协议ICMP：检测出错误的路由器或主机都能<strong>把这些错误报告通过一些控制消息告诉发送数据的主机</strong>，ICMP分为两种：ICMP差错报告报文和ICMP询问报文；</p>
+<p>8、路由器：从功能上可以划分为：路由选择和分组转发，分组转发结构由三个部分组成：交换结构、一组输入端口和一组输出端口；</p>
+<p>9、路由选择协议：</p>
+<ul>
+<li><p>自治系统内部的路由选择：RIP 和 OSPF；</p>
+<ul>
+<li><p>RIP（UDP） 是一种基于<strong>距离向量的路由选择协议</strong>。距离是指跳数（范围限制在15跳之内），超过 15 表示不可达；</p>
+<p>三要素：</p>
+<p>仅和相邻路由器交换信息；交换的信息是当前本路由器所知道的全部信息，即自己的路由表；按固定的时间间隔交换路由信息；</p>
+</li>
+<li><p>OSPF（IP）：<strong>链路状态协议</strong>；</p>
+<p>三要素：</p>
+<p>向本自治系统中所有路由器发送信息；发送的信息是否是与本路由器相邻的所有路由器的链路状态；只有当链路状态发生变化时，路由器才用洪犯法向所有路由器发送此信息；</p>
+</li>
+</ul>
+</li>
+<li><p>自治系统间的路由选择：BGP（TCP），<strong>路径-向量路由选择协议</strong>；</p>
+</li>
+</ul>
+<p>总结：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">主要特点</th>
+<th>RIP</th>
+<th>OSPF</th>
+<th>BGP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">网关协议</td>
+<td>内部</td>
+<td>内部</td>
+<td>外部</td>
+</tr>
+<tr>
+<td style="text-align:center">路由表内容</td>
+<td>目的网络，下一跳，距离</td>
+<td>目的网络，下一跳，距离</td>
+<td>目的网络，完整路径</td>
+</tr>
+<tr>
+<td style="text-align:center">最优通路依据</td>
+<td>跳数</td>
+<td>费用</td>
+<td>的多种有关策略</td>
+</tr>
+<tr>
+<td style="text-align:center">算法</td>
+<td>距离–向量协议</td>
+<td>链路状态协议</td>
+<td>路径-向量协议</td>
+</tr>
+<tr>
+<td style="text-align:center">传送方式</td>
+<td>UDP</td>
+<td>IP数据报</td>
+<td>TCP</td>
+</tr>
+</tbody>
+</table>
+<p>10、NAT：将<strong>专用网内部使用的本地IP地址转换为有效的外部全球IP地址</strong>；</p>
+<h2 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h2><p>1、运输层：负责<strong>向两台主机进程之间的通信提供通用的数据传输服务</strong>；</p>
+<p>2、网络层只把分组发送到目的主机，但是<strong>真正通信的并不是主机而是主机中的进程</strong>。传输层提供了<strong>进程间的逻辑通信</strong>，传输层向高层用户屏蔽了下面网络层的核心细节，使应用程序看起来像是在两个传输层实体之间有一条端到端的逻辑通信信道；</p>
+<p>3、UDP（一般用于<strong>即时通信，比如QQ语音 、QQ视频 、直播</strong>）主要特点：</p>
+<ul>
+<li>UDP是<strong>无连接</strong>的；</li>
+<li>UDP使用尽最大努力交付，即不保证可靠交付，因此主机不需要维持复杂的链接状态（这里面有许多参数）；</li>
+<li>UDP是<strong>面向报文</strong>的；</li>
+<li>UDP没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低（对实时应用很有用，如IP电话，实时视频会议等）；</li>
+<li>UDP支持一对一、一对多、多对一和多对多的交互通信；</li>
+<li>UDP的首部开销小，只有8个字节，比TCP的20个字节的首部要短；</li>
+</ul>
+<p>4、TCP（一般<strong>用于文件传输、发送和接收邮件、远程登录等场景</strong>）主要特点：</p>
+<ul>
+<li>TCP是<strong>面向连接</strong>的；（就好像打电话一样，通话前需要先拨号建立连接，通话结束后要挂机释放连接）；</li>
+<li>每一条TCP连接只能有两个端点，每一条TCP连接只能是点对点的（一对一）；</li>
+<li>TCP提供可靠交付的服务。通过TCP连接传送的数据，无差错、不丢失、不重复、并且按序到达；</li>
+<li>TCP提供全双工通信。TCP允许通信双方的应用进程在任何时候都能发送数据。TCP连接的两端都设有发送缓存和接收缓存，用来临时存放双方通信的数据；</li>
+<li><strong>面向字节流</strong>。TCP中的“流”（stream）指的是流入进程或从进程流出的字节序列。“面向字节流”的含义是：虽然应用程序和TCP的交互是一次一个数据块（大小不等），但TCP把应用程序交下来的数据仅仅看成是一连串的无结构的字节流；</li>
+</ul>
+<p>5、TCP三次握手：</p>
+<p><img src="/2019/04/09/计算机网络总结/4.PNG" alt></p>
+<p><img src="/2019/04/09/计算机网络总结/5.PNG" alt></p>
+<p>为什么要三次握手？</p>
+<p>三次握手的目的是<strong>建立可靠的通信信道，防止报文段在传输连接建立过程中出现差错</strong>；</p>
+<p>6、TCP四次挥手：</p>
+<p><img src="/2019/04/09/计算机网络总结/6.PNG" alt></p>
+<p>任何一方都可以在数据传送结束后发出连接释放的通知，<strong>待对方确认后进入半关闭状态。当另一方也没有数据再发送的时候，则发出连接释放通知，对方确认后就完全关闭了TCP连接</strong>；</p>
+<p>7、TCP协议保证可靠传输：</p>
+<ul>
+<li><p><strong>超时重传</strong>： 当TCP发出一个段后，它启动一个定时器，等待目的端确认收到这个报文段。如果不能及时收到一个确认，将重发这个报文段；</p>
+</li>
+<li><p>利用<strong>滑动窗口</strong>实现流量控制的机制：发送窗口里面的序号表示允许发送的序号。如果发送方把数据发送的过快，接收方就可能来不及接收，这就会造成数据的丢失。所谓<strong>流量控制就是让发送方的发送速率不要太快，要让接收方来得及接收</strong>；</p>
+</li>
+<li><p><strong>拥塞控制</strong>：在某段时间，若对网络中某一资源的需求超过了该资源所能提供的可用部分，网络的性能就要变坏。这种情况就叫拥塞。<strong>拥塞控制就是为了防止过多的数据注入到网络中，这样就可以使网络中的路由器或链路不致过载</strong>；</p>
+<p><strong>流量控制是为了让接收方能来得及接收，而拥塞控制是为了降低整个网络的拥塞程度</strong>；</p>
+<p>TCP 主要通过四个算法来进行拥塞控制：<strong>慢开始、拥塞避免、快重传、快恢复</strong>；</p>
+<p>发送方需要维护一个叫做<strong>拥塞窗口（cwnd）</strong>的状态变量，注意拥塞窗口与发送方窗口的区别：拥塞窗口只是一个状态变量，实际决定发送方能发送多少数据的是发送方窗口；</p>
+<p><img src="/2019/04/09/计算机网络总结/7.PNG" alt></p>
+<p><strong>慢开始（呈指数增长）</strong>：当主机开始发送数据时，如果立即把大量数据字节注入到网络，那么可能会引起网络阻塞，因为现在还不知道网络的符合情况。经验表明，较好的方法是先探测一下，即由小到大逐渐增大发送窗口，也就是由小到大逐渐增大拥塞窗口数值。cwnd初始值为1，每经过一个传播轮次，cwnd加倍；</p>
+<p><strong>拥塞避免（线性增长）</strong>：让拥塞窗口cwnd缓慢增大，即每经过一个往返时间RTT就把发送放的cwnd加1；</p>
+<p><strong>快重传与快恢复</strong>：在TCP/IP中，快速重传和恢复（fast retransmit and recovery，FRR）是一种拥塞控制算法，它能<strong>快速恢复丢失的数据包</strong>。没有FRR，如果数据包丢失了，TCP将会使用定时器来要求传输暂停。在暂停的这段时间内，没有新的或复制的数据包被发送。有了FRR，如果接收机接收到一个不按顺序的数据段，它会立即给发送机发送一个重复确认。如果<strong>发送机接收到三个重复确认，它会假定确认件指出的数据段丢失了，并立即重传这些丢失的数据段</strong>。有了FRR，就不会因为重传时要求的暂停被耽误。 当有单独的数据包丢失时，快速重传和恢复（FRR）能最有效地工作。当有多个数据信息包在某一段很短的时间内丢失时，它则不能很有效地工作；</p>
+</li>
+</ul>
+<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><p>1、应用层：通过应用进程间的交互来完成特定网络应用；</p>
+<p>2、域名系统（DNS）：DNS 是一个分布式数据库，提供了<strong>主机名和 IP 地址之间相互转换</strong>的服务，能够使人更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。这里的分布式数据库是指，每个站点只保留它自己的那部分数据；</p>
+<p>3、文件传送协议：FTP 使用 TCP 进行连接，它需要两个连接来传送一个文件；</p>
+<ul>
+<li>控制连接：服务器打开端口号 21 等待客户端的连接，客户端主动建立连接后，使用这个连接将客户端的命令传送给服务器，并传回服务器的应答；</li>
+<li>数据连接：用来传送一个文件数据；</li>
+</ul>
+<p>4、电子邮件协议：</p>
+<p>一个电子邮件系统由三部分组成：<strong>用户代理、邮件服务器以及邮件协议</strong>；</p>
+<p>邮件协议包含发送协议和读取协议，<strong>发送协议常用 SMTP，读取协议常用 POP3 和 IMAP</strong>；</p>
+<p><img src="/2019/04/09/计算机网络总结/8.PNG" alt></p>
+<ul>
+<li>SMTP：SMTP 只能发送 ASCII 码，而互联网邮件扩充 <strong>MIME 可以发送二进制文件</strong>。MIME 并没有改动或者取代 SMTP，而是增加邮件主体的结构，定义了非 ASCII 码的编码规则；</li>
+<li>POP3：只要<strong>用户从服务器上读取了邮件，就把该邮件删除</strong>，但是目前改进的 POP3 已经全面支持下载而不删除原邮件。 它的另一个主要特点是：无论你在客户端做了任何操作（如移动、标记），都不会反映到服务器上，也就是只能单方面地从服务器“读取”；</li>
+<li>IMAP：<strong>客户端和服务器上的邮件保持同步</strong>，如果不手动删除邮件，那么服务器上的邮件也不会被自动删除。IMAP 这种做法可以让用户随时随地去访问服务器上的邮件。 同时它与 POP3 的本质区别在于，<strong>在客户端的操作（包括删除）都会反映到服务器上，是一个双向的通信</strong>；    </li>
+</ul>
+<p>5、常用端口：</p>
+<p><img src="/2019/04/09/计算机网络总结/9.PNG" alt></p>
+<p>6、HTTP协议：<strong>超文本传输协议</strong>（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法；</p>
+<p>7、浏览器输入url地址，显示主页的过程：</p>
+<p><img src="/2019/04/09/计算机网络总结/10.PNG" alt></p>
+<p>8、各种协议与HTTP协议之间的关系：</p>
+<p><img src="/2019/04/09/计算机网络总结/11.PNG" alt></p>
+<p>9、HTTP长连接、短连接：</p>
+<p>在<strong>HTTP/1.0中默认使用短连接</strong>。也就是说，客户端和服务器每进行一次HTTP操作，就建立一次连接，任务结束就中断连接。当客户端浏览器访问的某个HTML或其他类型的Web页中包含有其他的Web资源（如JavaScript文件、图像文件、CSS文件等），每遇到这样一个Web资源，浏览器就会重新建立一个HTTP会话；</p>
+<p>而从<strong>HTTP/1.1起，默认使用长连接</strong>，用以保持连接特性。使用长连接的HTTP协议，会在响应头加入这行代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection:keep-alive</span><br></pre></td></tr></table></figure>
+<p>在使用长连接的情况下，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，客户端再次访问这个服务器时，会继续使用这一条已经建立的连接。Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间。实现长连接需要客户端和服务端都支持长连接；</p>
+<p>10、状态码：</p>
+<p><img src="/2019/04/09/计算机网络总结/12.PNG" alt></p>
+<p>11、HTTP和HTTPS的基本概念：</p>
+<p>HTTP：是互联网上应用最为广泛的一种网络协议，是一个客户端和服务器端请求和应答的标准（TCP），用于从WWW服务器传输超文本到本地浏览器的传输协议，它可以使浏览器更加高效，使网络传输减少；</p>
+<p>HTTPS：是以安全为目标的HTTP通道，简单讲<strong>是HTTP的安全版</strong>，即HTTP下加入SSL层，HTTPS的<strong>安全基础是SSL，因此加密的详细内容就需要SSL</strong>；</p>
+<p>HTTPS协议的主要作用可以分为两种：一种是建立一个信息安全通道，来保证数据传输的安全；另一种就是确认网站的真实性；</p>
+<p>12、HTTP和HTTPS的区别：</p>
+<ul>
+<li>https协议需要到ca申请证书，一般免费证书较少，因而需要一定费用；</li>
+<li><strong>http是超文本传输协议，信息是明文传输，https则是具有安全性的ssl加密传输协议</strong>；</li>
+<li>http和https使用的是<strong>完全不同的连接方式，用的端口也不一样</strong>，前者是80，后者是443；</li>
+<li>http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全；</li>
+</ul>
+<p>参考博文链接：<a href="https://mp.weixin.qq.com/s?__biz=MzUyOTk5NDQwOA==&amp;mid=2247485219&amp;idx=1&amp;sn=c4b24be02bc3311fe161669555f00406&amp;chksm=fa59c0e4cd2e49f2a7d6ab760feb3dfbba2cbc77da2a9c4ac450b9c5a78f5be8859e1aa586af&amp;scene=0&amp;xtrack=1#rd" target="_blank" rel="noopener">这篇</a>和<a href="https://cyc2018.github.io/CS-Notes/#/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%20%E7%9B%AE%E5%BD%951" target="_blank" rel="noopener">这篇</a>～</p>
+
+      
+     
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -196,7 +479,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -209,362 +492,140 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/09/计算机网络总结/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/08/利用西门子数据集获取函数调用序列/" class="archive-article-date">
-  	<time datetime="2019-04-08T08:07:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/08/利用西门子数据集获取函数调用序列/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">利用西门子数据集获取函数调用序列</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/08/利用西门子数据集获取函数调用序列/">利用西门子数据集获取函数调用序列</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">软件缺陷定位</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/软件测试//" class="article-tag-list-link color5">软件测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机网络体系结构"><span class="toc-number">1.</span> <span class="toc-text">计算机网络体系结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#物理层"><span class="toc-number">2.</span> <span class="toc-text">物理层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据链路层"><span class="toc-number">3.</span> <span class="toc-text">数据链路层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络层"><span class="toc-number">4.</span> <span class="toc-text">网络层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运输层"><span class="toc-number">5.</span> <span class="toc-text">运输层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用层"><span class="toc-number">6.</span> <span class="toc-text">应用层</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/08/软件缺陷定位西门子数据集介绍/" class="archive-article-date">
-  	<time datetime="2019-04-08T01:25:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/08/软件缺陷定位西门子数据集介绍/">软件缺陷定位西门子数据集介绍</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">软件缺陷定位</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/软件测试//" class="article-tag-list-link color5">软件测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/阿里云部署SpringBoot项目/" class="archive-article-date">
-  	<time datetime="2019-04-07T09:07:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/阿里云部署SpringBoot项目/">阿里云部署SpringBoot项目</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring-Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/Spring-Boot基础总结/" class="archive-article-date">
-  	<time datetime="2019-04-07T06:53:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/Spring-Boot基础总结/">Spring Boot基础总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring-Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/SQL必知必会/" class="archive-article-date">
-  	<time datetime="2019-04-07T06:22:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/SQL必知必会/">SQL必知必会</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/专业课//" class="article-tag-list-link color4">专业课</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/18/设计模式-观察者模式/" class="archive-article-date">
-  	<time datetime="2019-03-18T02:08:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/18/设计模式-观察者模式/">设计模式-观察者模式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/09/C语言入门/" class="archive-article-date">
-  	<time datetime="2019-03-09T02:31:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/09/C语言入门/">零基础入门C语言</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C语言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程基础//" class="article-tag-list-link color5">编程基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+
+  <!-- 来必力City版安装代码 -->
+
+  <!-- 这一句是适配样式 -->
+  <section class="duoshuo" id="comments">
+    <!-- 以下是 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80MzA5MC8xOTYzNg==">
+      <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+           if (typeof LivereTower === 'function') { return; }
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+      </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+  </section>
 
 
+ 
           </div>
         </div>
       </div>
@@ -591,8 +652,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
