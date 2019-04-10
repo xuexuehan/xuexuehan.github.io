@@ -28,7 +28,11 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/10.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/11.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/12.PNG">
-<meta property="og:updated_time" content="2019-04-09T13:30:10.220Z">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/TCP、UDP互联网协议.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/TCP%20三次握手和四次挥手.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/从浏览器%20URL%20输入到页面显示经历过程.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/09/计算机网络总结/HTTPS与HTTP的区别，以及HTTP2.png">
+<meta property="og:updated_time" content="2019-04-10T01:42:40.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络总结">
 <meta name="twitter:description" content="计算机网络基础总结">
@@ -262,7 +266,7 @@
 <p>8、MAC 地址是链路层地址，长度为 6 字节（48 位），用于<strong>唯一标识网络适配器</strong>（网卡）；</p>
 <p>9、局域网：局域网是一种典型的广播信道，主要特点是网络为一个单位所拥有，且地理范围和站点数目均有限；</p>
 <p>10、广域网：由一些结点交换机以及连接这些交换机的链路组成；</p>
-<p>11、以太网：采用总线拓扑结构，所i有计算机共享一条总线，信息以广播方式发送；</p>
+<p>11、以太网：采用总线拓扑结构，所有计算机共享一条总线，信息以广播方式发送；</p>
 <p>12、交换机（多端口的网桥）：具有<strong>自学习能力，学习的是交换表的内容，交换表中存储着 MAC 地址到接口的映射</strong>，由于这种自学习能力，因此交换机是一种即插即用设备，不需要网络管理员手动配置交换表内容；</p>
 <h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>1、网络层：负责为分组交换网上的不同主机提供通信服务。在发送数据时，网络层把运输层产生的<strong>报文段或用户数据报封装成分组和包进行传送</strong>。在TCP/IP体系结构中，由于网络层使用IP协议，因此分组也叫IP数据报，简称数据报；</p>
 <p>2、网络层向上只提供<strong>简单灵活的、无连接的、尽最大努力交付的</strong>数据报服务。使用 IP 协议，可以把异构的物理网络连接起来，使得在网络层看起来好像是一个统一的网络；</p>
@@ -288,7 +292,7 @@
 <p>IP 地址 ::= {&lt; 网络前缀号 &gt;, &lt; 主机号 &gt;}</p>
 </li>
 </ul>
-<p>6、地址解析协议<strong>ARP：将IP地址转为物理（MAC）地址</strong>，每个主机都有一个 ARP 高速缓存，里面有本局域网上的各主机和路由器的 IP 地址到 MAC 地址的映射表。；</p>
+<p>6、地址解析协议<strong>ARP：将IP地址转为物理（MAC）地址</strong>，每个主机都有一个 ARP 高速缓存，里面有本局域网上的各主机和路由器的 IP 地址到 MAC 地址的映射表；</p>
 <p>7、网际控制报文协议ICMP：检测出错误的路由器或主机都能<strong>把这些错误报告通过一些控制消息告诉发送数据的主机</strong>，ICMP分为两种：ICMP差错报告报文和ICMP询问报文；</p>
 <p>8、路由器：从功能上可以划分为：路由选择和分组转发，分组转发结构由三个部分组成：交换结构、一组输入端口和一组输出端口；</p>
 <p>9、路由选择协议：</p>
@@ -437,6 +441,15 @@
 <li>http的连接很简单，是无状态的；HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议，比http协议安全；</li>
 </ul>
 <p>参考博文链接：<a href="https://mp.weixin.qq.com/s?__biz=MzUyOTk5NDQwOA==&amp;mid=2247485219&amp;idx=1&amp;sn=c4b24be02bc3311fe161669555f00406&amp;chksm=fa59c0e4cd2e49f2a7d6ab760feb3dfbba2cbc77da2a9c4ac450b9c5a78f5be8859e1aa586af&amp;scene=0&amp;xtrack=1#rd" target="_blank" rel="noopener">这篇</a>和<a href="https://cyc2018.github.io/CS-Notes/#/notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20-%20%E7%9B%AE%E5%BD%951" target="_blank" rel="noopener">这篇</a>～</p>
+<h2 id="附图"><a href="#附图" class="headerlink" title="附图"></a>附图</h2><p>TCP、UDP互联网协议：</p>
+<p><img src="/2019/04/09/计算机网络总结/TCP、UDP互联网协议.png" alt></p>
+<p>TCP 三次握手和四次挥手：</p>
+<p><img src="/2019/04/09/计算机网络总结/TCP 三次握手和四次挥手.png" alt></p>
+<p>从浏览器 URL 输入到页面显示经历过程：</p>
+<p><img src="/2019/04/09/计算机网络总结/从浏览器 URL 输入到页面显示经历过程.png" alt></p>
+<p>HTTPS与HTTP的区别，以及HTTP2：</p>
+<p><img src="/2019/04/09/计算机网络总结/HTTPS与HTTP的区别，以及HTTP2.png" alt></p>
+<p>附图来源：<a href="https://github.com/Joe19970619/Learning-materials/tree/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%80%9A%E8%AE%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84" target="_blank" rel="noopener">https://github.com/Joe19970619/Learning-materials/tree/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%80%9A%E8%AE%AF%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84</a></p>
 
       
      
@@ -583,7 +596,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机网络体系结构"><span class="toc-number">1.</span> <span class="toc-text">计算机网络体系结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#物理层"><span class="toc-number">2.</span> <span class="toc-text">物理层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据链路层"><span class="toc-number">3.</span> <span class="toc-text">数据链路层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络层"><span class="toc-number">4.</span> <span class="toc-text">网络层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运输层"><span class="toc-number">5.</span> <span class="toc-text">运输层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用层"><span class="toc-number">6.</span> <span class="toc-text">应用层</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#计算机网络体系结构"><span class="toc-number">1.</span> <span class="toc-text">计算机网络体系结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#物理层"><span class="toc-number">2.</span> <span class="toc-text">物理层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据链路层"><span class="toc-number">3.</span> <span class="toc-text">数据链路层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络层"><span class="toc-number">4.</span> <span class="toc-text">网络层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运输层"><span class="toc-number">5.</span> <span class="toc-text">运输层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用层"><span class="toc-number">6.</span> <span class="toc-text">应用层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附图"><span class="toc-number">7.</span> <span class="toc-text">附图</span></a></li></ol>
                     </div>
                 </span>
             </div>
