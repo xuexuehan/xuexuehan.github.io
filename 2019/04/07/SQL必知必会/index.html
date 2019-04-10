@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="xuexue&#39;s blog">
 <meta property="og:description" content="SQL必知必会总结">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-07T13:28:43.475Z">
+<meta property="og:updated_time" content="2019-04-10T05:43:57.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL必知必会">
 <meta name="twitter:description" content="SQL必知必会总结">
@@ -329,7 +329,7 @@
 <h1 id="创建计算字段"><a href="#创建计算字段" class="headerlink" title="创建计算字段"></a>创建计算字段</h1><p>1、计算字段：计算字段并不实际存在于数据库表中，计算字段是<strong>运行时</strong>在SELECT语句内创建的； </p>
 <p>2、拼接字段 ：</p>
 <ul>
-<li><p>拼接（concatenate）：将值联结到一起（将一个值附加到另一个值）构成单个值—cncat()；</p>
+<li><p>拼接（concatenate）：将值联结到一起（将一个值附加到另一个值）构成单个值—concat()；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT CONCAT(TRIM(vend_name),&apos; (&apos;,TRIM(vend_country),&apos;)&apos;)#TRIM()---去掉左右两边空格</span><br><span class="line">FROM Vendors</span><br><span class="line">ORDER BY vend_name;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>别名（alias）是一个字段或值的替换名。别名用AS关键字赋予； </p>
@@ -377,7 +377,7 @@
 <li><p>COUNT（）：确定表中行的数目或符合特定条件的行的数目；    </p>
 <p>COUNT()函数有两种使用方式：</p>
 <ul>
-<li>使用COUNT(*)对表中行的数目进行计数，不管表列中包含的是空值（NULL）还是非空值；   </li>
+<li>使用COUNT(*)对表中行的数目进行计数，<strong>不管表列中包含的是空值（NULL）还是非空值</strong>；   </li>
 <li>使用COUNT(column)对特定列中具有值的行进行计数，<strong>忽略NULL值；</strong></li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#利用COUNT(*)对所有行计数，不管行中各列有什么值</span><br><span class="line">SELECT COUNT(*) AS num_cust</span><br><span class="line">FROM Customers;</span><br><span class="line">#COUNT(cust_email)对cust_email列中有值的行进行计数</span><br><span class="line">SELECT COUNT(cust_email) AS num_cust</span><br><span class="line">FROM Customers;</span><br></pre></td></tr></table></figure>
@@ -400,19 +400,19 @@
 <p>2、创建分组：使用SELECT语句的<strong>GROUP BY</strong>子句建立的；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT vend_id, COUNT(*) AS num_prods</span><br><span class="line">FROM Products</span><br><span class="line">GROUP BY vend_id;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>GROUP BY子句可以包含任意数目的列，因而可以对分组进行嵌套，更细致地进行数据分组；    </li>
+<li>GROUP BY子句<strong>可以包含任意数目的列，因而可以对分组进行嵌套，更细致地进行数据分组</strong>；    </li>
 <li>如果在GROUP BY子句中嵌套了分组，数据将在最后指定的分组上进行汇总。换句话说，在建立分组时，指定的所有列都一起计算（所以不能从个别的列取回数据）；    </li>
-<li>GROUP BY子句中列出的每一列都必须是检索列或有效的表达式（但不能是聚集函数）。如果在SELECT中使用表达式，则必须在GROUP BY子 句中指定相同的表达式。不能使用别名；    </li>
+<li>GROUP BY子句中列出的每一列都必须是检索列或有效的表达式（但不能是聚集函数）。<strong>如果在SELECT中使用表达式，则必须在GROUP BY子 句中指定相同的表达式。不能使用别名</strong>；    </li>
 <li>大多数SQL实现不允许GROUP BY列带有长度可变的数据类型（如文本或备注型字段）；    </li>
 <li>除聚集计算语句外，SELECT语句中的每一列都必须在GROUP BY子句中给出 ；   </li>
-<li>如果分组列中包含具有NULL值的行，则<strong>NULL将作为一个分组返回</strong>。如果列中有多行NULL值，它们将分为一组；    </li>
-<li>GROUP BY子句必须出现在WHERE子句之后，<strong>ORDER BY子句之前</strong> ；   </li>
+<li>如果分组列中包含具有NULL值的行，则<strong>NULL将作为一个分组返回</strong>。如果<strong>列中有多行NULL值，它们将分为一组</strong>；    </li>
+<li>GROUP BY子句必须出现在<strong>WHERE子句之后</strong>，<strong>ORDER BY子句之前</strong> ；   </li>
 </ul>
-<p>3、过滤分组 ：HAVING子句 ，WHERE过滤行，而HAVING过滤分组； </p>
+<p>3、过滤分组 ：<strong>HAVING子句 ，WHERE过滤行，而HAVING过滤分组</strong>； </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT cust_id, COUNT(*) AS orders</span><br><span class="line">FROM Orders</span><br><span class="line">GROUP BY cust_id</span><br><span class="line">HAVING COUNT(*) &gt;= 2;</span><br></pre></td></tr></table></figure>
-<p>HAVING和WHERE的差别：WHERE在数据分组前进行过滤，HAVING在数据分组后进行过滤； </p>
+<p>HAVING和WHERE的差别：<strong>WHERE在数据分组前进行过滤，HAVING在数据分组后进行过滤</strong>； </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#第一行是使用了聚集函数的基本SELECT语句，WHERE子句过滤所有prod_price至少为4的行，然后按vend_id分组数据，HAVING子句过滤计数为2或2以上的分组。</span><br><span class="line">SELECT vend_id, COUNT(*) AS num_prod</span><br><span class="line">FROM Products</span><br><span class="line">WHERE prod_price &gt;= 4</span><br><span class="line">GROUP BY vend_id</span><br><span class="line">HAVING COUNT(*) &gt;= 2</span><br></pre></td></tr></table></figure>
-<p>使用HAVING和WHERE：HAVING与WHERE非常类似，如果不指定GROUP BY，则大多数DBMS会同等对待它们。不过，使用HAVING时应该结合GROUP BY子句，而WHERE子句用于标准的行级过滤；</p>
+<p>使用HAVING和WHERE：HAVING与WHERE非常类似，如果不指定GROUP BY，则大多数DBMS会同等对待它们。不过，<strong>使用HAVING时应该结合GROUP BY子句</strong>，而WHERE子句用于标准的行级过滤；</p>
 <p>4、分组和排序：GROUP BY和ORDER BY经常完成相同的工作，但它们非常不同；</p>
 <table>
 <thead>
@@ -428,7 +428,7 @@
 </tr>
 <tr>
 <td style="text-align:center">任意列都可以使用（甚至非选择的列也可以使用）</td>
-<td style="text-align:center">只可能使用选择列u表达式列，而且必须使用每个选择列表达式</td>
+<td style="text-align:center">只可能使用选择列表达式，而且必须使用每个选择列表达式</td>
 </tr>
 <tr>
 <td style="text-align:center">不一定需要</td>
@@ -436,7 +436,7 @@
 </tr>
 </tbody>
 </table>
-<p>不要忘记ORDER BY：一般在使用GROUP BY子句时，应该也给出ORDER BY子句。这是保证数据正确排序的唯一方法。千万不要仅依赖GROUP BY排序数据；</p>
+<p>不要忘记ORDER BY：<strong>一般在使用GROUP BY子句时，应该也给出ORDER BY子句</strong>。这是保证数据正确排序的唯一方法。千万不要仅依赖GROUP BY排序数据；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT order_num, COUNT(*) AS items</span><br><span class="line">FROM OrderItems</span><br><span class="line">GROUP BY order_num</span><br><span class="line">HAVING COUNT(*) &gt;= 3</span><br><span class="line">ORDER BY items, order_num;</span><br></pre></td></tr></table></figure>
 <p>5、SELECT子句顺序：</p>
 <table>
@@ -464,7 +464,7 @@
 <td style="text-align:center">否</td>
 </tr>
 <tr>
-<td style="text-align:center">GROUP BYYYYYYYYYYYYYYYYY</td>
+<td style="text-align:center">GROUP BY</td>
 <td style="text-align:center">分组说明</td>
 <td style="text-align:center">仅在按组计算聚集时使用</td>
 </tr>
@@ -483,7 +483,7 @@
 <h1 id="使用子查询"><a href="#使用子查询" class="headerlink" title="使用子查询"></a>使用子查询</h1><p>1、子查询：嵌套在其他查询中的查询；</p>
 <p>2、利用子查询进行过滤：  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT cust_name, cust_contact</span><br><span class="line">FROM Customers</span><br><span class="line">WHERE cust_id IN (SELECT cust_id</span><br><span class="line">FROM Orders</span><br><span class="line">WHERE order_num IN (SELECT order_num</span><br><span class="line">FROM OrderItems</span><br><span class="line">WHERE prod_id = &apos;RGAN01&apos;));</span><br></pre></td></tr></table></figure>
-<p>在WHERE子句中使用子查询能够编写出功能很强且很灵活的SQL语句。对于能嵌套的子查询的数目没有限制，不过在实际使用时由于性能的限制，不能嵌套太多的子查询；</p>
+<p>在WHERE子句中使用子查询能够编写出功能很强且很灵活的SQL语句。<strong>对于能嵌套的子查询的数目没有限制</strong>，不过在实际使用时由于性能的限制，不能嵌套太多的子查询；</p>
 <ul>
 <li>只能是单列：作为子查询的SELECT语句只能查询单个列。企图检索多个列将返回错误；    </li>
 <li>子查询和性能：这里给出的代码有效，并且获得了所需的结果。但是，使用子查询并不总是执行这类数据检索的最有效方法；</li>
@@ -492,29 +492,29 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#不是解决这种数据检索的最有效方法</span><br><span class="line">SELECT cust_name,</span><br><span class="line">cust_state,</span><br><span class="line">(SELECT COUNT(*)</span><br><span class="line">FROM Orders</span><br><span class="line">WHERE Orders.cust_id = Customers.cust_id) AS orders</span><br><span class="line">FROM Customers</span><br><span class="line">ORDER BY cust_name;</span><br></pre></td></tr></table></figure>
 <h1 id="联结表"><a href="#联结表" class="headerlink" title="联结表"></a>联结表</h1><p>1、联结：SQL最强大的功能之一就是<strong>能在数据查询的执行中联结（join）表</strong>。联结是利用SQL的SELECT能执行的<strong>最重要</strong>的操作；</p>
 <ul>
-<li>关系表：相同的数据出现多次决不是一件好事，这是关系数据库设计的基础。关系表的设计就是要把信息分解成多个表，一类数据一个表。各表通过某些共同的值互相关联（所以才叫关系数据库）； </li>
+<li>关系表：相同的数据出现多次决不是一件好事，这是关系数据库设计的基础。关系表的设计就是要<strong>把信息分解成多个表，一类数据一个表</strong>。各表通过某些共同的值互相关联（所以才叫关系数据库）； </li>
 <li>关系数据可以有效地存储，方便地处理。因此，关系数据库的可伸缩性远比非关系数据库要好。可伸缩（scale）： 能够适应不断增加的工作量而不失败。设计良好的数据库或应用程序称为可伸缩性好（scale well）；</li>
-<li>如果数据存储在多个表中，怎样用一条SELECT语句就检索出数据呢？（使用联结）；    </li>
-<li>联结是一种机制，用来在一条SELECT语句中关联表，因此称为联结。使用特殊的语法，可以联结多个表返回一组输 出，联结在运行时关联表中正确的行 ； </li>
+<li>如果数据存储在多个表中，怎样用一条SELECT语句就检索出数据呢？（使用<strong>联结</strong>）；    </li>
+<li>联结是一种机制，用来在一条SELECT语句中关联表，因此称为联结。使用特殊的语法，可以联结多个表返回一组输出，<strong>联结在运行时关联表中正确的行</strong> ； </li>
 </ul>
 <p>2、创建联结：指定要联结的所有表以及关联它们的方式即可 ；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT vend_name, prod_name, prod_price</span><br><span class="line">FROM Vendors, Products</span><br><span class="line">WHERE Vendors.vend_id = Products.vend_id;</span><br></pre></td></tr></table></figure>
-<p> 3、WHERE子句的重要性：在联结两个表时，实际要做的是将第一 个表中的每一行与第二个表中的每一行配对。WHERE子句作为过滤条件，只包含那些匹配给定条件（这里是联结条件）的行。没有WHERE子句， 第一个表中的每一行将与第二个表中的每一行配对，而不管它们逻辑上是否能配在一起；</p>
+<p> 3、WHERE子句的重要性：在联结两个表时，实际要做的是<strong>将第一个表中的每一行与第二个表中的每一行配对</strong>。WHERE子句作为过滤条件，只包含那些匹配给定条件（这里是联结条件）的行。没有WHERE子句， 第一个表中的每一行将与第二个表中的每一行配对，而不管它们逻辑上是否能配在一起；</p>
 <ul>
 <li><p>笛卡儿积（cartesian product）：由没有联结条件的表关系返回的结果为笛卡儿积。检索出的行的数目将是第一个表中的行数乘以第二个表中的行数；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT vend_name, prod_name, prod_price</span><br><span class="line">FROM Vendors, Products;</span><br><span class="line">#要保证所有联结都有WHERE子句，否则DBMS将返回比想要的数据多得多的数据</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>内联结（inner join）：目前为止使用的联结称为等值联结（equijoin），它基于两个表之间的相等测试，这种联结也称为内联结；</p>
+<li><p>内联结（inner join）：目前为止使用的联结称为等值联结（equijoin），它<strong>基于两个表之间的相等测试</strong>，这种联结也称为<strong>内联结</strong>；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT vend_name, prod_name, prod_price</span><br><span class="line">FROM Vendors INNER JOIN Products</span><br><span class="line">ON Vendors.vend_id = Products.vend_id;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>4、联结多个表 ：SQL不限制一条SELECT语句中可以联结的表的数目。创建联结的基本规则也相同，首先列出所有表，然后定义表之间的关系；</p>
+<p>4、联结多个表 ：SQL不限制一条SELECT语句中可以联结的表的数目。创建联结的基本规则也相同，首先<strong>列出所有表，然后定义表之间的关系</strong>；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT prod_name, vend_name, prod_price, quantity</span><br><span class="line">FROM OrderItems, Products, Vendors</span><br><span class="line">WHERE Products.vend_id = Vendors.vend_id</span><br><span class="line">AND OrderItems.prod_id = Products.prod_id</span><br><span class="line">AND order_num = 20007;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>性能考虑：DBMS在运行时关联指定的每个表，以处理联结。这种处理可能非常耗费资源，因此应该注意，不要联结不必要的表。联结的表越多，性能下降越厉害；</li>
 <li>执行任一给定的SQL操作一般不止一种方法。很少有绝对正确或绝对错误的方法。性能可能会受操作类型、所使用的DBMS、表中数据量、是否存在索引或键等条件的影响。    </li>
 </ul>
-<h1 id="创建高级联结"><a href="#创建高级联结" class="headerlink" title="创建高级联结"></a>创建高级联结</h1><p>1、使用表别名：SQL除了可以对列名和计算字段使用别名，还允许给表名起别名；</p>
+<h1 id="创建高级联结"><a href="#创建高级联结" class="headerlink" title="创建高级联结"></a>创建高级联结</h1><p>1、使用表别名：SQL除了可以对列名和计算字段使用别名，还<strong>允许给表名起别名</strong>；</p>
 <ul>
 <li>缩短SQL语句；    </li>
 <li>允许在一条SELECT语句中多次使用相同的表；          </li>
@@ -525,10 +525,10 @@
 <li><p>自联结：   </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#许多DBMS处理联结远比处理子查询快得多</span><br><span class="line">SELECT c1.cust_id, c1.cust_name, c1.cust_contact</span><br><span class="line">FROM Customers AS c1, Customers AS c2</span><br><span class="line">WHERE c1.cust_name = c2.cust_name</span><br><span class="line">AND c2.cust_contact = &apos;Jim Jones&apos;;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>自然联结：排除多次出现，使每一列只返回一次 ；</p>
+<li><p>自然联结：排除多次出现，<strong>使每一列只返回一次</strong> ；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT C.*, O.order_num, O.order_date,</span><br><span class="line">OI.prod_id, OI.quantity, OI.item_price</span><br><span class="line">FROM Customers AS C, Orders AS O, OrderItems AS OI</span><br><span class="line">WHERE C.cust_id = O.cust_id</span><br><span class="line">AND OI.order_num = O.order_num</span><br><span class="line">AND prod_id = &apos;RGAN01&apos;;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>外联结：联结包含了那些在相关表中没有关联行的行；</p>
+<li><p><strong>外联结：联结包含了那些在相关表中没有关联行的行</strong>；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#在使用OUTER JOIN语法时，必须使用RIGHT或LEFT关键字指定包括其所有行的表（RIGHT指出的是OUTER JOIN右边的表，而LEFT指出的是OUTER JOIN左边的表）</span><br><span class="line">SELECT Customers.cust_id, Orders.order_num</span><br><span class="line">FROM Customers LEFT OUTER JOIN Orders</span><br><span class="line">ON Customers.cust_id = Orders.cust_id;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -544,10 +544,10 @@
 <h1 id="组合查询"><a href="#组合查询" class="headerlink" title="组合查询"></a>组合查询</h1><p>1、组合查询：多数SQL查询只包含从一个或多个表中返回数据的单条SELECT语句。但是，SQL也允许执行多个查询（多条SELECT语句），并将结果作为一个查询结果集返回。这些组合查询通常称为并（union）或复合查询（compound query）；</p>
 <p>主要有两种情况需要使用组合查询：</p>
 <ul>
-<li>在一个查询中从不同的表返回结构数据；    </li>
-<li>对一个表执行多个查询，按一个查询返回数据；</li>
+<li><strong>在一个查询中从不同的表返回结构数据</strong>；    </li>
+<li><strong>对一个表执行多个查询，按一个查询返回数据</strong>；</li>
 </ul>
-<p>2、创建组合查询：可用UNION操作符来组合数条SQL查询。利用UNION，可给出多条SELECT语句，将它们的结果组合成一个结果集；</p>
+<p>2、创建组合查询：可用<strong>UNION操作符</strong>来组合数条SQL查询。利用UNION，可给出多条SELECT语句，将它们的结果组合成一个结果集；</p>
 <ul>
 <li><p>使用UNION ：给出每条SELECT语句，在各条语句之间放上关键字UNION ；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT cust_name, cust_contact, cust_email</span><br><span class="line">FROM Customers</span><br><span class="line">WHERE cust_state IN (&apos;IL&apos;,&apos;IN&apos;,&apos;MI&apos;)</span><br><span class="line">UNION</span><br><span class="line">SELECT cust_name, cust_contact, cust_email</span><br><span class="line">FROM Customers</span><br><span class="line">WHERE cust_name = &apos;Fun4All&apos;;</span><br></pre></td></tr></table></figure>
@@ -555,11 +555,11 @@
 <li><p>UNION规则：</p>
 <ul>
 <li>UNION必须由两条或两条以上的SELECT语句组成，语句之间用关键字UNION分隔（因此，如果组合四条SELECT语句，将要使用三个UNION关键字）；</li>
-<li>UNION中的每个查询必须包含相同的列、表达式或聚集函数（不过，各个列不需要以相同的次序列出）；    </li>
+<li>UNION中的<strong>每个查询必须包含相同的列、表达式或聚集函数</strong>（不过，各个列不需要以相同的次序列出）；    </li>
 <li>列数据类型必须兼容：类型不必完全相同，但必须是DBMS可以隐含转换的类型（例如，不同的数值类型或不同的日期类型）；</li>
 </ul>
 </li>
-<li><p>包含或取消重复的行：使用UNION时，重复的行会被自动取消；如果想返回所有的匹配行，可使用UNION ALL而不是UNION；   </p>
+<li><p>包含或取消重复的行：使用UNION时，<strong>重复的行会被自动取消</strong>；如果想返回所有的匹配行，可使用UNION ALL而不是UNION；   </p>
 </li>
 <li><p>对组合查询结果排序：在用UNION组合查询时，<strong>只能使用一条ORDER BY子句</strong>，它必须位于最后一条SELECT语句之后；   </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT cust_name, cust_contact, cust_email</span><br><span class="line">FROM Customers</span><br><span class="line">WHERE cust_state IN (&apos;IL&apos;,&apos;IN&apos;,&apos;MI&apos;)</span><br><span class="line">UNION</span><br><span class="line">SELECT cust_name, cust_contact, cust_email</span><br><span class="line">FROM Customers</span><br><span class="line">WHERE cust_name = &apos;Fun4All&apos;</span><br><span class="line">ORDER BY cust_name, cust_contact;</span><br></pre></td></tr></table></figure>
@@ -567,10 +567,10 @@
 </ul>
 <h1 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h1><p>1、数据插入：INSERT用来将行插入（或添加）到数据库表，插入有几种方式 ；</p>
 <ul>
-<li><p>插入完整的行；   </p>
+<li><p><strong>插入完整的行</strong>；   </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#各列必须以它们在表定义中出现的次序填充，不安全，应该尽量避免使用</span><br><span class="line">INSERT INTO Customers</span><br><span class="line">VALUES(&apos;1000000006&apos;,&apos;Toy Land&apos;,&apos;123 Any Street&apos;,&apos;New York&apos;,&apos;NY&apos;,&apos;11111&apos;,&apos;USA&apos;,NULL,NULL); </span><br><span class="line">#安全</span><br><span class="line">INSERT INTO Customers(cust_id,cust_name,cust_address,cust_city,cust_state,cust_zip,cust_country,</span><br><span class="line">                      cust_contact,cust_email)</span><br><span class="line">VALUES(&apos;1000000006&apos;,&apos;Toy Land&apos;,&apos;123 Any Street&apos;,&apos;New York&apos;,&apos;NY&apos;,&apos;11111&apos;,&apos;USA&apos;,NULL,NULL);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>插入行的一部分：使用这种语法，还可以省略列，这表示可以只给某些列提供值，给其他列不提供值；    </p>
+<li><p><strong>插入行的一部分</strong>：使用这种语法，还可以省略列，这表示可以只给某些列提供值，给其他列不提供值；    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO Customers(cust_id,cust_name,cust_address,cust_city,cust_state,cust_zip,cust_country)</span><br><span class="line">VALUES(&apos;1000000006&apos;,&apos;Toy Land&apos;,&apos;123 Any Street&apos;,&apos;New York&apos;,&apos;NY&apos;,&apos;11111&apos;,&apos;USA&apos;);</span><br></pre></td></tr></table></figure>
 <p>如果表的定义允许，则可以在INSERT操作中省略某些列。省略的列必须满足以下某个条件：</p>
 <ul>
@@ -578,35 +578,35 @@
 <li>在表定义中给出默认值。这表示如果不给出值，将使用默认值 ；    </li>
 </ul>
 </li>
-<li><p>插入检索出的数据：将SELECT语句的结果插入表中，这就是所谓的INSERT SELECT。顾名思义，它是由一条INSERT语句和一条SELECT语句组成的；</p>
+<li><p><strong>插入检索出的数据</strong>：将SELECT语句的结果插入表中，这就是所谓的<strong>INSERT SELECT</strong>。顾名思义，它是由一条INSERT语句和一条SELECT语句组成的；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#这条语句将插入多少行呢？这依赖于CustNew表有多少行</span><br><span class="line">INSERT INTO Customers(</span><br><span class="line"> cust_id,cust_contact,cust_email,cust_name,cust_address,cust_city,cust_state,</span><br><span class="line">    cust_zip,cust_country)</span><br><span class="line">SELECT cust_id,cust_contact,cust_email,cust_name,cust_address,cust_city,cust_state,</span><br><span class="line">	cust_zip,cust_country</span><br><span class="line">FROM CustNew;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>INSERT通常只插入一行。要插入多行，必须执行多个INSERT语句。INSERT SELECT是个例外，它可以用一条INSERT插入多行，不管SELECT语句返回多少行，都将被INSERT插入；   </p>
 </li>
 </ul>
-<p>2、从一个表复制到另一个表 ：使用SELECT INTO语句。与INSERT SELECT将数据添加到一个已经存在的表不同，SELECT INTO将数据复制到一个新表（有的DBMS可以覆盖已经存在的表，这依赖于所使用的具体DBMS）；</p>
+<p>2、<strong>从一个表复制到另一个表 ：使用SELECT INTO语句</strong>。与INSERT SELECT将数据添加到一个已经存在的表不同，SELECT INTO将数据复制到一个新表（有的DBMS可以覆盖已经存在的表，这依赖于所使用的具体DBMS）；</p>
 <ul>
 <li><p>INSERT SELECT与SELECT INTO：它们之间的一个重要差别是前者导出数据，而后者导入数据 ；  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#这条语句创建一个名为CustCopy的新表，并把Customers表的整个内容复制到新表中。</span><br><span class="line">CREATE TABLE CustCopy AS</span><br><span class="line">SELECT * FROM Customers;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="更新和删除数据"><a href="#更新和删除数据" class="headerlink" title="更新和删除数据"></a>更新和删除数据</h1><p>1、更新数据：更新（修改）表中的数据，可以使用UPDATE语句。有两种使用UPDATE的方式；</p>
+<h1 id="更新和删除数据"><a href="#更新和删除数据" class="headerlink" title="更新和删除数据"></a>更新和删除数据</h1><p>1、更新数据：更新（修改）表中的数据，可以使用<strong>UPDATE</strong>语句。有两种使用UPDATE的方式；</p>
 <p>基本的UPDATE语句由三部分组成：要更新的表 、列名和它们的新值、确定要更新哪些行的过滤条件；      </p>
 <ul>
-<li><p>更新表中的特定行；   </p>
+<li><p><strong>更新表中的特定行</strong>；   </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">UPDATE Customers</span><br><span class="line">SET cust_contact = &apos;Sam Roberts&apos;,</span><br><span class="line">cust_email = &apos;sam@toyland.com&apos;</span><br><span class="line">WHERE cust_id = &apos;1000000006&apos;</span><br><span class="line">#要删除某个列的值，可设置它为NULL（假如表定义允许NULL值）</span><br><span class="line">#其中NULL用来去除cust_email列中的值。这与保存空字符串很不同（空字符串用&apos;&apos;表示，是一个值），而NULL表示没有值</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>更新表中的所有行；（不加where子句）</p>
+<li><p><strong>更新表中的所有行</strong>；（不加where子句）</p>
 </li>
 </ul>
-<p>2、删除数据 ： 从一个表中删除（去掉）数据，使用DELETE语句。有两种使用DELETE的方式；</p>
+<p>2、删除数据 ： 从一个表中删除（去掉）数据，使用<strong>DELETE</strong>语句。有两种使用DELETE的方式；</p>
 <ul>
-<li><p>从表中删除特定的行；</p>
+<li><p><strong>从表中删除特定的行</strong>；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#DELETE不需要列名或通配符。DELETE删除整行而不是删除列</span><br><span class="line">DELETE FROM Customers</span><br><span class="line">WHERE cust_id = &apos;1000000006&apos;;</span><br></pre></td></tr></table></figure>
 <p>删除表的内容而不是表：DELETE语句从表中删除行，甚至是删除表中所有行。但是，DELETE不删除表本身；</p>
-<p>更快的删除：如果想从表中删除所有行，不要使用DELETE。可使用TRUNCATE TABLE语句，它完成相同的工作，而速度更快（因为不记录数据的变动）；               </p>
+<p>更快的删除：如果想<strong>从表中删除所有行，不要使用DELETE。可使用TRUNCATE TABLE语句</strong>，它完成相同的工作，而速度更快（因为不记录数据的变动）；               </p>
 </li>
-<li><p>从表中删除所有行；</p>
+<li><p><strong>从表中删除所有行</strong>；</p>
 </li>
 </ul>
 <p>3、更新和删除的指导原则 ：</p>
@@ -615,76 +615,76 @@
 <li>保证每个表都有主键（如果忘记这个内容，请参阅第12课），尽可能像WHERE子句那样使用它（可以指定各主键、多个值或值的范围）；    </li>
 <li>在UPDATE或DELETE语句使用WHERE子句前，应该先用SELECT进行测试，保证它过滤的是正确的记录，以防编写的WHERE子句不正确；    </li>
 </ul>
-<h1 id="创建和操纵表"><a href="#创建和操纵表" class="headerlink" title="创建和操纵表"></a>创建和操纵表</h1><p>1、创建表：使用SQL的CREATE TABLE语句 ；</p>
+<h1 id="创建和操纵表"><a href="#创建和操纵表" class="headerlink" title="创建和操纵表"></a>创建和操纵表</h1><p>1、创建表：使用SQL的<strong>CREATE TABLE</strong>语句 ；</p>
 <ul>
 <li><p>表创建基础：    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Products</span><br><span class="line">(</span><br><span class="line">prod_id CHAR(10) NOT NULL,</span><br><span class="line">vend_id CHAR(10) NOT NULL,</span><br><span class="line">prod_name CHAR(254) NOT NULL,</span><br><span class="line">prod_price DECIMAL(8,2) NOT NULL,</span><br><span class="line">prod_desc VARCHAR(1000) NULL</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用NULL值：主键和NULL值— 主键是其值唯一标识表中每一行的列。只有不允许NULL值的列可作为主键，允许NULL值的列不能作为唯一标识 ；   </p>
+<li><p>使用NULL值：主键和NULL值— 主键是其值唯一标识表中每一行的列。<strong>只有不允许NULL值的列可作为主键</strong>，允许NULL值的列不能作为唯一标识 ；   </p>
 </li>
-<li><p>指定默认值：用关键字DEFAULT指定；</p>
+<li><p><strong>指定默认值：用关键字DEFAULT指定</strong>；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE OrderItems</span><br><span class="line">(</span><br><span class="line">order_num INTEGER NOT NULL,</span><br><span class="line">order_item INTEGER NOT NULL,</span><br><span class="line">prod_id CHAR(10) NOT NULL,</span><br><span class="line">quantity INTEGER NOT NULL DEFAULT 1,</span><br><span class="line">item_price DECIMAL(8,2) NOT NULL</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>2、更新表：使用ALTER TABLE语句；</p>
+<p>2、更新表：使用<strong>ALTER TABLE</strong>语句；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE Vendors</span><br><span class="line">ADD vend_phone CHAR(20);</span><br><span class="line">ALTER TABLE Vendors</span><br><span class="line">DROP COLUMN vend_phone;</span><br></pre></td></tr></table></figure>
-<p>3、删除表：使用DROP TABLE语句；</p>
+<p>3、删除表：使用<strong>DROP TABLE</strong>语句；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE CustCopy;</span><br></pre></td></tr></table></figure>
-<p>4、重命名表 ：使用RENAME语句，要求指定旧表名和新表名； </p>
-<h1 id="使用视图"><a href="#使用视图" class="headerlink" title="使用视图"></a>使用视图</h1><p>1、视图：视图是虚拟的表。与包含数据的表不一样，视图只包含使用时动态检索数据的查询；</p>
+<p>4、重命名表 ：使用<strong>RENAME语句，要求指定旧表名和新表名</strong>； </p>
+<h1 id="使用视图"><a href="#使用视图" class="headerlink" title="使用视图"></a>使用视图</h1><p>1、视图：<strong>视图是虚拟的表</strong>。与包含数据的表不一样，视图<strong>只包含使用时动态检索数据的查询</strong>；</p>
 <ul>
 <li>视图的一些常见应用 ：<ul>
 <li>重用SQL语句；</li>
-<li>简化复杂的SQL操作。在编写查询后，可以方便地重用它而不必知道其基本查询细节；</li>
+<li>简化复杂的SQL操作。在编写查询后，可以方便地<strong>重用它</strong>而不必知道其基本查询细节；</li>
 <li>使用表的一部分而不是整个表；    </li>
 <li>保护数据。可以授予用户访问表的特定部分的权限，而不是整个表的访问权限 ；   </li>
 <li>更改数据格式和表示。视图可返回与底层表的表示和格式不同的数据；     </li>
 </ul>
 </li>
-<li>视图仅仅是用来查看存储在别处数据的一种设施。视图本身不包含数据，因此返回的数据是从其他表中检索出来的。在添加或更改这些表中的数据时，视图将返回改变过的数据；    </li>
+<li>视图仅仅是用来查看存储在别处数据的一种设施。<strong>视图本身不包含数据，因此返回的数据是从其他表中检索出来的</strong>。在添加或更改这些表中的数据时，视图将返回改变过的数据；    </li>
 <li>视图的规则和限制：<ul>
 <li>与表一样，视图必须唯一命名（不能给视图取与别的视图或表相同的名字）；</li>
 <li>对于可以创建的视图数目没有限制；</li>
-<li>视图可以嵌套，即可以利用从其他视图中检索数据的查询来构造视图。所允许的嵌套层数在不同的DBMS中有所不同（嵌套视图可能会严重降低查询的性能，因此在产品环境中使用之前，应该对其进行全面测试）；</li>
-<li>视图不能索引，也不能有关联的触发器或默认值；</li>
+<li><strong>视图可以嵌套</strong>，即可以利用从其他视图中检索数据的查询来构造视图。所允许的嵌套层数在不同的DBMS中有所不同（嵌套视图可能会严重降低查询的性能，因此在产品环境中使用之前，应该对其进行全面测试）；</li>
+<li><strong>视图不能索引</strong>，也不能有关联的触发器或默认值；</li>
 </ul>
 </li>
 </ul>
-<p>2、 创建视图：用CREATE VIEW语句来创建 ，只能用于创建不存在的视图；</p>
+<p>2、 创建视图：用<strong>CREATE VIEW</strong>语句来创建 ，只能用于创建不存在的视图；</p>
 <p>​    删除视图，可以使用DROP语句，其语法为DROP VIEW viewname；覆盖（或更新）视图，必须先删除它，然后再重新创建；</p>
 <ul>
-<li><p>利用视图简化复杂的联结 ： </p>
+<li><p><strong>利用视图简化复杂的联结</strong> ： </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#创建一个名为ProductCustomers的视图，它联结三个表</span><br><span class="line">CREATE VIEW ProductCustomers AS</span><br><span class="line">SELECT cust_name, cust_contact, prod_id</span><br><span class="line">FROM Customers, Orders, OrderItems</span><br><span class="line">WHERE Customers.cust_id = Orders.cust_id</span><br><span class="line">AND OrderItems.order_num = Orders.order_num;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>用视图重新格式化检索出的数据：</p>
+<li><p>用视图<strong>重新格式化检索出的数据</strong>：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW VendorLocations AS</span><br><span class="line">	SELECT CONCAT(vend_name,&apos;(&apos;,RTRIM(vend_country),&apos;)&apos;)</span><br><span class="line">	AS vend_title</span><br><span class="line">FROM Vendors</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>用视图过滤不想要的数据 ：   </p>
+<li><p>用视图<strong>过滤不想要的数据</strong> ：   </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW CustomerEMailList AS</span><br><span class="line">SELECT cust_id, cust_name, cust_email</span><br><span class="line">FROM Customers</span><br><span class="line">WHERE cust_email IS NOT NULL;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用视图与计算字段：    </p>
+<li><p><strong>使用视图与计算字段</strong>：    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE VIEW OrderItemsExpanded AS</span><br><span class="line">SELECT order_num,</span><br><span class="line">prod_id,</span><br><span class="line">quantity,</span><br><span class="line">item_price,</span><br><span class="line">quantity*item_price AS expanded_price</span><br><span class="line">FROM OrderItems;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>​     视图可极大地<strong>简化复杂数据</strong>的处理；</p>
-<p>  总结：视图为虚拟的表。它们包含的不是数据而是根据需要检索数据的查询。视图提供了一种<strong>封装SELECT语句的层次</strong>，可用来简化数据处理，重新格式化或保护基础数据；</p>
-<h1 id="使用存储过程"><a href="#使用存储过程" class="headerlink" title="使用存储过程"></a>使用存储过程</h1><p>1、存储过程 ：存储过程就是为以后使用而保存的一条或多条SQL语句。可将其视为批文件，虽然它们的作用不仅限于批处理；</p>
+<p>  总结：视图为虚拟的表。它们包含的不是数据而是根据需要检索数据的查询。视图提供了一种<strong>封装SELECT语句的层次</strong>，可用来<strong>简化数据处理，重新格式化或保护基础数据</strong>；</p>
+<h1 id="使用存储过程"><a href="#使用存储过程" class="headerlink" title="使用存储过程"></a>使用存储过程</h1><p>1、存储过程 ：存储过程就是<strong>为以后使用而保存的一条或多条SQL语句</strong>。可将其视为批文件，虽然它们的作用不仅限于批处理；</p>
 <p>2、为什么要使用存储过程：</p>
 <ul>
-<li>通过把处理封装在一个易用的单元中，可以简化复杂的操作；</li>
+<li>通过<strong>把处理封装在一个易用的单元中，可以简化复杂的操作</strong>；</li>
 <li>由于不要求反复建立一系列处理步骤，因而保证了数据的一致性。如果所有开发人员和应用程序都使用同一存储过程，则所使用的代码都是相同的；（防止错误）  </li>
-<li>简化对变动的管理。如果表名、列名或业务逻辑（或别的内容）有变化，那么只需要更改存储过程的代码。使用它的人员甚至不需要知道这些变化 ；（安全性）   </li>
+<li><strong>简化对变动的管理</strong>。如果表名、列名或业务逻辑（或别的内容）有变化，那么只需要更改存储过程的代码。使用它的人员甚至不需要知道这些变化 ；（安全性）   </li>
 </ul>
-<p>3、执行存储过程 ：EXECUTE，EXECUTE接受存储过程名和需要传递给它的任何参数；</p>
+<p>3、执行存储过程 ：<strong>EXECUTE</strong>，EXECUTE接受存储过程名和需要传递给它的任何参数；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#执行一个名为AddNewProduct的存储过程，将一个新产品添加到Products表中</span><br><span class="line">EXECUTE AddNewProduct( &apos;JTS01&apos;,</span><br><span class="line">&apos;Stuffed Eiffel Tower&apos;,</span><br><span class="line">6.49,</span><br><span class="line">&apos;Plush stuffed toy with the text LaTour Eiffel in red white and blue&apos; );</span><br></pre></td></tr></table></figure>
 <p>存储过程所完成的工作：</p>
 <ul>
-<li>验证传递的数据，保证所有4个参数都有值 ；</li>
+<li><strong>验证传递的数据</strong>，保证所有4个参数都有值 ；</li>
 <li>生成用作主键的唯一ID；    </li>
 <li>将新产品插入Products表，在合适的列中存储生成的主键和传递的数据；        </li>
 </ul>
 <p>4、创建存储过程：CREATE PROCEDURE；</p>
-<h1 id="管理事务处理"><a href="#管理事务处理" class="headerlink" title="管理事务处理"></a>管理事务处理</h1><p>1、事务处理（transaction processing）：通过确保成批的SQL操作要么完全执行，要么完全不执行，来维护数据库的完整性；</p>
+<h1 id="管理事务处理"><a href="#管理事务处理" class="headerlink" title="管理事务处理"></a>管理事务处理</h1><p>1、事务处理（transaction processing）：通过<strong>确保成批的SQL操作要么完全执行，要么完全不执行</strong>，来<strong>维护数据库的完整性</strong>；</p>
 <p>事务处理是一种机制，用来管理必须成批执行的SQL操作，保证数据库不包含不完整的操作结果。利用事务处理，可以保证一组操作不会中途停止，它们要么完全执行，要么完全不执行（除非明确指示）。如果没有错误发生，整组语句提交给（写到）数据库表；如果发生错误，则进行回退（撤销），将数据库恢复到某个已知且安全的状态；</p>
 <p> 2、使用事务处理时，有几个反复出现的关键词：</p>
 <ul>
@@ -693,10 +693,10 @@
 <li>提交（commit）指将未存储的SQL语句结果写入数据库表；    </li>
 <li>保留点（savepoint）指事务处理中设置的临时占位符（placeholder），可以对它发布回退（与回退整个事务处理不同）；     </li>
 </ul>
-<p>事务处理用来管理INSERT、UPDATE和DELETE语句。不能回退SELECT语句（回退SELECT语句也没有必要），也不能回退CREATE或DROP操作。事务处理中可以使用这些语句，但进行回退时，这些操作也不撤销；</p>
+<p>事务处理用来管理INSERT、UPDATE和DELETE语句。<strong>不能回退SELECT语句（回退SELECT语句也没有必要）</strong>，<strong>也不能回退CREATE或DROP操作</strong>。事务处理中可以使用这些语句，但进行回退时，这些操作也不撤销；</p>
 <p>3、控制事务处理：管理事务的关键在于将SQL语句组分解为逻辑块，并明确规定数据何时应该回退，何时不应该回退；      </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">START TRANSACTION</span><br></pre></td></tr></table></figure>
-<p>COMMITT用于保存更改，ROLLBACK用于撤销；</p>
+<p><strong>COMMITT用于保存更改，ROLLBACK用于撤销</strong>；</p>
 <ul>
 <li><p>使用ROLLBACK；  </p>
 </li>
@@ -707,17 +707,17 @@
 </li>
 </ul>
 <p>总结：保留点越多越好—可以在SQL代码中设置任意多的保留点，越多越好。为什么呢？因为保留点越多，你就越能灵活地进行回退；</p>
-<h1 id="使用游标"><a href="#使用游标" class="headerlink" title="使用游标"></a>使用游标</h1><p>1、游标（cursor）：有时，需要在检索出来的行中前进或后退一行或多行，这就是游标的用途所在；</p>
-<p>游标（cursor）是一个存储在DBMS服务器上的数据库查询， 它不是一条SELECT语句，而是被该语句检索出来的结果集。在存储了游标之后，应用程序可以根据需要滚动或浏览其中的数据；</p>
+<h1 id="使用游标"><a href="#使用游标" class="headerlink" title="使用游标"></a>使用游标</h1><p>1、游标（cursor）：有时，需要<strong>在检索出来的行中前进或后退一行或多行</strong>，这就是游标的用途所在；</p>
+<p>游标（cursor）是一个存储在DBMS服务器上的数据库查询， 它<strong>不是一条SELECT语句，而是被该语句检索出来的结果集</strong>。在存储了游标之后，应用程序可以<strong>根据需要滚动或浏览其中的数据；</strong></p>
 <p>游标主要用于交互式应用，其中用户需要滚动屏幕上的数据，并对数据进行浏览或做出更改；</p>
 <p>2、使用游标：</p>
 <ul>
 <li>在使用游标前，必须声明（定义）它。这个过程实际上没有检索数据，它只是定义要使用的SELECT语句和游标选项 ；</li>
 <li>一旦声明，就必须打开游标以供使用。这个过程用前面定义的SELECT语句把数据实际检索出来；    </li>
 <li>对于填有数据的游标，根据需要取出（检索）各行； </li>
-<li>在结束游标使用时，必须关闭游标，可能的话，释放游标（有赖于具体的DBMS）；</li>
+<li>在结束游标使用时，必须关闭游标，可能的话，释放游标（依赖于具体的DBMS）；</li>
 </ul>
-<p>3、创建游标 ：使用DECLARE语句创建游标；</p>
+<p>3、创建游标 ：使用<strong>DECLARE语句创建游标</strong>；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DECLARE CustCursor CURSOR</span><br><span class="line">FOR</span><br><span class="line">SELECT * FROM Customers</span><br><span class="line">WHERE cust_email IS NULL</span><br></pre></td></tr></table></figure>
 <p>4、使用游标：使用OPEN CURSOR语句打开游标 ；</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OPEN CURSOR CustCursor</span><br></pre></td></tr></table></figure>
@@ -725,7 +725,7 @@
 <p>现在可以用FETCH语句访问游标数据了。FETCH指出要检索哪些行，从何处检索它们以及将它们放于何处（如变量名）；</p>
 <p>5、关闭游标：CLOSE CustCursor；</p>
 <h1 id="高级SQL特性"><a href="#高级SQL特性" class="headerlink" title="高级SQL特性"></a>高级SQL特性</h1><p>1、高级数据处理特性：约束、索引和触发器；</p>
-<p>2、约束（constraint）：管理如何插入或处理数据库数据的规则；         </p>
+<p>2、<strong>约束（constraint）</strong>：<strong>管理如何插入或处理数据库数据的规则</strong>；         </p>
 <ul>
 <li><p>主键：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE Vendors</span><br><span class="line">(</span><br><span class="line">vend_id CHAR(10) NOT NULL PRIMARY KEY,</span><br><span class="line">vend_name CHAR(50) NOT NULL</span><br><span class="line">);</span><br><span class="line">ALTER TABLE Vendors</span><br><span class="line">ADD CONSTRAINT PRIMARY KEY (vend_id);</span><br></pre></td></tr></table></figure>
@@ -738,7 +738,7 @@
 <li>表可包含多个唯一约束，但每个表只允许一个主键；</li>
 <li>唯一约束列可包含NULL值；    </li>
 <li>唯一约束列可修改或更新；    </li>
-<li>唯一约束列的值可重复使用；    </li>
+<li><strong>唯一约束列的值可重复使用</strong>；    </li>
 <li>与主键不一样，唯一约束不能用来定义外键；    </li>
 </ul>
 </li>
@@ -746,33 +746,33 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#对OrderItems表施加了检查约束，它保证所有物品的数量大于0</span><br><span class="line">CREATE TABLE OrderItems</span><br><span class="line">(</span><br><span class="line">prod_id CHAR(10) NOT NULL,</span><br><span class="line">quantity INTEGER NOT NULL CHECK (quantity &gt; 0)</span><br><span class="line">); </span><br><span class="line">ADD CONSTRAINT CHECK (gender LIKE &apos;[MF]&apos;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>3、索引： 用来排序数据以<strong>加快搜索和排序操作</strong>的速度，在一个或多个列上定义索引，使DBMS保存其内容的一个排过序的列表，在定义了索引后，DBMS以使用书的索引类似的方法使用它。DBMS搜索排过序的索引，找出匹配的位置，然后检索这些行 ；</p>
+<p>3、索引： 用来排序数据以<strong>加快搜索和排序操作</strong>的速度，<strong>在一个或多个列上定义索引，使DBMS保存其内容的一个排过序的列表</strong>，在定义了索引后，DBMS以使用书的索引类似的方法使用它。DBMS搜索排过序的索引，找出匹配的位置，然后检索这些行 ；</p>
 <ul>
-<li>索引改善检索操作的性能，但降低了数据插入、修改和删除的性能。在执行这些操作时，DBMS必须动态地更新索引；</li>
-<li>索引数据可能要占用大量的存储空间；</li>
+<li>索引<strong>改善检索操作的性能</strong>，但降低了数据插入、修改和删除的性能。在执行这些操作时，DBMS必须动态地更新索引；</li>
+<li>索引数据可能要<strong>占用大量的存储空间</strong>；</li>
 <li>并非所有数据都适合做索引。取值不多的数据（如州）不如具有更多可能值的数据（如姓或名），能通过索引得到那么多的好处；</li>
-<li>索引用于数据过滤和数据排序。如果你经常以某种特定的顺序排序数据，则该数据可能适合做索引；</li>
-<li>可以在索引中定义多个列（例如，州加上城市）。这样的索引仅在以州加城市的顺序排序时有用。如果想按城市排序，则这种索引没有用处；    </li>
+<li>索引<strong>用于数据过滤和数据排序</strong>。如果你经常以某种特定的顺序排序数据，则该数据可能适合做索引；</li>
+<li>可以在索引中<strong>定义多个列</strong>（例如，州加上城市）。这样的索引仅在以州加城市的顺序排序时有用。如果想按城市排序，则这种索引没有用处；    </li>
 </ul>
-<p>索引用CREATE INDEX语句创建，索引必须唯一命名 ：</p>
+<p>索引用<strong>CREATE INDEX语句创建，索引必须唯一命名</strong> ：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#在Products表的产品名列上创建一个简单的索引</span><br><span class="line">CREATE INDEX prod_name_ind</span><br><span class="line">ON PRODUCTS (prod_name);</span><br></pre></td></tr></table></figure>
 <p>检查索引：索引的效率随表数据的增加或改变而变化。许多数据库管理员发现，过去创建的某个理想的索引经过几个月的数据处理后可能变得不再理想 了。最好定期检查索引，并根据需要对索引进行调整；</p>
-<p>4、触发器：是特殊的存储过程，它在特定的数据库活动发生时自动执行。触发器可以与特定表上的INSERT、UPDATE和DELETE操作（或组合）相关联；</p>
-<p>与存储过程不一样（存储过程只是简单的存储SQL语句），触发器与单个的表相关联。与Orders表上的INSERT操作相关联的触发器只在Orders表中插入行时执行。类似地，Customers表上的INSERT和UPDATE操作的触发器只在表上出现这些操作时执行；</p>
+<p>4、触发器：是<strong>特殊的存储过程</strong>，它<strong>在特定的数据库活动发生时自动执行</strong>。触发器可以与特定表上的INSERT、UPDATE和DELETE操作（或组合）相关联；</p>
+<p>与存储过程不一样（<strong>存储过程只是简单的存储SQL语句</strong>），触发器与单个的表相关联。与Orders表上的INSERT操作相关联的触发器只在Orders表中插入行时执行。类似地，Customers表上的INSERT和UPDATE操作的触发器只在表上出现这些操作时执行；</p>
 <p>触发器的一些常见用途：</p>
 <ul>
-<li><p>保证数据一致。例如，在INSERT或UPDATE操作中将所有州名转换为大写；</p>
+<li><p><strong>保证数据一致</strong>。例如，在INSERT或UPDATE操作中将所有州名转换为大写；</p>
 </li>
-<li><p>基于某个表的变动在其他表上执行活动。例如，每当更新或删除一行时将审计跟踪记录写入某个日志表；</p>
+<li><p><strong>基于某个表的变动在其他表上执行活动</strong>。例如，每当更新或删除一行时将审计跟踪记录写入某个日志表；</p>
 </li>
-<li><p>进行额外的验证并根据需要回退数据。例如，保证某个顾客的可用资金不超限定，如果已经超出，则阻塞插入；       </p>
+<li><p><strong>进行额外的验证并根据需要回退数据</strong>。例如，保证某个顾客的可用资金不超限定，如果已经超出，则阻塞插入；       </p>
 </li>
-<li><p>计算计算列的值或更新时间戳；  </p>
+<li><p>计算列的值或更新时间戳；  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#创建一个触发器，它对所有INSERT和UPDATE操作，将Customers表中的cust_state列转换为大写</span><br><span class="line">CREATE TRIGGER customer_state</span><br><span class="line">AFTER INSERT OR UPDATE</span><br><span class="line">FOR EACH ROW</span><br><span class="line">BEGIN</span><br><span class="line">UPDATE Customers</span><br><span class="line">SET cust_state = Upper(cust_state)</span><br><span class="line">WHERE Customers.cust_id = :OLD.cust_id</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
-<p>约束比触发器更快：一般来说，约束的处理比触发器快，因此在可能的时候，应该尽量使用约束；</p>
+<p><strong>约束比触发器更快</strong>：一般来说，约束的处理比触发器快，因此在可能的时候，应该尽量使用约束；</p>
 </li>
 </ul>
-<p>5、数据库安全：任何安全系统的基础都是用户授权和身份确认。这是一种处理，通过这种处理对用户进行确认，保证他是有权用户，允许执行他要执行的操 作。有的DBMS为此结合使用了操作系统的安全措施，而有的维护自己的用户及密码列表，还有一些结合使用外部目录服务服务器；</p>
+<p>5、数据库安全：任何安全系统的基础都是<strong>用户授权和身份确认</strong>。这是一种处理，通过这种处理对用户进行确认，保证他是有权用户，允许执行他要执行的操作。有的DBMS为此结合使用了操作系统的安全措施，而有的维护自己的用户及密码列表，还有一些结合使用外部目录服务服务器；</p>
 <p> 一般说来，需要保护的操作有：</p>
 <ul>
 <li>对数据库管理功能（创建表、更改或删除已存在的表等）的访问；    </li>
@@ -782,8 +782,10 @@
 <li>创建多层次的安全措施，从而允许多种基于登录的访问和控制 ；   </li>
 <li>限制管理用户账号的能力；         </li>
 </ul>
-<p>安全性使用SQL的GRANT和REVOKE语句来管理，不过，大多数DBMS提供了交互式的管理实用程序，这些实用程序在内部使用GRANT和REVOKE语句 ；                              </p>
-<p>总结：约束是实施引用完整性的重要部分，索引可改善数据检索的性能，触发器可以用来执行运行前后的处理，安全选项可用来管理数据访问。                          </p>
+<p>安全性使用SQL的<strong>GRANT和REVOKE语句来管理</strong>，不过，大多数DBMS提供了交互式的管理实用程序，这些实用程序在内部使用GRANT和REVOKE语句 ；                              </p>
+<p>总结：<strong>约束是实施引用完整性的重要部分，索引可改善数据检索的性能，触发器可以用来执行运行前后的处理，安全选项可用来管理数据访问</strong>。                          </p>
+<p>脚本链接：</p>
+<p>链接：<a href="https://pan.baidu.com/s/1BM1Z68UuLp73cLIrqjvfjw" target="_blank" rel="noopener">https://pan.baidu.com/s/1BM1Z68UuLp73cLIrqjvfjw</a>     提取码：5cer </p>
 <p>​      </p>
 <p>​    </p>
 <p>​                                   </p>
@@ -1103,6 +1105,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Spring-Boot | xuexue&#39;s blog</title>
+  <title>JavaSE基础 | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="xuexue&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/Spring-Boot/index.html">
+  <meta name="description" content="Java一些基础语法概念">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaSE基础">
+<meta property="og:url" content="http://yoursite.com/2019/03/07/Java基础/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
+<meta property="og:description" content="Java一些基础语法概念">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/03/07/Java基础/1.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/03/07/Java基础/01.PNG">
+<meta property="og:updated_time" content="2019-04-10T05:47:26.395Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xuexue&#39;s blog">
+<meta name="twitter:title" content="JavaSE基础">
+<meta name="twitter:description" content="Java一些基础语法概念">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/07/Java基础/1.PNG">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -155,122 +163,563 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java基础" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/阿里云部署SpringBoot项目/" class="archive-article-date">
-  	<time datetime="2019-04-07T09:07:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+      	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/阿里云部署SpringBoot项目/">阿里云部署SpringBoot项目</a>
+    <h1 class="article-title" itemprop="name">
+      JavaSE基础
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      	 
+		<br>
+		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+		<span class="icon-sort"></span>
+		<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+		</span>
+		</a>
+		
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java一些基础语法概念  <a id="more"></a></p>
+<h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><p>1、SUN（Stanford University Network），2008年10亿美金收购mysql，2010年74亿美金被甲骨文收购；</p>
+<p>2、语言的进化：机器、汇编、高级语言、面向对象（计算机容易识别转换为人容易识别）；</p>
+<p>3、java之父：James Gosling；</p>
+<p>4、java诞生记：1991年SUN公司的Green计划（让电器带上智能—编程语言跨平台）、java开发了三年；Internet带来时机，本起名Oak（橡树），1995年正式发布java1.0版本；</p>
+<p>5、java是sun公司倡导的JamesGosling发明的<strong>面向对象的可跨平台</strong>的编程语言；</p>
+<p>6、平台 = cpu + 操作系统；</p>
+<p>7、跨平台：编译以后能不能跨平台，<strong>并非源代码可跨平台运行</strong>；</p>
+<p>8、Java可以反编译（缺点）；</p>
+<p>9、java：一次编译，到处执行（编译器、解释器）；</p>
+<p>10、语言执行方式的三种分类：</p>
+<ul>
+<li>编译执行：缺点，无法跨平台；优点，速度快；</li>
+<li>解释执行（html、javascript）：类似同声传译；</li>
+<li>中间码+虚拟机（解释型语言）；</li>
+</ul>
+<p>11、JDK：开发java需要从源文件到中间字节码的编译器；运行java需要java解释器；JDK=Java编译器+Java解释器+其他组件；</p>
+<p>12、优点：<strong>面向对象、平台无关、自动收集内存、多线程开发</strong>；缺点：<strong>运行速度慢，占用资源多，复杂</strong>；</p>
+<p>13、IDE工具：Jbuild可以拉拖界面；</p>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>1、数据类型：<strong>基本数据类型</strong>和<strong>引用数据类型</strong>；</p>
+<ul>
+<li>基本数据类型：数值型（整数（byte—1个字节、short、int、long）、浮点（float、double））、字符型（char）、布尔型（boolean）；</li>
+<li>引用数据类型：<strong>类（class）、接口（interface）、数组</strong>；</li>
+</ul>
+<p>2、字符串String；</p>
+<p>3、数组定义（三种方式）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span>[] num = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>4、反序数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = <span class="number">12345</span>;</span><br><span class="line"><span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.print(n % <span class="number">10</span>);</span><br><span class="line">    n = n / <span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5、冒泡排序：（第一轮将大的排第一，第二轮将次大的排第二，以此类推，5个数循环4次）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; num.length - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(num[j] &gt; num[j+<span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = num[j];</span><br><span class="line">            num[j] = num[j+<span class="number">1</span>];</span><br><span class="line">            num[j+<span class="number">1</span>] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num.length; i++) &#123;</span><br><span class="line">    System.out.println(num[i]);       </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、二分查找（要求数字按序排列）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] num = &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">13</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> n = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">int</span> start = <span class="number">0</span>, end = num.length - <span class="number">1</span>, m;</span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">    m = (start + end) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(num[m] &gt; n) &#123;</span><br><span class="line">        end = m - <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(num[m] &lt; n) &#123;</span><br><span class="line">        start = m + <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"找到了"</span> + num[m] + <span class="string">"，位置为："</span>+ (m + <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(start &gt; end) &#123;</span><br><span class="line">        System.out.println(<span class="string">"找不到！"</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h2><p>1、面向对象编程（oop，Object Oriented Programming），是一种设计软件的先进的主流的思想，旨<strong>在计算机中模拟现实世界中的事物和概念</strong>，Everything is object；</p>
+<p>2、现实生活中的任何事物，都可以用<strong>状态（属性）和行为（方法）</strong>来描述；</p>
+<p><strong>属性是事物（类）本身的特性，用来表示它的状态</strong>；<strong>行为（方法）用来说明这个事物（类）所具有的功能</strong>；</p>
+<p> 3、类（主观）是<strong>具有相同属性和方法的一组对象（实例）的集合</strong>；</p>
+<p>4、对象是具体的，是类定义内容的实现，把<strong>一个类的对象称为一个类的实例</strong>（客观存在的）；</p>
+<p>5、<strong>类是对象的抽象定义，对象是类的具体实例</strong>；</p>
+<p>6、java声明完类并不开辟空间，<strong>new关键字为实例开辟空间</strong>；</p>
+<p>7、构造方法（什么？作用？调用时机？分类？）</p>
+<p><strong>方法名与类名完全相同，但没有返回类型</strong>（跟没有返回值不一样）；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Person类</span></span><br><span class="line">Person() &#123; <span class="comment">//构造方法    </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>作用：让类开辟空间；<strong>在类诞生的时候做一些事情</strong>（一般是初始化）；</p>
+<p>调用时机：new的时候自动调用（开辟空间的时候），传什么参调用什么方法；</p>
+<p>分类：</p>
+<ul>
+<li><strong>默认有隐式构造方法（空参数）</strong>，显式构造方法（带参）；</li>
+<li>如果类中不带任何构造方法，系统提供隐式构造方法；</li>
+<li>如果自己<strong>定义了显式构造方法，系统不再提供隐式构造方法</strong>；</li>
+</ul>
+<p>8、static关键字：</p>
+<p>成员变量（实例名、引用名）：new完后才可使用的变量；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> num = <span class="number">0</span>; <span class="comment">//静态变量，不需成员名直接类名可调用；成员名也可调用</span></span><br><span class="line"><span class="comment">//Person.num</span></span><br></pre></td></tr></table></figure>
+<p><strong>static定义完就开辟空间，开辟在静态池中</strong>；</p>
+<p><strong>静态变量只保持一份</strong>，节省空间；</p>
+<p>作用：<strong>保存类的信息</strong>（比如new一次加一次）；</p>
+<p>9、包：本质是个文件夹（方便管理、避免名字冲突）；包名是类名的一部分；<strong>包是java封装机制的一部分</strong>；</p>
+<p>10、一般先写被调，再写主调；</p>
+<h2 id="封装和继承"><a href="#封装和继承" class="headerlink" title="封装和继承"></a>封装和继承</h2><p>1、面向对象特征：<strong>封装、继承、多态</strong>；对象的特征：属性、方法；</p>
+<p>2、封装：<strong>隐藏事物内部的实现细节、有选择的提供数据</strong>；</p>
+<p>封装优点：</p>
+<ul>
+<li><strong>内部的修改不影响外部的使用</strong>；</li>
+<li>防止外界误修改程序单元；</li>
+<li>对象使用变得更简单；</li>
+</ul>
+<p>3、访问修饰符：<strong>public、protected、默认、private</strong>（都可以修饰属性和方法，<strong>只有默认和public可以修饰类</strong>）；</p>
+<ul>
+<li>public：<strong>所有类都可以访问</strong>（本类、同包、异包下的子类、异包下的其他类）；</li>
+<li>protected：<strong>该类及其子类成员可以访问，同一个包中的可以访问</strong>（本类、同包、异包下的子类）；</li>
+<li>默认：<strong>相同数据包里的可以访问</strong>（本类及其同包下的类可以访问）；</li>
+<li>private：<strong>只有该类可以访问</strong>；</li>
+</ul>
+<p>4、实体类：get与set方法称为访问器；</p>
+<p>5、继承（extends）：</p>
+<ul>
+<li><strong>在一个类的基础上定义一个新类是继承</strong>；</li>
+<li>父子关系是相对的；</li>
+<li>继承关系由“<strong>子类是父类</strong>”确定；</li>
+<li>java中<strong>只有单继承</strong>；</li>
+</ul>
+<p>继承效果：</p>
+<ul>
+<li><p>子类可以<strong>拥有父类的属性和方法</strong>；</p>
+</li>
+<li><p>子类可以<strong>拥有新的属性和方法</strong>（扩展）；</p>
+</li>
+<li><p>子类可以<strong>重写覆盖父类方法和属性</strong>（修改）；</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> <span class="comment">//注解，写给编译器</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以<strong>声明父类，创建子类</strong>（<strong>父类装载子类</strong>—<strong>向上转型</strong>），父类能出现的地方，子类一定能出现；<br><strong>声明</strong>的什么类型，就只能<strong>调用</strong>什么类型的属性方法；<br><strong>创建</strong>的什么类型，就真正<strong>运行</strong>什么类型的方法；<br>创建的什么类型，就可以强转为什么类型（<strong>向下转型</strong>）；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person p = <span class="keyword">new</span> Teacher();<span class="comment">//父类装载子类，父类的引用指向子类的空间</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>继承的优点：</p>
+<ul>
+<li>提高代码复用性；</li>
+<li>父类的属性方法可以用于子类；</li>
+<li>可以轻松的定义子类；</li>
+<li>使设计应用程序变得简单；</li>
+</ul>
+<p>6、关键字this与super：</p>
+<ul>
+<li>this：表示<strong>调用本类</strong>声明的属性和方法，this使用在构造方法中表示调用本类其它构造方法；</li>
+<li>super：表示<strong>调用父类</strong>声明的属性和方法；</li>
+</ul>
+<p>7、继承中的构造方法：</p>
+<ul>
+<li><strong>创建子类一定会调用父类的构造方法</strong>；</li>
+<li>子类<strong>默认调用父类无参</strong>（显式或隐式）<strong>构造方法</strong>；</li>
+<li><strong>子类只能调用父类存在的构造方法</strong>；</li>
+<li>子类构造方法中<strong>使用super调用父类构造方法，并且super必须放在第一行</strong>；</li>
+</ul>
+<p>8、子类<strong>要覆盖父类的属性或方法</strong>，<strong>子类的访问修饰符必须大于或等于父类的访问修饰符</strong>；</p>
+<h2 id="方法重载和多态"><a href="#方法重载和多态" class="headerlink" title="方法重载和多态"></a>方法重载和多态</h2><p>1、方法<strong>重载</strong>（Overload）：</p>
+<ul>
+<li><strong>具有相同的方法名称、不同的参数</strong>（类型或者个数）；</li>
+<li>要点：<ul>
+<li><strong>与参数名无关</strong>；</li>
+<li><strong>与返回类型无关</strong>；</li>
+<li>父子类方法重载；</li>
+</ul>
+</li>
+<li>构造方法重载；</li>
+</ul>
+<p>2、多态：</p>
+<ul>
+<li>多态可以理解为“多种形式”的意思；</li>
+<li>多态在程序中表现为<strong>同一个引用在不同的条件下指向不同实例，从而表现出不同状态</strong>；</li>
+<li>多态一般用<strong>方法重载和方法重写</strong>来实现；</li>
+</ul>
+<p>3、雪雪是个多态：在学校是学生，在家里是儿女，在社会是工作者（<strong>同一个人在不同环境下表现出不同状态</strong>）；</p>
+<p>4、static（<strong>强调只有一份</strong>）修饰符：</p>
+<ul>
+<li>static<strong>只能修饰属性和方法，不能修饰类</strong>；</li>
+<li>static修饰符修饰的变量叫静态变量；</li>
+<li>static修饰符修饰的方法叫静态方法；<strong>静态方法独立于类的实例，使用类去访问，而不是类实例</strong>，所以也叫类方法；<strong>静态方法只能调用静态成员，不能调用成员化东西</strong>；<strong>成员方法可以调用静态方法</strong>；<strong>静态方法和属性不能写this和super</strong>；</li>
+</ul>
+<p>5、final修饰符：</p>
+<ul>
+<li><strong>final可以修饰属性、方法和类</strong>；</li>
+<li><strong>不能修改该变量；不能继承该类；子类不能重写该方法</strong>；</li>
+</ul>
+<p>6、static和final：<strong>final强调是不变的；static强调只有一份</strong>；</p>
+<p>7、内存机制：</p>
+<ul>
+<li><strong>方法区</strong>：类结构的样子、静态属性、静态方法；</li>
+<li><strong>堆</strong>：对象的实例；</li>
+<li><strong>栈</strong>：对象的引用、基本数据类型；</li>
+<li>栈（最快）&gt;堆（容量大、速度慢）；</li>
+</ul>
+<p>8、Java内存图示：</p>
+<p><img src="/2019/03/07/Java基础/1.PNG" alt></p>
+<p>9、值传递与址传递：<strong>基本数据类型采用值传递、引用类型址传递</strong>；</p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>1、抽象方法：</p>
+<ul>
+<li><strong>abstract修饰</strong>的方法就是抽象方法；</li>
+<li>抽象方法<strong>不能有方法实现，只能有方法定义</strong>；</li>
+<li>抽象方法<strong>必须出现在抽象类中</strong>；</li>
+<li><strong>构造方法和static方法不能是抽象的</strong>；</li>
+</ul>
+<p>2、抽象类：</p>
+<ul>
+<li>abstract修饰的类就是抽象类；</li>
+<li>抽象类中<strong>可以拥有若干个（0~多个）抽象方法，也可以拥有若干个（0~多个）普通方法</strong>；</li>
+<li>抽象类<strong>不能被实例化，可被继承</strong>；</li>
+<li>如果<strong>一个抽象类被另一个类继承</strong>，这个类<strong>必须重写抽象类中所有抽象方法</strong>；</li>
+</ul>
+<p>3、接口（interface），达到多继承的效果，<strong>接口就是功能</strong>：</p>
+<ul>
+<li>是一种<strong>“纯虚抽象类”，可以理解为半个类</strong>；</li>
+<li>接口用来完成<strong>多继承</strong>的效果；</li>
+<li>接口中<strong>只能有方法的定义，不能有方法的具体实现</strong>；</li>
+<li>接口中可以定义<strong>常量</strong>（static final）；</li>
+<li>接口可以被继承（接口继承接口），<strong>接口可以多继承</strong>；</li>
+<li>接口可以<strong>多实现</strong>（类实现接口）；</li>
+<li><strong>弥补单继承的不足，实现多继承的效果</strong>；</li>
+<li>实现者-使用者纽带作用；</li>
+<li>用法：extends， implements</li>
+</ul>
+<p>4、编程技术的趋势：面向过程、面向对象、面向接口、面向方面；</p>
+<p>5、什么是什么，可以理解为类的继承；什么能干什么，可以理解为接口的实现；</p>
+<h2 id="JavaAPI（Java-lang—基础包）"><a href="#JavaAPI（Java-lang—基础包）" class="headerlink" title="JavaAPI（Java.lang—基础包）"></a>JavaAPI（Java.lang—基础包）</h2><p>1、包装类、String和StringBuffer类、Math、Class、Object；</p>
+<p>2、java的<strong>main</strong>方法和<strong>8个基本数据类型</strong>不是面向对象的；</p>
+<p>3、<strong>装箱：int-&gt;Interger（valueOf）; 拆箱：Interger-&gt;int（intValue）</strong>；</p>
+<p>4、包装类型 实例名 = 包装类型.valueOf(String);包装类型.parse基类型(String)；实例名.toString()；</p>
+<p>5、字符串：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s0 = <span class="string">"aa"</span>;<span class="comment">//字符串字面量</span></span><br><span class="line">String s1 = <span class="keyword">new</span> String(<span class="string">"aa"</span>);<span class="comment">//字符串对象</span></span><br></pre></td></tr></table></figure>
+<p>6、<strong>==：判断字符串指的是否为同一片空间；equals比较字符串值是否相等</strong>；</p>
+<p>7、字符串字面量：值相等用==比较true；字符串对象：值相等用==比较false；</p>
+<p>8、<strong>字符串lengh是方法，数组lengh是属性</strong>；</p>
+<p>9、字符串比较内容：<strong>equals、comoareTo、startswith、endswith</strong>；</p>
+<p>10、搜索字符串：<strong>indexOf（String）</strong>；</p>
+<p>11、操作字符串：<strong>split（）、charAt（）、subString（）、replace（）、concat（）、trim（）</strong>—去掉前后不含空格的字符串；</p>
+<p>12、Object：toString、<strong>equals（在object里比较的是两个引用是否相等，无法比内容，需重写equals方法</strong>）、hashcode（重写hashcode，使重写equals方法后，业务逻辑和虚拟机保持一致）、finalize（析构方法，收空间，System.gc()—建议立即回收垃圾方法）；</p>
+<p>13、Class：<strong>类的类，包装正在运行类的运行状态及信息，可用来动态加载类，得到类的实例</strong>；</p>
+<p>14、字符串（空间）的不变性：<strong>String—&gt;有序的、不变的字符序列</strong>；</p>
+<p>StringBuffer：<strong>可变字符串，解决字符串的不变性，节省空间</strong>；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer(<span class="string">"ok"</span>);</span><br><span class="line">sb.append(<span class="string">"halou"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><p>1、try、catch、finally、throw、throws；</p>
+<p>2、异常：就是不同寻常的事情，<strong>异常并不总是错误</strong>，一切不寻常的事情都是异常（其中包含错误）；</p>
+<p>3、所有异常类型都是内置类<strong>Throwable</strong>的子类：</p>
+<p> <strong>Error类</strong>对象由java虚拟机生成并抛出（用于java运行时系统来显示与运行时系统本身有关的错误）—灾难，无法处理；</p>
+<p> <strong>Exception类</strong>对象由应用程序处理或抛出（用于用户程序可能捕获的异常，也是用来创建用户异常类型子类的类）—可以处理。RuntimeException可以忽略，除了RuntimeException其他子类不能忽略；</p>
+<p>4、处理方式：<strong>直接处理、向上抛出</strong>；</p>
+<p>5、是一个业务逻辑才能try在一起；</p>
+<p>6、try-catch如果代码段有异常没被处理，在发生异常处及后面代码不被执行，如果处理，<strong>进入catch处理后后面代码依然执行</strong>；</p>
+<p>7、throws处理后，后面代码不再执行，<strong>看到throw方法直接返回</strong>，位于throw下面的代码不再执行；如果希望throw后面的代码执行，<strong>最后加finally，不管有木有错finally里语句要执行</strong>；</p>
+<p>8、里面throw-throws，外面try-catch；如果里面是Runtime可以throw不throws，外面可抓可不抓；里面不throw，外面直接catch；</p>
+<h2 id="JDBC数据库连接（java-sql）"><a href="#JDBC数据库连接（java-sql）" class="headerlink" title="JDBC数据库连接（java.sql）"></a>JDBC数据库连接（java.sql）</h2><p>1、JDBC（sun公司制定）<strong>是一种标准</strong>，不是技术，是一些<strong>类和接口的集合</strong>（jar包）；</p>
+<p>2、sun公司制定标准（接口），数据库生产商按照标准生产数据库连接对象（类-实现），开发人员学习接口，使用类；</p>
+<p>3、Driver（驱动程序）、Connection（表示与数据库的连接）、PreparedStatement（执行预编译的SQL语句）、ResultSet（查询出来的数据库数据结果集）、Statement（执行SQL语句并将数据检索到ResultSet中）；</p>
+<h2 id="java-util"><a href="#java-util" class="headerlink" title="java.util"></a>java.util</h2><p>1、Date、Calender、GregorianCalendar（时间）<strong>；Arraylist、Vector、HashSet、HashMap、Hashtable（集合框架、容器）</strong>；</p>
+<p>2、Date：表示特定的瞬间，精确到毫秒，获得当前时间；</p>
+<p>3、toString原生出来是<strong>类名+地址</strong>；</p>
+<p>4、Calender：日历类，抽象类，不能被实例化；</p>
+<p>5、GregorianCalendar：标准日历类，是Calendar一个子类，日期类月份值跟业务逻辑相差1；</p>
+<p>6、<strong>SimpleDateFormat：日期的格式化</strong>；</p>
+<p>7、日历变日期：getTime()；</p>
+<p>8、集合框架：<strong>用于表示和操纵集合的统一体系结构</strong>，集合用于<strong>存储、检索和操纵数据</strong>，<strong>Collection</strong>对象是将多个元素组成一个单元的对象；</p>
+<p>9、集合框架包含三个组件：<strong>接口、实现、算法</strong>；</p>
+<p>10、Iterator（迭代器）、Collection（多个变一个，用<strong>对象本身存集合里面，无序</strong>）、Map（多个变一个，<strong>键值对存储，无序</strong>）；</p>
+<p>11、集合框架类层次结构：</p>
+<p><img src="/2019/03/07/Java基础/01.PNG" alt></p>
+<p>12、List：<strong>有序的、带下标的、对象本身存</strong>；Set：<strong>无序、不带下标、对象本身存</strong>；</p>
+<p><strong>Vector：线程安全的动态数组</strong>，<strong>ArrayList：线程不安全的动态数组</strong>；</p>
+<p>13、<strong>Collection：可存储重复值</strong>；</p>
+<p>迭代器-Iterator：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Iterator iterator = c1.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">      Student temp = (Student) iterator.next();</span><br><span class="line">      System.out.println(temp.toString());</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>foreach迭代：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Student s : c1) &#123;</span><br><span class="line">    System.out.println(s.toString());</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>foreach里面内部就是iterator</strong>；</p>
+<p>14、泛型：<strong>规定容器里只放一种东西</strong>；</p>
+<p>15、Vector：</p>
+<ul>
+<li>具有类似数组的数据结构，是动态的，容量可以递增；</li>
+<li>可<strong>存储重复元素和NULL</strong>；</li>
+<li>元素<strong>有序排列</strong>；</li>
+<li><strong>线程安全</strong>；</li>
+</ul>
+<p>16、Set：<strong>无序、不能存储重复元素、可存null、线程不安全的</strong>；</p>
+<p>17、Map：</p>
+<ul>
+<li><strong>键值对存储</strong>；</li>
+<li>三种遍历方式—迭代（键、值、键值对）、entry（key-value）；</li>
+<li><strong>键不能重复，值可以重复</strong>；</li>
+<li><strong>键和值可以存null值，hashmap线程不安全</strong>；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"通过keys进行遍历==========="</span>);</span><br><span class="line">Set&lt;String&gt; keys = map.keySet();</span><br><span class="line"><span class="keyword">for</span>(String keyStr: keys) &#123;</span><br><span class="line">    System.out.println(keyStr);</span><br><span class="line">    System.out.println(map.get(keyStr));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"通过values遍历================="</span>);</span><br><span class="line">Collection&lt;Student&gt; values = map.values();</span><br><span class="line"><span class="keyword">for</span>(Student stu: values) &#123;</span><br><span class="line">    System.out.println(stu);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"通过key-values（Entrys）遍历================"</span>);</span><br><span class="line">Set&lt;Map.Entry&lt;String, Student&gt;&gt; entrys = map.entrySet();</span><br><span class="line"><span class="keyword">for</span>(Map.Entry&lt;String, Student&gt; entry: entrys) &#123;</span><br><span class="line">    System.out.println(entry.getKey());</span><br><span class="line">    System.out.println(entry.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>18、<strong>hashtable线程安全</strong>，<strong>键和值都不可以存储null值</strong>，遍历的时候可以<strong>使用枚举类型</strong>；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Hashtable&lt;String, Student&gt; ht = <span class="keyword">new</span> Hashtable&lt;String, Student&gt;();</span><br><span class="line">ht.put(<span class="string">"dd"</span>, s1);</span><br><span class="line">System.out.println(<span class="string">"枚举类型=============="</span>);</span><br><span class="line">Enumeration&lt;Student&gt; enumeration = ht.elements();</span><br><span class="line"><span class="keyword">while</span> (enumeration.hasMoreElements()) &#123;</span><br><span class="line">    System.out.println(enumeration.nextElement());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>19、实现<strong>comparable达到list集合排序功能</strong>；</p>
+<p>20、集合框架的优点：<strong>提供有用的数据结构和算法，减少编程工作</strong>；提高程序速度和质量，因为它提供了高性能的数据结构和算法；可以方便地扩展或改写集合；</p>
+<h2 id="JavaSwing"><a href="#JavaSwing" class="headerlink" title="JavaSwing"></a>JavaSwing</h2><p>1、GUI：图形用户界面；</p>
+<p>2、Awt（抽象窗口工具-重量级页面技术）、Swing（波浪、翅膀-轻量级页面技术），swing是awt的子类；</p>
+<p>3、Awt（重量级）：容器（包含Awt容器组件）、组件（以图形表示的对象允许用户交互）、布局管理器（定义GUI组件的位置）、图形和绘制方法（使用Awt图形方法相对于窗口绘制图形）、字体、事件（用于用户和系统交互）；</p>
+<p>4、Swing（轻量级）：容器、组件、可改变的外观、Java2D图形绘制；</p>
+<p>5、MVC（编程思想）：界面、操作、存储（视图、控制—业务的分发和流程的转发、持久—存储数据）；</p>
+<p>6、页面主动拿数据（拉）、页面被动拿数据（推），swing是mvc的推；</p>
+<p>7、重量级（直接借助于awt、被单独的显示）、中间层容器、功能性容器；</p>
+<p>8、Dimention：描述矩形的单位；</p>
+<p>9、JLabel：单向交互、显示图片或文字；JButton：交互；JTextField：文本域；JPasswordField、JTextArea、JScollPane；</p>
+<p>10、布局管理器：屏幕组件可以按照一定的格式布局；</p>
+<ul>
+<li>流式（FlowLayout）：默认，一直往下排列；</li>
+<li>BorderLayout：边框布局管理器，上下左右中；</li>
+<li>GridLayout：几行几列；</li>
+<li>GridBagLayout：高级布局管理器，实现精确的布局管理；</li>
+</ul>
+<p>11、ActionListener：实现接口、完成事件方法、<strong>相应事件源上加事件</strong>；</p>
+<p>12、JDialog（繁琐）和JOptionPane（简单）：弹出式对话框，完成于用户的交互；</p>
+<p>13、对话框显示：模式（需处理）、非模式（不需处理）；</p>
+<p>14、模式：观察者模式（<strong>事件的源、事件对象、事件处理对象</strong>）；</p>
+<p>15、事件源（三个要素）：<strong>私有的监听者列表，公有的向监听者列表添加监听者的方法，公有的发生事情的方法</strong>；</p>
+<p>16、事件源四种添加监听者接口实例：自己加自己、自己加别人实现接口、自己加别人（适配器）、参数匿名类（适配器）；</p>
+<p>17、表格JTable：显示数据，表格模板（TableModel）：对数据操作，JMenu：菜单；热键：Alt+？</p>
+<p>18、JMenue不能做快捷键，可以做热键，不能带图片；JMenueIterm两个都可以做，可以带图片；</p>
+<p>19、工具栏（JToolBar）挂在panel上；</p>
+<p>20、标签面板（JTabbedPane）：是一种容器，提供一组标签显示不同页面；</p>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>1、模式：我们处理大量问题时，在很多不同的问题中<strong>重复出现的一种性质</strong>，它使得我们可以使用一种方法来描述问题实质并用<strong>本质上相同，但细节永不会重复</strong>的方法去解决，这种性质就叫模式。简单的<strong>说模式就是一种惯性的思维方式，用于解决同一类问题</strong>；</p>
+<p>2、23种设计模式：</p>
+<ul>
+<li>创建型：解决对象与对象之间<strong>创建性</strong>的问题；</li>
+<li>结构型：解决对象与对象间<strong>搭配结构</strong>的问题；</li>
+<li>行为型：解决对象与对象之间<strong>做事情</strong>；</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>创建型</th>
+<th>结构型</th>
+<th>行为型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类</td>
+<td>工厂方法<br>（Factory Method）</td>
+<td>适配器<br>（Adapter）</td>
+<td>解释器（Interpreter）<br>模板方法（Template Method）</td>
+</tr>
+<tr>
+<td>对象</td>
+<td>抽象工厂（Abstract Factory）<br>生成器（Builder）<br></td>
+</tr>
+</tbody>
+</table>
+<p>原型（Prototype）<br><br>单态（Singleton） | 适配器（Adapter）<br>桥接（Bridge）<br><br>组成 （Composite）<br><br>装饰（Decorate）<br><br>外观（Facade）<br><br>享元（Flyweight）<br><br>代理（Proxy | 责任链（Chain of Responsibility）<br>命令（Command）<br><br>迭代器（Iterator）<br><br>中介者（Mediator）<br><br>备忘录（Memento）<br><br>观察者（Observer）<br><br>状态（State）<br><br>策略（Strategy）<br><br>访问者（Visitor） |</p>
+<h2 id="Java-Io"><a href="#Java-Io" class="headerlink" title="Java Io"></a>Java Io</h2><p>1、I/O流用来完成java的输入输出工作，包括磁盘文件、设备、其他程序以及内存数据等等的输入输出；</p>
+<p>2、数据流（不间断—I/O流）、数据包（间断）；</p>
+<p>3、分类：<strong>字节流（Stream）、字符流</strong>；</p>
+<p>4、基于流技术可以用来传递数据，还可以用来操作或格式化数据；</p>
+<p>5、外部进入代码里面：输入流；代码输出数据：输出流；</p>
+<p>6、声明、创建、读写、关闭；</p>
+<p>7、字符流的根：Reader和Writer；</p>
+<p>8、</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(<span class="string">"./test1.txt"</span>));</span><br><span class="line">writer = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(<span class="string">"./test2.txt"</span>));</span><br><span class="line">里面节点流，外面处理流；</span><br></pre></td></tr></table></figure>
+<p>9、字节流、缓冲字节流、字符流、缓冲字符流；</p>
+<h2 id="Java多线程"><a href="#Java多线程" class="headerlink" title="Java多线程"></a>Java多线程</h2><p>1、进程（是<strong>执行中的程序</strong>，是活动的实体—正在通电的内存；是自包容的运行程序，有自己的地址空间）—是操作系统的最小单元；线程（是<strong>轻量级进程</strong>，是CPU使用的基本单元；线程属于某一个进程，一个进程中拥有一个或多个线程；多个线程共享同一个进程资源）；进程是重量级的、线程是轻量级的；</p>
+<p>2、read方法是一种阻塞方法；</p>
+<p>3、多任务处理：</p>
+<ul>
+<li>基于进程：计算机同时运行多个进程；基于线程：一个进程包含多个线程；</li>
+</ul>
+<p>4、使用多线程的理由：与用户交互更佳、模拟同步动作、<strong>利用多处理器、等待缓慢I/0操作时完成其他任务</strong>、简化对象模型；线程也需要开销资源，谨慎使用；</p>
+<p>5、JVM中的线程：当操作系统启动（javac、java、javaw等命令）JVM时就创建了一个进程；JVM进程内至少包含了                两个线程：<strong>mian方法和垃圾回收线程</strong>，它们称为主线程，有时它们还会启动其他线程，它们必须最后完成执行，执行各种关闭、释放动作；</p>
+<p>6、创建线程两种方法：<strong>声明一个Thread类的子类</strong>，并覆盖run（）方法；声明一个<strong>实现Runnable接口的类</strong>，并实现run（）方法；</p>
+<p>7、线程的状态：<strong>新建态</strong>（New—尚未启动的线程）、<strong>可运行态</strong>（Runnable—可运行线程的线程状态）、<strong>锁定态</strong>（Blocked—受阻塞线程的线程状态）、<strong>等待态</strong>（Waiting）、<strong>定时等待态</strong>（Timed_Waiting）、<strong>中止态</strong>（Terminated—已终止线程的线程状态）；</p>
+<p>8、yield：使正在执行的线程临时暂停，并允许其他线程执行；</p>
+<p>9、优先级：线程抢占cpu的能力；</p>
+<h2 id="Java网络编程"><a href="#Java网络编程" class="headerlink" title="Java网络编程"></a>Java网络编程</h2><p>1、网络（套接字、socket）编程；</p>
+<p>2、网络：实现<strong>资源共享和通信</strong>，连接终端系统（主机）的通信系统；</p>
+<p>3、OSI模型：<strong>物理层、数据链路层（怎么连）、网络层（怎么找）、传输层（怎么传）、会话层、表示层、应用层（传什么）</strong>；</p>
+<p>4、TCP：<strong>双向的、稳定的、可靠的、有序的、不间断的数据流（打电话）</strong>；UDP：<strong>单向的、间断的、不可靠的数据包（写信）</strong>；</p>
+<p>5、IP：连接至网络的每台计算机都是唯一的，32位数字，包括网络ID和主机ID；域名系统：将特定IP地址映射至字符串，映射由域名服务器系统维护；</p>
+<p>6、客户端：向另一台计算机请求服务的计算机；服务器：处理客户端请求的计算机；</p>
+<p>7、InetAddress：封装IP地址和DNS；ServerSocket：用来创建套接字（TCP）服务器；Socket：创建客户端套接字；</p>
+<p>8、UDP（数据报）：DatagramPacket—邮包、DatagramSocket—邮递员；</p>
+
+      
+     
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring-Boot</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
+        			<a href="/categories/编程基础//" class="article-tag-list-link color5">编程基础</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/07/Java基础/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/07/Spring-Boot基础总结/" class="archive-article-date">
-  	<time datetime="2019-04-07T06:53:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/03/09/C语言入门/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          零基础入门C语言
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/Spring-Boot基础总结/">Spring Boot基础总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring-Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web//" class="article-tag-list-link color4">Web</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About"><span class="toc-number">1.</span> <span class="toc-text">About</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">2.</span> <span class="toc-text">基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类和对象"><span class="toc-number">3.</span> <span class="toc-text">类和对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#封装和继承"><span class="toc-number">4.</span> <span class="toc-text">封装和继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法重载和多态"><span class="toc-number">5.</span> <span class="toc-text">方法重载和多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接口"><span class="toc-number">6.</span> <span class="toc-text">接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaAPI（Java-lang—基础包）"><span class="toc-number">7.</span> <span class="toc-text">JavaAPI（Java.lang—基础包）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异常处理"><span class="toc-number">8.</span> <span class="toc-text">异常处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JDBC数据库连接（java-sql）"><span class="toc-number">9.</span> <span class="toc-text">JDBC数据库连接（java.sql）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-util"><span class="toc-number">10.</span> <span class="toc-text">java.util</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaSwing"><span class="toc-number">11.</span> <span class="toc-text">JavaSwing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式"><span class="toc-number">12.</span> <span class="toc-text">设计模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-Io"><span class="toc-number">13.</span> <span class="toc-text">Java Io</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java多线程"><span class="toc-number">14.</span> <span class="toc-text">Java多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java网络编程"><span class="toc-number">15.</span> <span class="toc-text">Java网络编程</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
+        
+    </div>
+</aside>
 
 
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 来必力City版安装代码 -->
+
+  <!-- 这一句是适配样式 -->
+  <section class="duoshuo" id="comments">
+    <!-- 以下是 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80MzA5MC8xOTYzNg==">
+      <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+           if (typeof LivereTower === 'function') { return; }
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+      </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+  </section>
+
+
+ 
           </div>
         </div>
       </div>
@@ -297,9 +746,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
