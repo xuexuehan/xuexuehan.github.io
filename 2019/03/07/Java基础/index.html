@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>JavaSE基础 | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java一些基础语法概念">
+  <meta name="description" content="Java一些基础语法概念总结">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaSE基础">
 <meta property="og:url" content="http://yoursite.com/2019/03/07/Java基础/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
-<meta property="og:description" content="Java一些基础语法概念">
+<meta property="og:description" content="Java一些基础语法概念总结">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/03/07/Java基础/1.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/03/07/Java基础/01.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/03/07/Java基础/12.PNG">
-<meta property="og:updated_time" content="2019-04-10T08:35:20.047Z">
+<meta property="og:updated_time" content="2019-04-27T13:49:42.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaSE基础">
-<meta name="twitter:description" content="Java一些基础语法概念">
+<meta name="twitter:description" content="Java一些基础语法概念总结">
 <meta name="twitter:image" content="http://yoursite.com/2019/03/07/Java基础/1.PNG">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
@@ -188,7 +188,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Java一些基础语法概念  <a id="more"></a></p>
+        <p>Java一些基础语法概念总结  <a id="more"></a></p>
 <h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><p>1、SUN（Stanford University Network），2008年10亿美金收购mysql，2010年74亿美金被甲骨文收购；</p>
 <p>2、语言的进化：机器、汇编、高级语言、面向对象（计算机容易识别转换为人容易识别）；</p>
 <p>3、java之父：James Gosling；</p>
@@ -217,7 +217,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span>[] num = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br></pre></td></tr></table></figure>
 <p>4、反序数：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n = <span class="number">12345</span>;</span><br><span class="line"><span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">    System.out.print(n % <span class="number">10</span>);</span><br><span class="line">    n = n / <span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>5、冒泡排序：（第一轮将大的排第一，第二轮将次大的排第二，以此类推，5个数循环4次）：</p>
+<p>5、冒泡排序：（第一轮可以让未排序的最大元素上浮到右侧，以此类推，5个数循环4次）：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">2</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; num.length - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(num[j] &gt; num[j+<span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = num[j];</span><br><span class="line">            num[j] = num[j+<span class="number">1</span>];</span><br><span class="line">            num[j+<span class="number">1</span>] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num.length; i++) &#123;</span><br><span class="line">    System.out.println(num[i]);       </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>6、二分查找（要求数字按序排列）：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] num = &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">13</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> n = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">int</span> start = <span class="number">0</span>, end = num.length - <span class="number">1</span>, m;</span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">    m = (start + end) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span>(num[m] &gt; n) &#123;</span><br><span class="line">        end = m - <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(num[m] &lt; n) &#123;</span><br><span class="line">        start = m + <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"找到了"</span> + num[m] + <span class="string">"，位置为："</span>+ (m + <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(start &gt; end) &#123;</span><br><span class="line">        System.out.println(<span class="string">"找不到！"</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -373,16 +373,16 @@
 <p>5、什么是什么，可以理解为类的继承；什么能干什么，可以理解为接口的实现；</p>
 <h2 id="JavaAPI（Java-lang—基础包）"><a href="#JavaAPI（Java-lang—基础包）" class="headerlink" title="JavaAPI（Java.lang—基础包）"></a>JavaAPI（Java.lang—基础包）</h2><p>1、包装类、String和StringBuffer类、Math、Class、Object；</p>
 <p>2、java的<strong>main</strong>方法和<strong>8个基本数据类型</strong>不是面向对象的；</p>
-<p>3、<strong>装箱：int-&gt;Interger（valueOf）; 拆箱：Interger-&gt;int（intValue）</strong>；</p>
+<p>3、<strong>装箱：int-&gt;Interger（valueOf）；拆箱：Interger-&gt;int（intValue）</strong>；</p>
 <p>4、包装类型 实例名 = 包装类型.valueOf(String);包装类型.parse基类型(String)；实例名.toString()；</p>
 <p>5、字符串：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s0 = <span class="string">"aa"</span>;<span class="comment">//字符串字面量</span></span><br><span class="line">String s1 = <span class="keyword">new</span> String(<span class="string">"aa"</span>);<span class="comment">//字符串对象</span></span><br></pre></td></tr></table></figure>
 <p>6、<strong>==：判断字符串指的是否为同一片空间；equals比较字符串值是否相等</strong>；</p>
 <p>7、字符串字面量：值相等用==比较true；字符串对象：值相等用==比较false；</p>
 <p>8、<strong>字符串lengh是方法，数组lengh是属性</strong>；</p>
-<p>9、字符串比较内容：<strong>equals、comoareTo、startswith、endswith</strong>；</p>
+<p>9、字符串比较内容：<strong>equals、compareTo、startswith、endswith</strong>；</p>
 <p>10、搜索字符串：<strong>indexOf（String）</strong>；</p>
-<p>11、操作字符串：<strong>split（）、charAt（）、subString（）、replace（）、concat（）、trim（）</strong>—去掉前后不含空格的字符串；</p>
+<p>11、操作字符串：<strong>split（）、charAt（）、subString（）、replace（）、concat（）、trim（）</strong>—去掉字符串前后包含的空格；</p>
 <p>12、Object：toString、<strong>equals（在object里比较的是两个引用是否相等，无法比内容，需重写equals方法</strong>）、hashcode（重写hashcode，使重写equals方法后，业务逻辑和虚拟机保持一致）、finalize（析构方法，收空间，System.gc()—建议立即回收垃圾方法）；</p>
 <p>13、Class：<strong>类的类，包装正在运行类的运行状态及信息，可用来动态加载类，得到类的实例</strong>；</p>
 <p>14、字符串（空间）的不变性：<strong>String—&gt;有序的、不变的字符序列</strong>；</p>
@@ -401,7 +401,7 @@
 <h2 id="JDBC数据库连接（java-sql）"><a href="#JDBC数据库连接（java-sql）" class="headerlink" title="JDBC数据库连接（java.sql）"></a>JDBC数据库连接（java.sql）</h2><p>1、JDBC（sun公司制定）<strong>是一种标准</strong>，不是技术，是一些<strong>类和接口的集合</strong>（jar包）；</p>
 <p>2、sun公司制定标准（接口），数据库生产商按照标准生产数据库连接对象（类-实现），开发人员学习接口，使用类；</p>
 <p>3、Driver（驱动程序）、Connection（表示与数据库的连接）、PreparedStatement（执行预编译的SQL语句）、ResultSet（查询出来的数据库数据结果集）、Statement（执行SQL语句并将数据检索到ResultSet中）；</p>
-<h2 id="java-util"><a href="#java-util" class="headerlink" title="java.util"></a>java.util</h2><p>1、Date、Calender、GregorianCalendar（时间）<strong>；Arraylist、Vector、HashSet、HashMap、Hashtable（集合框架、容器）</strong>；</p>
+<h2 id="java-util"><a href="#java-util" class="headerlink" title="java.util"></a>java.util</h2><p>1、Date、Calendar、GregorianCalendar（时间）<strong>；Arraylist、Vector、HashSet、HashMap、Hashtable（集合框架、容器）</strong>；</p>
 <p>2、Date：表示特定的瞬间，精确到毫秒，获得当前时间；</p>
 <p>3、toString原生出来是<strong>类名+地址</strong>；</p>
 <p>4、Calender：日历类，抽象类，不能被实例化；</p>
@@ -433,7 +433,7 @@
 <p>17、Map：</p>
 <ul>
 <li><strong>键值对存储</strong>；</li>
-<li>三种遍历方式—迭代（键、值、键值对）、entry（key-value）；</li>
+<li>三种遍历方式—迭代（键、值）、entry（key-value）；</li>
 <li><strong>键不能重复，值可以重复</strong>；</li>
 <li><strong>键和值可以存null值，hashmap线程不安全</strong>；</li>
 </ul>
@@ -636,7 +636,7 @@
     </a>
   
   
-    <a href="/2019/03/03/Python-Selenium/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/02/27/Python-Selenium/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Python Selenium基础</div>
       <i class="icon-circle-right"></i>
     </a>
