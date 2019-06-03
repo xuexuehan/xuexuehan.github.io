@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Python | xuexue&#39;s blog</title>
+  <title>Java反射 | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="xuexue&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/Python/index.html">
+  <meta name="description" content="Java反射总结。   No reflection，No most frameworks.">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java反射">
+<meta property="og:url" content="http://yoursite.com/2019/06/03/Java反射/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
+<meta property="og:description" content="Java反射总结。   No reflection，No most frameworks.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/06/03/Java反射/反射01.png">
+<meta property="og:updated_time" content="2019-06-03T08:49:53.222Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xuexue&#39;s blog">
+<meta name="twitter:title" content="Java反射">
+<meta name="twitter:description" content="Java反射总结。   No reflection，No most frameworks.">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/03/Java反射/反射01.png">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -155,48 +162,171 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java反射" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/23/Python基础/" class="archive-article-date">
-  	<time datetime="2019-03-23T05:52:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-23</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+      	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/23/Python基础/">Python基础</a>
+    <h1 class="article-title" itemprop="name">
+      Java反射
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      	 
+		<br>
+		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+		<span class="icon-sort"></span>
+		<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+		</span>
+		</a>
+		
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java反射总结。  </p>
+<p>No reflection，No most frameworks.<a id="more"></a></p>
+<h2 id="什么是反射？"><a href="#什么是反射？" class="headerlink" title="什么是反射？"></a>什么是反射？</h2><p>反射 (Reflection) 是 Java 的特征之一，它允许运行中的 Java 程序<strong>获取自身的信息</strong>，并且可以<strong>操作类或对象的内部属性</strong>。</p>
+<p>通过反射，我们可以<strong>在运行时获得程序或程序集中每一个类型的成员和成员的信息</strong>。程序中<strong>一般的对象的类型都是在编译期就确定下来</strong>的，而 Java 反射机制<strong>可以动态地创建对象并调用其属性</strong>，这样的对象的类型在编译期是未知的。所以我们可以<strong>通过反射机制直接创建对象，即使这个对象的类型在编译期是未知的</strong>。</p>
+<p>反射机制很重要的一点就是“<strong>运行时</strong>”，其使得我们可以<strong>在程序运行时加载、探索以及使用编译期间完全未知的 .class 文件</strong>。换句话说，<strong>Java 程序可以加载一个运行时才得知名称的 .class 文件，然后获悉其完整构造，并生成其对象实体、或对其 fields（变量）设值、或调用其 methods（方法）</strong>。</p>
+<p>反射的核心是 <strong>JVM 在运行时才动态加载类或调用方法/访问属性</strong>，它不需要事先（写代码的时候或编译期）知道运行对象是谁。</p>
+<p><img src="/2019/06/03/Java反射/反射01.png" alt></p>
+<p>Java 反射主要提供以下功能：</p>
+<ul>
+<li>在运行时判断任意一个对象所属的类；</li>
+<li>在运行时构造任意一个类的对象；</li>
+<li>在运行时判断任意一个类所具有的成员变量和方法（通过反射甚至可以调用private方法）；</li>
+<li>在运行时调用任意一个对象的方法。</li>
+</ul>
+<p>动态编译可以<strong>最大程度地支持多态</strong>，而多态最大的意义在于降低类的耦合性，因此反射的优点就很明显了：<strong>解耦以及提高代码的灵活性</strong>。</p>
+<p>反射的优点缺点：</p>
+<ul>
+<li>优点：运行期类型的判断，动态类加载：<strong>提高代码灵活度</strong>；</li>
+<li>缺点：<strong>性能瓶颈</strong>：反射相当于一系列解释操作，通知 JVM 要做的事情，性能比直接的java代码要慢很多；</li>
+</ul>
+<p>反射的应用：</p>
+<ul>
+<li>JDBC 的数据库的连接：</li>
+</ul>
+<p>​    通过Class.forName()加载数据库的驱动程序 （通过反射加载，前提是引入相关了Jar包）；</p>
+<ul>
+<li><p>Spring 框架的使用：</p>
+<p>​    在 Java的反射机制在做<strong>基础框架</strong>的时候非常有用，行内有一句这样的老话：反射机制是Java框架的基石。一般应用层面很少用，不过这种东西，现在很多开源框架基本都已经封装好了，自己基本用不着写。典型的除了hibernate之外，还有spring也用到很多反射机制。最经典的就是xml的配置模式。</p>
+<p>Spring 通过 XML 配置模式装载 Bean 的过程：</p>
+<ul>
+<li>将程序内所有 XML 或 Properties 配置文件加载入内存中；</li>
+<li>Java类里面解析xml或properties里面的内容，得到对应实体类的字节码字符串以及相关的属性信息；</li>
+<li>使用反射机制，根据这个字符串获得某个类的Class实例；</li>
+<li>动态配置实例的属性；</li>
+</ul>
+<p>Spring这样做的好处是：</p>
+<ul>
+<li>不用每一次都要在代码里面去new或者做其他的事情；</li>
+<li>以后要改的话直接改配置文件，代码维护起来就很方便了；</li>
+<li>有时为了适应某些需求，Java类里面不一定能直接调用另外的方法，可以通过反射机制来实现。</li>
+</ul>
+</li>
+</ul>
+<h2 id="反射基本功能"><a href="#反射基本功能" class="headerlink" title="反射基本功能"></a>反射基本功能</h2><h3 id="获取反射中的Class对象"><a href="#获取反射中的Class对象" class="headerlink" title="获取反射中的Class对象"></a>获取反射中的Class对象</h3><p>在反射中，要获取一个类或调用一个类的方法，我们首先需要<strong>获取到该类的 Class 对象</strong>。获取 Class 类对象有三种方法：</p>
+<ul>
+<li><p>使用 Class 类的 <strong>forName 静态方法</strong>：知道该类的全路径名；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class.forName();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接获取某一个对象的 class：适合在编译前就知道操作的 Class；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类名.class;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用类对象的 getClass() 方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">类名 对象名 = <span class="keyword">new</span> 类名();</span><br><span class="line">Class c = 对象名.getClass();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="通过反射创建类对象"><a href="#通过反射创建类对象" class="headerlink" title="通过反射创建类对象"></a>通过反射创建类对象</h3><p>通过反射创建类对象主要有两种方式：</p>
+<ul>
+<li><p>通过 Class 对象的 newInstance() 方法；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class c = 类名.class;</span><br><span class="line">类名 对象名 = (类名)c.newInstance();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过 Constructor 对象的 newInstance() 方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Class c = 类名.class;</span><br><span class="line">Constructor constructor = c.getConstructor();</span><br><span class="line">类名 对象名 = (类名)constructor.newInstance();</span><br></pre></td></tr></table></figure>
+<p>通过 <strong>Constructor 对象创建类对象可以选择特定构造方法</strong>，而<strong>通过 Class 对象则只能使用默认的无参数构造方法</strong>。下面的代码就调用了一个有参数的构造方法进行了类对象的初始化。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Class c = 类名.class;</span><br><span class="line">Constructor constructor = c.getConstructor(String.class, <span class="keyword">int</span>.class);</span><br><span class="line">类名 对象名 = (类名)constructor.newInstance(<span class="string">"xxx"</span>, <span class="number">15</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="获取类属性方法及构造器"><a href="#获取类属性方法及构造器" class="headerlink" title="获取类属性方法及构造器"></a>获取类属性方法及构造器</h3><p>1、通过 Class 对象的 <strong>getFields()</strong> 方法可以获取<strong>所有 public 访问权限的属性</strong>(包括<strong>本类声明的和从父类继承的</strong>)；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Class c = 类名.class;</span><br><span class="line">Field[] fields = c.getFields();</span><br><span class="line"><span class="comment">//遍历属性并输出属性信息</span></span><br><span class="line"><span class="keyword">for</span>(Field field : fields) &#123;</span><br><span class="line">    <span class="comment">//获取访问权限并输出</span></span><br><span class="line">    <span class="keyword">int</span> modifiers = field.getModifiers();</span><br><span class="line">    System.out.print(Modifier.toString(modifiers) + <span class="string">" "</span>);</span><br><span class="line">    <span class="comment">//输出属性的类型及属性名</span></span><br><span class="line">    System.out.println(field.getType().getName() + <span class="string">" "</span> + field.getName());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、通过 Class 对象的 <strong>getDeclaredFields()</strong> 方法则可以获取<strong>所有本类声明的(不管访问权限)属性</strong>；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class c = 类名.class;</span><br><span class="line">Field[] fields = c.getDeclaredFields();</span><br></pre></td></tr></table></figure>
+<p>3、通过 Class 对象的 <strong>getMethods()</strong> 方法可以获取<strong>所有 public 访问权限的方法</strong>(包括<strong>本类声明的和从父类继承的</strong>)；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Class c = 类名.class;</span><br><span class="line">Method[] methods = c.getMethods();</span><br><span class="line"><span class="comment">//遍历属性并输出属性信息</span></span><br><span class="line"><span class="keyword">for</span>(Method method : methods) &#123;</span><br><span class="line">    <span class="comment">//获取并输出方法的访问权限（Modifiers：修饰符）</span></span><br><span class="line">    <span class="keyword">int</span> modifiers = method.getModifiers();</span><br><span class="line">    System.out.print(Modifier.toString(modifiers) + <span class="string">" "</span>);</span><br><span class="line">    <span class="comment">//获取并输出方法的返回值类型</span></span><br><span class="line">    Class returnType = method.getReturnType();</span><br><span class="line">    System.out.println(returnType.getName() + <span class="string">" "</span> + method.getName() + <span class="string">"("</span>);</span><br><span class="line">    <span class="comment">//获取并输出方法的所有参数</span></span><br><span class="line">    Parameter[] parameters = method.getParameters();</span><br><span class="line">    <span class="keyword">for</span>(Parameter parameter : parameters) &#123;</span><br><span class="line">        System.out.print(parameter.getType().getName() + <span class="string">" "</span> + parameter.getName() + <span class="string">","</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//获取并输出方法抛出的异常</span></span><br><span class="line">    Class[] exceptionTypes = method.getExceptionTypes();</span><br><span class="line">    <span class="keyword">if</span>(exceptionTypes.length == <span class="number">0</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">")"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span>(Class cla: exceptionTypes) &#123;</span><br><span class="line">            System.out.println(<span class="string">") throws "</span> + cla.getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、通过 Class 对象的 <strong>getDeclaredMethods()</strong> 方法可以获取<strong>所有本类声明的(不管访问权限)方法</strong>；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class c = 类名.class;</span><br><span class="line">Method[] methods = c.getDeclaredMethods();</span><br></pre></td></tr></table></figure>
+<p>5、通过 Class 对象的 <strong>getConstructors()</strong> 方法可以获取<strong>所有 public 访问权限的构造方法</strong>；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Class c = 类名.class</span><br><span class="line">Constructor[] constructors = c.getConstructors();</span><br><span class="line"><span class="keyword">for</span>(Constructor constructor : constructors) &#123;</span><br><span class="line">    <span class="comment">//获取并输出构造方法的访问权限（Modifiers：修饰符）</span></span><br><span class="line">    <span class="keyword">int</span> modifiers = constructor.getModifiers();</span><br><span class="line">    System.out.print(Modifier.toString(modifiers) + <span class="string">" "</span>);</span><br><span class="line">    <span class="comment">//获取并输出构造方法的所有参数</span></span><br><span class="line">    Parameter[] parameters = constructor.getParameters();</span><br><span class="line">    <span class="keyword">for</span>(Parameter parameter : parameters) &#123;</span><br><span class="line">        System.out.print(parameter.getType().getName() + <span class="string">" "</span> + parameter.getName() + <span class="string">","</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、通过 Class 对象的 <strong>getDeclaredConstructors()</strong> 方法可以获取<strong>所有本类声明的(不管访问权限)构造方法</strong>；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class c = 类名.class</span><br><span class="line">Constructor[] constructors = c.getDeclaredConstructors();</span><br></pre></td></tr></table></figure>
+<h3 id="访问或操作类的私有变量和方法"><a href="#访问或操作类的私有变量和方法" class="headerlink" title="访问或操作类的私有变量和方法"></a>访问或操作类的私有变量和方法</h3><p>1、访问类的私有方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. 获取 Class 类实例</span></span><br><span class="line">类名 对象名 = <span class="keyword">new</span> 类名();</span><br><span class="line">Class c = 对象名.getClass();</span><br><span class="line"> <span class="comment">//2. 获取私有方法</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 第一个参数为要获取的私有方法的名称</span></span><br><span class="line"><span class="comment">         * 第二个为要获取方法的参数的类型，参数为 Class...，没有参数就是null</span></span><br><span class="line"><span class="comment">         * 方法参数也可这么写 ：new Class[]&#123;String.class , int.class&#125;</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">Method privateMethod = c.getDeclaredMethod(<span class="string">"私有方法名"</span>, String.class, <span class="keyword">int</span>.class);</span><br><span class="line"><span class="comment">//3. 开始操作方法</span></span><br><span class="line"><span class="keyword">if</span>(privateMethod != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="comment">//获取私有方法的访问权(只是获取访问权，并不是修改实际权限)</span></span><br><span class="line">    privateMethod.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 使用 invoke 反射调用私有方法</span></span><br><span class="line"><span class="comment">             * privateMethod 是获取到的私有方法</span></span><br><span class="line"><span class="comment">             * 类对象 要操作的对象</span></span><br><span class="line"><span class="comment">             * 后面两个参数传实参</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">    privateMethod.invoke(类对象, <span class="string">"Java Reflect"</span>, <span class="number">666</span>);</span><br></pre></td></tr></table></figure>
+<p>2、修改类的私有变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//1. 获取 Class 类实例</span></span><br><span class="line">类名 对象名 = <span class="keyword">new</span> 类名();</span><br><span class="line">Class c = 对象名.getClass();</span><br><span class="line"> <span class="comment">//2. 获取私有变量</span></span><br><span class="line">Field privateField = c.getDeclaredField(<span class="string">"私有属性名"</span>);</span><br><span class="line"><span class="comment">//3. 操作私有变量</span></span><br><span class="line"><span class="keyword">if</span>(privateField != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="comment">//获取私有变量的访问权</span></span><br><span class="line">    privateField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">    <span class="comment">//修改私有变量，并输出以测试</span></span><br><span class="line">    System.out.println(<span class="string">"Before Modify：私有属性名 = "</span> + 对象名.getXXX());</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 调用 set(object , value) 修改变量的值</span></span><br><span class="line"><span class="comment">             * privateField 是获取到的私有变量</span></span><br><span class="line"><span class="comment">             * 对象名 要操作的对象</span></span><br><span class="line"><span class="comment">             * "Modified" 为要修改成的值</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">    privateField.set(对象名, <span class="string">"Modified"</span>);</span><br><span class="line">    System.out.println(<span class="string">"After Modify：私有属性名 = "</span> + testClass.getXXX());</span><br></pre></td></tr></table></figure>
+<p>3、修改类的私有常量：</p>
+<p>常量是指使<strong>用 final 修饰符修饰的成员属性</strong>，与变量的区别就在于有无 final 关键字修饰。<br>Java 虚拟机（JVM）在编译 .java 文件得到 .class 文件时，会优化我们的代码以提升效率。其中一个优化就是：JVM 在编译阶段会把引用常量的代码替换成具体的常量值，如下所示。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//编译前的 .java 文件：</span></span><br><span class="line"><span class="comment">//注意是 String  类型的值</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> String FINAL_VALUE = <span class="string">"hello"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(FINAL_VALUE.equals(<span class="string">"world"</span>))&#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译后得到的 .class 文件（当然，编译后是没有注释的）：</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> String FINAL_VALUE = <span class="string">"hello"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//替换为"hello"</span></span><br><span class="line"><span class="keyword">if</span>(<span class="string">"hello"</span>.equals(<span class="string">"world"</span>))&#123;</span><br><span class="line">    <span class="comment">//do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是，并不是所有常量都会优化。经测试<strong>对于 int 、long 、boolean 以及 String 这些基本类型 JVM 会优化</strong>，而<strong>对于 Integer 、Long 、Boolean 这种包装类型，或者其他诸如 Date 、Object 类型则不会被优化</strong>。<br>总结：对于基本类型的静态常量，JVM 在编译阶段会把引用此常量的代码替换成具体的常量值。</p>
+<p>通过反射修改类的常量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. 获取 Class 类实例</span></span><br><span class="line">类名 对象名 = <span class="keyword">new</span> 类名();</span><br><span class="line">Class c = 对象名.getClass();</span><br><span class="line"><span class="comment">//2. 获取私有常量</span></span><br><span class="line">Field finalField = c.getDeclaredField(<span class="string">"私有常量名"</span>);</span><br><span class="line"><span class="comment">//3. 修改常量的值</span></span><br><span class="line"><span class="keyword">if</span>(finalField != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="comment">//获取私有常量的访问权</span></span><br><span class="line">    finalField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">    <span class="comment">//调用 finalField 的 getter 方法,输出 FINAL_VALUE 修改前的值</span></span><br><span class="line">    System.out.println(<span class="string">"Before Modf: 私有常量名 = "</span> + finalField.get(对象名));</span><br><span class="line">    <span class="comment">//修改私有常量</span></span><br><span class="line">    finalField.set(对象名, <span class="string">"Modified"</span>);</span><br><span class="line">    <span class="comment">//调用 finalField 的 getter 方法,输出 FINAL_VALUE 修改后的值</span></span><br><span class="line">    System.out.println(<span class="string">"After Modify：私有常量名 = "</span> + finalField.get(对象名));</span><br><span class="line">    <span class="comment">//使用对象调用类的 getter 方法,获取值并输出</span></span><br><span class="line">    System.out.println(<span class="string">"Actually ：私有常量名 = "</span> + testClass.getXXX);</span><br></pre></td></tr></table></figure>
+<p>结果是：</p>
+<ul>
+<li>第一句打印修改前的值，没有异议；</li>
+<li>第二句打印修改后常量的值，说明确实通过反射修改了；</li>
+<li>第三句打印通过   getXXX() 方法获取的常量值，但还是初始值，导致修改无效！</li>
+</ul>
+<p>如果非要修改，类中在声明常量时不赋值，然后添加构造函数并为其赋值，即可修改。</p>
+<p>参考博客：</p>
+<p><a href="https://juejin.im/post/598ea9116fb9a03c335a99a4#heading-7" target="_blank" rel="noopener">https://juejin.im/post/598ea9116fb9a03c335a99a4#heading-7</a></p>
+<p><a href="https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html" target="_blank" rel="noopener">https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html</a></p>
+
+      
+     
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -209,19 +339,140 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/03/Java反射/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/06/02/SortAlgorithm/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">排序算法（二）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是反射？"><span class="toc-number">1.</span> <span class="toc-text">什么是反射？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反射基本功能"><span class="toc-number">2.</span> <span class="toc-text">反射基本功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取反射中的Class对象"><span class="toc-number">2.1.</span> <span class="toc-text">获取反射中的Class对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过反射创建类对象"><span class="toc-number">2.2.</span> <span class="toc-text">通过反射创建类对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取类属性方法及构造器"><span class="toc-number">2.3.</span> <span class="toc-text">获取类属性方法及构造器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#访问或操作类的私有变量和方法"><span class="toc-number">2.4.</span> <span class="toc-text">访问或操作类的私有变量和方法</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+  <!-- 来必力City版安装代码 -->
+
+  <!-- 这一句是适配样式 -->
+  <section class="duoshuo" id="comments">
+    <!-- 以下是 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80MzA5MC8xOTYzNg==">
+      <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+           if (typeof LivereTower === 'function') { return; }
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+      </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+  </section>
 
 
+ 
           </div>
         </div>
       </div>
@@ -248,9 +499,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
