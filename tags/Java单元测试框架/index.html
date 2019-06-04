@@ -6,26 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>测试基础理论（二） | xuexue&#39;s blog</title>
+  <title>Tag: Java单元测试框架 | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="软件测试实例分析">
-<meta name="keywords" content="测试基础知识">
-<meta property="og:type" content="article">
-<meta property="og:title" content="测试基础理论（二）">
-<meta property="og:url" content="http://yoursite.com/2019/04/27/软件测试实例/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="xuexue&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/tags/Java单元测试框架/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
-<meta property="og:description" content="软件测试实例分析">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/04/27/软件测试实例/t1.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/04/27/软件测试实例/ts2.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/04/27/软件测试实例/ts3.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/04/27/软件测试实例/ts4.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/04/27/软件测试实例/ts5.PNG">
-<meta property="og:updated_time" content="2019-04-27T11:53:08.473Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测试基础理论（二）">
-<meta name="twitter:description" content="软件测试实例分析">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/27/软件测试实例/t1.PNG">
+<meta name="twitter:title" content="xuexue&#39;s blog">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -166,160 +155,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-软件测试实例" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-      	 
+            
   
-    <h1 class="article-title" itemprop="name">
-      测试基础理论（二）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/06/03/JUnit介绍/" class="archive-article-date">
+  	<time datetime="2019-06-03T11:17:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/06/03/JUnit介绍/">JUnit介绍</a>
     </h1>
   
 
-      	 
-		<br>
-		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
-		<span class="icon-sort"></span>
-		<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
-          	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
-		</span>
-		</a>
-		
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>软件测试实例分析<a id="more"></a></p>
-<p>1、给你一个字符串，你怎么判断是不是ip地址？</p>
-<p>​    IP的格式：(1~255).(0~255).(0~255).(0~255)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IpLegal</span> </span>&#123;</span><br><span class="line">	<span class="comment">//正则表达式</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isIpLegal</span><span class="params">(String ipStr)</span> </span>&#123;</span><br><span class="line">		String ipRegEx = <span class="string">"^([1-9]|([1-9][0-9])|(1[0-9][0-9])|(2[0-4][0-9])|(25[0-5]))"</span></span><br><span class="line">				+ <span class="string">"(\\.([0-9]|([1-9][0-9])|(1[0-9][0-9])|(2[0-4][0-9])|(25[0-5])))&#123;3&#125;$"</span>;</span><br><span class="line">		Pattern pattern = Pattern.compile(ipRegEx);</span><br><span class="line">		Matcher matcher = pattern.matcher(ipStr);</span><br><span class="line">		<span class="keyword">if</span> (matcher.matches()) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		String ipStr = scanner.next();</span><br><span class="line">		<span class="keyword">boolean</span> ipLegal = isIpLegal(ipStr);</span><br><span class="line">		<span class="keyword">if</span>(ipLegal) &#123;</span><br><span class="line">			System.out.println(ipStr + <span class="string">"合法"</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(ipStr + <span class="string">"非法"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2、进行测试用例设计：一串数字，闰年的判别？</p>
-<p>判断闰年的标准是:能整除4且不能整除100，能整除400。设定合法的年份为1-9999</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LeapYear</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> year = in.nextInt();</span><br><span class="line">		<span class="keyword">if</span>(year &lt;= <span class="number">0</span> &amp;&amp; year &gt; <span class="number">9999</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"请输入正确的年份"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>((year % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> != <span class="number">0</span>) || year % <span class="number">400</span> == <span class="number">0</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"闰年"</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"不是闰年"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>测试用例：</p>
-<p><img src="/2019/04/27/软件测试实例/t1.PNG" alt></p>
-<p>3、请说一说<strong>简单用户界面登录过程</strong>都需要做哪些分析？</p>
-<p><img src="/2019/04/27/软件测试实例/ts2.PNG" alt></p>
-<p>4、对朋友圈点赞功能进行测试？</p>
-<ul>
-<li>是否可以正常点赞和取消；</li>
-<li>点赞的人是否在可见分组里；</li>
-<li>点赞状态是否能即时更新显示；</li>
-<li>点赞状态，共同好友是否可见；</li>
-<li>性能检测，网速快慢对其影响；</li>
-<li>点赞显示的是否正确，一行几个；</li>
-<li>点赞是否按时间进行排序，头像对应的是否正确；</li>
-<li>是否能在消息列表中显示点赞人的昵称；</li>
-<li>不同手机，系统显示界面如何；</li>
-<li>可扩展性测试，点赞后是否能发表评论；</li>
-<li>是否在未登录时可查看被点赞的信息。</li>
-</ul>
-<p>5、如果做一个杯子的检测，如何测试？</p>
-<p><img src="/2019/04/27/软件测试实例/ts3.PNG" alt></p>
-<p>6、如何对一个页面进行测试？</p>
-<ul>
-<li><strong>UI测试</strong>：页面布局、页面样式检查、控件长度是否够长；显示时，是否会被截断；支持的快捷键，Tab键切换焦点顺序正确性等；</li>
-<li><strong>功能测试</strong>：页面上各类控件的测试范围，测试点。结合控件的实际作用来补充检查点： 比如， 密码框是否*显示， 输入是否做trim处理等；</li>
-<li><strong>安全测试</strong>：输入特殊字符，sql注入，脚本注入测试。后台验证测试，对于较重要的表单 ，绕过js检验后台是否验证；数据传输是否加密处理，比如， 直接请求转发，地址栏直接显示发送字符串；</li>
-<li><strong>兼容性测试</strong>；</li>
-<li><strong>性能测试</strong>。</li>
-</ul>
-<p>7、 如何对淘宝搜索框进行测试？</p>
-<p><img src="/2019/04/27/软件测试实例/ts4.PNG" alt></p>
-<p>8、如何对一瓶矿泉水进行测试？</p>
-<ul>
-<li>界面测试:查看外观是否美观；</li>
-<li>功能：查看水瓶漏不漏；瓶中水能不能被喝到；</li>
-<li>安全性：瓶子的材质有没有毒或细菌；</li>
-<li>可靠性：从不同高度落下的损坏程度；</li>
-<li>可移植性：再不同的地方、温度等环境下是否都可以正常使用；</li>
-<li>兼容性：是否能够容纳果汁、白水、酒精、汽油等；</li>
-<li>易用性：是否烫手、是否有防滑措施、是否方便饮用；</li>
-<li>用户文档：使用手册是否对的用法、限制、使用条件等有详细描述；</li>
-<li>疲劳测试：将盛上水（案例一）放24小时检查泄漏时间和情况；盛上汽油（案例二）放24小时检查泄漏时间和情况等；</li>
-<li>压力测试：用根针并在针上面不断加重量，看压强多大时会穿透；</li>
-<li>跌落测试:测试在何种高度跌落会破坏水瓶。</li>
-</ul>
-<p>9、请说一下购物车的测试用例？</p>
-<p><img src="/2019/04/27/软件测试实例/ts5.PNG" alt></p>
-<p>10、请问web测试如何写的？</p>
-<ul>
-<li><strong>功能测试</strong>，主要做<strong>链接测试，表单测试，cookies测试，设计语言测试</strong>等；</li>
-<li><strong>性能测试</strong>，考虑<strong>连接速度测试，以及负载测试</strong>，例如：Web应用系统能允许多少个用户同时在线？如果超过了这个数量，会出现什么现象？Web应用系统能否处理大量用户对同一个页面的请求？还有压力测试；</li>
-<li><strong>可用性测试</strong>，比如<strong>导航测试，图形测试，内容测试，整体界面测试</strong>等；</li>
-<li><strong>兼容性测试</strong>，市场上有很多不同的操作系统类型，最常见的有<strong>Windows、Unix、Macintosh、Linux等</strong>。Web应用系统的最终用户究竟使用哪一种操作系统，取决于用户系统的配置。这样，就可能会发生兼容性问题，同一个应用可能在某些操作系统下能正常运行，但在另外的操作系统下可能会运行失败。因此，在Web系统发布之前，需要在各种操作系统下对Web系统进行兼容性测试；</li>
-<li><strong>安全性测试</strong>；</li>
-</ul>
-<p>11、如何测试手机开机键？</p>
-<ul>
-<li><strong>功能测试</strong>：按下开机键，屏幕能否亮起；</li>
-<li><strong>性能测试</strong>：按下开机键，屏幕能否在规定时间内亮起；</li>
-<li><strong>压力测试</strong>：连续多次按下开机键，观察屏幕是否能一直亮起，到多久时间失灵；</li>
-<li><strong>健壮性测试</strong>：给定一个中了病毒的手机或者是淘汰许久的老机子，安歇开机键观察屏幕能否亮起；</li>
-<li><strong>可靠性测试</strong>：连续按下开机键有限次数，比如1万次，记录屏幕未亮起的次数；</li>
-<li><strong>可用性测试</strong>：开机键按下费不费力，开机键的形状设计是否贴合手指，开机键的位置设计是否方便。</li>
-</ul>
-<p>12、接口测试出现bug的原因有哪些？</p>
-<ul>
-<li><strong>特殊值处理不当</strong>导致程序异常退出或者崩溃；</li>
-<li>类型<strong>边界溢出</strong>，导致数据独处和写入不一致；</li>
-<li>取值<strong>边界外未返回正确的错误信息</strong>；</li>
-<li><strong>权限未处理</strong>，可以访问其他用户的信息；</li>
-<li><strong>逻辑校验不完善</strong>，可以利用漏洞获取非正当利益；</li>
-<li><strong>状态处理不当</strong>，导致逻辑出现错误；</li>
-<li>数组类型item个数为0或者item重复时程序异常退出。</li>
-</ul>
-<p>13、请你设计一个微信朋友圈点赞的测试用例？</p>
-<ul>
-<li>功能测试：点赞某条朋友圈，验证是否成功；</li>
-<li>接口测试：点赞朋友圈，验证朋友能否收到提示信息；</li>
-<li>性能测试：点赞朋友圈，是否在规定时间显示结果，是否在规定时间在朋友手机上进行提示；</li>
-<li>兼容性测试：在不同的终端比如ipad,手机上点赞朋友圈，验证是否成功。</li>
-</ul>
-
-      
-     
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">测试基础知识</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java单元测试框架</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -332,149 +209,19 @@
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/27/软件测试实例/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/05/31/排序算法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          排序算法（一）
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/04/26/测试基础理论/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">测试基础理论（一）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    目录，不存在的…
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-
-  <!-- 来必力City版安装代码 -->
-
-  <!-- 这一句是适配样式 -->
-  <section class="duoshuo" id="comments">
-    <!-- 以下是 来必力City版安装代码 -->
-    <div id="lv-container" data-id="city" data-uid="MTAyMC80MzA5MC8xOTYzNg==">
-      <script type="text/javascript">
-       (function(d, s) {
-           var j, e = d.getElementsByTagName(s)[0];
-           if (typeof LivereTower === 'function') { return; }
-           j = d.createElement(s);
-           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-           j.async = true;
-           e.parentNode.insertBefore(j, e);
-       })(document, 'script');
-      </script>
-    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-    </div>
-  </section>
+    
 
 
- 
           </div>
         </div>
       </div>
@@ -501,9 +248,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

@@ -6,26 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>测试基础理论（二） | xuexue&#39;s blog</title>
+  <title>JUnit介绍 | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="软件测试实例分析">
-<meta name="keywords" content="测试基础知识">
+  <meta name="description" content="JUnit用到的设计模式介绍。   keep the bar green to keep the code clean.">
+<meta name="keywords" content="Java单元测试框架">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试基础理论（二）">
-<meta property="og:url" content="http://yoursite.com/2019/04/27/软件测试实例/index.html">
+<meta property="og:title" content="JUnit介绍">
+<meta property="og:url" content="http://yoursite.com/2019/06/03/JUnit介绍/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
-<meta property="og:description" content="软件测试实例分析">
+<meta property="og:description" content="JUnit用到的设计模式介绍。   keep the bar green to keep the code clean.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/04/27/软件测试实例/t1.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/04/27/软件测试实例/ts2.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/04/27/软件测试实例/ts3.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/04/27/软件测试实例/ts4.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/04/27/软件测试实例/ts5.PNG">
-<meta property="og:updated_time" content="2019-04-27T11:53:08.473Z">
+<meta property="og:updated_time" content="2019-06-04T01:26:26.806Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测试基础理论（二）">
-<meta name="twitter:description" content="软件测试实例分析">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/27/软件测试实例/t1.PNG">
+<meta name="twitter:title" content="JUnit介绍">
+<meta name="twitter:description" content="JUnit用到的设计模式介绍。   keep the bar green to keep the code clean.">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -166,14 +160,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-软件测试实例" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JUnit介绍" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
       	 
   
     <h1 class="article-title" itemprop="name">
-      测试基础理论（二）
+      JUnit介绍
     </h1>
   
 
@@ -190,93 +184,110 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>软件测试实例分析<a id="more"></a></p>
-<p>1、给你一个字符串，你怎么判断是不是ip地址？</p>
-<p>​    IP的格式：(1~255).(0~255).(0~255).(0~255)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IpLegal</span> </span>&#123;</span><br><span class="line">	<span class="comment">//正则表达式</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isIpLegal</span><span class="params">(String ipStr)</span> </span>&#123;</span><br><span class="line">		String ipRegEx = <span class="string">"^([1-9]|([1-9][0-9])|(1[0-9][0-9])|(2[0-4][0-9])|(25[0-5]))"</span></span><br><span class="line">				+ <span class="string">"(\\.([0-9]|([1-9][0-9])|(1[0-9][0-9])|(2[0-4][0-9])|(25[0-5])))&#123;3&#125;$"</span>;</span><br><span class="line">		Pattern pattern = Pattern.compile(ipRegEx);</span><br><span class="line">		Matcher matcher = pattern.matcher(ipStr);</span><br><span class="line">		<span class="keyword">if</span> (matcher.matches()) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		String ipStr = scanner.next();</span><br><span class="line">		<span class="keyword">boolean</span> ipLegal = isIpLegal(ipStr);</span><br><span class="line">		<span class="keyword">if</span>(ipLegal) &#123;</span><br><span class="line">			System.out.println(ipStr + <span class="string">"合法"</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(ipStr + <span class="string">"非法"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2、进行测试用例设计：一串数字，闰年的判别？</p>
-<p>判断闰年的标准是:能整除4且不能整除100，能整除400。设定合法的年份为1-9999</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LeapYear</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> year = in.nextInt();</span><br><span class="line">		<span class="keyword">if</span>(year &lt;= <span class="number">0</span> &amp;&amp; year &gt; <span class="number">9999</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"请输入正确的年份"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>((year % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> != <span class="number">0</span>) || year % <span class="number">400</span> == <span class="number">0</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"闰年"</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			System.out.println(<span class="string">"不是闰年"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>测试用例：</p>
-<p><img src="/2019/04/27/软件测试实例/t1.PNG" alt></p>
-<p>3、请说一说<strong>简单用户界面登录过程</strong>都需要做哪些分析？</p>
-<p><img src="/2019/04/27/软件测试实例/ts2.PNG" alt></p>
-<p>4、对朋友圈点赞功能进行测试？</p>
+        <p>JUnit用到的设计模式介绍。  </p>
+<p>keep the bar green to keep the code clean.<a id="more"></a></p>
+<h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><p>1、JUnit最初由Erich Gamma 和Kent Beck所开发，是一个<strong>开源的java测试框架</strong>，它是Xuint测试体系架构的一种实现。在JUnit单元测试框架的设计时，设定了三个总体目标：</p>
 <ul>
-<li>是否可以正常点赞和取消；</li>
-<li>点赞的人是否在可见分组里；</li>
-<li>点赞状态是否能即时更新显示；</li>
-<li>点赞状态，共同好友是否可见；</li>
-<li>性能检测，网速快慢对其影响；</li>
-<li>点赞显示的是否正确，一行几个；</li>
-<li>点赞是否按时间进行排序，头像对应的是否正确；</li>
-<li>是否能在消息列表中显示点赞人的昵称；</li>
-<li>不同手机，系统显示界面如何；</li>
-<li>可扩展性测试，点赞后是否能发表评论；</li>
-<li>是否在未登录时可查看被点赞的信息。</li>
+<li><strong>简化测试的编写</strong>，这种简化包括测试框架的学习和实际测试单元的编写；</li>
+<li><strong>使测试单元保持持久性</strong>；</li>
+<li>可以<strong>利用既有的测试来编写相关的测试</strong>。</li>
 </ul>
-<p>5、如果做一个杯子的检测，如何测试？</p>
-<p><img src="/2019/04/27/软件测试实例/ts3.PNG" alt></p>
-<p>6、如何对一个页面进行测试？</p>
+<p>2、Junit的设计思想是通过<strong>从零开始来应用设计模式</strong>，然后一个接一个，直至获得最终合适的系统架构。</p>
+<p>3、junit：判断程序执行的结果是否和我们所期待的结果一致。</p>
+<p>​      测试之前是什么状态，测试之后就应该是什么状态，而不应该由于测试执行的原因导致状态发生了变化。</p>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>1、Template Method（模板方法）：需要<strong>复用的是算法的结构</strong>，也就是步骤，而<strong>步骤的实现可以在子类中完成</strong>。</p>
 <ul>
-<li><strong>UI测试</strong>：页面布局、页面样式检查、控件长度是否够长；显示时，是否会被截断；支持的快捷键，Tab键切换焦点顺序正确性等；</li>
-<li><strong>功能测试</strong>：页面上各类控件的测试范围，测试点。结合控件的实际作用来补充检查点： 比如， 密码框是否*显示， 输入是否做trim处理等；</li>
-<li><strong>安全测试</strong>：输入特殊字符，sql注入，脚本注入测试。后台验证测试，对于较重要的表单 ，绕过js检验后台是否验证；数据传输是否加密处理，比如， 直接请求转发，地址栏直接显示发送字符串；</li>
-<li><strong>兼容性测试</strong>；</li>
-<li><strong>性能测试</strong>。</li>
-</ul>
-<p>7、 如何对淘宝搜索框进行测试？</p>
-<p><img src="/2019/04/27/软件测试实例/ts4.PNG" alt></p>
-<p>8、如何对一瓶矿泉水进行测试？</p>
+<li><p>问题：在实际的测试中，为了测试业务逻辑，必须<strong>构造一些参数或者一些资源，然后才可进行测试，最后必须释放这些系统资源</strong>。如测试数据库应用时，必须创建数据库连接Connection，然后执行数据库的操作，最后实现释放数据库的连接。</p>
+</li>
+<li><p>模式的选择：接下来要解决的问题是给开发者一个便捷的“地方”，用于放置他们的<strong>初始化代码，测试代码，和释放资源的代码</strong>，类似对象的构造函数，业务方法，析构函数一样。并且必须保证每次运行测试代码之前，都运行初始化代码，最后运行释放资源代码，并且每一个测试的结果都不会影响到其它的测试结果。这样就达到了代码的复用，提供了开发人员的效率。</p>
+<p>Template Method（模板方法）比较好地涉及到我们的问题。摘引其意图，“<strong>定义一个操作中算法的骨架，并将一些步骤延迟到子类中</strong>。Template Method使得子类能够不改变一个算法的结构便可重新定义该算法的某些特定步骤。”这完全恰当。这样可以使测试者能够分别来考虑如何编写初始化和释放代码，以及如何编写测试代码。不管怎样，这种<strong>执行的次序对于所有测试都将保持相同</strong>，而不管初始化代码如何编写，或测试代码如何编写。</p>
+</li>
+<li><p>组成：</p>
+<ol>
+<li>父类角色：提供模板（抽象类）；</li>
+<li>子类角色：为模板提供实现。</li>
+</ol>
+</li>
+<li><p>在JUnit中的应用：Before()，Test()，After()。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JUnit在TestCase类中应用了模板方法模式。</span></span><br><span class="line"><span class="comment">//具体的模板方法，定义出逻辑骨架</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">runBare</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    Throwable exception = <span class="keyword">null</span>;</span><br><span class="line">    setUp();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        runTest();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable running) &#123;</span><br><span class="line">        exception = running;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            tearDown();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable tearingDown) &#123;</span><br><span class="line">            <span class="keyword">if</span> (exception == <span class="keyword">null</span>) exception = tearingDown;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (exception != <span class="keyword">null</span>) <span class="keyword">throw</span> exception;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果：</p>
 <ul>
-<li>界面测试:查看外观是否美观；</li>
-<li>功能：查看水瓶漏不漏；瓶中水能不能被喝到；</li>
-<li>安全性：瓶子的材质有没有毒或细菌；</li>
-<li>可靠性：从不同高度落下的损坏程度；</li>
-<li>可移植性：再不同的地方、温度等环境下是否都可以正常使用；</li>
-<li>兼容性：是否能够容纳果汁、白水、酒精、汽油等；</li>
-<li>易用性：是否烫手、是否有防滑措施、是否方便饮用；</li>
-<li>用户文档：使用手册是否对的用法、限制、使用条件等有详细描述；</li>
-<li>疲劳测试：将盛上水（案例一）放24小时检查泄漏时间和情况；盛上汽油（案例二）放24小时检查泄漏时间和情况等；</li>
-<li>压力测试：用根针并在针上面不断加重量，看压强多大时会穿透；</li>
-<li>跌落测试:测试在何种高度跌落会破坏水瓶。</li>
+<li>在各个测试用例中的公共的行为（初始化信息和释放资源等）被提取出来，可以避免代码的重复，简化了开发人员的工作；</li>
+<li>在TestCase中<strong>实现一个算法的不变部分，并且将可变的行为留给子类来实现</strong>。增强了系统的灵活性。使JUnit框架仅负责算法的轮廓和骨架，而测试的开发人员则负责给出这个算法的各个逻辑步骤。</li>
 </ul>
-<p>9、请说一下购物车的测试用例？</p>
-<p><img src="/2019/04/27/软件测试实例/ts5.PNG" alt></p>
-<p>10、请问web测试如何写的？</p>
+</li>
+</ul>
+<p>2、Command（命令）模式。</p>
 <ul>
-<li><strong>功能测试</strong>，主要做<strong>链接测试，表单测试，cookies测试，设计语言测试</strong>等；</li>
-<li><strong>性能测试</strong>，考虑<strong>连接速度测试，以及负载测试</strong>，例如：Web应用系统能允许多少个用户同时在线？如果超过了这个数量，会出现什么现象？Web应用系统能否处理大量用户对同一个页面的请求？还有压力测试；</li>
-<li><strong>可用性测试</strong>，比如<strong>导航测试，图形测试，内容测试，整体界面测试</strong>等；</li>
-<li><strong>兼容性测试</strong>，市场上有很多不同的操作系统类型，最常见的有<strong>Windows、Unix、Macintosh、Linux等</strong>。Web应用系统的最终用户究竟使用哪一种操作系统，取决于用户系统的配置。这样，就可能会发生兼容性问题，同一个应用可能在某些操作系统下能正常运行，但在另外的操作系统下可能会运行失败。因此，在Web系统发布之前，需要在各种操作系统下对Web系统进行兼容性测试；</li>
-<li><strong>安全性测试</strong>；</li>
-</ul>
-<p>11、如何测试手机开机键？</p>
+<li><p>问题：JUnit是一个测试framework，<strong>测试人员只需开发测试用例</strong>。然后把这些测试用例组成请求(有时可能是一个或者多个)，发送到JUnitFrameWork，然后由JUnit执行测试，最后报告详细测试结果。其中包括执行的时间，错误方法，错误位置等。这样测试用例的开发人员就不需知道JUnit内部的细节，只要符合它定义的请求格式即可。从JUnit的角度考虑，它并<strong>不需要知道请求TestCase的操作信息，仅把它当作一种命令来执行</strong>，<strong>然后把执行测试结果发给测试人员</strong>。这样就使JUnit 框架和TestCase的开发人员独立开来，使得请求的一方不必知道接收请求一方的详细信息，更不必知道是怎样被接收，以及怎样被执行的，实现系统的松耦合。</p>
+</li>
+<li><p>模式的选择：Command（命令）模式能够比较好地满足需求。摘引其意图，<strong>将一个请求封装成一个对象，从而使你可用不同的请求对客户进行参数化</strong>；对请求进行排队或记录请求日志…Command告诉我们可以为一个操作生成一个对象并给出它的一个execute（执行）方法。</p>
+</li>
+<li><p>在JUnit中的应用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//为了实现Command模式，首先定义了一个接口Test,其中Run便是Command的Execute方法。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Counts the number of test cases that will be run by this test.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">countTestCases</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Runs a test and collects its result in a TestResult instance.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(TestResult result)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//TestCase是该接口的抽象实现，它增加了一个测试名称，因为每一个TestCase在创建时都要有一个名称，因此若一个测试失败了，你便可识别出是哪个测试失败。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCase</span> <span class="keyword">extends</span> <span class="title">Assert</span> <span class="keyword">implements</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * the name of the test case</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String fName;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Runs the test case and collects the results in TestResult.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(TestResult result)</span> </span>&#123;</span><br><span class="line">        result.run(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果：</p>
 <ul>
-<li><strong>功能测试</strong>：按下开机键，屏幕能否亮起；</li>
-<li><strong>性能测试</strong>：按下开机键，屏幕能否在规定时间内亮起；</li>
-<li><strong>压力测试</strong>：连续多次按下开机键，观察屏幕是否能一直亮起，到多久时间失灵；</li>
-<li><strong>健壮性测试</strong>：给定一个中了病毒的手机或者是淘汰许久的老机子，安歇开机键观察屏幕能否亮起；</li>
-<li><strong>可靠性测试</strong>：连续按下开机键有限次数，比如1万次，记录屏幕未亮起的次数；</li>
-<li><strong>可用性测试</strong>：开机键按下费不费力，开机键的形状设计是否贴合手指，开机键的位置设计是否方便。</li>
+<li>Command模式将实现请求的一方（TestCase开发）和调用一方（JUnit Fromwork）<strong>进行解藕</strong>；</li>
+<li>Command模式<strong>使新的TestCase很容易的加入</strong>，无需改变已有的类，只需继承TestCase类即可，这样方便了测试人员；</li>
+<li>Command模式可以<strong>将多个TestCase进行组合成一个复合命令</strong>，实际你将看到TestSuit就是它的复合命令，当然它使用了Composite模式；</li>
+<li>Command模式容易把请求的TestCase组合成请求队列，这样使接收请求的一方（Junit Fromwork）,容易的决定是否执行请求，或者一旦发现测试用例失败或者错误可以立刻停止进行报告。</li>
 </ul>
-<p>12、接口测试出现bug的原因有哪些？</p>
+</li>
+</ul>
+<p>3、Composite（组合）。</p>
 <ul>
-<li><strong>特殊值处理不当</strong>导致程序异常退出或者崩溃；</li>
-<li>类型<strong>边界溢出</strong>，导致数据独处和写入不一致；</li>
-<li>取值<strong>边界外未返回正确的错误信息</strong>；</li>
-<li><strong>权限未处理</strong>，可以访问其他用户的信息；</li>
-<li><strong>逻辑校验不完善</strong>，可以利用漏洞获取非正当利益；</li>
-<li><strong>状态处理不当</strong>，导致逻辑出现错误；</li>
-<li>数组类型item个数为0或者item重复时程序异常退出。</li>
-</ul>
-<p>13、请你设计一个微信朋友圈点赞的测试用例？</p>
+<li><p>问题：通过我们使用Command模式，JUnit能够方便的运行一个单独的测试案例之后产生测试结果。可是在实际的测试过程中，需要<strong>把多个测试用例进行组合成为一个复合的测试用例</strong>，当作一个请求发送给JUnit。这样JUnit就为面临一个问题，必须考虑测试请求的类型，是一个单一的TestCase还是一个复合的TestCase，甚至于要区分到底有多少个TestCase。怎样设计JUnit才可以实现不需要区分单个TestCase还是复合TestCase，把它们统一成相同的请求？</p>
+</li>
+<li><p>模式的选择：当测试调用者<strong>不必关心其运行的是一个或多个测试案例的请求时</strong>，能够轻松地解决这个问题模式就是Composite（组合）模式。摘引其意图，将对象组合成树形结构以表示<strong>部分-整体的层次结构</strong>。Composite使得用户<strong>对单个对象和组合对象的使用具有一致性</strong>。在这里部分-整体的层次结构是解决问题的关键，可以把单个的TestCase看作部分，而把复合的TestCase(TestSuit)看作整体。这样我们使用该模式便可以恰到好处得解决这个难题。</p>
+</li>
+<li><p>组成：</p>
+<ol>
+<li>Component：这是一个抽象角色，它给参加组合的对象规定一个接口。这个角色，给出共有的接口和默认的行为。其实就我们的Test接口，它定义出run方法；</li>
+<li>Composite：实现共有接口并维护一个测试的集合。就是我们的复合TestCase，TestSuit；</li>
+<li>Leaf：代表参加组合的对象，它没有下级子对象，仅定义出参加组合的原始对象的行为，其实就是单一的测试用例TestCase，它仅实现Test接口的方法。</li>
+</ol>
+</li>
+<li><p>在JUnit中的应用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//composite模式中的Component角色</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">countTestCases</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(TestResult result)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//composite模式中的Leaf角色</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCase</span> <span class="keyword">extends</span> <span class="title">Assert</span> <span class="keyword">implements</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Runs the test case and collects the results in TestResult.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(TestResult result)</span> </span>&#123;</span><br><span class="line">        result.run(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*下面，列出Composite源码。将其取名为TestSuit类。TestSuit有一个属性fTests (Vector类型)中保存了</span></span><br><span class="line"><span class="comment">*其子测试用例（child test），提供addTest方法来实现增加子对象TestCase ,并且还提供testCount 和*tests等方法来操作子对象。最后通过run()方法实现对其子对象进行委托（delegate），最后还提供*addTestSuite方法实现递归，构造成树形。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSuite</span> <span class="keyword">implements</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Vector&lt;Test&gt; fTests = <span class="keyword">new</span> Vector&lt;Test&gt;(<span class="number">10</span>);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addTest</span><span class="params">(Test test)</span> </span>&#123;</span><br><span class="line">        fTests.add(test);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">testCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fTests.size();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Enumeration&lt;Test&gt; <span class="title">tests</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fTests.elements();</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Runs the tests and collects their result in a TestResult.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(TestResult result)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Test each : fTests) &#123;</span><br><span class="line">            <span class="keyword">if</span> (result.shouldStop()) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            runTest(each, result);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Adds the tests from the given class to the suite</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addTestSuite</span><span class="params">(Class&lt;? extends TestCase&gt; testClass)</span> </span>&#123;</span><br><span class="line">        addTest(<span class="keyword">new</span> TestSuite(testClass));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*所有上面的代码是对Test接口进行实现的。由于TestCase和TestSuit两者都符合Test接口，我们可以通过*addTestSuite递归地将TestSuite再组合成TestSuite，这样将构成树形结构。所有开发者都能够创建他们自</span></span><br><span class="line"><span class="comment">*己的TestSuit。测试人员可创建一个组合了这些套件的TestSuit来运行它们所有的TestCase。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果：</p>
 <ul>
-<li>功能测试：点赞某条朋友圈，验证是否成功；</li>
-<li>接口测试：点赞朋友圈，验证朋友能否收到提示信息；</li>
-<li>性能测试：点赞朋友圈，是否在规定时间显示结果，是否在规定时间在朋友手机上进行提示；</li>
-<li>兼容性测试：在不同的终端比如ipad,手机上点赞朋友圈，验证是否成功。</li>
+<li>简化了JUnit的代码JUnit可以统一处理组合结构TestSuite和单个对象TestCase。使JUnit开发变得简单容易，因为不需要区分部分和整体的区别，不需要写一些充斥着if else的选择语句；</li>
+<li>定义了TestCase对象和TestSuite的类层次结构 基本对象TestCase可以被组合成更复杂的组合对象TestSuite，而这些组合对象又可以被组合，这样不断地递归下去。客户代码中，任何使用基本对象的地方都方便的使用组合对象，大大简化系统维护和开发；</li>
+<li>使得更容易增加新的类型的TestCase。</li>
 </ul>
+</li>
+</ul>
+<p>4、dapter（适配器）：将<strong>一个类的接口转换成客户希望的另外一个接口</strong>。Adapter模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。</p>
+<ul>
+<li><p>问题：如果实现一个测试用例，就必须实现继承Testcase，然后实现run方法，实际是（testRun），然而这样我们就把<strong>所有的测试用例都实现相同类的不同方法，这样的结果就会造成产生大量的子类</strong>，使系统的测试维护相当困难，并且setUp和tearDown仅为这个testRun服务，其他的测试也必须完成相应的代码，从而增加了开发人员的工作量，怎样解决这个问题？</p>
+<p>为了避免类的急剧扩散，试想一个给定的测试用例类（testcase class）可以实现许多不同的方法，每一个方法都有一个描述性的名称，如testMoneyEquals或testMoneyAdd。这样<strong>测试案例并不符合简单的command接口</strong>。因此又带来另外一个问题就是，使所有测试方法从测试调用者的角度（JUnit框架）上看都是相同的。怎样解决这个问题？</p>
+</li>
+<li><p>模式的选择：Adapter具有以下意图“<strong>将一个类的接口转换成客户希望的另外一个接口</strong>”。这听起来非常适合。把具有一定规则的描述性方法如testMoneyEquals，转化为JUnit框架所期望的Command（TestCase的run）从而方便框架执行测试。Adapter模式又分为类适配器和对象适配器。类适配器是静态的实现在这里不适合使用，于是使用了对象适配器。</p>
+</li>
+<li><p>组成：</p>
+<ol>
+<li>目标抽象角色（Target）：定义客户要用的特定领域的接口；</li>
+<li>适配器（Adapter）-中介：调用另一个接口，作为一个转换器；</li>
+<li>适配器（Adaptee）：定义一个接口，Adapter需要接入；</li>
+<li>客户端（Client）：协同对象符合Adapter适配器。</li>
+</ol>
+</li>
+<li><p>在JUnit中的应用：testXXX()。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//junit在TestCase类中应用了适配器模式</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">runTest</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    assertNotNull(<span class="string">"TestCase.fName cannot be null"</span>, fName); <span class="comment">// Some VMs crash when calling getMethod(null,null);</span></span><br><span class="line">    Method runMethod = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// use getMethod to get all public inherited</span></span><br><span class="line">        <span class="comment">// methods. getDeclaredMethods returns all</span></span><br><span class="line">        <span class="comment">// methods of this class but excludes the</span></span><br><span class="line">        <span class="comment">// inherited ones.</span></span><br><span class="line">        runMethod = getClass().getMethod(fName, (Class[]) <span class="keyword">null</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NoSuchMethodException e) &#123;</span><br><span class="line">        fail(<span class="string">"Method \""</span> + fName + <span class="string">"\" not found"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!Modifier.isPublic(runMethod.getModifiers())) &#123;</span><br><span class="line">        fail(<span class="string">"Method \""</span> + fName + <span class="string">"\" should be public"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        runMethod.invoke(<span class="keyword">this</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">        e.fillInStackTrace();</span><br><span class="line">        <span class="keyword">throw</span> e.getTargetException();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">        e.fillInStackTrace();</span><br><span class="line">        <span class="keyword">throw</span> e;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在runBare方法中，通过<strong>runTest方法将我们自己编写的testXXX方法进行了适配</strong>，使得junit可以执行我们自己编写的Test Case。</p>
+<p>在runTest方法中，首先<strong>获得我们自己编写的testXXX方法所对应的Method对象</strong>（不带参数），然后检查该Method所对应的方法<strong>是否是Public</strong>的，如果是则<strong>调用Method对象的invoke方法来去执行我们自己编写的testXXX方法</strong>。</p>
+</li>
+<li><p>效果：</p>
+<ul>
+<li>使用Adapter模式简化测试用例的开发，通过按照方法命名的规范来开发测试，不需要进行大量的类继承，提高代码的复用，减轻测试人员的工作量；</li>
+<li>使用Adapter可以重新定义Adaptee的部分行为，如增强异常处理等。</li>
+</ul>
+</li>
+</ul>
+<p>参考博客：<a href="http://www.voidcn.com/article/p-uxchkbof-ez.html" target="_blank" rel="noopener">http://www.voidcn.com/article/p-uxchkbof-ez.html</a></p>
 
       
      
@@ -313,7 +324,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">测试基础知识</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java单元测试框架</a>
         		</li>
       		
 		</ul>
@@ -380,7 +391,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/27/软件测试实例/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/03/JUnit介绍/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -394,18 +405,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/05/31/排序算法/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/03/Java反射/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          排序算法（一）
+          Java反射
         
       </div>
     </a>
   
   
-    <a href="/2019/04/26/测试基础理论/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">测试基础理论（一）</div>
+    <a href="/2019/06/02/SortAlgorithm/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">排序算法（二）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -432,7 +443,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About"><span class="toc-number">1.</span> <span class="toc-text">About</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式"><span class="toc-number">2.</span> <span class="toc-text">设计模式</span></a></li></ol>
                     </div>
                 </span>
             </div>
