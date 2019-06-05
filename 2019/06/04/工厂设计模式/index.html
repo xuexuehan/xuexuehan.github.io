@@ -6,24 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>测试基础理论（一） | xuexue&#39;s blog</title>
+  <title>设计模式-工厂模式 | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="软件测试基础知识">
-<meta name="keywords" content="测试基础知识">
+  <meta name="description" content="简单工厂模式、工厂模式、抽象工厂模式介绍。">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试基础理论（一）">
-<meta property="og:url" content="http://yoursite.com/2019/04/26/测试基础理论/index.html">
+<meta property="og:title" content="设计模式-工厂模式">
+<meta property="og:url" content="http://yoursite.com/2019/06/04/工厂设计模式/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
-<meta property="og:description" content="软件测试基础知识">
+<meta property="og:description" content="简单工厂模式、工厂模式、抽象工厂模式介绍。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/04/26/测试基础理论/ts1.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/04/26/测试基础理论/test06.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/04/26/测试基础理论/test07.png">
-<meta property="og:updated_time" content="2019-04-27T11:58:43.962Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/工厂设计模式/简单工厂模式.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/工厂设计模式/工厂方法模式.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/工厂设计模式/abstract-factory-1.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/工厂设计模式/abstract-factory-2.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/04/工厂设计模式/抽象工厂模式.jpg">
+<meta property="og:updated_time" content="2019-06-05T02:01:58.392Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测试基础理论（一）">
-<meta name="twitter:description" content="软件测试基础知识">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/26/测试基础理论/ts1.PNG">
+<meta name="twitter:title" content="设计模式-工厂模式">
+<meta name="twitter:description" content="简单工厂模式、工厂模式、抽象工厂模式介绍。">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/04/工厂设计模式/简单工厂模式.jpg">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -164,14 +166,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-测试基础理论" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-工厂设计模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
       	 
   
     <h1 class="article-title" itemprop="name">
-      测试基础理论（一）
+      设计模式-工厂模式
     </h1>
   
 
@@ -188,200 +190,92 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>软件测试基础知识<a id="more"></a></p>
-<p>1、单元测试、集成测试、系统测试、回归测试、验收测试介绍：</p>
-<p><img src="/2019/04/26/测试基础理论/ts1.PNG" alt></p>
+        <p>简单工厂模式、工厂模式、抽象工厂模式介绍。<a id="more"></a></p>
+<h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><p>在面向对象编程中, 最通常的方法是一个new操作符产生一个对象实例，new操作符就是用来构造对象实例的。但是在一些情况下，new操作符直接生成对象会带来一些问题。举例来说, 许多类型对象的创造需要一系列的步骤: 你可能需要计算或取得对象的初始设置；选择生成哪个子对象实例；或在生成你需要的对象之前必须先生成一些辅助功能的对象。 在这些情况，新对象的建立就是一个 “过程”，不仅是一个操作，像一部大机器中的一个齿轮传动。</p>
+<p>模式的问题：你如何能<strong>轻松方便地构造对象实例，而不必关心构造对象实例的细节和复杂过程</strong>呢？</p>
+<p>解决方案：<strong>建立一个工厂来创建对象</strong>。</p>
+<h2 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h2><p>1、模式定义：简单工厂模式(Simple Factory Pattern)：又称为静态工厂方法(Static Factory Method)模式，它属于类创建型模式（同属于创建型模式的还有工厂方法模式，抽象工厂模式，单例模式，建造者模式）。在简单工厂模式中，可以<strong>根据参数的不同返回不同类的实例</strong>。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类。</p>
+<p>2、模式结构：</p>
+<p><img src="/2019/06/04/工厂设计模式/简单工厂模式.jpg" alt></p>
+<p>3、简单工厂模式由三部分组成：具体工厂、具体产品和抽象产品。</p>
 <ul>
-<li><p>单元测试：完成<strong>最小的软件设计单元（模块）的验证工作</strong>，目标是确保模块被正确的编码，使用过程设计描述作为指南，<strong>对重要的控制路径进行测试以发现模块内的错误</strong>，通常情况下是<strong>白盒</strong>的，对代码风格和规则、程序设计和结构、业务逻辑等进行静态测试，及早的发现和解决不易显现的错误。</p>
-</li>
-<li><p>集成测试：通过测试<strong>发现与模块接口有关的问题</strong>。目标是把通过了单元测试的模块拿来，构造一个在设计中所描述的程序结构，应当避免一次性的集成（除非软件规模很小），而采用增量集成。</p>
-<p><strong>自顶向下</strong>集成：模块集成的顺序是首先集成主模块，然后按照控制层次结构向下进行集成，隶属于主模块的模块按照<strong>深度优先或广度优先</strong>的方式集成到整个结构中去。</p>
-<p><strong>自底向上</strong>集成：从原子模块开始来进行构造和测试，因为模块是自底向上集成的，进行时要求所有隶属于某个给顶层次的模块总是存在的，也不再有使用稳定测试桩的必要。</p>
-</li>
-<li><p>系统测试：是<strong>基于系统整体需求说明书的黑盒类测试</strong>，应覆盖系统所有联合的部件。系统测试是<strong>针对整个产品系统进行的测试，目的是验证系统是否满足了需求规格的定义</strong>，找出与需求规格不相符合或与之矛盾的地方。系统测试的对象<strong>不仅仅包括需要测试的产品系统的软件，还要包含软件所依赖的硬件、外设甚至包括某些数据、某些支持软件及其接口等</strong>。因此，必须将系统中的软件与各种依赖的资源结合起来，在系统实际运行环境下来进行测试。</p>
-</li>
-<li><p>回归测试：回归测试是指<strong>在发生修改之后重新测试先前的测试用例以保证修改的正确性</strong>。理论上，软件产生新版本，都需要进行回归测试，验证以前发现和修复的错误是否在新软件版本上再次出现。根据修复好了的缺陷再重新进行测试。回归测试的目的在于<strong>验证以前出现过但已经修复好的缺陷不再重新出现</strong>。一般指对某已知修正的缺陷再次围绕它原来出现时的步骤重新测试。</p>
-</li>
-<li><p>验收测试：验收测试是指<strong>系统开发生命周期方法论的一个阶段</strong>，这时相关的用户或独立测试人员根据测试计划和结果对系统进行测试和接收。它让系统用户决定是否接收系统。它是一项确定产品是否能够满足合同或用户所规定需求的测试。验收测试包括<strong>Alpha测试和Beta测试</strong>。</p>
-<p>Alpha测试：是由用户在开发者的场所来进行的，在一个受控的环境中进行。</p>
-<p>Beta测试：由软件的最终用户在一个或多个用户场所来进行的，开发者通常不在现场，<strong>用户记录测试中遇到的问题并报告给开发者</strong>，开发者对系统进行最后的修改，并开始准备发布最终的软件。</p>
-</li>
+<li>工厂类（Creator）角色：担任这个角色的是简单工厂模式的核心，含有<strong>与应用紧密相关的商业逻辑</strong>。工厂类<strong>在客户端的直接调用下创建产品对象</strong>，它往往由一个具体Java类实现。</li>
+<li>抽象产品（AbstractProduct）角色：担任这个角色的类是<strong>由简单工厂模式所创建的对象的父类</strong>，或它们共同拥有的接口。抽象产品角色可以用一个<strong>Java接口或者Java抽象类</strong>实现。</li>
+<li>具体产品（ConcreteProduct）角色：简单工厂模式所<strong>创建的任何对象都是这个角色的实例</strong>，具体产品角色由一个具体Java类实现。</li>
 </ul>
-<p>2、单元测试、集成测试、系统测试、验收测试、回归测试这几步中最重要的是哪一步？</p>
-<p>​    这些测试步骤<strong>分别在软件开发的不同阶段对软件进行测试</strong>，对<strong>软件完整功能进行测试的系统测试很重要</strong>，因为此时单元测试和集成测试已完成，能够<strong>对软件所有功能进行功能测试，能够覆盖系统所有联合的部件</strong>，是<strong>针对整个产品系统进行的测试</strong>，能够<strong>验证系统是否满足了需求规格的定义</strong>，因此系统测试很重要。</p>
-<p>3、集成测试和系统测试的区别，以及它们的应用场景主要是什么？</p>
-<p>区别：</p>
+<p>4、代码实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、创建了一个Car接口，作为所有汽车的父类，具体的实现由子类来实现。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2、BMW实现类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BMW</span> <span class="keyword">implements</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"宝马启动了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"宝马熄火了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//3、Benz实现类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Benz</span> <span class="keyword">implements</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"奔驰启动了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"奔驰熄火了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//4、创建一个工厂类，这个工厂类专门负责建造各种汽车</span></span><br><span class="line"><span class="comment">//里面有一个静态方法，根据我们不同的参数，返回不同的派生自同一个父类（或实现同一接口）的实例对象。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CarFactory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Car <span class="title">createCar</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">        Car car = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="string">"BMW"</span>.equals(type)) &#123;</span><br><span class="line">            car = <span class="keyword">new</span> BMW();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"Benz"</span>.equals(type)) &#123;</span><br><span class="line">            car = <span class="keyword">new</span> Benz();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> car;</span><br><span class="line">      &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="comment">//5、客户端</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Car car = CarFactory.createCar(<span class="string">"BMW"</span>);</span><br><span class="line">        <span class="keyword">if</span>(car != <span class="keyword">null</span>) &#123;</span><br><span class="line">            car.run();</span><br><span class="line">            car.stop();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"造不了车了！"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5、优点与缺点：</p>
+<p>优点：</p>
 <ul>
-<li>计划和用例编制的先后顺序：从V模型来讲，在需求阶段就要制定系统测试计划和用例，HLD的时候做集成测试计划和用例，有些公司的具体实践不一样，但是<strong>顺序肯定是先做系统测试计划用例，再做集成</strong>。</li>
-<li>用例的粒度：<strong>系统测试用例相对很接近用户接受测试用例</strong>，<strong>集成测试用例比系统测试用例更详细</strong>，而且对于接口部分要重点写，毕竟要集成各个模块或者子系统。</li>
-<li>执行测试的顺序：<strong>先执行集成测试，待集成测试出的问题修复之后，再做系统测试</strong>。</li>
+<li>工厂类含有必要的判断逻辑，可以决定在什么时候创建哪一个产品类的实例，客户端可以免除直接创建产品对象的责任，而仅仅“消费”产品；简单工厂模式通过这种做法<strong>实现了对责任的分割</strong>，它提供了专门的工厂类用于创建对象。</li>
+<li><strong>客户端</strong>无须知道所创建的具体产品类的类名，<strong>只需要知道具体产品类所对应的参数</strong>即可，对于一些复杂的类名，通过简单工厂模式可以减少使用者的记忆量。</li>
+<li>通过引入配置文件，可以在<strong>不修改任何客户端代码</strong>的情况下更换和增加新的具体产品类，在一定程度上<strong>提高了系统的灵活性</strong>。</li>
+<li>当需要引入新的产品是不需要修改客户端的代码，只需要添加相应的产品类并修改工厂类就可以了，所以说<strong>从产品的角度上</strong>简单工厂模式是<strong>符合“开-闭”原则</strong>的。</li>
 </ul>
-<p>应用场景：</p>
+<p>缺点：</p>
 <ul>
-<li>集成测试：完成单元测试后，各模块联调测试；集中在各模块的接口是否一致、各模块间的数据流和控制流是否按照设计实现其功能、以及结果的正确性验证等等；可以是整个产品的集成测试，也可以是大模块的集成测试；<strong>集成测试主要是针对程序内部结构进行测试，特别是对程序之间的接口进行测试</strong>。集成测试对测试人员的编写脚本能力要求比较高。测试方法一般选用<strong>黑盒测试和白盒测试相结合</strong>。</li>
-<li>系统测试：<strong>针对整个产品的全面测试，既包含各模块的验证性测试（验证前两个阶段测试的正确性）和功能性（产品提交个用户的功能）测试，又包括对整个产品的健壮性、安全性、可维护性及各种性能参数的测试。</strong>系统测试测试软件《需求规格说明书》中提到的功能是否有遗漏，是否正确的实现。做系统测试要<strong>严格按照《需求规格说明书》</strong>，以它为标准。测试方法一般都使用<strong>黑盒测试法</strong>。</li>
+<li>由于<strong>工厂类集中了所有产品创建逻辑</strong>，工厂类一般被我们称作“全能类”或者“上帝类”，因为所有的产品创建他都能完成，这看似是好事，但仔细想想是有问题的。比如全国上下所有的事情都有国家主义一个人干会不会有问题，当然有！<strong>一旦不能正常工作，整个系统都要受到影响</strong>。</li>
+<li>使用简单工厂模式将会增加系统中类的个数，在一定程序上增加了系统的复杂度和理解难度。</li>
+<li>系统<strong>扩展困难</strong>，一旦添加新产品就不得不修改工厂逻辑，在产品类型较多时，有可能造成工厂逻辑过于复杂，不利于系统的扩展和维护。所以说<strong>从工厂的角度</strong>来说简单工厂模式是<strong>不符合“开-闭”原则</strong>的。</li>
+<li>简单工厂模式由于使用了静态工厂方法，造成<strong>工厂角色无法形成基于继承的等级结构</strong>。</li>
 </ul>
-<p>4、黑盒测试与白盒测试：</p>
+<h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h2><p>1、模式定义：工厂方法模式(Factory Method Pattern)又称为工厂模式，也叫虚拟构造器(Virtual Constructor)模式或者多态工厂(Polymorphic Factory)模式，它属于类创建型模式。在工厂方法模式中，<strong>工厂父类负责定义创建产品对象的公共接口，而工厂子类则负责生成具体的产品对象</strong>，这样做的目的是<strong>将产品类的实例化操作延迟到工厂子类中完成</strong>，即通过工厂子类来确定究竟应该实例化哪一个具体产品类。</p>
+<p>2、模式结构：</p>
+<p><img src="/2019/06/04/工厂设计模式/工厂方法模式.jpg" alt></p>
+<p>3、工厂方法模式一共分为四个部分：</p>
 <ul>
-<li><p>黑盒测试也称<strong>功能测试或数据驱动测试</strong>，是在已知产品所应具有的功能，通过测试来检测每个功能是否都能正常使用，在测试时，把程序看作一个不能打开的黑盆子，在完全<strong>不考虑程序内部结构和内部特性</strong>的情况下，测试者在程序接口进行测试，它<strong>只检查程序功能是否按照需求规格说明书的规定正常使用，程序是否能适当地接收输入数锯而产生正确的输出信息，并且保持外部信息（如数据库或文件）的完整性</strong>。</p>
-<p>“黑盒”法<strong>着眼于程序外部结构、不考虑内部逻辑结构、针对软件界面和软件功能进行测试</strong>；</p>
-<p>“黑盒”法是<strong>穷举输入测试</strong>，只有把所有可能的输入都作为测试情况使用，才能以这种方法查出程序中所有的错误；</p>
-<p>实际上测试情况有无穷多个，因此不仅要测试所有合法的输入，而且还要对那些不合法但是可能的输入进行测试。</p>
-</li>
-<li><p>白盒测试也称为<strong>结构测试或逻辑驱动测试</strong>，根据程序的控制结构设计测试用例，主要<strong>用于软件或程序验证</strong>。白盒测试法<strong>检查程序内部逻辑结构，对所有的逻辑路径进行测试，是一种穷举路径的测试方法</strong>，但即使每条路径都测试过了，但仍然有可能存在错误：穷举路径测试无法检查出程序本身是否违反了设计规范、穷举路径测试不可能检查出程序因为遗漏路径而出错、穷举路径测试不可能检查出程序因为遗漏路径而出错。</p>
-</li>
+<li>抽象工厂（AbstractCreator）角色：担任这个角色的是工厂方法模式的核心，它是<strong>与应用程序无关</strong>的。任何在模式中<strong>创建对象的工厂类必须继承或者实现这个接口</strong>，在实际的系统中，这个角色常常由Java抽象类来实现。</li>
+<li>具体工厂（ConcreteCreator）角色：担任这个角色的是<strong>实现了抽象工厂接口</strong>的具体Java类。具体工厂角色含有与应用密切相关的逻辑，并且受到应用程序的调用以创建产品对象。</li>
+<li>抽象产品（AbstractProduct）角色：工厂方法模式所创建的对象的超类型，也就是<strong>产品对象的共同父类或共同拥有的接口</strong>。在实际应用中这个角色常常由Java的抽象类来实现。</li>
+<li>具体产品（ConcreteProduct）角色：这个角色<strong>实现了抽象产品角色所声明的接口</strong>，工厂方法<strong>所创建的每一个对象都是某个具体产品角色的实例</strong>。</li>
 </ul>
-<p><img src="/2019/04/26/测试基础理论/test06.PNG" alt></p>
-<p>5、手动测试与自动化测试：</p>
-<p>手工测试  ：</p>
+<p>4、代码实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、创建了一个Car接口，作为所有汽车的父类，具体的实现由子类来实现。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2、BMW实现类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BMW</span> <span class="keyword">implements</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"宝马启动了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"宝马熄火了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//3、Benz实现类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Benz</span> <span class="keyword">implements</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"奔驰启动了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"奔驰熄火了！"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//4、定义一个CarFactory接口，定义方法createCar；用来告诉具体的工厂如何来创造汽车。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CarFactory</span> </span>&#123;</span><br><span class="line">    <span class="function">Car <span class="title">createCar</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//5、每一种车都配一个专门的生产工厂。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BMWFactory</span> <span class="keyword">implements</span> <span class="title">CarFactory</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Car <span class="title">createCar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BMW();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BenzFactory</span> <span class="keyword">implements</span> <span class="title">CarFactory</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Car <span class="title">createCar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Benz();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//6、客户端，创建对应的工厂类，让特定的工厂来生产特定的汽车。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 先选择一个具体的工厂</span></span><br><span class="line">        CarFactory carFactory = <span class="keyword">new</span> BMWFactory();</span><br><span class="line">        <span class="comment">// 由第一步的工厂产生具体的对象，不同的工厂造出不一样的对象</span></span><br><span class="line">        Car car = carFactory.createCar();</span><br><span class="line">        car.run();</span><br><span class="line">        car.stop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5、优点与缺点：</p>
+<p>优点：</p>
 <ul>
-<li>优点：测试人员具有经验和对错误的猜测能力、测试人员具有审美能力和心理体验、测试人员具有是非判断和逻辑推理能力。</li>
-<li>缺点：重复的手工回归测试，代价昂贵、容易出错；依赖于软件测试人员的能力。</li>
+<li>在工厂方法模式中，工厂方法用来创建客户所需要的产品，同时还向客户隐藏了哪种具体产品类将被实例化这一细节，<strong>用户只需要关心所需产品对应的工厂，无须关心创建细节</strong>，甚至无须知道具体产品类的类名。</li>
+<li><strong>基于工厂角色和产品角色的多态性设计是工厂方法模式的关键</strong>。它能够使工厂可以自主确定创建何种产品对象，而<strong>如何创建这个对象的细节则完全封装在具体工厂内部</strong>。工厂方法模式之所以又被称为多态工厂模式，是因为所有的具体工厂类都具有同一抽象父类。</li>
+<li>使用工厂方法模式的另一个优点是在系统中<strong>加入新产品时</strong>，无须修改抽象工厂和抽象产品提供的接口，无须修改客户端，也无须修改其他的具体工厂和具体产品，而<strong>只要添加一个具体工厂和具体产品就可以了</strong>。这样，系统的可扩展性也就变得非常好，完全<strong>符合“开闭原则”</strong>。</li>
 </ul>
-<p>自动化测试：</p>
+<p>缺点：</p>
 <ul>
-<li>优点：对程序的回归测试更方便、可以运行更多更繁琐的测试、可以执行一些手工测试困难或不可能进行的测试、更好地利用资源、测试具有一致性和可重复性。</li>
-<li>缺点：不能取代手工测试、手工测试比自动测试发现的缺陷更多、对测试质量的依赖性极大、测试自动化不能提高有效性、工具本身并无想像力。</li>
+<li>在<strong>添加新产品时，需要编写新的具体产品类，而且还要提供与之对应的具体工厂类</strong>，系统中类的个数将成对增加，在一定程度上增加了系统的复杂度，有更多的类需要编译和运行，会给系统带来一些额外的开销。</li>
+<li>由于考虑到系统的可扩展性，需要引入抽象层，在客户端代码中均使用抽象层进行定义，增加了系统的抽象性和理解难度，且在实现时可能需要用到DOM、反射等技术，增加了系统的实现难度。</li>
 </ul>
-<p>6、测试和开发需要怎么结合才能使软件的质量得到更好的保障？</p>
-<p><img src="/2019/04/26/测试基础理论/test07.png" alt></p>
-<p>​    测试和开发应该按照W模型的方式进行结合，测试和开发同步进行，能够尽早发现软件缺陷，降低软件开发的成本。W模型强调：<strong>测试伴随着整个软件开发周期，而且测试的对象不仅仅是程序，需求、设计等同样要测试，也就是说，测试与开发是同步进行的</strong>。W模型有利于尽早地全面的发现问题。例如，需求分析完成后，测试人员就应该参与到对需求的验证和确认活动中，以尽早地找出缺陷所在。同时，对需求的测试也有利于及时了解项目难度和测试风险，及早制定应对措施，这将显著减少总体测试时间，加快项目进度。</p>
-<p>7、测试的相关流程：需求测试-&gt;概要设计测试-&gt;详细设计测试-&gt;单元测试-&gt;集成测试-&gt;系统测试-&gt;验收测试。</p>
-<p>8、如何写测试用例？</p>
+<h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><p>1、模式定义：抽象工厂模式(Abstract Factory Pattern)：提供一个<strong>创建一系列相关或相互依赖对象的接口</strong>，而<strong>无须指定它们具体的类</strong>。抽象工厂模式又称为Kit模式，属于对象创建型模式。</p>
+<p>当<strong>涉及到产品族（代表了组成某个产品的一系列附件的集合）的时候，就需要引入抽象工厂模式</strong>了。</p>
+<p>2、产品族：</p>
+<p><img src="/2019/06/04/工厂设计模式/abstract-factory-1.png" alt></p>
+<p>当涉及到这种产品族的问题的时候，就需要抽象工厂模式来支持了。我们不再定义 CPU 工厂、主板工厂、硬盘工厂、显示屏工厂等等，我们直接定义电脑工厂，每个电脑工厂负责生产所有的设备，这样能保证肯定<strong>不存在兼容问题</strong>。</p>
+<p><img src="/2019/06/04/工厂设计模式/abstract-factory-2.png" alt></p>
+<p>模式结构：</p>
+<p><img src="/2019/06/04/工厂设计模式/抽象工厂模式.jpg" alt></p>
+<p>3、抽象工厂方法模式一共分为四个部分：</p>
 <ul>
-<li>测试人员尽早介入，彻底<strong>理解清楚需求</strong>，这个是写好测试用例的基础；</li>
-<li>清楚输入、输出的各种可能性，以及<strong>各种输入的之间的关联关系</strong>，理解清楚需求的执行逻辑，通过等价类、边界值、判定表等方法找出大部分用例；</li>
-<li>找到需求相关的一些特性，补充测试用例；</li>
-<li>根据自己的经验分析遗漏的测试场景；</li>
-<li>多总结类似功能点的测试点，才能够写出质量越来越高的测试用例。</li>
+<li>抽象工厂（AbstractFactory）角色：担任这个角色的是抽象工厂模式的核心，是<strong>与应用系统的商业逻辑无关</strong>的。通常使用Java接口或者抽象Java类实现。所有的具体工厂必须实现这个Java接口或继承这个抽象的Java类。</li>
+<li>具体工厂（Factory）角色：这个角色直接<strong>在客户端的调用下创建产品的实例</strong>，这个角色含有选择合适的产品对象的逻辑，而这个逻辑是与应用系统商业逻辑紧密相关的。</li>
+<li>抽象产品（AbstractProduct）角色：担任这个角色的类是<strong>抽象工厂模式所创建的对象的父类</strong>，或它们共同拥有的接口。通常使用Java接口或者抽象Java类实现这一角色。</li>
+<li>具体产品（Product）角色：抽象工厂模式所创建的<strong>任何产品对象都是一个具体的产品类的实例</strong>。这是客户端最终需要的东西，其内部一定充满了应用系统的商业逻辑。通常使用具体Java类实现这个角色。</li>
 </ul>
-<p>9、测试项目具体工作是什么？</p>
+<p>与工厂方法模式不同的是，<strong>抽象工厂模式中的具体工厂不再是只能创建一种产品，一个具体的工厂可以创建一个产品族的产品</strong>。</p>
+<p>4、代码实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、创建CPU和MainBoard接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CPU</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MainBoard</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AmdCPU</span> <span class="keyword">implements</span> <span class="title">CPU</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"AMD CPU!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AmdMainBoard</span> <span class="keyword">implements</span> <span class="title">MainBoard</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"AMD MainBoard!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InterCPU</span> <span class="keyword">implements</span> <span class="title">CPU</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Intel CPU!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntelMainBoard</span> <span class="keyword">implements</span> <span class="title">MainBoard</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Intel MainBoard!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//3、创建电脑工厂接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ComputerFactory</span> </span>&#123;</span><br><span class="line">    <span class="function">CPU <span class="title">makeCPU</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function">MainBoard <span class="title">makeMainBoard</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//4</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AmdFactory</span> <span class="keyword">implements</span> <span class="title">ComputerFactory</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CPU <span class="title">makeCPU</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AmdCPU();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MainBoard <span class="title">makeMainBoard</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AmdMainBoard();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IntelFactory</span> <span class="keyword">implements</span> <span class="title">ComputerFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CPU <span class="title">makeCPU</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> InterCPU();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> MainBoard <span class="title">makeMainBoard</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> IntelMainBoard();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//5、客户端</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 对于客户端来说，不再需要单独挑选 CPU厂商、主板厂商、硬盘厂商等，</span></span><br><span class="line"><span class="comment"> * 直接选择一家品牌工厂，品牌工厂会负责生产所有的东西，而且能保证肯定是兼容可用的。</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 第一步就要选定一个“大厂”</span></span><br><span class="line">        ComputerFactory cf = <span class="keyword">new</span> AmdFactory();</span><br><span class="line">        <span class="comment">// 从这个大厂造 CPU</span></span><br><span class="line">        CPU cpu = cf.makeCPU();</span><br><span class="line">        <span class="comment">// 从这个大厂造主板</span></span><br><span class="line">        MainBoard mainBoard = cf.makeMainBoard();</span><br><span class="line">        cpu.show();</span><br><span class="line">        mainBoard.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5、优点与缺点：</p>
+<p>优点：</p>
 <ul>
-<li>搭建测试环境</li>
-<li>撰写测试用例</li>
-<li>执行测试用例</li>
-<li>写测试计划，测试报告</li>
-<li>测试，并提交BUG表单</li>
-<li>跟踪bug修改情况</li>
-<li>执行自动化测试，编写脚本，执行，分析，报告</li>
-<li>进行性能测试，压力测试等其他测试，执行，分析，调优，报告</li>
+<li>抽象工厂模式<strong>隔离了具体类的生成，使得客户并不需要知道什么被创建</strong>。由于这种隔离，更换一个具体工厂就变得相对容易。所有的具体工厂都实现了抽象工厂中定义的那些公共接口，因此只需改变具体工厂的实例，就可以在某种程度上改变整个软件系统的行为。另外，应用抽象工厂模式可以实现<strong>高内聚低耦合</strong>的设计目的，因此抽象工厂模式得到了广泛的应用。<br>当一个产品族中的多个对象被设计成一起工作时，它能够保证客户端始终只使用同一个产品族中的对象。这对一些需要根据当前环境来决定其行为的软件系统来说，是一种非常实用的设计模式。</li>
+<li><strong>增加新的具体工厂和产品族很方便</strong>，无须修改已有系统，<strong>符合“开闭原则”</strong>。</li>
 </ul>
-<p>10、如果想进行bug的测评，怎么去评测bug？</p>
-<p>Bug的<strong>priority（）和severity（）</strong>是两个重要属性，通常人员在提交bug的时候，只定义severity，而将priority交给leader定义，通常bug管理中，<strong>severity分为四个等级blocker、critical、major、minor/trivial</strong>，而<strong>priority分为五个等级immediate、urgent、high、normal、low</strong>。</p>
-<p>Severity：</p>
+<p>缺点：</p>
 <ul>
-<li>blocker：即系统无法执行，崩溃，或严重资源不足，应用模块无法启动或异常退出，无法测试，造成系统不稳定。常见的有严重花屏、内存泄漏、用户数据丢失或破坏、系统崩溃/死机/冻结、模块无法启动或异常退出、严重的数值计算错误、功能设计与需求严重不符、其它导致无法测试的错误， 如服务器500错误。</li>
-<li>critical：即映像系统功能或操作，主要功能存在严重缺陷，但不会映像到系统稳定性。常见的有：功能未实现，功能错误、系统刷新错误、数据通讯错误、轻微的数值计算错误、影响功能及界面的错误字或拼写错误。</li>
-<li>major：即界面、性能缺陷、兼容性，常见的有：操作界面错误，边界条件错误，提示信息错误，长时间操作无进度提示，系统未优化，兼容性问题。</li>
-<li>minor/trivial：即易用性及建议性问题。</li>
+<li>在添加新的产品对象时，<strong>难以扩展抽象工厂来生产新种类的产品</strong>，这是因为在抽象工厂角色中规定了所有可能被创建的产品集合，要支持新种类的产品就意味着要对该接口进行扩展，而这将涉及到对抽象工厂角色及其所有子类的修改，显然会带来较大的不便。</li>
+<li>开闭原则的倾斜性（<strong>增加新的工厂和产品族容易，增加新的产品等级结构麻烦</strong>）。</li>
 </ul>
-<p>Priority</p>
-<ul>
-<li>immediate：即马上解决</li>
-<li>urgent：急需解决</li>
-<li>high：高度重视，有时间要马上解决</li>
-<li>normal：正常处理”</li>
-<li>low：在系统发布前解决，或确认可以不用解决</li>
-</ul>
-<p>11、app性能测试的指标？</p>
-<ul>
-<li><p>内存：内存消耗测试节点的设计目标是<strong>为了让应用不占用过多的系统资源，且及时释放内存，保障整个系统的稳定性</strong>。当然关于内存测试，在这里我们需要引入几个概念：空闲状态、中等规格、满规格。<br>空闲状态指打开应用后，点击home键让应用后台运行，此时应用处于的状态叫做空闲；中等规格和满规格指的是对应用的操作时间的间隔长短不一，中等规格时间较长，满规格时间较短。</p>
-</li>
-<li><p>CPU：</p>
-<p>使用Android提供的view plaincopy在CODE上查看代码片派生到我的代码片</p>
-<p>adbshell dumpsys CPUinfo |grep packagename &gt;/address/CPU.txt来获取；</p>
-<p>使用top命令view plaincopy在CODE上查看代码片派生到我的代码片</p>
-<p>adbshell top |grep packagename&gt;/address/CPU.txt来获取。</p>
-</li>
-<li><p>流量：</p>
-<p>网络流量测试是针对大部分应用而言的，可能还有部分应用会关注网速、弱网之类的测试。</p>
-<p>流量测试包括以下测试项：应用首次启动流量提示、应用后台连续运行2小时的流量值、应用高负荷运行的流量峰值。</p>
-</li>
-<li><p>电量：</p>
-<p>测试手机安装目标APK前后待机功耗无明显差异；</p>
-<p>常见使用场景中能够正常进入待机，待机电流在正常范围内；</p>
-<p>长时间连续使用应用无异常耗电现象。</p>
-</li>
-<li><p>启动速度：</p>
-<p>第一类：首次启动–应用首次启动所花费的时间；</p>
-<p>第二类：非首次启动–应用非首次启动所花费的时间；</p>
-<p>第三类：应用界面切换–应用界面内切换所花费的时间。</p>
-</li>
-<li><p>滑动速度、界面切换速度</p>
-</li>
-<li>与服务器交互的网络速度</li>
-</ul>
-<p>12、bug的周期，以及描述一下不同类别的bug？</p>
-<ul>
-<li><p>New:（新的）</p>
-<p>当某个“bug”被第一次发现的时候，测试人员需要与项目负责人沟通以确认发现的的确是一个bug，如果被确认是一个bug，就将其记录下来，并将bug的状态设为New</p>
-</li>
-<li><p>Assigned（已指派的）</p>
-<p>当一个bug被指认为New之后，将其反馈给开发人员，开发人员将确认这是否是一个bug，如果是，开发组的负责人就将这个bug指定给某位开发人员处理，并将bug的状态设定为“Assigned”</p>
-</li>
-<li><p>Open（打开的）</p>
-<p>一旦开发人员开始处理bug的时候，他（她）就将这个bug的状态设置为“Open”，这表示开发人员正在处理这个“bug”</p>
-</li>
-<li><p>Fixed（已修复的）</p>
-<p>当开发人员进行处理（并认为已经解决）之后，他就可以将这个bug的状态设置为“Fixed”并将其提交给开发组的负责人，然后开发组的负责人将这个bug返还给测试组</p>
-</li>
-<li><p>Pending Reset（待在测试的）</p>
-<p>当bug被返还到测试组后，我们将bug的状态设置为Pending Reset”</p>
-</li>
-<li><p>Reset(再测试)</p>
-<p>测试组的负责人将bug指定给某位测试人员进行再测试，并将bug的状态设置为“Reset”</p>
-</li>
-<li><p>Closed（已关闭的）</p>
-<p>如果测试人员经过再次测试之后确认bug 已经被解决之后，就将bug的状态设置为“Closed”</p>
-</li>
-<li><p>Reopen（再次打开的）</p>
-<p>如果经过再次测试发现bug（指bug本身而不是包括因修复而引发的新bug）仍然存在的话，测试人员将bug再次传递给开发组，并将bug的状态设置为“Reopen”</p>
-</li>
-<li><p>Pending Reject（拒绝中）</p>
-<p>如果测试人员传递到开发组的bug被开发人员认为是正常行为而不是bug时，这种情况下开发人员可以拒绝，并将bug的状态设置为“Pending Reject”</p>
-</li>
-<li><p>Rejected(被拒绝的)</p>
-<p>测试组的负责人接到上述bug的时候，如果他（她）发现这是产品说明书中定义的正常行为或者经过与开发人员的讨论之后认为这并不能算作bug的时候，开发组负责人就将这个bug的状态设置为“Rejected”</p>
-</li>
-<li><p>Postponed（延期）</p>
-<p>有些时候，对于一些特殊的bug的测试需要搁置一段时间，事实上有很多原因可能导致这种情况的发生，比如无效的测试数据，一些特殊的无效的功能等等，在这种情况下，bug的状态就被设置为“Postponed“</p>
-</li>
-</ul>
-<p>Bug类型：代码错误、界面优化、设计缺陷、配置相关、安装部署、安全相关、性能问题、标准规范、测试脚本和其他。</p>
-<p>13、web测试和app测试的不同点？</p>
-<ul>
-<li><p><strong>系统架构</strong>方面：<br>web项目，一般都是b/s架构，基于浏览器的</p>
-<p>app项目，则是c/s的，必须要有客户端，用户需要安装客户端。</p>
-<p>web测试只要更新了服务器端，客户端就会同步会更新。App项目则需要客户端和服务器都更新。</p>
-</li>
-<li><p><strong>性能</strong>方面:</p>
-<p>web页面主要会关注响应时间</p>
-<p>而app则还需要关心流量、电量、CPU、GPU、Memory这些。</p>
-<p>它们服务端的性能没区别，都是一台服务器。</p>
-</li>
-<li><p><strong>兼容</strong>方面：</p>
-<p>web是基于浏览器的，所以更倾向于浏览器和电脑硬件，电脑系统的方向的兼容</p>
-<p>app测试则要看分辨率，屏幕尺寸，还要看设备系统。</p>
-<p>web测试是基于浏览器的所以不必考虑安装卸载。</p>
-<p>而app是客户端的，则必须测试安装、更新、卸载。除了常规的安装、更新、卸载还要考虑到异常场景。包括安装时的中断、弱网、安装后删除安装文件 。</p>
-<p>此外APP还有一些专项测试：如网络、适配性。</p>
-</li>
-</ul>
-<p>14、自动化测试框架？</p>
-<ul>
-<li>模块化测试框架：在一个组件上方<strong>建立一个抽象层使其在余下的应用中隐藏起来</strong>，这是众所周知的编程技巧。这样应用同组件中的修改隔离开来，提供了程序设计的模块化特性。模块化测试脚本框架使用这一抽象或者封装的原理来提高自动测试组合的可维护性和可升级性。</li>
-<li>测试库框架：测试库框架<strong>把待测应用程序分解为过程和函数而不是脚本</strong>。这个框架需要创建描述模块、片断以及待测应用程序的功能库文件。</li>
-<li>关键字驱动或表驱动的测试框架：在一个关键字驱动测试中，<strong>把待测应用程序的功能和每个测试的执行步骤一起写到一个表中</strong>。这个测试框架可以通过很少的代码来产生大量的测试用例。同样的代码在用数据表来产生各个测试用例的同时被复用。</li>
-<li>数据驱动测试框架：测试的输入和输出数据是从数据文件中读取（数据池，ODBC源，CSV文件，EXCEL文件，ADO对象等）并且通过捕获工具生成或者手工生成的代码脚本被载入到变量中。在数据驱动测试中，数据文件中只包含测试数据。这个框架<strong>意图减少需要执行所有测试用例所需要的总的测试脚本数</strong>。数据驱动需要很少的代码来产生大量的测试用例，这与表驱动极其类似。</li>
-<li>混合测试自动化（Hybrid Test Automation）框架：最普遍的执行框架是上面介绍的所有技术的一个结合，取其长处，弥补其不足。</li>
-</ul>
-<p>15、黑盒测试和白盒测试有哪些方法？</p>
-<ul>
-<li>黑盒测试方法有<strong>等价类划分，边界值分析，错误推测，因果图法</strong></li>
-<li>白盒测试方法有<strong>逻辑覆盖法，程序插桩技术，基本路径法，符号测试，错误驱动测试</strong></li>
-</ul>
-<p>16、怎么看待测试，知道哪些测试的类型？</p>
-<p>测试是软件开发中不可或缺的一环，测试通过经济，高效的方法，捕捉软件中的错误，从而达到保重软件内在质量的目的。<br>测试分为功能测试和非功能测试，<strong>非功能测试又可以分为性能测试、压力测试、容量测试、健壮性测试、安全性测试、可靠性测试、恢复性测试、备份测试、协议测试、兼容性测试、可用性测试、配置测试、GUI测试</strong>。</p>
+<p>参考博客：</p>
+<p><a href="https://www.kancloud.cn/digest/xing-designpattern" target="_blank" rel="noopener">https://www.kancloud.cn/digest/xing-designpattern</a></p>
+<p><a href="https://javadoop.com/post/design-pattern" target="_blank" rel="noopener">https://javadoop.com/post/design-pattern</a></p>
 
       
      
@@ -418,7 +312,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">测试基础知识</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
@@ -430,7 +324,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/软件测试//" class="article-tag-list-link color5">软件测试</a>
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -485,7 +379,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/26/测试基础理论/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/04/工厂设计模式/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -499,18 +393,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/27/软件测试实例/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/05/单例模式/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          测试基础理论（二）
+          设计模式-单例模式
         
       </div>
     </a>
   
   
-    <a href="/2019/04/19/计算机网络总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">计算机网络总结</div>
+    <a href="/2019/06/03/Java反射/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java反射</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -537,7 +431,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About"><span class="toc-number">1.</span> <span class="toc-text">About</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单工厂模式"><span class="toc-number">2.</span> <span class="toc-text">简单工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工厂方法模式"><span class="toc-number">3.</span> <span class="toc-text">工厂方法模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#抽象工厂模式"><span class="toc-number">4.</span> <span class="toc-text">抽象工厂模式</span></a></li></ol>
                     </div>
                 </span>
             </div>

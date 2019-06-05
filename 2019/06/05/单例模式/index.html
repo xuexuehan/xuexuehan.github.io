@@ -6,24 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>测试基础理论（一） | xuexue&#39;s blog</title>
+  <title>设计模式-单例模式 | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="软件测试基础知识">
-<meta name="keywords" content="测试基础知识">
+  <meta name="description" content="单例模式介绍。">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试基础理论（一）">
-<meta property="og:url" content="http://yoursite.com/2019/04/26/测试基础理论/index.html">
+<meta property="og:title" content="设计模式-单例模式">
+<meta property="og:url" content="http://yoursite.com/2019/06/05/单例模式/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
-<meta property="og:description" content="软件测试基础知识">
+<meta property="og:description" content="单例模式介绍。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/04/26/测试基础理论/ts1.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/04/26/测试基础理论/test06.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/04/26/测试基础理论/test07.png">
-<meta property="og:updated_time" content="2019-04-27T11:58:43.962Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/05/单例模式/单例模式.jpg">
+<meta property="og:updated_time" content="2019-06-05T02:58:42.332Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测试基础理论（一）">
-<meta name="twitter:description" content="软件测试基础知识">
-<meta name="twitter:image" content="http://yoursite.com/2019/04/26/测试基础理论/ts1.PNG">
+<meta name="twitter:title" content="设计模式-单例模式">
+<meta name="twitter:description" content="单例模式介绍。">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/05/单例模式/单例模式.jpg">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -164,14 +162,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-测试基础理论" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-单例模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
       	 
   
     <h1 class="article-title" itemprop="name">
-      测试基础理论（一）
+      设计模式-单例模式
     </h1>
   
 
@@ -188,200 +186,71 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>软件测试基础知识<a id="more"></a></p>
-<p>1、单元测试、集成测试、系统测试、回归测试、验收测试介绍：</p>
-<p><img src="/2019/04/26/测试基础理论/ts1.PNG" alt></p>
+        <p>单例模式介绍。<a id="more"></a></p>
+<h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><p>1、模式定义：单例模式(Singleton Pattern)：单例模式<strong>确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例</strong>，这个类称为单例类，它<strong>提供全局访问的方法</strong>。</p>
+<p>单例模式的要点有三个：</p>
 <ul>
-<li><p>单元测试：完成<strong>最小的软件设计单元（模块）的验证工作</strong>，目标是确保模块被正确的编码，使用过程设计描述作为指南，<strong>对重要的控制路径进行测试以发现模块内的错误</strong>，通常情况下是<strong>白盒</strong>的，对代码风格和规则、程序设计和结构、业务逻辑等进行静态测试，及早的发现和解决不易显现的错误。</p>
-</li>
-<li><p>集成测试：通过测试<strong>发现与模块接口有关的问题</strong>。目标是把通过了单元测试的模块拿来，构造一个在设计中所描述的程序结构，应当避免一次性的集成（除非软件规模很小），而采用增量集成。</p>
-<p><strong>自顶向下</strong>集成：模块集成的顺序是首先集成主模块，然后按照控制层次结构向下进行集成，隶属于主模块的模块按照<strong>深度优先或广度优先</strong>的方式集成到整个结构中去。</p>
-<p><strong>自底向上</strong>集成：从原子模块开始来进行构造和测试，因为模块是自底向上集成的，进行时要求所有隶属于某个给顶层次的模块总是存在的，也不再有使用稳定测试桩的必要。</p>
-</li>
-<li><p>系统测试：是<strong>基于系统整体需求说明书的黑盒类测试</strong>，应覆盖系统所有联合的部件。系统测试是<strong>针对整个产品系统进行的测试，目的是验证系统是否满足了需求规格的定义</strong>，找出与需求规格不相符合或与之矛盾的地方。系统测试的对象<strong>不仅仅包括需要测试的产品系统的软件，还要包含软件所依赖的硬件、外设甚至包括某些数据、某些支持软件及其接口等</strong>。因此，必须将系统中的软件与各种依赖的资源结合起来，在系统实际运行环境下来进行测试。</p>
-</li>
-<li><p>回归测试：回归测试是指<strong>在发生修改之后重新测试先前的测试用例以保证修改的正确性</strong>。理论上，软件产生新版本，都需要进行回归测试，验证以前发现和修复的错误是否在新软件版本上再次出现。根据修复好了的缺陷再重新进行测试。回归测试的目的在于<strong>验证以前出现过但已经修复好的缺陷不再重新出现</strong>。一般指对某已知修正的缺陷再次围绕它原来出现时的步骤重新测试。</p>
-</li>
-<li><p>验收测试：验收测试是指<strong>系统开发生命周期方法论的一个阶段</strong>，这时相关的用户或独立测试人员根据测试计划和结果对系统进行测试和接收。它让系统用户决定是否接收系统。它是一项确定产品是否能够满足合同或用户所规定需求的测试。验收测试包括<strong>Alpha测试和Beta测试</strong>。</p>
-<p>Alpha测试：是由用户在开发者的场所来进行的，在一个受控的环境中进行。</p>
-<p>Beta测试：由软件的最终用户在一个或多个用户场所来进行的，开发者通常不在现场，<strong>用户记录测试中遇到的问题并报告给开发者</strong>，开发者对系统进行最后的修改，并开始准备发布最终的软件。</p>
-</li>
+<li>某个类只能有一个实例；</li>
+<li>它必须自行创建这个实例；</li>
+<li>它必须自行向整个系统提供这个实例。</li>
 </ul>
-<p>2、单元测试、集成测试、系统测试、验收测试、回归测试这几步中最重要的是哪一步？</p>
-<p>​    这些测试步骤<strong>分别在软件开发的不同阶段对软件进行测试</strong>，对<strong>软件完整功能进行测试的系统测试很重要</strong>，因为此时单元测试和集成测试已完成，能够<strong>对软件所有功能进行功能测试，能够覆盖系统所有联合的部件</strong>，是<strong>针对整个产品系统进行的测试</strong>，能够<strong>验证系统是否满足了需求规格的定义</strong>，因此系统测试很重要。</p>
-<p>3、集成测试和系统测试的区别，以及它们的应用场景主要是什么？</p>
-<p>区别：</p>
+<p>单例模式是一种<strong>对象创建型模式</strong>。单例模式又名单件模式或单态模式。</p>
+<p>2、模式结构：</p>
+<p><img src="/2019/06/05/单例模式/单例模式.jpg" alt></p>
+<p>单例模式只有一个Singleton角色，并且这个类<strong>自行创建自己的实例</strong>，并<strong>向系统提供这个实例</strong>。</p>
+<p>单例模式分为懒汉式的和饿汉式，登记式的单例模式，下面我们就来介绍一下这三种单例模式。</p>
+<h2 id="饿汉式的单例模式"><a href="#饿汉式的单例模式" class="headerlink" title="饿汉式的单例模式"></a>饿汉式的单例模式</h2><p>1、饿汉式单例模式是Java语言中<strong>实现起来最为简单</strong>的单例模式。</p>
+<p>2、饿汉式：<strong>初始化类时，直接就创建唯一实例</strong>，天生线程安全。</p>
+<p>3、三要素：</p>
 <ul>
-<li>计划和用例编制的先后顺序：从V模型来讲，在需求阶段就要制定系统测试计划和用例，HLD的时候做集成测试计划和用例，有些公司的具体实践不一样，但是<strong>顺序肯定是先做系统测试计划用例，再做集成</strong>。</li>
-<li>用例的粒度：<strong>系统测试用例相对很接近用户接受测试用例</strong>，<strong>集成测试用例比系统测试用例更详细</strong>，而且对于接口部分要重点写，毕竟要集成各个模块或者子系统。</li>
-<li>执行测试的顺序：<strong>先执行集成测试，待集成测试出的问题修复之后，再做系统测试</strong>。</li>
+<li>一个<strong>静态类变量</strong>；</li>
+<li>一个<strong>私有构造方法</strong>；</li>
+<li>一个<strong>全局静态的类方法</strong>。</li>
 </ul>
-<p>应用场景：</p>
+<p>4、代码实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EagerSingleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">//直接创建一个本类的对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> EagerSingleton instance = <span class="keyword">new</span> EagerSingleton();</span><br><span class="line">    <span class="comment">//覆盖默认的构造方法，将默认的构造方法声明为私有的，防止其他类直接创建对象，将 new Singleton() 堵死</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">EagerSingleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="comment">//提供一个工厂方法来返回本类的唯一对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EagerSingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5、饿汉式单例模式就是<strong>一开始就自己创建一个私有的静态的本类对象</strong>，当这个类被加载时，静态变量instance就会被初始化，这时这个类的私有构造方法就会被调用。这个时候，单例类的唯一实例就被创建出来了。但需要获得单例类的对象是就调用getInstance方法。<br>需要注意的一点就是单例类的<strong>构造方法一定要声明为私有的</strong>，否则其他类就可以利用构造方法直接创建对象，使单例类不再是只有一个唯一的实例。</p>
+<p>由于<strong>构造方法是私有的，因此此类不能被继承</strong>。</p>
+<p>饿汉式单例模式<strong>在自己加载时就将自己实例化</strong>，所以从资源利用效率的角度来讲，<strong>饿汉式单例模式不如懒汉式单例模式节省资源，但是饿汉式单例模式的速度更快一些</strong>。</p>
+<h2 id="懒汉式的单例模式"><a href="#懒汉式的单例模式" class="headerlink" title="懒汉式的单例模式"></a>懒汉式的单例模式</h2><p>1、懒汉式：加载类时，<strong>第一次调用方法获得实例为唯一的实例</strong>，线程不安全。</p>
+<p>2、三要素：</p>
 <ul>
-<li>集成测试：完成单元测试后，各模块联调测试；集中在各模块的接口是否一致、各模块间的数据流和控制流是否按照设计实现其功能、以及结果的正确性验证等等；可以是整个产品的集成测试，也可以是大模块的集成测试；<strong>集成测试主要是针对程序内部结构进行测试，特别是对程序之间的接口进行测试</strong>。集成测试对测试人员的编写脚本能力要求比较高。测试方法一般选用<strong>黑盒测试和白盒测试相结合</strong>。</li>
-<li>系统测试：<strong>针对整个产品的全面测试，既包含各模块的验证性测试（验证前两个阶段测试的正确性）和功能性（产品提交个用户的功能）测试，又包括对整个产品的健壮性、安全性、可维护性及各种性能参数的测试。</strong>系统测试测试软件《需求规格说明书》中提到的功能是否有遗漏，是否正确的实现。做系统测试要<strong>严格按照《需求规格说明书》</strong>，以它为标准。测试方法一般都使用<strong>黑盒测试法</strong>。</li>
+<li>一个<strong>静态类变量</strong>；</li>
+<li>一个<strong>私有构造方法</strong>；</li>
+<li>一个<strong>全局静态的类方法</strong>。</li>
 </ul>
-<p>4、黑盒测试与白盒测试：</p>
+<p>3、代码实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">//单例类的唯一实例，但是不是加载时初始化</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> LazySingleton instacnce = <span class="keyword">null</span>; </span><br><span class="line">    <span class="comment">//构造函数私有为了保证在其他地方不能new该实例</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="comment">//线程互斥的获取实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//获得实例</span></span><br><span class="line">        <span class="keyword">if</span>(instacnce == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 加锁</span></span><br><span class="line">            <span class="keyword">synchronized</span> (LazySingleton.class) &#123;</span><br><span class="line">                <span class="comment">// 这一次判断也是必须的，不然会有并发问题</span></span><br><span class="line">                <span class="keyword">if</span>(instacnce == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    instacnce = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instacnce;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、懒汉式单例模式的创建对象是在<strong>第一次企图获得单例类的对象时</strong>。另外我们在getInstance方法中使用了</p>
+<p>synchronization关键字，这是防止出现race condition，使两个线程new出来两个单例类的实例。构造方法同样是私有的，这也决定了<strong>子类不能继承自这个类</strong>。</p>
+<p><strong>懒汉式单例模式与饿汉式单例模式相比，更节省资源</strong>，但是<strong>必须处理好在多个线程同时首次引用此类时的访问限制问题</strong>，特别是当单例类作为资源控制器在实例化时必然涉及资源初始化，而资源初始化很有可能耗费时间，这就意味着出现多个线程同时首次引用此类的几率变得较大。</p>
+<h2 id="登记式的单例模式"><a href="#登记式的单例模式" class="headerlink" title="登记式的单例模式"></a>登记式的单例模式</h2><p>1、为了<strong>克服饿汉式单例模式以及懒汉式单例模式类均不可继承的缺点</strong>，产生了一种新的模式——登记式单例模式。</p>
+<p>登记式的单例模式中<strong>父类中有一个集合，用来存储所有的子类的实例</strong>，当一个子类创建时，必须在父类的中登记，也就是把自己的实例加入到父类的集合中，当其他类想要获取子类的实例时，就到父类的集合中查找，找到了就返回，如果找不到就创建这个子类的唯一实例。</p>
+<p>2、父类代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.singleton;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RegSingleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">//建立一个HashMap来存储子类的完整类名和子类的实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> HashMap&lt;String, RegSingleton&gt; registry = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">//首先将本类的实例加入到HashMap中</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        RegSingleton x = <span class="keyword">new</span> RegSingleton();</span><br><span class="line">        registry.put(x.getClass().getName(), x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//构造方法不再是private的了，所以子类可以继承了</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">RegSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//根据子类传来的类名返回相应的实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RegSingleton <span class="title">getInstance</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//提供默认的类</span></span><br><span class="line">        <span class="keyword">if</span>(name == <span class="keyword">null</span>) &#123;</span><br><span class="line">            name = <span class="string">"com.singleton.RegSingleton"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//第一次引用这个类时创建类的实例，利用了反射机制</span></span><br><span class="line">        <span class="keyword">if</span>(registry.get(name) == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                registry.put(name, (RegSingleton)Class.forName(name).newInstance());</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//返回子类想要的类的实例</span></span><br><span class="line">        <span class="keyword">return</span> registry.get(name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>子类代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.singleton;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RegSingletonChild</span> <span class="keyword">extends</span> <span class="title">RegSingleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">//构造方法必须是公有的，否则父类无法产生子类的对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RegSingletonChild</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//工厂方法，获取本类的唯一实例，实际上是借助了父类的getInstance方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RegSingletonChild <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (RegSingletonChild) RegSingleton.getInstance(<span class="string">"com.singleton.RegSingletonChild"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、登记式的单例模式<strong>解决了懒汉式和饿汉式不能继承的缺点</strong>，但是子类中的构造方法变为了public的，所以<strong>其他类可以直接通过构造方法创建类的实例而不用向父类中登记</strong>，这是登记式单例模式最大的缺点。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1、什么情况下使用单例模式？</p>
 <ul>
-<li><p>黑盒测试也称<strong>功能测试或数据驱动测试</strong>，是在已知产品所应具有的功能，通过测试来检测每个功能是否都能正常使用，在测试时，把程序看作一个不能打开的黑盆子，在完全<strong>不考虑程序内部结构和内部特性</strong>的情况下，测试者在程序接口进行测试，它<strong>只检查程序功能是否按照需求规格说明书的规定正常使用，程序是否能适当地接收输入数锯而产生正确的输出信息，并且保持外部信息（如数据库或文件）的完整性</strong>。</p>
-<p>“黑盒”法<strong>着眼于程序外部结构、不考虑内部逻辑结构、针对软件界面和软件功能进行测试</strong>；</p>
-<p>“黑盒”法是<strong>穷举输入测试</strong>，只有把所有可能的输入都作为测试情况使用，才能以这种方法查出程序中所有的错误；</p>
-<p>实际上测试情况有无穷多个，因此不仅要测试所有合法的输入，而且还要对那些不合法但是可能的输入进行测试。</p>
-</li>
-<li><p>白盒测试也称为<strong>结构测试或逻辑驱动测试</strong>，根据程序的控制结构设计测试用例，主要<strong>用于软件或程序验证</strong>。白盒测试法<strong>检查程序内部逻辑结构，对所有的逻辑路径进行测试，是一种穷举路径的测试方法</strong>，但即使每条路径都测试过了，但仍然有可能存在错误：穷举路径测试无法检查出程序本身是否违反了设计规范、穷举路径测试不可能检查出程序因为遗漏路径而出错、穷举路径测试不可能检查出程序因为遗漏路径而出错。</p>
-</li>
+<li><strong>系统只需要一个实例对象</strong>，如系统要求提供一个唯一的序列号生成器，或者需要考虑资源消耗太大而只允许创建一个对象。</li>
+<li>客户<strong>调用类的单个实例只允许使用一个公共访问点</strong>，除了该公共访问点，不能通过其他途径访问该实例。</li>
+<li>在一个系统中<strong>要求一个类只有一个实例</strong>时才应当使用单例模式。</li>
 </ul>
-<p><img src="/2019/04/26/测试基础理论/test06.PNG" alt></p>
-<p>5、手动测试与自动化测试：</p>
-<p>手工测试  ：</p>
+<p>2、单例模式的优点和缺点？</p>
+<p>优点：</p>
 <ul>
-<li>优点：测试人员具有经验和对错误的猜测能力、测试人员具有审美能力和心理体验、测试人员具有是非判断和逻辑推理能力。</li>
-<li>缺点：重复的手工回归测试，代价昂贵、容易出错；依赖于软件测试人员的能力。</li>
+<li>提供了<strong>对唯一实例的受控访问</strong>。因为单例类封装了它的唯一实例，所以它可以严格控制客户怎样以及何时访问它，并为设计及开发团队提供了共享的概念。</li>
+<li>由于在系统内存中只存在一个对象，因此可以<strong>节约系统资源</strong>，对于一些需要频繁创建和销毁的对象，单例模式无疑可以提高系统的性能。</li>
+<li><strong>允许可变数目的实例</strong>。我们可以基于单例模式进行扩展，使用与单例控制相似的方法来获得指定个数的对象实例。</li>
 </ul>
-<p>自动化测试：</p>
+<p>缺点：</p>
 <ul>
-<li>优点：对程序的回归测试更方便、可以运行更多更繁琐的测试、可以执行一些手工测试困难或不可能进行的测试、更好地利用资源、测试具有一致性和可重复性。</li>
-<li>缺点：不能取代手工测试、手工测试比自动测试发现的缺陷更多、对测试质量的依赖性极大、测试自动化不能提高有效性、工具本身并无想像力。</li>
+<li>由于单例模式中没有抽象层，因此<strong>单例类的扩展有很大的困难</strong>。</li>
+<li>单例类的<strong>职责过重</strong>，在一定程度上违背了“单一职责原则”。因为单例类既充当了工厂角色，提供了工厂方法，同时又充当了产品角色，包含一些业务方法，将产品的创建和产品的本身的功能融合到一起。</li>
+<li>滥用单例将带来一些负面问题，如为了节省资源将数据库连接池对象设计为单例类，可能会导致共享连接池对象的程序过多而出现连接池溢出；现在很多面向对象语言(如Java、C#)的运行环境都提供了自动垃圾回收的技术，因此，如果实例化的对象长时间不被利用，系统会认为它是垃圾，会自动销毁并回收资源，下次利用时又将重新实例化，这将导致对象状态的丢失。</li>
 </ul>
-<p>6、测试和开发需要怎么结合才能使软件的质量得到更好的保障？</p>
-<p><img src="/2019/04/26/测试基础理论/test07.png" alt></p>
-<p>​    测试和开发应该按照W模型的方式进行结合，测试和开发同步进行，能够尽早发现软件缺陷，降低软件开发的成本。W模型强调：<strong>测试伴随着整个软件开发周期，而且测试的对象不仅仅是程序，需求、设计等同样要测试，也就是说，测试与开发是同步进行的</strong>。W模型有利于尽早地全面的发现问题。例如，需求分析完成后，测试人员就应该参与到对需求的验证和确认活动中，以尽早地找出缺陷所在。同时，对需求的测试也有利于及时了解项目难度和测试风险，及早制定应对措施，这将显著减少总体测试时间，加快项目进度。</p>
-<p>7、测试的相关流程：需求测试-&gt;概要设计测试-&gt;详细设计测试-&gt;单元测试-&gt;集成测试-&gt;系统测试-&gt;验收测试。</p>
-<p>8、如何写测试用例？</p>
-<ul>
-<li>测试人员尽早介入，彻底<strong>理解清楚需求</strong>，这个是写好测试用例的基础；</li>
-<li>清楚输入、输出的各种可能性，以及<strong>各种输入的之间的关联关系</strong>，理解清楚需求的执行逻辑，通过等价类、边界值、判定表等方法找出大部分用例；</li>
-<li>找到需求相关的一些特性，补充测试用例；</li>
-<li>根据自己的经验分析遗漏的测试场景；</li>
-<li>多总结类似功能点的测试点，才能够写出质量越来越高的测试用例。</li>
-</ul>
-<p>9、测试项目具体工作是什么？</p>
-<ul>
-<li>搭建测试环境</li>
-<li>撰写测试用例</li>
-<li>执行测试用例</li>
-<li>写测试计划，测试报告</li>
-<li>测试，并提交BUG表单</li>
-<li>跟踪bug修改情况</li>
-<li>执行自动化测试，编写脚本，执行，分析，报告</li>
-<li>进行性能测试，压力测试等其他测试，执行，分析，调优，报告</li>
-</ul>
-<p>10、如果想进行bug的测评，怎么去评测bug？</p>
-<p>Bug的<strong>priority（）和severity（）</strong>是两个重要属性，通常人员在提交bug的时候，只定义severity，而将priority交给leader定义，通常bug管理中，<strong>severity分为四个等级blocker、critical、major、minor/trivial</strong>，而<strong>priority分为五个等级immediate、urgent、high、normal、low</strong>。</p>
-<p>Severity：</p>
-<ul>
-<li>blocker：即系统无法执行，崩溃，或严重资源不足，应用模块无法启动或异常退出，无法测试，造成系统不稳定。常见的有严重花屏、内存泄漏、用户数据丢失或破坏、系统崩溃/死机/冻结、模块无法启动或异常退出、严重的数值计算错误、功能设计与需求严重不符、其它导致无法测试的错误， 如服务器500错误。</li>
-<li>critical：即映像系统功能或操作，主要功能存在严重缺陷，但不会映像到系统稳定性。常见的有：功能未实现，功能错误、系统刷新错误、数据通讯错误、轻微的数值计算错误、影响功能及界面的错误字或拼写错误。</li>
-<li>major：即界面、性能缺陷、兼容性，常见的有：操作界面错误，边界条件错误，提示信息错误，长时间操作无进度提示，系统未优化，兼容性问题。</li>
-<li>minor/trivial：即易用性及建议性问题。</li>
-</ul>
-<p>Priority</p>
-<ul>
-<li>immediate：即马上解决</li>
-<li>urgent：急需解决</li>
-<li>high：高度重视，有时间要马上解决</li>
-<li>normal：正常处理”</li>
-<li>low：在系统发布前解决，或确认可以不用解决</li>
-</ul>
-<p>11、app性能测试的指标？</p>
-<ul>
-<li><p>内存：内存消耗测试节点的设计目标是<strong>为了让应用不占用过多的系统资源，且及时释放内存，保障整个系统的稳定性</strong>。当然关于内存测试，在这里我们需要引入几个概念：空闲状态、中等规格、满规格。<br>空闲状态指打开应用后，点击home键让应用后台运行，此时应用处于的状态叫做空闲；中等规格和满规格指的是对应用的操作时间的间隔长短不一，中等规格时间较长，满规格时间较短。</p>
-</li>
-<li><p>CPU：</p>
-<p>使用Android提供的view plaincopy在CODE上查看代码片派生到我的代码片</p>
-<p>adbshell dumpsys CPUinfo |grep packagename &gt;/address/CPU.txt来获取；</p>
-<p>使用top命令view plaincopy在CODE上查看代码片派生到我的代码片</p>
-<p>adbshell top |grep packagename&gt;/address/CPU.txt来获取。</p>
-</li>
-<li><p>流量：</p>
-<p>网络流量测试是针对大部分应用而言的，可能还有部分应用会关注网速、弱网之类的测试。</p>
-<p>流量测试包括以下测试项：应用首次启动流量提示、应用后台连续运行2小时的流量值、应用高负荷运行的流量峰值。</p>
-</li>
-<li><p>电量：</p>
-<p>测试手机安装目标APK前后待机功耗无明显差异；</p>
-<p>常见使用场景中能够正常进入待机，待机电流在正常范围内；</p>
-<p>长时间连续使用应用无异常耗电现象。</p>
-</li>
-<li><p>启动速度：</p>
-<p>第一类：首次启动–应用首次启动所花费的时间；</p>
-<p>第二类：非首次启动–应用非首次启动所花费的时间；</p>
-<p>第三类：应用界面切换–应用界面内切换所花费的时间。</p>
-</li>
-<li><p>滑动速度、界面切换速度</p>
-</li>
-<li>与服务器交互的网络速度</li>
-</ul>
-<p>12、bug的周期，以及描述一下不同类别的bug？</p>
-<ul>
-<li><p>New:（新的）</p>
-<p>当某个“bug”被第一次发现的时候，测试人员需要与项目负责人沟通以确认发现的的确是一个bug，如果被确认是一个bug，就将其记录下来，并将bug的状态设为New</p>
-</li>
-<li><p>Assigned（已指派的）</p>
-<p>当一个bug被指认为New之后，将其反馈给开发人员，开发人员将确认这是否是一个bug，如果是，开发组的负责人就将这个bug指定给某位开发人员处理，并将bug的状态设定为“Assigned”</p>
-</li>
-<li><p>Open（打开的）</p>
-<p>一旦开发人员开始处理bug的时候，他（她）就将这个bug的状态设置为“Open”，这表示开发人员正在处理这个“bug”</p>
-</li>
-<li><p>Fixed（已修复的）</p>
-<p>当开发人员进行处理（并认为已经解决）之后，他就可以将这个bug的状态设置为“Fixed”并将其提交给开发组的负责人，然后开发组的负责人将这个bug返还给测试组</p>
-</li>
-<li><p>Pending Reset（待在测试的）</p>
-<p>当bug被返还到测试组后，我们将bug的状态设置为Pending Reset”</p>
-</li>
-<li><p>Reset(再测试)</p>
-<p>测试组的负责人将bug指定给某位测试人员进行再测试，并将bug的状态设置为“Reset”</p>
-</li>
-<li><p>Closed（已关闭的）</p>
-<p>如果测试人员经过再次测试之后确认bug 已经被解决之后，就将bug的状态设置为“Closed”</p>
-</li>
-<li><p>Reopen（再次打开的）</p>
-<p>如果经过再次测试发现bug（指bug本身而不是包括因修复而引发的新bug）仍然存在的话，测试人员将bug再次传递给开发组，并将bug的状态设置为“Reopen”</p>
-</li>
-<li><p>Pending Reject（拒绝中）</p>
-<p>如果测试人员传递到开发组的bug被开发人员认为是正常行为而不是bug时，这种情况下开发人员可以拒绝，并将bug的状态设置为“Pending Reject”</p>
-</li>
-<li><p>Rejected(被拒绝的)</p>
-<p>测试组的负责人接到上述bug的时候，如果他（她）发现这是产品说明书中定义的正常行为或者经过与开发人员的讨论之后认为这并不能算作bug的时候，开发组负责人就将这个bug的状态设置为“Rejected”</p>
-</li>
-<li><p>Postponed（延期）</p>
-<p>有些时候，对于一些特殊的bug的测试需要搁置一段时间，事实上有很多原因可能导致这种情况的发生，比如无效的测试数据，一些特殊的无效的功能等等，在这种情况下，bug的状态就被设置为“Postponed“</p>
-</li>
-</ul>
-<p>Bug类型：代码错误、界面优化、设计缺陷、配置相关、安装部署、安全相关、性能问题、标准规范、测试脚本和其他。</p>
-<p>13、web测试和app测试的不同点？</p>
-<ul>
-<li><p><strong>系统架构</strong>方面：<br>web项目，一般都是b/s架构，基于浏览器的</p>
-<p>app项目，则是c/s的，必须要有客户端，用户需要安装客户端。</p>
-<p>web测试只要更新了服务器端，客户端就会同步会更新。App项目则需要客户端和服务器都更新。</p>
-</li>
-<li><p><strong>性能</strong>方面:</p>
-<p>web页面主要会关注响应时间</p>
-<p>而app则还需要关心流量、电量、CPU、GPU、Memory这些。</p>
-<p>它们服务端的性能没区别，都是一台服务器。</p>
-</li>
-<li><p><strong>兼容</strong>方面：</p>
-<p>web是基于浏览器的，所以更倾向于浏览器和电脑硬件，电脑系统的方向的兼容</p>
-<p>app测试则要看分辨率，屏幕尺寸，还要看设备系统。</p>
-<p>web测试是基于浏览器的所以不必考虑安装卸载。</p>
-<p>而app是客户端的，则必须测试安装、更新、卸载。除了常规的安装、更新、卸载还要考虑到异常场景。包括安装时的中断、弱网、安装后删除安装文件 。</p>
-<p>此外APP还有一些专项测试：如网络、适配性。</p>
-</li>
-</ul>
-<p>14、自动化测试框架？</p>
-<ul>
-<li>模块化测试框架：在一个组件上方<strong>建立一个抽象层使其在余下的应用中隐藏起来</strong>，这是众所周知的编程技巧。这样应用同组件中的修改隔离开来，提供了程序设计的模块化特性。模块化测试脚本框架使用这一抽象或者封装的原理来提高自动测试组合的可维护性和可升级性。</li>
-<li>测试库框架：测试库框架<strong>把待测应用程序分解为过程和函数而不是脚本</strong>。这个框架需要创建描述模块、片断以及待测应用程序的功能库文件。</li>
-<li>关键字驱动或表驱动的测试框架：在一个关键字驱动测试中，<strong>把待测应用程序的功能和每个测试的执行步骤一起写到一个表中</strong>。这个测试框架可以通过很少的代码来产生大量的测试用例。同样的代码在用数据表来产生各个测试用例的同时被复用。</li>
-<li>数据驱动测试框架：测试的输入和输出数据是从数据文件中读取（数据池，ODBC源，CSV文件，EXCEL文件，ADO对象等）并且通过捕获工具生成或者手工生成的代码脚本被载入到变量中。在数据驱动测试中，数据文件中只包含测试数据。这个框架<strong>意图减少需要执行所有测试用例所需要的总的测试脚本数</strong>。数据驱动需要很少的代码来产生大量的测试用例，这与表驱动极其类似。</li>
-<li>混合测试自动化（Hybrid Test Automation）框架：最普遍的执行框架是上面介绍的所有技术的一个结合，取其长处，弥补其不足。</li>
-</ul>
-<p>15、黑盒测试和白盒测试有哪些方法？</p>
-<ul>
-<li>黑盒测试方法有<strong>等价类划分，边界值分析，错误推测，因果图法</strong></li>
-<li>白盒测试方法有<strong>逻辑覆盖法，程序插桩技术，基本路径法，符号测试，错误驱动测试</strong></li>
-</ul>
-<p>16、怎么看待测试，知道哪些测试的类型？</p>
-<p>测试是软件开发中不可或缺的一环，测试通过经济，高效的方法，捕捉软件中的错误，从而达到保重软件内在质量的目的。<br>测试分为功能测试和非功能测试，<strong>非功能测试又可以分为性能测试、压力测试、容量测试、健壮性测试、安全性测试、可靠性测试、恢复性测试、备份测试、协议测试、兼容性测试、可用性测试、配置测试、GUI测试</strong>。</p>
+<p>参考博客：<a href="https://www.kancloud.cn/digest/xing-designpattern/143725" target="_blank" rel="noopener">https://www.kancloud.cn/digest/xing-designpattern/143725</a></p>
 
       
      
@@ -418,7 +287,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">测试基础知识</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
@@ -430,7 +299,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/软件测试//" class="article-tag-list-link color5">软件测试</a>
+        			<a href="/categories/Java//" class="article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -485,7 +354,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/04/26/测试基础理论/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/05/单例模式/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -499,18 +368,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/27/软件测试实例/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          测试基础理论（二）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/04/19/计算机网络总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">计算机网络总结</div>
+    <a href="/2019/06/04/工厂设计模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式-工厂模式</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -537,7 +397,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About"><span class="toc-number">1.</span> <span class="toc-text">About</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#饿汉式的单例模式"><span class="toc-number">2.</span> <span class="toc-text">饿汉式的单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#懒汉式的单例模式"><span class="toc-number">3.</span> <span class="toc-text">懒汉式的单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#登记式的单例模式"><span class="toc-number">4.</span> <span class="toc-text">登记式的单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
