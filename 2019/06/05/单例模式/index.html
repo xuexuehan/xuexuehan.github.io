@@ -17,7 +17,7 @@
 <meta property="og:description" content="单例模式介绍。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/06/05/单例模式/单例模式.jpg">
-<meta property="og:updated_time" content="2019-06-05T02:58:42.332Z">
+<meta property="og:updated_time" content="2019-06-05T03:06:59.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式-单例模式">
 <meta name="twitter:description" content="单例模式介绍。">
@@ -221,8 +221,7 @@
 </ul>
 <p>3、代码实现：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">//单例类的唯一实例，但是不是加载时初始化</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> LazySingleton instacnce = <span class="keyword">null</span>; </span><br><span class="line">    <span class="comment">//构造函数私有为了保证在其他地方不能new该实例</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="comment">//线程互斥的获取实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;<span class="comment">//获得实例</span></span><br><span class="line">        <span class="keyword">if</span>(instacnce == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 加锁</span></span><br><span class="line">            <span class="keyword">synchronized</span> (LazySingleton.class) &#123;</span><br><span class="line">                <span class="comment">// 这一次判断也是必须的，不然会有并发问题</span></span><br><span class="line">                <span class="keyword">if</span>(instacnce == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    instacnce = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instacnce;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>4、懒汉式单例模式的创建对象是在<strong>第一次企图获得单例类的对象时</strong>。另外我们在getInstance方法中使用了</p>
-<p>synchronization关键字，这是防止出现race condition，使两个线程new出来两个单例类的实例。构造方法同样是私有的，这也决定了<strong>子类不能继承自这个类</strong>。</p>
+<p>4、懒汉式单例模式的创建对象是在<strong>第一次企图获得单例类的对象时</strong>。另外我们在getInstance方法中使用了synchronization关键字，这是防止出现race condition，使两个线程new出来两个单例类的实例。构造方法同样是私有的，这也决定了<strong>子类不能继承自这个类</strong>。</p>
 <p><strong>懒汉式单例模式与饿汉式单例模式相比，更节省资源</strong>，但是<strong>必须处理好在多个线程同时首次引用此类时的访问限制问题</strong>，特别是当单例类作为资源控制器在实例化时必然涉及资源初始化，而资源初始化很有可能耗费时间，这就意味着出现多个线程同时首次引用此类的几率变得较大。</p>
 <h2 id="登记式的单例模式"><a href="#登记式的单例模式" class="headerlink" title="登记式的单例模式"></a>登记式的单例模式</h2><p>1、为了<strong>克服饿汉式单例模式以及懒汉式单例模式类均不可继承的缺点</strong>，产生了一种新的模式——登记式单例模式。</p>
 <p>登记式的单例模式中<strong>父类中有一个集合，用来存储所有的子类的实例</strong>，当一个子类创建时，必须在父类的中登记，也就是把自己的实例加入到父类的集合中，当其他类想要获取子类的实例时，就到父类的集合中查找，找到了就返回，如果找不到就创建这个子类的唯一实例。</p>
@@ -367,6 +366,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/06/06/常用Linux命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          常用Linux命令
+        
+      </div>
+    </a>
   
   
     <a href="/2019/06/04/工厂设计模式/" id="article-nav-older" class="article-nav-link-wrap">
@@ -542,6 +550,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Linux常用命令</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">测试基础知识</a>
               </li>
              
@@ -562,7 +574,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color2">Java反射</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,6 +587,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
