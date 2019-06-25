@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JUnit介绍 | xuexue&#39;s blog</title>
+  <title>Java基础（一） | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JUnit用到的设计模式介绍。   keep the bar green to keep the code clean.">
-<meta name="keywords" content="Java单元测试框架">
+  <meta name="description" content="Java：三大特性、 重写与重载、接口与实现类。">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JUnit介绍">
-<meta property="og:url" content="http://yoursite.com/2019/06/03/JUnit介绍/index.html">
+<meta property="og:title" content="Java基础（一）">
+<meta property="og:url" content="http://yoursite.com/2019/06/23/Java-Common-one/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
-<meta property="og:description" content="JUnit用到的设计模式介绍。   keep the bar green to keep the code clean.">
+<meta property="og:description" content="Java：三大特性、 重写与重载、接口与实现类。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-04T01:26:26.806Z">
+<meta property="og:updated_time" content="2019-06-24T11:16:30.819Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JUnit介绍">
-<meta name="twitter:description" content="JUnit用到的设计模式介绍。   keep the bar green to keep the code clean.">
+<meta name="twitter:title" content="Java基础（一）">
+<meta name="twitter:description" content="Java：三大特性、 重写与重载、接口与实现类。">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -160,14 +160,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JUnit介绍" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java-Common-one" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
       	 
   
     <h1 class="article-title" itemprop="name">
-      JUnit介绍
+      Java基础（一）
     </h1>
   
 
@@ -184,110 +184,121 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>JUnit用到的设计模式介绍。  </p>
-<p>keep the bar green to keep the code clean.<a id="more"></a></p>
-<h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><p>1、JUnit最初由Erich Gamma 和Kent Beck所开发，是一个<strong>开源的java测试框架</strong>，它是Xuint测试体系架构的一种实现。在JUnit单元测试框架的设计时，设定了三个总体目标：</p>
+        <p>Java：三大特性、 重写与重载、接口与实现类。 <a id="more"></a></p>
+<h4 id="封装、继承、多态"><a href="#封装、继承、多态" class="headerlink" title="封装、继承、多态"></a>封装、继承、多态</h4><p>1、封装：利用抽象数据类型将数据和基于数据的操作封装在一起，使其构成一个不可分割的独立实体，<strong>数据被保护在抽象数据类型的内部，尽可能地隐藏内部的细节，只保留一些对外接口使之与外部发生联系</strong>。系统的其他对象只能通过包裹在数据外面的已经授权的操作来与这个封装的对象进行交流和交互。也就是说<strong>用户是无需知道对象内部的细节（当然也无从知道），但可以通过该对象对外的提供的接口来访问该对象</strong>。</p>
+<p>使用封装的优点：</p>
 <ul>
-<li><strong>简化测试的编写</strong>，这种简化包括测试框架的学习和实际测试单元的编写；</li>
-<li><strong>使测试单元保持持久性</strong>；</li>
-<li>可以<strong>利用既有的测试来编写相关的测试</strong>。</li>
+<li>良好的封装能够减少耦合；</li>
+<li>类内部的结构可以自由修改；</li>
+<li>可以对成员进行更精确的控制；</li>
+<li>隐藏信息，实现细节。</li>
 </ul>
-<p>2、Junit的设计思想是通过<strong>从零开始来应用设计模式</strong>，然后一个接一个，直至获得最终合适的系统架构。</p>
-<p>3、junit：判断程序执行的结果是否和我们所期待的结果一致。</p>
-<p>​      测试之前是什么状态，测试之后就应该是什么状态，而不应该由于测试执行的原因导致状态发生了变化。</p>
-<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>1、Template Method（模板方法）：需要<strong>复用的是算法的结构</strong>，也就是步骤，而<strong>步骤的实现可以在子类中完成</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//封装可以使我们容易地修改类的内部实现，而无需修改使用了该类的客户代码</span></span><br><span class="line"><span class="keyword">private</span> String age ;    <span class="comment">//原来int类型，改成String类型的</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//转换即可</span></span><br><span class="line">    <span class="keyword">this</span>.age = String.valueOf(age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以对成员变量进行更精确的控制，对对象的入口、出口进行控制</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(age &gt; <span class="number">120</span>) &#123;</span><br><span class="line">        System.out.println(<span class="string">"Error: error age input."</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getSex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="string">"0"</span>.equals(sex)) &#123;</span><br><span class="line">        sex = <span class="string">"男"</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"1"</span>.equals(sex)) &#123;</span><br><span class="line">        sex = <span class="string">"女"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、继承：复用代码的一种方式。继承是<strong>使用已存在的类的定义作为基础建立新类的技术</strong>，<strong>新类的定义可以增加新的数据或新的功能，也可以用父类的功能，但不能选择性地继承父类。</strong>通过使用继承我们能够非常方便地复用以前的代码，能够大大的提高开发的效率。</p>
+<p>继承所描述的是<strong>“is-a”</strong>的关系，如果有两个对象A和B，若可以描述为“A是B”，则可以表示A继承B，其中<strong>B是被继承者称之为父类或者超类</strong>，<strong>A是继承者称之为子类或者派生类</strong>。</p>
+<p>继承定义了<strong>类如何相互关联，共享特性</strong>。</p>
+<p>在使用继承时需要注意：</p>
 <ul>
-<li><p>问题：在实际的测试中，为了测试业务逻辑，必须<strong>构造一些参数或者一些资源，然后才可进行测试，最后必须释放这些系统资源</strong>。如测试数据库应用时，必须创建数据库连接Connection，然后执行数据库的操作，最后实现释放数据库的连接。</p>
-</li>
-<li><p>模式的选择：接下来要解决的问题是给开发者一个便捷的“地方”，用于放置他们的<strong>初始化代码，测试代码，和释放资源的代码</strong>，类似对象的构造函数，业务方法，析构函数一样。并且必须保证每次运行测试代码之前，都运行初始化代码，最后运行释放资源代码，并且每一个测试的结果都不会影响到其它的测试结果。这样就达到了代码的复用，提供了开发人员的效率。</p>
-<p>Template Method（模板方法）比较好地涉及到我们的问题。摘引其意图，“<strong>定义一个操作中算法的骨架，并将一些步骤延迟到子类中</strong>。Template Method使得子类能够不改变一个算法的结构便可重新定义该算法的某些特定步骤。”这完全恰当。这样可以使测试者能够分别来考虑如何编写初始化和释放代码，以及如何编写测试代码。不管怎样，这种<strong>执行的次序对于所有测试都将保持相同</strong>，而不管初始化代码如何编写，或测试代码如何编写。</p>
-</li>
-<li><p>组成：</p>
-<ol>
-<li>父类角色：提供模板（抽象类）；</li>
-<li>子类角色：为模板提供实现。</li>
-</ol>
-</li>
-<li><p>在JUnit中的应用：Before()，Test()，After()。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JUnit在TestCase类中应用了模板方法模式。</span></span><br><span class="line"><span class="comment">//具体的模板方法，定义出逻辑骨架</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">runBare</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    Throwable exception = <span class="keyword">null</span>;</span><br><span class="line">    setUp();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        runTest();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable running) &#123;</span><br><span class="line">        exception = running;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            tearDown();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable tearingDown) &#123;</span><br><span class="line">            <span class="keyword">if</span> (exception == <span class="keyword">null</span>) exception = tearingDown;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (exception != <span class="keyword">null</span>) <span class="keyword">throw</span> exception;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>效果：</p>
-<ul>
-<li>在各个测试用例中的公共的行为（初始化信息和释放资源等）被提取出来，可以避免代码的重复，简化了开发人员的工作；</li>
-<li>在TestCase中<strong>实现一个算法的不变部分，并且将可变的行为留给子类来实现</strong>。增强了系统的灵活性。使JUnit框架仅负责算法的轮廓和骨架，而测试的开发人员则负责给出这个算法的各个逻辑步骤。</li>
+<li>子类拥有父类非private的属性和方法；</li>
+<li>子类可以拥有自己属性和方法，即子类可以对父类进行扩展；</li>
+<li>子类可以用自己的方式实现父类的方法（重写）。</li>
 </ul>
-</li>
-</ul>
-<p>2、Command（命令）模式。</p>
+<p>构造器：<strong>只能够被调用，而不能被继承</strong>。调用父类的构造方法使用super()即可。</p>
+<p>总结：对于继承来说，子类会<strong>默认调用父类的构造器</strong>，但是如果<strong>没有默认的父类构造器，子类必须要显示的指定父类的构造器</strong>，而且必须是在子类构造器中做的第一件事(第一行代码)。</p>
+<p>protected关键字：将某些事物尽可能地对这个世界隐藏，但是仍然允许子类的成员来访问它们。</p>
+<p> 向上转型： <strong>将子类转换成父类，在继承关系上面是向上移动的，所以一般称之为向上转型</strong>。由于向上转型是从一个叫专用类型向较通用类型转换，所以它总是安全的，唯一发生变化的可能就是属性和方法的丢失。这就是为什么编译器在“未曾明确表示转型”或“未曾指定特殊标记”的情况下，仍然允许向上转型的原因。</p>
+<p>谨慎继承，继承存在如下缺陷：</p>
 <ul>
-<li><p>问题：JUnit是一个测试framework，<strong>测试人员只需开发测试用例</strong>。然后把这些测试用例组成请求(有时可能是一个或者多个)，发送到JUnitFrameWork，然后由JUnit执行测试，最后报告详细测试结果。其中包括执行的时间，错误方法，错误位置等。这样测试用例的开发人员就不需知道JUnit内部的细节，只要符合它定义的请求格式即可。从JUnit的角度考虑，它并<strong>不需要知道请求TestCase的操作信息，仅把它当作一种命令来执行</strong>，<strong>然后把执行测试结果发给测试人员</strong>。这样就使JUnit 框架和TestCase的开发人员独立开来，使得请求的一方不必知道接收请求一方的详细信息，更不必知道是怎样被接收，以及怎样被执行的，实现系统的松耦合。</p>
-</li>
-<li><p>模式的选择：Command（命令）模式能够比较好地满足需求。摘引其意图，<strong>将一个请求封装成一个对象，从而使你可用不同的请求对客户进行参数化</strong>；对请求进行排队或记录请求日志…Command告诉我们可以为一个操作生成一个对象并给出它的一个execute（执行）方法。</p>
-</li>
-<li><p>在JUnit中的应用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//为了实现Command模式，首先定义了一个接口Test,其中Run便是Command的Execute方法。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Counts the number of test cases that will be run by this test.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">countTestCases</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Runs a test and collects its result in a TestResult instance.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(TestResult result)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//TestCase是该接口的抽象实现，它增加了一个测试名称，因为每一个TestCase在创建时都要有一个名称，因此若一个测试失败了，你便可识别出是哪个测试失败。</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCase</span> <span class="keyword">extends</span> <span class="title">Assert</span> <span class="keyword">implements</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * the name of the test case</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String fName;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Runs the test case and collects the results in TestResult.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(TestResult result)</span> </span>&#123;</span><br><span class="line">        result.run(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>效果：</p>
-<ul>
-<li>Command模式将实现请求的一方（TestCase开发）和调用一方（JUnit Fromwork）<strong>进行解藕</strong>；</li>
-<li>Command模式<strong>使新的TestCase很容易的加入</strong>，无需改变已有的类，只需继承TestCase类即可，这样方便了测试人员；</li>
-<li>Command模式可以<strong>将多个TestCase进行组合成一个复合命令</strong>，实际你将看到TestSuit就是它的复合命令，当然它使用了Composite模式；</li>
-<li>Command模式容易把请求的TestCase组合成请求队列，这样使接收请求的一方（Junit Fromwork）,容易的决定是否执行请求，或者一旦发现测试用例失败或者错误可以立刻停止进行报告。</li>
+<li>父类变，子类就必须变；</li>
+<li>继承破坏了封装，对于父类而言，它的实现细节对于子类来说都是透明的；</li>
+<li>继承是一种强耦合关系。</li>
 </ul>
-</li>
-</ul>
-<p>3、Composite（组合）。</p>
+<p>3、多态：指程序中<strong>定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序运行期间才确定</strong>，即一个引用变量到底会指向哪个类的实例对象，该引用变量发出的方法调用到底是哪个类中实现的方法，必须由程序运行期间才能决定。因为在程序运行时才确定具体的类，这样，不用修改源程序代码，就可以让引用变量绑定到各种不同的类实现上，从而导致该引用调用的具体方法随之改变，即<strong>不修改程序代码就可以改变程序运行时所绑定的具体代码，让程序可以选择多个运行状态</strong>，这就是多态性。</p>
+<p><strong>指向子类的父类引用由于向上转型了，它只能访问父类中拥有的方法和属性</strong>，而对于子类中存在而<strong>父类中不存在的方法，该引用是不能使用的</strong>，尽管是重载该方法。若<strong>子类重写了父类中的某些方法，在调用该些方法的时候，必定是使用子类中定义的这些方法</strong>（动态连接、动态调用）。</p>
+<p>Java中多态的实现方式：接口实现、继承父类进行方法<strong>重写</strong>、同一个类中进行方法<strong>重载</strong>。</p>
+<p> Java实现多态有三个必要条件：<strong>继承、重写、向上转型</strong>；</p>
 <ul>
-<li><p>问题：通过我们使用Command模式，JUnit能够方便的运行一个单独的测试案例之后产生测试结果。可是在实际的测试过程中，需要<strong>把多个测试用例进行组合成为一个复合的测试用例</strong>，当作一个请求发送给JUnit。这样JUnit就为面临一个问题，必须考虑测试请求的类型，是一个单一的TestCase还是一个复合的TestCase，甚至于要区分到底有多少个TestCase。怎样设计JUnit才可以实现不需要区分单个TestCase还是复合TestCase，把它们统一成相同的请求？</p>
-</li>
-<li><p>模式的选择：当测试调用者<strong>不必关心其运行的是一个或多个测试案例的请求时</strong>，能够轻松地解决这个问题模式就是Composite（组合）模式。摘引其意图，将对象组合成树形结构以表示<strong>部分-整体的层次结构</strong>。Composite使得用户<strong>对单个对象和组合对象的使用具有一致性</strong>。在这里部分-整体的层次结构是解决问题的关键，可以把单个的TestCase看作部分，而把复合的TestCase(TestSuit)看作整体。这样我们使用该模式便可以恰到好处得解决这个难题。</p>
-</li>
-<li><p>组成：</p>
-<ol>
-<li>Component：这是一个抽象角色，它给参加组合的对象规定一个接口。这个角色，给出共有的接口和默认的行为。其实就我们的Test接口，它定义出run方法；</li>
-<li>Composite：实现共有接口并维护一个测试的集合。就是我们的复合TestCase，TestSuit；</li>
-<li>Leaf：代表参加组合的对象，它没有下级子对象，仅定义出参加组合的原始对象的行为，其实就是单一的测试用例TestCase，它仅实现Test接口的方法。</li>
-</ol>
-</li>
-<li><p>在JUnit中的应用。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//composite模式中的Component角色</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">countTestCases</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(TestResult result)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//composite模式中的Leaf角色</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">TestCase</span> <span class="keyword">extends</span> <span class="title">Assert</span> <span class="keyword">implements</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Runs the test case and collects the results in TestResult.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(TestResult result)</span> </span>&#123;</span><br><span class="line">        result.run(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*下面，列出Composite源码。将其取名为TestSuit类。TestSuit有一个属性fTests (Vector类型)中保存了</span></span><br><span class="line"><span class="comment">*其子测试用例（child test），提供addTest方法来实现增加子对象TestCase ,并且还提供testCount 和*tests等方法来操作子对象。最后通过run()方法实现对其子对象进行委托（delegate），最后还提供*addTestSuite方法实现递归，构造成树形。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestSuite</span> <span class="keyword">implements</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Vector&lt;Test&gt; fTests = <span class="keyword">new</span> Vector&lt;Test&gt;(<span class="number">10</span>);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addTest</span><span class="params">(Test test)</span> </span>&#123;</span><br><span class="line">        fTests.add(test);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">testCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fTests.size();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Enumeration&lt;Test&gt; <span class="title">tests</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fTests.elements();</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Runs the tests and collects their result in a TestResult.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(TestResult result)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Test each : fTests) &#123;</span><br><span class="line">            <span class="keyword">if</span> (result.shouldStop()) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            runTest(each, result);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Adds the tests from the given class to the suite</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addTestSuite</span><span class="params">(Class&lt;? extends TestCase&gt; testClass)</span> </span>&#123;</span><br><span class="line">        addTest(<span class="keyword">new</span> TestSuite(testClass));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*所有上面的代码是对Test接口进行实现的。由于TestCase和TestSuit两者都符合Test接口，我们可以通过*addTestSuite递归地将TestSuite再组合成TestSuite，这样将构成树形结构。所有开发者都能够创建他们自</span></span><br><span class="line"><span class="comment">*己的TestSuit。测试人员可创建一个组合了这些套件的TestSuit来运行它们所有的TestCase。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>效果：</p>
-<ul>
-<li>简化了JUnit的代码JUnit可以统一处理组合结构TestSuite和单个对象TestCase。使JUnit开发变得简单容易，因为不需要区分部分和整体的区别，不需要写一些充斥着if else的选择语句；</li>
-<li>定义了TestCase对象和TestSuite的类层次结构 基本对象TestCase可以被组合成更复杂的组合对象TestSuite，而这些组合对象又可以被组合，这样不断地递归下去。客户代码中，任何使用基本对象的地方都方便的使用组合对象，大大简化系统维护和开发；</li>
-<li>使得更容易增加新的类型的TestCase。</li>
+<li>继承：在多态中<strong>必须存在有继承关系的子类和父类</strong>；</li>
+<li>重写：<strong>子类对父类中某些方法进行重新定义</strong>，在调用这些方法时就会调用子类的方法；</li>
+<li>向上转型：在多态中需要<strong>将子类的引用赋给父类对象</strong>，只有这样该引用才能够具备技能调用父类的方法和子类的方法。</li>
 </ul>
-</li>
-</ul>
-<p>4、dapter（适配器）：将<strong>一个类的接口转换成客户希望的另外一个接口</strong>。Adapter模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。</p>
+<p>多态机制遵循的原则：当超类对象引用变量引用子类对象时，<strong>被引用对象的类型而不是引用变量的类型决定了调用谁的成员方法</strong>，但是这个<strong>被调用的方法必须是在超类中定义过的，也就是说被子类覆盖的方法</strong>，但是它仍然要根据继承链中方法调用的优先级来确认方法，该优先级为：<strong>this.show(O)、super.show(O)、this.show((super)O)、super.show((super)O)</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(D obj)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">"A and D"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(A obj)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">"A and A"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(B obj)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">"B and B"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(A obj)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">"B and A"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">D</span> <span class="keyword">extends</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        A a1 = <span class="keyword">new</span> A();</span><br><span class="line">        A a2 = <span class="keyword">new</span> B();</span><br><span class="line">        B b = <span class="keyword">new</span> B();</span><br><span class="line">        C c = <span class="keyword">new</span> C();</span><br><span class="line">        D d = <span class="keyword">new</span> D();</span><br><span class="line">        System.out.println(<span class="string">"1--"</span> + a1.show(b));</span><br><span class="line">        System.out.println(<span class="string">"2--"</span> + a1.show(c));</span><br><span class="line">        System.out.println(<span class="string">"3--"</span> + a1.show(d));</span><br><span class="line">        System.out.println(<span class="string">"4--"</span> + a2.show(b));</span><br><span class="line">        System.out.println(<span class="string">"5--"</span> + a2.show(c));</span><br><span class="line">        System.out.println(<span class="string">"6--"</span> + a2.show(d));</span><br><span class="line">        System.out.println(<span class="string">"7--"</span> + b.show(b));</span><br><span class="line">        System.out.println(<span class="string">"8--"</span> + b.show(c));</span><br><span class="line">        System.out.println(<span class="string">"9--"</span> + b.show(d));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">结果：</span><br><span class="line"><span class="number">1</span>--A and A</span><br><span class="line"><span class="number">2</span>--A and A</span><br><span class="line"><span class="number">3</span>--A and D</span><br><span class="line"><span class="number">4</span>--B and A</span><br><span class="line"><span class="number">5</span>--B and A</span><br><span class="line"><span class="number">6</span>--A and D</span><br><span class="line"><span class="number">7</span>--B and B</span><br><span class="line"><span class="number">8</span>--B and B</span><br><span class="line"><span class="number">9</span>--A and D</span><br></pre></td></tr></table></figure>
+<p>总结：面向对象编程有三大特性：封装、继承、多态。</p>
+<p>封装<strong>隐藏了类的内部实现机制，可以在不影响使用的情况下改变类的内部结构，同时也保护了数据</strong>。对外界而言它的内部细节是隐藏的，暴露给外界的只是它的访问方法。</p>
+<p>继承是为了<strong>重用父类代码</strong>。两个类若存在IS-A的关系就可以使用继承。</p>
+<p>多态指程序中<strong>定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序运行期间才确定</strong>。</p>
+<h4 id="重写与重载"><a href="#重写与重载" class="headerlink" title="重写与重载"></a>重写与重载</h4><p>1、定义：</p>
 <ul>
-<li><p>问题：如果实现一个测试用例，就必须实现继承Testcase，然后实现run方法，实际是（testRun），然而这样我们就把<strong>所有的测试用例都实现相同类的不同方法，这样的结果就会造成产生大量的子类</strong>，使系统的测试维护相当困难，并且setUp和tearDown仅为这个testRun服务，其他的测试也必须完成相应的代码，从而增加了开发人员的工作量，怎样解决这个问题？</p>
-<p>为了避免类的急剧扩散，试想一个给定的测试用例类（testcase class）可以实现许多不同的方法，每一个方法都有一个描述性的名称，如testMoneyEquals或testMoneyAdd。这样<strong>测试案例并不符合简单的command接口</strong>。因此又带来另外一个问题就是，使所有测试方法从测试调用者的角度（JUnit框架）上看都是相同的。怎样解决这个问题？</p>
-</li>
-<li><p>模式的选择：Adapter具有以下意图“<strong>将一个类的接口转换成客户希望的另外一个接口</strong>”。这听起来非常适合。把具有一定规则的描述性方法如testMoneyEquals，转化为JUnit框架所期望的Command（TestCase的run）从而方便框架执行测试。Adapter模式又分为类适配器和对象适配器。类适配器是静态的实现在这里不适合使用，于是使用了对象适配器。</p>
-</li>
-<li><p>组成：</p>
-<ol>
-<li>目标抽象角色（Target）：定义客户要用的特定领域的接口；</li>
-<li>适配器（Adapter）-中介：调用另一个接口，作为一个转换器；</li>
-<li>适配器（Adaptee）：定义一个接口，Adapter需要接入；</li>
-<li>客户端（Client）：协同对象符合Adapter适配器。</li>
-</ol>
-</li>
-<li><p>在JUnit中的应用：testXXX()。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//junit在TestCase类中应用了适配器模式</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">runTest</span><span class="params">()</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    assertNotNull(<span class="string">"TestCase.fName cannot be null"</span>, fName); <span class="comment">// Some VMs crash when calling getMethod(null,null);</span></span><br><span class="line">    Method runMethod = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// use getMethod to get all public inherited</span></span><br><span class="line">        <span class="comment">// methods. getDeclaredMethods returns all</span></span><br><span class="line">        <span class="comment">// methods of this class but excludes the</span></span><br><span class="line">        <span class="comment">// inherited ones.</span></span><br><span class="line">        runMethod = getClass().getMethod(fName, (Class[]) <span class="keyword">null</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NoSuchMethodException e) &#123;</span><br><span class="line">        fail(<span class="string">"Method \""</span> + fName + <span class="string">"\" not found"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!Modifier.isPublic(runMethod.getModifiers())) &#123;</span><br><span class="line">        fail(<span class="string">"Method \""</span> + fName + <span class="string">"\" should be public"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        runMethod.invoke(<span class="keyword">this</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">        e.fillInStackTrace();</span><br><span class="line">        <span class="keyword">throw</span> e.getTargetException();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">        e.fillInStackTrace();</span><br><span class="line">        <span class="keyword">throw</span> e;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在runBare方法中，通过<strong>runTest方法将我们自己编写的testXXX方法进行了适配</strong>，使得junit可以执行我们自己编写的Test Case。</p>
-<p>在runTest方法中，首先<strong>获得我们自己编写的testXXX方法所对应的Method对象</strong>（不带参数），然后检查该Method所对应的方法<strong>是否是Public</strong>的，如果是则<strong>调用Method对象的invoke方法来去执行我们自己编写的testXXX方法</strong>。</p>
-</li>
-<li><p>效果：</p>
-<ul>
-<li>使用Adapter模式简化测试用例的开发，通过按照方法命名的规范来开发测试，不需要进行大量的类继承，提高代码的复用，减轻测试人员的工作量；</li>
-<li>使用Adapter可以重新定义Adaptee的部分行为，如增强异常处理等。</li>
+<li>重载（Overloading）：<strong>函数或者方法有同样的名称，但是参数列表不相同的情形</strong>，这样的<strong>同名不同参</strong>数的函数或者方法之间，互相称之为重载函数或者方法。</li>
+<li>重写（Overriding）：在Java的<strong>子类与父类中有两个名称、参数列表都相同的方法</strong>的情况。由于他们具有相同的方法签名，所以<strong>子类中的新方法将覆盖父类中原有的方法</strong>。</li>
 </ul>
+<p>2、重载 VS 重写：</p>
+<ul>
+<li><strong>重载是一个编译期概念、重写是一个运行期间概念</strong>；</li>
+<li>重载遵循所谓“编译期绑定”，即在编译时根据参数变量的类型判断应该调用哪个方法；</li>
+<li>重写遵循所谓“运行期绑定”，即在运行的时候，根据引用变量所指向的实际对象的类型来调用方法；</li>
+<li>因为在编译期已经确定调用哪个方法，所以重载并不是多态。而重写是多态。重载只是一种语言特性，是一种语法规则，与多态无关，与面向对象也无关。（注：严格来说，重载是编译时多态，即静态多态。但是，Java中提到的多态，在不特别说明的情况下都指动态多态）。</li>
+</ul>
+<p>3、重写有以下三个限制：</p>
+<ul>
+<li>子类方法的访问权限必须大于等于父类方法；</li>
+<li>子类方法的返回类型必须是父类方法返回类型或为其子类型；</li>
+<li>子类方法抛出的异常类型必须是父类抛出异常类型或为其子类型。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bark</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"woof "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Hound</span> <span class="keyword">extends</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sniff</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"sniff "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bark</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"bowl "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Dog dog = <span class="keyword">new</span> Hound();</span><br><span class="line">        dog.bark();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">结果：bowl</span><br></pre></td></tr></table></figure>
+<p>4、重载：</p>
+<p>存在于同一个类中，指<strong>一个方法与已经存在的方法名称上相同，但是参数类型、个数、顺序至少有一个不同</strong>。</p>
+<p>应该注意的是，<strong>返回值不同，其它都相同不算是重载</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义了两个bark方法，一个是没有参数的bark方法，另外一个是包含一个int类型参数的bark方法。在编译期，编译期可以根据方法签名（方法名和参数情况）情况确定哪个方法被调用。</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bark</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"woof "</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bark</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"woof "</span> + num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h4><p>抽象类与接口是java语言中<strong>对抽象概念进行定义的两种机制</strong>，正是由于他们的存在才赋予java强大的面向对象的能力。他们两者之间对抽象概念的支持有很大的相似，甚至可以互换，但是也有区别。</p>
+<p>1、抽象类：</p>
+<ul>
+<li>抽象类<strong>不能被实例化</strong>，实例化的工作应该交由它的子类来完成，它只需要有一个引用即可；</li>
+<li>抽象方法必须<strong>由子类来进行重写</strong>；</li>
+<li>只要<strong>包含一个抽象方法的抽象类，该方法必须要定义成抽象类</strong>，不管是否还包含有其他方法；</li>
+<li>抽象类中<strong>可以包含具体的方法，当然也可以不包含抽象方法</strong>；</li>
+<li><strong>子类中的抽象方法不能与父类的抽象方法同名</strong>；</li>
+<li>abstract不能与final并列修饰同一个类；</li>
+<li>abstract 不能与private、static、final或native并列修饰同一个方法。</li>
+</ul>
+<p>创建抽象类和抽象方法非常有用，因为他们可以<strong>使类的抽象性明确起来</strong>,并告诉用户和编译器打算怎样使用他们。抽象类还是有用的重构器，因为它们使我们可以很容易地<strong>将公共方法沿着继承层次结构向上移动</strong>。</p>
+<p>2、接口：接口本身就不是类，不能实例化。接口是用来<strong>建立类与类之间的协议</strong>，它所提供的只是一种形式，而<strong>没有具体的实现</strong>。同时<strong>实现该接口的实现类必须要实现该接口的所有方法</strong>，通过使用implements关键字，他表示该类在遵循某个或某组特定的接口，同时也表示着“interface只是它的外貌，但是现在需要声明它是如何工作的”。</p>
+<p>接口是抽象类的延伸，java为了保证数据安全是<strong>不能多重继承</strong>的，也就是说继承只能存在一个父类，但是接口不同，<strong>一个类可以同时实现多个接口</strong>，不管这些接口之间有没有关系，所以接口弥补了抽象类不能多重继承的缺陷，但是推荐继承和接口共同使用，因为这样既可以保证数据安全性又可以实现多重继承。</p>
+<p>在使用接口过程中需要注意如下几个问题：</p>
+<ul>
+<li><strong>Interface所有的方法访问权限自动被声明为public</strong>。确切的说只能为public，当然你可以显示的声明为protected、private，但是编译会出错！</li>
+<li><strong>接口中可以定义“成员变量”，或者说是不可变的常量</strong>，因为接口中的“成员变量”会自动变为为public static final。可以通过类命名直接访问：ImplementClass.name；</li>
+<li>接口中<strong>不存在实现的方法</strong>；</li>
+<li>实现接口的<strong>非抽象类必须要实现该接口的所有方法。抽象类可以不用实现</strong>；</li>
+<li>不能使用new操作符实例化一个接口，但可以声明一个接口变量，该变量必须引用（refer to)一个实现该接口的类的对象。可以使用 instanceof 检查一个对象是否实现了某个特定的接口。例如：if(anObject instanceof Comparable){}；</li>
+<li>在实现多接口的时候一定要避免方法名的重复。</li>
+</ul>
+<p>3、抽象类与接口的区别：</p>
+<p>语法层次：</p>
+<ul>
+<li><p>抽象类方式中，<strong>抽象类可以拥有任意范围的成员数据，同时也可以拥有自己的非抽象方法</strong>，但是<strong>接口方式中，它仅能够有静态、不能修改的成员数据（但是我们一般是不会在接口中使用成员数据），同时它所有的方法都必须是抽象的</strong>。在某种程度上来说，接口是抽象类的特殊化。</p>
+</li>
+<li><p>对子类而言，它只能继承一个抽象类（这是java为了数据安全而考虑的），但是却可以实现多个接口。</p>
 </li>
 </ul>
-<p>参考博客：<a href="http://www.voidcn.com/article/p-uxchkbof-ez.html" target="_blank" rel="noopener">http://www.voidcn.com/article/p-uxchkbof-ez.html</a></p>
+<p>设计层次：</p>
+<ul>
+<li>抽象层次不同。<strong>抽象类是对类抽象，而接口是对行为的抽象</strong>。抽象类是对整个类整体进行抽象，包括属性、行为，但是接口却是对类局部（行为）进行抽象。</li>
+<li>跨域不同。<strong>抽象类所跨域的是具有相似特点的类，而接口却可以跨域不同的类</strong>。我们知道抽象类是从子类中发现公共部分，然后泛化成抽象类，子类继承该父类即可，但是接口不同。实现它的子类可以不存在任何关系，共同之处。例如猫、狗可以抽象成一个动物类抽象类，具备叫的方法。鸟、飞机可以实现飞Fly接口，具备飞的行为，这里我们总不能将鸟、飞机共用一个父类吧！所以说<strong>抽象类所体现的是一种继承关系，要想使得继承关系合理，父类和派生类之间必须存在”is-a” 关系</strong>，即父类和派生类在概念本质上应该是相同的。对于接口则不然，并<strong>不要求接口的实现者和接口定义在概念本质上是一致的</strong>， 仅仅是实现了接口定义的契约而已。</li>
+<li>设计层次不同。对于<strong>抽象类而言，它是自下而上来设计</strong>的，我们要先知道子类才能抽象出父类，而<strong>接口则不同，它根本就不需要知道子类的存在，只需要定义一个规则即可</strong>，至于什么子类、什么时候怎么实现它一概不知。比如我们只有一个猫类在这里，如果你这是就抽象成一个动物类，是不是设计有点儿过度？我们起码要有两个动物类，猫、狗在这里，我们再抽象他们的共同点形成动物抽象类吧！所以说<strong>抽象类往往都是通过重构而来</strong>的！但是接口就不同，比如说飞，我们根本就不知道会有什么东西来实现这个飞接口，怎么实现也不得而知，我们要做的就是事前定义好飞的行为接口。所以说<strong>抽象类是自底向上抽象而来</strong>的，<strong>接口是自顶向下设计出来</strong>的。</li>
+</ul>
+<p>总结：</p>
+<ul>
+<li><strong>抽象类在java语言中所表示的是一种继承关系</strong>，一个子类只能存在一个父类，但是可以存在多个接口；</li>
+<li>在<strong>抽象类中可以拥有自己的成员变量和非抽象类方法</strong>，但是<strong>接口中只能存在静态的不可变的成员数据（不过一般都不在接口中定义成员数据），而且它的所有方法都是抽象的</strong>；</li>
+<li>抽象类和接口所反映的设计理念是不同的，<strong>抽象类所代表的是“is-a”的关系，而接口所代表的是“like-a”的关系</strong>；</li>
+</ul>
+<p>抽象类和接口是java语言中两种不同的抽象概念，他们的存在对多态提供了非常好的支持，虽然他们之间存在很大的相似性。但是对于他们的选择往往反应了对问题域的理解。只有对问题域的本质有良好的理解，才能做出正确、合理的设计。</p>
+<p>博客转自：</p>
+<p><a href="https://chenssy.blog.csdn.net/column/info/chenssy-javaimpr/2" target="_blank" rel="noopener">https://chenssy.blog.csdn.net/column/info/chenssy-javaimpr/2</a></p>
+<p><a href="https://www.hollischuang.com/archives/1308" target="_blank" rel="noopener">https://www.hollischuang.com/archives/1308</a></p>
+<p>- </p>
 
       
      
@@ -324,7 +335,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Java单元测试框架</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -336,7 +347,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/软件测试//" class="article-tag-list-link color5">软件测试</a>
+        			<a href="/categories/编程基础//" class="article-tag-list-link color5">编程基础</a>
         		</li>
       		
 		</ul>
@@ -391,7 +402,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/03/JUnit介绍/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/23/Java-Common-one/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -405,18 +416,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/03/Java反射/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/06/24/Java-Common-Two/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java反射
+          Java基础（二）
         
       </div>
     </a>
   
   
-    <a href="/2019/06/02/SortAlgorithm/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">排序算法（二）</div>
+    <a href="/2019/06/08/数据结构总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据结构（一）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -443,7 +454,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About"><span class="toc-number">1.</span> <span class="toc-text">About</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设计模式"><span class="toc-number">2.</span> <span class="toc-text">设计模式</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#封装、继承、多态"><span class="toc-number">1.</span> <span class="toc-text">封装、继承、多态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#重写与重载"><span class="toc-number">2.</span> <span class="toc-text">重写与重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#接口与抽象类"><span class="toc-number">3.</span> <span class="toc-text">接口与抽象类</span></a></li></ol>
                     </div>
                 </span>
             </div>
