@@ -6,20 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>学习笔记（一） | xuexue&#39;s blog</title>
+  <title>学习笔记（二） | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="笔记：场景题、大数据、智力题。">
+  <meta name="description" content="笔记：servlet生命周期、request对象、转发与重定向。">
 <meta name="keywords" content="其他">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习笔记（一）">
-<meta property="og:url" content="http://yoursite.com/2019/06/20/interview-Common-One/index.html">
+<meta property="og:title" content="学习笔记（二）">
+<meta property="og:url" content="http://yoursite.com/2019/07/04/study-note-Two/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
-<meta property="og:description" content="笔记：场景题、大数据、智力题。">
+<meta property="og:description" content="笔记：servlet生命周期、request对象、转发与重定向。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-30T08:13:49.706Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/04/study-note-Two/jsp-servlet.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/04/study-note-Two/servlet继承结构.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/04/study-note-Two/servlet生命周期.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/04/study-note-Two/servlet生命周期阶段.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/04/study-note-Two/request对象方法.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/04/study-note-Two/parameter-attribute.PNG">
+<meta property="og:updated_time" content="2019-07-04T13:39:39.464Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习笔记（一）">
-<meta name="twitter:description" content="笔记：场景题、大数据、智力题。">
+<meta name="twitter:title" content="学习笔记（二）">
+<meta name="twitter:description" content="笔记：servlet生命周期、request对象、转发与重定向。">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/04/study-note-Two/jsp-servlet.PNG">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -160,14 +167,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-interview-Common-One" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-study-note-Two" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
       	 
   
     <h1 class="article-title" itemprop="name">
-      学习笔记（一）
+      学习笔记（二）
     </h1>
   
 
@@ -184,156 +191,104 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>笔记：场景题、大数据、智力题。 <a id="more"></a></p>
-<h2 id="场景题"><a href="#场景题" class="headerlink" title="场景题"></a>场景题</h2><p>1、上亿数量的链接，如何找出点击量排名前十的链接？</p>
-<p>分两种情况：<strong>可一次读入内存，不可一次读入</strong>。</p>
-<p>思路：trie树+堆，数据库索引，划分子集分别统计，hash，分布式计算，近似统计，外排序。</p>
-<p>遍历文件，对每个url求取hash(url)%1000，然后根据所取得的值将url分别存储到1000个小文件（记为</p>
-<p>a0,a1,…,a999）中。</p>
-<p>2、请说几个海量数据存储常见问题以及如何解答？</p>
-<p>例子1：给你A,B两个文件，各存放50亿条URL，每条URL占用64字节，内存限制是4G，让你找出A,B文件共同的URL。<br>思路：可以估计每个文件安的大小为5G×64=320G，远远大于内存限制的4G。所以不可能将其完全加载到内存中处理。考虑采取<strong>分而治之</strong>的方法。</p>
+        <p>笔记：servlet生命周期、request对象、转发与重定向。 <a id="more"></a></p>
+<h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><p>1、C/S与B/S区别？</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">C/S（客户端服务）</th>
+<th>B/S（浏览器服务）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">（体积）胖客户端</td>
+<td>瘦客户端</td>
+</tr>
+<tr>
+<td style="text-align:center">（效率）本地运行</td>
+<td>服务器端运行</td>
+</tr>
+<tr>
+<td style="text-align:center">（网络）依赖不强</td>
+<td>必须依赖网络</td>
+</tr>
+<tr>
+<td style="text-align:center">（用户）体验更好</td>
+<td>其次</td>
+</tr>
+</tbody>
+</table>
+<p>2、Jsp/Servlet：Sun制定的用Java开发Web应用程序的规范、技术。</p>
+<p><img src="/2019/07/04/study-note-Two/jsp-servlet.PNG" alt></p>
+<p>具体实现：</p>
 <ul>
-<li>分而治之/hash映射：遍历文件a，对每个url求取，然后根据所取得的值将url分别存储到1000个小文件（记为）中。这样每个小文件的大约为300M。遍历文件b，采取和a相同的方式将url分别存储到1000小文件中（记为）。这样处理后，所有可能相同的url都在对应的小文件（）中，不对应的小文件不可能有相同的url。然后我们只要求出1000对小文件中相同的url即可。</li>
-<li>hash统计：求每对小文件中相同的url时，可以把其中一个小文件的url存储到hash_set中。然后遍历另一个小文件的每个url，看其是否在刚才构建的hash_set中，如果是，那么就是共同的url，存到文件里面就可以了。</li>
+<li>规范：sun制定</li>
+<li>服务器：各容器供应商-&gt;apache的tomcat等</li>
+<li>组件实现：程序员-&gt;web应用程序</li>
 </ul>
-<p>例子2：有10个文件，每个文件1G， 每个文件的每一行都存放的是用户的query，每个文件的query都可能重复。要你按照query的频度排序</p>
-<p>思路：</p>
+<h2 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h2><p>1、定义：</p>
 <ul>
-<li>hash映射：顺序读取10个文件，按照hash(query)%10的结果将query写入到另外10个文件（记为）中。这样新生成的文件每个的大小大约也1G（假设hash函数是随机的）。</li>
-<li>hash统计：找一台内存在2G左右的机器，依次对用hash_map(query, query_count)来统计每个query出现的次数。注：hash_map(query,query_count)是用来统计每个query的出现次数，不是存储他们的值，出现一次，则count+1。</li>
-<li>堆/快速/归并排序：利用快速/堆/归并排序按照出现次数进行排序。将排序好的query和对应的query_cout输出到文件中。这样得到了10个排好序的文件（记为）。对这10个文件进行归并排序（内排序与外排序相结合）。</li>
+<li>宏观定义：sun制定的<strong>用java编写web应用程序的规范，技术</strong></li>
+<li>微观定义：一个<strong>继承自HttpServlet，部署在webServer中可以处理客户端请求的Java类</strong></li>
 </ul>
-<p>例子3：有一个1G大小的一个文件，里面每一行是一个词，词的大小不超过16个字节，内存限制大小是1M。返回频数最高的100个词</p>
-<p>思路：</p>
+<p>2、作用：</p>
 <ul>
-<li>分而治之/hash映射：顺序读文件中，对于每个词x，取hash(x)%5000，然后按照该值存到5000个小文件（记为x0,x1,…x4999）中。这样每个文件大概是200k左右。如果其中的有的文件超过了1M大小，还可以按照类似的方法继续往下分，直到分解得到的小文件的大小都不超过1M。</li>
-<li>hash统计：对每个小文件，采用trie树/hash_map等统计每个文件中出现的词以及相应的频率。</li>
-<li>堆/归并排序：取出出现频率最大的100个词（可以用含100个结点的最小堆），并把100个词及相应的频率存入文件，这样又得到了5000个文件。最后就是把这5000个文件进行归并（类似于归并排序）的过程了。</li>
+<li>接受用户请求</li>
+<li>处理用户请求</li>
+<li>返回请求结果</li>
 </ul>
-<p>例子4：海量日志数据，提取出某日访问百度次数最多的那个IP。</p>
-<p>思路：</p>
+<p>3、Servlet与Java类比较：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Servlet</th>
+<th>普通Java类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">继承HttpServlet</td>
+<td>一般继承Object类</td>
+</tr>
+<tr>
+<td style="text-align:center">必须在WebServer中才能运行</td>
+<td>不需要WebServer支持也能运行</td>
+</tr>
+<tr>
+<td style="text-align:center">可以处理客户端请求</td>
+<td>不能处理客户端请求</td>
+</tr>
+<tr>
+<td style="text-align:center">启动不需要main函数</td>
+<td>启动需要main函数</td>
+</tr>
+<tr>
+<td style="text-align:center">由容器创建（new）实例</td>
+<td>一般我们自己创建实例</td>
+</tr>
+<tr>
+<td style="text-align:center">由容器调用doGet或doPost方法</td>
+<td>程序员自己调用</td>
+</tr>
+</tbody>
+</table>
+<p>4、servlet继承结构：</p>
+<p><img src="/2019/07/04/study-note-Two/servlet继承结构.PNG" alt></p>
+<p>5、servlet生命周期：</p>
+<p><img src="/2019/07/04/study-note-Two/servlet生命周期.PNG" alt></p>
+<p><img src="/2019/07/04/study-note-Two/servlet生命周期阶段.PNG" alt></p>
+<p>6、request对象：</p>
+<p>request：容器生成，<strong>包装客户端请求信息</strong></p>
+<p><img src="/2019/07/04/study-note-Two/request对象方法.PNG" alt></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"contextPath: "</span> + request.getContextPath());</span><br><span class="line">System.out.println(<span class="string">"scheme: "</span> + request.getScheme());</span><br><span class="line">System.out.println(<span class="string">"servletName: "</span> + request.getServerName());</span><br><span class="line">System.out.println(<span class="string">"URI: "</span> + request.getRequestURI());</span><br><span class="line">System.out.println(<span class="string">"URL: "</span> + request.getRequestURL());</span><br><span class="line">System.out.println(<span class="string">"method: "</span> + request.getMethod());</span><br><span class="line">System.out.println(<span class="string">"port: "</span> + request.getServerPort());</span><br><span class="line">System.out.println(<span class="string">"servletPath: "</span> + request.getServletPath());</span><br><span class="line">System.out.println(<span class="string">"addre: "</span> + request.getRemoteAddr());</span><br><span class="line">System.out.println(<span class="string">"path: "</span> + request.getServletContext().getRealPath(<span class="string">"/upload"</span>));</span><br><span class="line">System.out.println(<span class="string">"protocol: "</span> + request.getProtocol());</span><br><span class="line"></span><br><span class="line">contextPath: /JavaWeb  <span class="comment">//项目路径</span></span><br><span class="line">scheme: http       </span><br><span class="line">servletName: localhost</span><br><span class="line">URI: /JavaWeb/TestServlet</span><br><span class="line">URL: http:<span class="comment">//localhost:8080/JavaWeb/TestServlet</span></span><br><span class="line">method: GET</span><br><span class="line">port: <span class="number">8080</span></span><br><span class="line">servletPath: /TestServlet</span><br><span class="line">addre: <span class="number">0</span>:<span class="number">0</span>:<span class="number">0</span>:<span class="number">0</span>:<span class="number">0</span>:<span class="number">0</span>:<span class="number">0</span>:<span class="number">1</span></span><br><span class="line">path: D:\Code\Idea\JavaWeb\out\artifacts\JavaWeb_war_exploded\upload</span><br><span class="line">protocol: HTTP/<span class="number">1.1</span></span><br></pre></td></tr></table></figure>
+<p>7、parameter和attribute：</p>
+<p><img src="/2019/07/04/study-note-Two/parameter-attribute.PNG" alt></p>
+<p>8、请求转发与重定向：</p>
 <ul>
-<li>分而治之/hash映射：针对数据太大，内存受限，只能是：把大文件化成(取模映射)小文件，即16字方针：大而化小，各个击破，缩小规模，逐个解决</li>
-<li>hash统计：当大文件转化了小文件，那么我们便可以采用常规的Hashmap(ip，value)来进行频率统计。</li>
-<li>堆/快速排序：统计完了之后，便进行排序(可采取堆排序)，得到次数最多的IP。</li>
+<li>请求转发：<strong>浏览器的地址不发生变化</strong>，<strong>会重复提交</strong>，<strong>可以传递request作用域数据</strong>，只能转发到本项目下路径</li>
+<li>重定向：<strong>浏览器的地址发生变化</strong>，<strong>不能带request作用域数据</strong>，可以重定向到外面</li>
 </ul>
-<p>3、请问有两个文件，如何将这两个文件按行依次交叉存入第三个文件中？</p>
-<p>linux中假设当前目录下的文件都以.wav.trn为后缀，每个文件里的内容为一行，将它们依次添加到文件Z的末尾<br>脚本如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/usr/bin/bash</span><br><span class="line">for filename in `find ./*.wav.trn|sort -u</span><br><span class="line">do</span><br><span class="line">echo `sed -n 1p $filename` &gt;&gt; Z</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-<p>4、请回答一下：统计文本中出现次数前十的单词，文件很大，不能一次性读入内存？？</p>
-<p>Top K 算法详解</p>
-<p>应用场景：</p>
-<p>搜索引擎会通过日志文件把用户每次检索使用的所有检索串都记录下来，每个查询串的长度为1-255字节。</p>
-<p>假设目前有一千万个记录（这些查询串的重复度比较高，虽然总数是1千万，但如果除去重复后，不超过3百万个。一个查询串的重复度越高，说明查询它的用户越多，也就是越热门。），请你统计最热门的10个查询串，要求使用的内存不能超过1G。</p>
-<p>必备知识：</p>
-<p>什么是哈希表？</p>
-<p>哈希表（Hash table，也叫散列表），是根据关键码值(Key value)而直接进行访问的数据结构。</p>
-<p>也就是说，它通过把关键码值映射到表中一个位置来访问记录，以加快查找的速度。这个映射函数叫做散列函数，存放记录的数组叫做散列表。</p>
-<p>哈希表的做法其实很简单，就是把Key通过一个固定的算法函数既所谓的哈希函数转换成一个整型数字，然后就将该数字对数组长度进行取余，取余结果就当作数组的下标，将value存储在以该数字为下标的数组空间里。</p>
-<p>而当使用哈希表进行查询的时候，就是再次使用哈希函数将key转换为对应的数组下标，并定位到该空间获取value，如此一来，就可以充分利用到数组的定位性能进行数据定位。</p>
-<p>问题解析：</p>
-<p>要统计最热门查询，首先就是要统计每个Query出现的次数，然后根据统计结果，找出Top 10。所以我们可以基于这个思路分两步来设计该算法。</p>
-<p>即，此问题的解决分为以下俩个步骤：</p>
-<p>第一步：Query统计              (统计出每个Query出现的次数)</p>
-<p>Query统计有以下俩个方法，可供选择：</p>
-<p>1）直接排序法</p>
-<p>(经常在日志文件中统计时，使用cat file|format key|sort | uniq -c | sort -nr | head -n 10，就是这种方法)</p>
-<p>首先我们最先想到的的算法就是排序了，首先对这个日志里面的所有Query都进行排序，然后再遍历排好序的Query，统计每个Query出现的次数了。</p>
-<p>但是题目中有明确要求，那就是内存不能超过1G，一千万条记录，每条记录是255Byte，很显然要占据2.375G内存，这个条件就不满足要求了。</p>
-<p>让我们回忆一下数据结构课程上的内容，当数据量比较大而且内存无法装下的时候，我们可以采用外排序的方法来进行排序，这里我们可以采用归并排序，因为归并排序有一个比较好的时间复杂度O(NlgN)。</p>
-<p>排完序之后我们再对已经有序的Query文件进行遍历，统计每个Query出现的次数，再次写入文件中。</p>
-<p>综合分析一下，排序的时间复杂度是O(NlgN)，而遍历的时间复杂度是O(N)，因此该算法的总体时间复杂度就是O(N+NlgN)=O（NlgN）。</p>
-<p>2）Hash Table法                (这种方法统计字符串出现的次数非常好)</p>
-<p>在第1个方法中，我们采用了排序的办法来统计每个Query出现的次数，时间复杂度是NlgN，那么能不能有更好的方法来存储，而时间复杂度更低呢？</p>
-<p>题目中说明了，虽然有一千万个Query，但是由于重复度比较高，因此事实上只有300万的Query，每个Query 255Byte，因此我们可以考虑把他们都放进内存中去，而现在只是需要一个合适的数据结构，在这里，Hash Table绝对是我们优先的选择，因为Hash Table的查询速度非常的快，几乎是O(1)的时间复杂度。</p>
-<p>那么，我们的算法就有了：</p>
-<p>维护一个Key为Query字串，Value为该Query出现次数的HashTable，每次读取一个Query，如果该字串不在Table中，那么加入该字串，并且将Value值设为1；如果该字串在Table中，那么将该字串的计数加一即可。最终我们在O(N)的时间复杂度内完成了对该海量数据的处理。</p>
-<p>本方法相比算法1：在时间复杂度上提高了一个数量级，为O（N），但不仅仅是时间复杂度上的优化，该方法只需要IO数据文件一次，而算法1的IO次数较多的，因此该算法2比算法1在工程上有更好的可操作性。</p>
-<p>第二步：找出Top 10          (找出出现次数最多的10个)</p>
-<p>算法一：普通排序             （我们只用找出top10，所以全部排序有冗余）</p>
-<p>我想对于排序算法大家都已经不陌生了，这里不在赘述，我们要注意的是排序算法的时间复杂度是NlgN，在本题目中，三百万条记录，用1G内存是可以存下的。</p>
-<p>算法二：部分排序</p>
-<p>题目要求是求出Top 10，因此我们没有必要对所有的Query都进行排序，我们只需要维护一个10个大小的数组，初始化放入10个Query，按照每个Query的统计次数由大到小排序，然后遍历这300万条记录，每读一条记录就和数组最后一个Query对比，如果小于这个Query，那么继续遍历，否则，将数组中最后一条数据淘汰(还是要放在合适的位置，保持有序)，加入当前的Query。最后当所有的数据都遍历完毕之后，那么这个数组中的10个Query便是我们要找的Top10了。</p>
-<p>不难分析出，这样，算法的最坏时间复杂度是N*K， 其中K是指top多少。</p>
-<p>算法三：堆</p>
-<p>在算法二中，我们已经将时间复杂度由NlogN优化到N*K，不得不说这是一个比较大的改进了，可是有没有更好的办法呢？</p>
-<p>分析一下，在算法二中，每次比较完成之后，需要的操作复杂度都是K，因为要把元素插入到一个线性表之中，而且采用的是顺序比较。这里我们注意一下，该数组是有序的，一次我们每次查找的时候可以采用二分的方法查找，这样操作的复杂度就降到了logK，可是，随之而来的问题就是数据移动，因为移动数据次数增多了。不过，这个算法还是比算法二有了改进。</p>
-<p>基于以上的分析，我们想想，有没有一种既能快速查找，又能快速移动元素的数据结构呢？</p>
-<p>回答是肯定的，那就是堆。</p>
-<p>借助堆结构，我们可以在log量级的时间内查找和调整/移动。因此到这里，我们的算法可以改进为这样，维护一个K(该题目中是10)大小的小根堆，然后遍历300万的Query，分别和根元素进行对比。</p>
-<p>思想与上述算法二一致，只是在算法三，我们采用了最小堆这种数据结构代替数组，把查找目标元素的时间复杂度有O（K）降到了O（logK）。</p>
-<p>那么这样，采用堆数据结构，算法三，最终的时间复杂度就降到了N*logK，和算法二相比，又有了比较大的改进。</p>
-<p>总结：</p>
-<p>至此，算法就完全结束了，经过上述第一步、先用Hash表统计每个Query出现的次数，O（N）；然后第二步、采用堆数据结构找出Top 10，N<em>O（logK）。所以，我们最终的时间复杂度是：O（N） + N‘</em>O（logK）。（N为1000万，N’为300万）。 </p>
-<p>5、请回答一下QQ怎么实现在线大文件的传输？</p>
-<p>网上搜索了一下，比较多的一种说法是通过“md5(‘文件内容’)”生成“唯一标识符”的方法。</p>
-<p>6、请你说一下你用过哪些电商app,并比较他们的好坏？</p>
-<p>用过淘宝，京东、唯品会、网易考拉、亚马逊</p>
-<p>首先淘宝，用的最多，的确买日用品很方便，东西齐全，但是加载首页很慢，不够流畅，此外依旧是假货横行，应当加大打假力度；</p>
-<p>京东，只买过U盘，但是退货后钱款没到账，找客服两次未解决，不提了，后面就卸了，没什么印象了</p>
-<p>唯品会：排版不行，购物车只能保持十五分钟这个笔者持反对意见</p>
-<p>网易考拉:货少但相对淘宝来说可信度比较高，当然价格也比较高，经常缺货</p>
-<p>亚马逊：除了运费贵英文看的费力没毛病</p>
-<h2 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h2><p>1、 请说一下分布式和集群的概念？</p>
-<p>分布式：是指<strong>将不同的业务分布在不同的地方</strong>；</p>
-<p>集群：是<strong>指将几台服务器集中在一起，实现同一业务</strong>。</p>
-<p>分布式中的每一个节点，都可以做集群，而集群并不一定就是分布式的。集群有组织性，一台服务器垮了，其它的服务器可以顶上来，而分布式的每一个节点，都完成不同的业务，一个节点垮了，哪这个业务就不可访问了。</p>
-<p>2、Hadoop也有了解，那有了解他的备份机制吧？请问怎么做到数据保持一致？</p>
-<p>Hadoop备份机制：该方案利用Hadoop自身的Failover措施（通过配置dfs.name.dir），NameNode可以将元数据信息保存到多个目录。通常的做法，选择一个本地目录、一个远程目录（通过NFS进行共享），当NameNode发生故障时，可以启动备用机器的NameNode，加载远程目录中的元数据信息，提供服务。<br>Hadoop中有个重要的工具就是HDFS分布式文件系统，那么在这种分布式环境下的数据一致性是如何保证呢？</p>
-<p>HDFS中，存储的文件将会被分成若干的大小一致的block（最后一个block的大小可能较小）分布式地存储在不同的机器上，那么就必须有一个角色来对这些数据进行管理，也就是NameNode节点，而存储这些block的结点我们称为DataNode，NameNode是用来管理这些元数据的。 下面讲一个例子，在客户端上传文件时，NameNode如何保证数据的一直性。客户端上传文件时，NameNode首先往edits log文件中记录元数据的操作日志。与此同时，NameNode将会在磁盘做一份持久化处理（fsimage文件）：他跟内存中的数据是对应的，如何保证和内存中的数据的一致性呢？在edits logs满之前对内存和fsimage的数据做同步（实际上只需要合并edits logs和fsimage上的数据即可，然后edits logs上的数据即可清除） 而当edits logs满之后，文件的上传不能中断，所以将会往一个新的文件edits.new上写数据，而老的edits logs的合并操作将由secondNameNode来完成，即所谓的checkpoint操作。 那么什么时候checkpoint呢？ 一般由两种限制，一个是edits logs的大小限制，即fs.checkpoint.size配置，一个是指定时间，即fs.checkpoint.period配置 当然根据规定，大小的限制是优先的，规定edits文件一旦超过阈值，则不管是否达到最大时间间隔，都会强制checkpoint。</p>
-<h2 id="智力题"><a href="#智力题" class="headerlink" title="智力题"></a>智力题</h2><p>1、5只猫 五分钟捉5只老鼠 请问100分钟捉100只老鼠需要多少只猫？</p>
-<p>5<em>X</em>5M=5Y<br>K<em>X</em>100M=100Y</p>
-<p>K=5</p>
-<p>需要5只猫</p>
-<p>2、圆桌，两个人，轮流放硬币，不能重叠，半径为1，某一方不能放下去，则为输。问先手赢 后手赢？</p>
-<p>先手赢。圆桌对称，先手放一个，后手都能找到对称的位置放，但是除了圆心。</p>
-<p>3、逻辑题：3升的杯子一个，5升的杯子一个，杯子不规则形状 问怎么得到4升的水 水无限多？</p>
-<ul>
-<li>将3升的装满倒入5升的；</li>
-<li>再一次将3升的转满，倒入5升的，把5升装满；</li>
-<li>3升杯里剩下的就是1升水；</li>
-<li>倒掉5升的，把1升水倒入5升杯；</li>
-<li>第三次加满3升杯，倒入5升杯，得到4升水。</li>
-</ul>
-<p>4、晚上有四个人过桥，一次只能过两个人，但是只有一只手电筒，四个人过桥时间分别是1，2，5，8，求最短过桥时间？</p>
-<p>假设这四人依次是甲乙丙丁：首先甲和乙过桥,甲带手电筒回来；然后丙和丁过桥,由乙带手电筒回来；最后甲再和乙一起过桥.所以最少用时间是2+1+8+2+2=15（分钟）</p>
-<p>5、两个容积分别为5升和6升的桶，最后如何只装3升？</p>
-<p>第一步：先取来6升水，倒进5升桶的水桶里，即得到6升桶里余下的1升水；<br>第二步：把5L桶清掉，把取到的1升水放进5升的水桶里保留不动，然后再取6升水，倒进5升的水桶里，6升的桶得到的是2升水，把5L桶清掉，存放这2升水；</p>
-<p>第三步：5升水桶有2升水．再取6升水，倒进5升水桶里，原有2L升+3升=5升，这时6升-3升=3升，6升里余下的就是3升水了。</p>
-<p>6、有十张扑克牌，每次可以只出一张，也可以只出两张，要出完有多少种出法？</p>
-<p>还有一张牌就出完10张，可能的情况有两种，从9到10和从8到10，已知了从0到9的出法有N种，如果再知道从0到8的出法有P种，那么从0到10级的出法就是N+P，那么可得出：<br>F(9)=N；</p>
-<p>F(8)=P；</p>
-<p>F(10)=N+P；</p>
-<p>F(10)=F(9)+F(8);</p>
-<p>又有：</p>
-<p>F(1)=1;</p>
-<p>F(2)=2;</p>
-<p>最后推出：F(10)=89</p>
-<p>7、井盖为什么是圆的？</p>
-<p>井道大都是圆形的，所以井盖就做成圆形的。<br>很多井道都是圆形的，所以井盖自然也就是圆形的了。那为什么井大都是圆形的呢？因为建筑学和土木工程学中，圆形通道最有利于保持土壤的压力。</p>
-<p>圆的受力更均匀不容易碎裂和塌陷</p>
-<p>圆形井盖受力后，会向四周扩散压力，由于扩散均匀不容易碎裂和塌陷。<br>矩形的井盖由于受力不均匀，导致碎裂的几率远大于圆形。所以通过耐用性方面考虑还是圆形井盖合适。</p>
-<p>圆形井盖从任何方向都不会掉落井下，也方便操作</p>
-<p>矩形对角线的长度都大于矩形的长和宽。所以在对角线方向把井盖竖起来就容易掉落井下。</p>
-<p>相对节省生成材料成本</p>
-<p>相对于矩形或者正方形，矩形内切圆形的面积最小，生成用的材料也更少。</p>
-<p>8、用5L和6L的桶，没有刻度，怎么量出3L的水？</p>
-<ul>
-<li>先将6L杯装满水放,然后将6L杯里的水倒满5L杯,此时5L杯水满为5L水,6L杯剩1L水；</li>
-<li>清空5L杯,将6L杯的1L水放到5L杯,此时5L杯有1L水,6L杯是空的；</li>
-<li>将6L杯装满水,然后往5L杯倒,刚好倒满5L杯（原有1L+6L杯倒过来的4L=5L）的时候,6L杯里还有2L水。</li>
-<li>清空5L杯里的水,将6L杯的2L水倒到5L杯,此时5L杯里有2L水,6L杯为空；</li>
-<li>将6L杯装满水,然后往5L杯里倒,刚好倒满5L杯（5L杯原来有2L+6L杯倒过来的3L=5L刚好满）时,6L杯里剩下的水就是3L.</li>
-</ul>
-<p>9、从前有座山，山脚下有5个海盗抢到了100枚金币，每一颗都一样的大小和价值。他们决定通过抽签的方式，按顺序提出分配方案决定金币的归属。 首先，由1号提出方案，5个人进行表决，半数人以上（包括半数）同意时，方案通过，否则他将被扔入大海喂鲨鱼，剩余海盗继续按顺序提出方案，依次类推。 假设每个海盗都是足够理性及机智，会考虑到利害及利益最大化问题，那么，1号海盗提出怎样的分配方案才能顺利通过考验并拿到可能性内最多的金币呢？</p>
-<p>海盗分金推理过程：<br>从后向前推，如果只剩4号和5号的话，5号一定会投反对票让4号喂鲨鱼，以独吞全部金币。所以，4号唯有支持3号才能保命。3号知道这一点，就会提(100，0，0)的分配方案，对4号、5号一毛不拔而将全部金币归为己有，因为他知道4号一无所获也会投赞成票，再加上自己一票他的方案即可通过。不过，2号推知到3号的方案，就会提出(98，0，1，1)的方案，即放弃3号，而给予4号和5号各一枚金币。由于该方案对于4号和5号来说比在3号分配时更为有利，他们将支持他而不希望由3号来分配。这样，2号将拿走98枚金币。不过，2号的方案会被1号所洞悉，1号并将提出(97，0，1，2，0)或(97，0，1，0，2)的方案，即放弃2号，而给3号一枚金币，同时给4号(或5号)2枚金币。由于1号的这一方案对于3号和4号(或5号)来说，相比2号分配时更优，他们将投1号的赞成票，再加上1号自己的票，1号的方案可获通过，97枚金币可轻松落入囊中。</p>
-<p>10、烧绳子得到15分钟？</p>
-<p>烧一根不均匀的绳子，从头烧到尾总共需要1个小时，问如何用烧绳子的方法来确定15分钟?<br>答案：烧两根绳子，1第一根两头一起点，第二根点一头<br>2第一根烧完后点第二根另一端，从此时起计时，至第二根烧完，即15min（哎不知道出这种题是要干什么）</p>
-<p>11、两个盲人各买了一白一黑两双袜子，不小心弄混了，问他们自己怎么分成刚好每人一白一黑？</p>
-<p>额因为袜子一双都是连在一起的，所以把两双袜子扯开，互相给对方一只，即可</p>
-<p>12、 一个圆桌，两个人往上放硬币，只能平铺不能重合，最后一个放的人胜利（接下来硬币无处可放了），问先放的赢还是后放的赢？</p>
-<p>这道题会围棋的人一般都知道，只要先手把硬币放在圆桌正中心，随后第二个人无论把硬币放在哪，第一个人都把硬币放在对称的位置，即可，是先放的赢</p>
-<p>博客转自：<a href="https://www.nowcoder.com/tutorial/97/" target="_blank" rel="noopener">https://www.nowcoder.com/tutorial/97/</a></p>
 
       
      
@@ -437,7 +392,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/20/interview-Common-One/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/04/study-note-Two/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -451,18 +406,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/06/23/Java-Common-one/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java基础（一）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/19/Linux-Common-Two/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Linux（二）</div>
+    <a href="/2019/06/29/计算机网络-Common-Four/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机网络（四）</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -489,7 +435,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景题"><span class="toc-number">1.</span> <span class="toc-text">场景题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大数据"><span class="toc-number">2.</span> <span class="toc-text">大数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#智力题"><span class="toc-number">3.</span> <span class="toc-text">智力题</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About"><span class="toc-number">1.</span> <span class="toc-text">About</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#servlet"><span class="toc-number">2.</span> <span class="toc-text">servlet</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -634,6 +580,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Linux常用命令</a>
               </li>
              
@@ -687,10 +637,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Redis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其他</a>
               </li>
              
               <li class="article-tag-list-item">
