@@ -6,15 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | xuexue&#39;s blog</title>
+  <title>学习笔记（四） | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="xuexue&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/page/2/index.html">
+  <meta name="description" content="笔记：JSP基础、。">
+<meta name="keywords" content="JavaWeb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习笔记（四）">
+<meta property="og:url" content="http://yoursite.com/2019/07/06/study-note-Four/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
+<meta property="og:description" content="笔记：JSP基础、。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/07/06/study-note-Four/servlet-java.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/06/study-note-Four/servlet等级继承结构.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/06/study-note-Four/生命周期.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/06/study-note-Four/servlet生命周期.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/06/study-note-Four/jsp执行原理.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/06/study-note-Four/jsp页面的组成.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/06/study-note-Four/jsp元素.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/06/study-note-Four/jsp指令元素.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/06/study-note-Four/session常用方法.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/06/study-note-Four/范围比较.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/06/study-note-Four/session-cookie.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/07/06/study-note-Four/过滤器的生命周期.PNG">
+<meta property="og:updated_time" content="2019-07-06T09:30:40.182Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xuexue&#39;s blog">
+<meta name="twitter:title" content="学习笔记（四）">
+<meta name="twitter:description" content="笔记：JSP基础、。">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/06/study-note-Four/servlet-java.PNG">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -155,146 +173,284 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-study-note-Four" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+      	 
+  
+    <h1 class="article-title" itemprop="name">
+      学习笔记（四）
+    </h1>
+  
+
+      	 
+		<br>
+		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+		<span class="icon-sort"></span>
+		<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+		</span>
+		</a>
+		
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>笔记：JSP基础、。 <a id="more"></a></p>
+<h2 id="Web技术基础"><a href="#Web技术基础" class="headerlink" title="Web技术基础"></a>Web技术基础</h2><p>1、B / S 与 C / S ：</p>
+<p>1）C / S ：Client / server 的简写，这里 Server 指的是 DBServer。</p>
+<ul>
+<li>特点：每个客户端必须安装（部署）一份应用程序，一般在局域网使用，只针对特定的客户群；</li>
+<li>响应速度快，交互比较好；</li>
+<li>缺点：客户端数目受服务器限制，维护升级比较麻烦；</li>
+<li>开发技术： vb，Delphi，winforms，AWT/Swing，SWT。</li>
+</ul>
+<p>2）B / S：Brower/Server 的简写，这里的 Server 指的有两个，WebServer 与 DBServer。</p>
+<ul>
+<li>特点：客户端不需要部署应用程序，只要一个浏览器。一般 web 网使用，但新的趋势是 B/S 项目越来越多，甚至传统使用 C/S 开发的项目也使用 B/S。富客户端技术（ajax，jquery，flex 等）的兴起，使 B/S 更如日中天。</li>
+<li>优点：程序升级维护方便，代码只在 WebServer 中有一份。因为最终程序运行结果在客户浏览器中显示，所以对客户端平台无限制。</li>
+<li>缺点：交互式没有 C/S 好。</li>
+</ul>
+<p>2、Servlet 微观定义： Servlet 是一个可以部署到 webServer 可以被客户端访问的 <strong>Java 类</strong>。</p>
+<p>3、JSP 微观定义： Java Server Page 的简写，文件后缀为 jsp。 JSP 页面=DHTML(html+css+js)+JAVA。其转译后为一 Servlet。</p>
+<h2 id="Servlet基础"><a href="#Servlet基础" class="headerlink" title="Servlet基础"></a>Servlet基础</h2><p>1、servlet：</p>
+<ul>
+<li>宏观定义： Servlet 是 SUN 制定的用 Java 开发 Web 应用程序的规范，技术，标准。</li>
+<li>微观定义：是一个部署在 WebServer（web 包容器， servlet 引擎） 中可以被客户端访问调用（可以处理客户端请求）的 Java 类。</li>
+</ul>
+<p>2、Servlet 类与普通 Java 类的区别：</p>
+<p><img src="/2019/07/06/study-note-Four/servlet-java.PNG" alt></p>
+<p>3、Servlet  的等级继承结构：</p>
+<p><img src="/2019/07/06/study-note-Four/servlet等级继承结构.PNG" alt></p>
+<p>一般我们继承 HttpServlet，其实我们可以继承 GenericServlet 或者实现Servlet 接口，如果这样，就需要程序员做很多底层的工作，而这些工作HttpServlet 已帮我们做好，所以 Sun 建议你继承 HttpServlet。</p>
+<p>4、Servlet 的生命周期：</p>
+<p><img src="/2019/07/06/study-note-Four/生命周期.PNG" alt></p>
+<ul>
+<li>构造方法（实例化）与 init(初始化)方法是一起执行的，要么第一次访问时执行，要么是 web 程序启动时执行。当加上<load-on-startup>1</load-on-startup>时，两个方法在 web 应用程序启动时调用，多个调用顺序 0,1,2,3。</li>
+<li>init()调用一次，一般第一次访问 Servlet 时调用。 service()调用多次，每次访问时调用。也有可能调用 0 次。</li>
+<li>destroy()调用一次， 应用程序关闭时调用（服务器关了，应用程序一定关；程序关闭，服务器不一定关）</li>
+</ul>
+<p><img src="/2019/07/06/study-note-Four/servlet生命周期.PNG" alt></p>
+<ul>
+<li>实例化，或称创建， new，创建对象，分配内存空间。由容器完成。</li>
+<li>初始化，指的是调用 init 方法，在对象实例化后执行。完成初始 servlet 要使用的资源，给变量赋初值等工作。</li>
+<li>服务，调用 service 方法。 </li>
+<li>销毁， destroy,释放初始化占用的资源。</li>
+<li>不可用，垃圾回收车收集内存。</li>
+</ul>
+<p>5、request重要方法：</p>
+<ul>
+<li>request.getContextPath()：得到 web 应用程序名称，或者叫虚拟路径，一般默认为项目名，但可以不一致。</li>
+<li>request.getServletPath()： 如果请求的是 servlet，那么返回的该servlet 在 web.xml 中配置的 url-pattern；如果是 jsp，返回 jsp 文件名。</li>
+<li>request.getRequestURI() = request.getContextPath() + request.getServletPath()；请求的相对路径</li>
+<li>request.getRequestURL()：请求的全部路径，绝对路径</li>
+<li>request.getMethod()： 请求类别，默认是 get 请求，只有使用 form 表单提交才可以使用 post 请求。</li>
+<li>request.getRemotePort()：客户端端口</li>
+<li>request.getRemoteAddr()：得到客户端的 IP 地址</li>
+<li>request.getServerName()：得到服务器名称</li>
+<li>request.getServerPort()：得到服务器端口号</li>
+</ul>
+<p>6、请求转发：</p>
+<ul>
+<li>请求转发需要 RequestDispatcher 的支持 ， 通 过request.getRequestDispatcher 方法得到 RequestDispatcher 对象 。RequestDispatcher 的 forward 方法传递 request 与 response。</li>
+<li>请求转发。 request 数据从第一个 servlet 到第二个 servlet 不会丢失，因为使用的是同一个 request。</li>
+<li>请求转发只能在一个 webApp 内部转发。</li>
+<li>如果请求的第一个 servlet 方法是 doGet，那么转发给其它 Servlet 的方法也是 doGet，也就是说，所有的请求方法类别一致。</li>
+<li>请求转发地址栏显示的依然是第一个请求资源路径。</li>
+</ul>
+<p>7、重定向：</p>
+<ul>
+<li>使用 response.sendRedirect（）方法。没有传递 request对象。</li>
+<li>request 数据从第一个 servlet 到第二个 servlet 会丢失，因为使用的不是同一个 request。</li>
+<li>重定向可以定向到其它应用程序。</li>
+<li>不管第一个请求是 get 还是 post,定向后全部变为默认的 get。</li>
+<li>从定向 url 地址栏路径改变，显示的最后一个。</li>
+<li>请求转发 url 地址栏路径不变，重定向改变。</li>
+</ul>
+<p>8、请求转发 VS 重定向：</p>
+<ul>
+<li>请求转发可以传递数据（数据不会丢失），重定向不能传递数据（数据会丢失）。</li>
+<li>请求转发只能在一个 web 应用程序内部转发，重定向可以到其他应用程序。</li>
+<li>请求转发处理完， 地址栏 url 路径为第一个（servlet）资源路径。 重定向为最后一个资源路径。 （利用重定向防止表单重复提交。）</li>
+<li>请求转发不需要加 webApp 名称。重定向需要添加 webApp 名称，但如果是定向到一个程序内部，添加有些繁琐，这时可以不添加，但资源路径不能再写“/“</li>
+<li>请求转发后面调用的方法类别与前面相同，而重定向全部会变为 get 请求，与之前的没关系。</li>
+<li>请求转发是一次请求（只有一个 request 对象），重定向是多次请求（生成多个 request 对象）。</li>
+</ul>
+<p>9、request 中 parameter 与 attribute 的区别：</p>
+<ul>
+<li>parameter 是客户端传过来的（client 请求参数）数据， attribute 是在 Server 端放入的数据。</li>
+<li>parameter 数据是只读的， attribute 是可读写的， parameter 相关的方法有 request.getParamenter();与 attribute 相关的方法有 setAttribute(String,Object)， getAttribute(String)，removeAttribute(String)</li>
+<li>getParameter返回的是 String类型，而 getAttribute返回的是 Object类型，需要强转</li>
+</ul>
+<h2 id="JSP基础"><a href="#JSP基础" class="headerlink" title="JSP基础"></a>JSP基础</h2><p>1、JSP（Java Server Page）：sun制定的用 java 编写 web 应用程序的规范，技术，建立在servlet规范之上；</p>
+<p>2、JSP执行原理：</p>
+<p><img src="/2019/07/06/study-note-Four/jsp执行原理.PNG" alt></p>
+<p>3、JSP页面的组成：</p>
+<p><img src="/2019/07/06/study-note-Four/jsp页面的组成.PNG" alt></p>
+<p>注释：</p>
+<p>1）HTML注释</p>
+<ul>
+<li>&lt;!- 注释内容 -&gt;</li>
+<li>客户端可见</li>
+</ul>
+<p>2）JSP注释</p>
+<ul>
+<li>&lt;% – 注释内容– %&gt;</li>
+<li>容器忽略，转译后的java类不可见</li>
+</ul>
+<p>3） Java注释</p>
+<ul>
+<li>转译后的Servlet可见，客户端不可见</li>
+</ul>
+<p>模板：</p>
+<ul>
+<li>界面原型</li>
+<li>显示相关</li>
+<li>美工关心</li>
+</ul>
+<p>4、JSP元素：</p>
+<p><img src="/2019/07/06/study-note-Four/jsp元素.PNG" alt></p>
+<p>脚本元素：</p>
+<ul>
+<li>除去表达式，语法要求每句后面有分号</li>
+<li>&lt;%=a%&gt; == &lt;%out.print(a);%&gt;</li>
+<li>&lt;%! %&gt;声明变量是全局的</li>
+<li>&lt;% %&gt;声明变量是局部的</li>
+</ul>
+<p>指令元素：</p>
+<p><img src="/2019/07/06/study-note-Four/jsp指令元素.PNG" alt></p>
+<h2 id="与用户交互"><a href="#与用户交互" class="headerlink" title="与用户交互"></a>与用户交互</h2><p>1、会话：对某个web应用程序的<strong>一次整体访问</strong>过程；</p>
+<p>会话问题：</p>
+<ul>
+<li>业务完成需多次请求，如购物车</li>
+<li>无连接的Http协议是<strong>无状态</strong>的，不能保存每个客户端私有信息</li>
+<li>如何保存客户端私有信息</li>
+</ul>
+<p>2、会话跟踪：解决<strong>同一时刻不同客户端会话私有数据保存</strong>问题；</p>
+<p>3、会话跟踪两种实现：</p>
+<ul>
+<li>Session</li>
+<li>Cookie</li>
+</ul>
+<p>4、Session：</p>
+<p>1）机制：</p>
+<ul>
+<li>客户端向服务端发出首次请求，服务器为此客户端产生session对象，并将生成一sessionId，应答时返回到客户端，客户端保存此id；</li>
+<li>当同一个客户端向服务器发出新的请求时，要将上次得到的sessionId一同发出，服务器检查用户的sessionId，根据他取得对应session对象。</li>
+</ul>
+<p>2）Session：<strong>服务器分配的保存客户端私有信息的一块内存空间</strong>，SessionID是Session的唯一标识；</p>
+<p>3）Session存储在服务器端，服务器通过SessionID将客户端与Session数据对应起来；</p>
+<p>4）SessionID保存：</p>
+<ul>
+<li>Cookie：默认方式，Netscape发明；Servlet API规范要求使用方式；它的运行机制对我们是透明的；可以显示设置cookie。</li>
+<li>url重写：客户端禁用cookie情况下使用；给每个超链接后增加请求参数，值为sessionId。</li>
+<li>隐藏表单域：规范不推荐使用</li>
+</ul>
+<p>5）得到Session：</p>
+<ul>
+<li><p>Servlet中获得方式：</p>
+<p>request.getSession(boolean)：</p>
+<ul>
+<li>false 有返回，无返回null</li>
+<li>true 有返回，无创建并返回</li>
+</ul>
+<p>request.getSession()：与传true等价</p>
+</li>
+<li><p>JSP通过内置对象session直接访问</p>
+</li>
+</ul>
+<p>6）Session常用方法：</p>
+<p><img src="/2019/07/06/study-note-Four/session常用方法.PNG" alt></p>
+<p>7）Session过期：访问的间隔过了最大过期时间</p>
+<ul>
+<li>在tomcat中的web.xml文件中可以使用以下配置来控制session过期时间</li>
+<li>调用session的invalidate方法</li>
+<li>WebServer停止运行</li>
+</ul>
+<p>5、ServletContext：</p>
+<ul>
+<li>启动时创建，停止时消亡；</li>
+<li>只有一份，单态类；</li>
+<li>application对象的实例接口；</li>
+<li>得到句柄<ul>
+<li>Jsp使用内置对象</li>
+<li>Servlet：super.getServletContext()、servletConfig.getServletContext()</li>
+</ul>
+</li>
+</ul>
+<p>6、application实现计数器：</p>
+<p>7、<img src="/2019/07/06/study-note-Four/范围比较.PNG" alt></p>
+<p>8、Session VS Cookie：</p>
+<p><img src="/2019/07/06/study-note-Four/session-cookie.PNG" alt></p>
+<h2 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h2><p>1、过滤器是<strong>在 Web 应用程序的请求前和响应后添加新功能的组件</strong>。有了过滤器，在 tomcat 容器中处理客户端请求的组件变为三个： servlet，jsp，过滤器。<strong>过滤器在容器中，依赖于容器，只有在容器中才能运行</strong>。</p>
+<p>2、过滤器实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现 Filter 接口</span></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	System.out.println(<span class="string">"--------------destroy--------------------"</span></span><br><span class="line">    );	</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">    ServletResponse response, FilterChain filterChain)</span> <span class="keyword">throws</span></span></span><br><span class="line"><span class="function">    IOException, ServletException </span>&#123;</span><br><span class="line">    	System.out.println(<span class="string">"-----1-----"</span>);</span><br><span class="line">    	filterChain.doFilter(request, response);</span><br><span class="line">   		System.out.println(<span class="string">"-------2--------"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span></span></span><br><span class="line"><span class="function">    ServletException </span>&#123;</span><br><span class="line">    	System.out.println(<span class="string">"------init----"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>init 方法： <strong>web 应用程序启动时调用</strong>，而 servlet 的 init 方法<strong>默认第一次访问时调用</strong>。</li>
+<li>destroy 方法： <strong>web 应用程序关闭时调用</strong></li>
+<li>doFilter 方法：<strong>过滤， 如果符合过滤规则，则容器调用 doFilter 方法</strong>。</li>
+</ul>
+<p>注意：</p>
+<p>必须添加 filterChain.doFilter(request,response);否则请求会在此停止，不会调用响应的 servlet 资源。</p>
+<p>过滤是双向的， doFilter 前是请求的过滤， doFilter 方法后是应答的过滤</p>
+<p>3、配置过滤器：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">    &lt;web-app &gt;</span><br><span class="line">        &lt;filter&gt;</span><br><span class="line">        	&lt;filter-name&gt;HelloFilter&lt;/filter-name&gt;</span><br><span class="line">        	&lt;filter-<span class="class"><span class="keyword">class</span>&gt;<span class="title">com</span>.<span class="title">HelloFilter</span>&lt;/<span class="title">filter</span>-<span class="title">class</span>&gt;</span></span><br><span class="line"><span class="class">        &lt;/<span class="title">filter</span>&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">filter</span>-<span class="title">mapping</span>&gt;</span></span><br><span class="line"><span class="class">        	&lt;<span class="title">filter</span>-<span class="title">name</span>&gt;<span class="title">HelloFilter</span>&lt;/<span class="title">filter</span>-<span class="title">name</span>&gt;</span></span><br><span class="line"><span class="class">        	&lt;!-- 定义过滤规则 --&gt;</span></span><br><span class="line"><span class="class">        	&lt;<span class="title">url</span>-<span class="title">pattern</span>&gt;/<span class="title">aa</span>/*&lt;/<span class="title">url</span>-<span class="title">pattern</span>&gt;</span></span><br><span class="line"><span class="class">        	&lt;<span class="title">url</span>-<span class="title">pattern</span>&gt;/<span class="title">bb</span>/*&lt;/<span class="title">url</span>-<span class="title">pattern</span>&gt;</span></span><br><span class="line"><span class="class">        &lt;/<span class="title">filter</span>-<span class="title">mapping</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">web</span>-<span class="title">app</span>&gt;</span></span><br><span class="line"><span class="class">    </span></span><br><span class="line"><span class="class">//&lt;<span class="title">url</span>-<span class="title">pattern</span>&gt;/*&lt;/<span class="title">url</span>-<span class="title">pattern</span>&gt;是过滤规则的定义， 支持使用通配符*。</span></span><br><span class="line"><span class="class">1、 /*过滤所有访问本应用程序的请求</span></span><br><span class="line"><span class="class">2、 /<span class="title">aaa</span> 过滤后缀为 /<span class="title">aaa</span> 的请求</span></span><br></pre></td></tr></table></figure>
+<p>4、过滤器的生命周期：</p>
+<p><img src="/2019/07/06/study-note-Four/过滤器的生命周期.PNG" alt></p>
+<p>5、过滤器相关：</p>
+<ul>
+<li>中文乱码过滤器：在 doFilter 方法前添加 request.setCharacterEncoding(“utf-8”);过滤规则为/*,只对 post 请求有效。</li>
+<li>限制地域用户访问网站</li>
+<li>过滤应答，更改响应字符串内容</li>
+</ul>
+<h2 id="EL与JSTL"><a href="#EL与JSTL" class="headerlink" title="EL与JSTL"></a>EL与JSTL</h2><p>1、EL：Expression Language 表达式语言。 EL 只在 JSP 页面中使用。</p>
+<p>语法： ${ el 代码 }</p>
+<p>作用： EL 主要是用来<strong>做输出显示</strong>的。 <strong>与 JSTL 配合使用代替 JSP 页面中的脚本元素与动作元素</strong>。</p>
+<p>2、JavaServer Pages Standard Tag Library JSP 标准标签函数库。 JSTL是 SUN 给我们写好可以直接使用的自定义标签库。<br>作用： 与 EL 配合使用代替 JSP 页面中的脚本元素与动作元素。</p>
+
+      
+     
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/24/Java-Common-Two/" class="archive-article-date">
-  	<time datetime="2019-06-24T11:15:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/24/Java-Common-Two/">Java基础（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaWeb</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程基础//" class="article-tag-list-link color5">编程基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/23/Java-Common-one/" class="archive-article-date">
-  	<time datetime="2019-06-23T02:29:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/23/Java-Common-one/">Java基础（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/编程基础//" class="article-tag-list-link color5">编程基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/20/study-note-One/" class="archive-article-date">
-  	<time datetime="2019-06-20T07:47:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/20/study-note-One/">学习笔记（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">其他</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -307,366 +463,140 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/06/study-note-Four/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/19/Linux-Common-Two/" class="archive-article-date">
-  	<time datetime="2019-06-19T07:23:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-19</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/05/study-note-Three/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">学习笔记（三）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/19/Linux-Common-Two/">Linux（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Linux基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web技术基础"><span class="toc-number">1.</span> <span class="toc-text">Web技术基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Servlet基础"><span class="toc-number">2.</span> <span class="toc-text">Servlet基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSP基础"><span class="toc-number">3.</span> <span class="toc-text">JSP基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与用户交互"><span class="toc-number">4.</span> <span class="toc-text">与用户交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过滤器"><span class="toc-number">5.</span> <span class="toc-text">过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EL与JSTL"><span class="toc-number">6.</span> <span class="toc-text">EL与JSTL</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/18/Linux-Common-One/" class="archive-article-date">
-  	<time datetime="2019-06-18T03:00:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/18/Linux-Common-One/">Linux（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Linux基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/17/Redis/" class="archive-article-date">
-  	<time datetime="2019-06-17T02:02:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/17/Redis/">Redis基础</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据库//" class="article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/15/SQL-Common-Two/" class="archive-article-date">
-  	<time datetime="2019-06-15T12:09:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/15/SQL-Common-Two/">MySQL（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/专业课//" class="article-tag-list-link color4">专业课</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/13/SQL-Common-One/" class="archive-article-date">
-  	<time datetime="2019-06-13T13:28:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/13/SQL-Common-One/">MySQL（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/专业课//" class="article-tag-list-link color4">专业课</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/11/操作系统-Common-Three/" class="archive-article-date">
-  	<time datetime="2019-06-11T14:00:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/11/操作系统-Common-Three/">操作系统（三）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/专业课//" class="article-tag-list-link color4">专业课</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/11/操作系统-Common-Two/" class="archive-article-date">
-  	<time datetime="2019-06-11T13:20:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/11/操作系统-Common-Two/">操作系统（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/专业课//" class="article-tag-list-link color4">专业课</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2019/page/3/">3</a><a class="page-number" href="/archives/2019/page/4/">4</a><a class="page-number" href="/archives/2019/page/5/">5</a><a class="extend next" rel="next" href="/archives/2019/page/3/">Next &raquo;</a>
-    </nav>
   
 
+  
 
+  
+
+  <!-- 来必力City版安装代码 -->
+
+  <!-- 这一句是适配样式 -->
+  <section class="duoshuo" id="comments">
+    <!-- 以下是 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80MzA5MC8xOTYzNg==">
+      <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+           if (typeof LivereTower === 'function') { return; }
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+      </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+  </section>
+
+
+ 
           </div>
         </div>
       </div>
@@ -693,8 +623,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
