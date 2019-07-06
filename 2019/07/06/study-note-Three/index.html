@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Category: Linux | xuexue&#39;s blog</title>
+  <title>学习笔记（三） | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="xuexue&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/categories/Linux/index.html">
+  <meta name="description" content="笔记：jsp + servlet  + mysql 实现对一张实体表的CRUD。">
+<meta name="keywords" content="JavaWeb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习笔记（三）">
+<meta property="og:url" content="http://yoursite.com/2019/07/06/study-note-Three/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
+<meta property="og:description" content="笔记：jsp + servlet  + mysql 实现对一张实体表的CRUD。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/07/06/study-note-Three/book.PNG">
+<meta property="og:updated_time" content="2019-07-06T07:40:59.063Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xuexue&#39;s blog">
+<meta name="twitter:title" content="学习笔记（三）">
+<meta name="twitter:description" content="笔记：jsp + servlet  + mysql 实现对一张实体表的CRUD。">
+<meta name="twitter:image" content="http://yoursite.com/2019/07/06/study-note-Three/book.PNG">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -155,171 +162,257 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-study-note-Three" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+      	 
+  
+    <h1 class="article-title" itemprop="name">
+      学习笔记（三）
+    </h1>
+  
+
+      	 
+		<br>
+		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+		<span class="icon-sort"></span>
+		<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+		</span>
+		</a>
+		
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>笔记：jsp + servlet  + mysql 实现对一张实体表的CRUD。 <a id="more"></a></p>
+<p>虽说 jsp + servlet 开发web应用已经过时，但它却是Java众多框架的基础，了解下servlet 的处理流程还是不错的。</p>
+<ul>
+<li>jsp 负责数据的展示</li>
+<li>servlet 负责处理用户的请求</li>
+</ul>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>1、首先先建一张实体表-book，包含四个属性：</p>
+<p><img src="/2019/07/06/study-note-Three/book.PNG" alt></p>
+<p>2、将mysql连接数据库的jar包拷入WebRoot/WEB-IN/lib目录下；</p>
+<p>3、写book的实体类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.bean;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> String author;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">double</span> price;</span><br><span class="line">    <span class="comment">//setter， getter， constructer（无参， 有参， 缺省id的参）， toString</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h2><p>1、封装数据库连接操作类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.db;</span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DBManager</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Connection conn;</span><br><span class="line">	<span class="keyword">private</span> PreparedStatement ps;</span><br><span class="line">	<span class="keyword">private</span> ResultSet rs;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Connection <span class="title">getConn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">			conn = DriverManager.getConnection(<span class="string">"jdbc:mysql://localhost:3306/book"</span>, <span class="string">"root"</span>, <span class="string">"123"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> conn;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//增删改</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">update</span><span class="params">(String sql, Object...objects)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">		conn = getConn();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			<span class="keyword">if</span>(objects != <span class="keyword">null</span> &amp;&amp; objects.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; objects.length; i++) &#123;</span><br><span class="line">					ps.setObject(i + <span class="number">1</span>,  objects[i]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			count = ps.executeUpdate();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			closeAll();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> count;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//查询</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ResultSet <span class="title">query</span><span class="params">(String sql, Object...objects)</span> </span>&#123;</span><br><span class="line">		conn = getConn();</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			<span class="keyword">if</span>(objects != <span class="keyword">null</span> &amp;&amp; objects.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; objects.length; i++) &#123;</span><br><span class="line">					ps.setObject(i + <span class="number">1</span>, objects[i]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			rs = ps.executeQuery();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">return</span> rs;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//关闭数据库连接</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">closeAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(rs != <span class="keyword">null</span>) &#123;</span><br><span class="line">				rs.close();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(ps != <span class="keyword">null</span>) &#123;</span><br><span class="line">				ps.close();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(conn != <span class="keyword">null</span>) &#123;</span><br><span class="line">				conn.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//测试数据库连接</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		DBManager db = <span class="keyword">new</span> DBManager();</span><br><span class="line">		System.out.print(db.toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、操作实体表book的操作接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dao;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> com.bean.Book;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IBookDao</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(Book book)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(Book book)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Book <span class="title">findById</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Book&gt; <span class="title">find</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3、操作实体表book的具体实现类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dao.impl;</span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> com.bean.Book;</span><br><span class="line"><span class="keyword">import</span> com.dao.IBookDao;</span><br><span class="line"><span class="keyword">import</span> com.db.DBManager;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookDao</span> <span class="keyword">extends</span> <span class="title">DBManager</span> <span class="keyword">implements</span> <span class="title">IBookDao</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> ResultSet rs;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(Book book)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> count = update(<span class="string">"insert into book(name, author, price) values(?, ?, ?)"</span>,</span><br><span class="line">				book.getName(), book.getAuthor(), book.getPrice());</span><br><span class="line">		<span class="keyword">if</span>(count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"新增成功！"</span>);</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> count = update(<span class="string">"delete from book where id = ?"</span>, id);</span><br><span class="line">		<span class="keyword">if</span>(count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"删除成功！"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(Book book)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> count = update(<span class="string">"update book set name = ?, author = ?, price = ? where id = ?"</span>, </span><br><span class="line">				book.getName(), book.getAuthor(), book.getPrice(), book.getId());</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"更新成功！"</span>);</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Book <span class="title">findById</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">		rs = query(<span class="string">"select * from book where id = ?"</span>, id);</span><br><span class="line">		Book book = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">while</span> (rs.next()) &#123;</span><br><span class="line">				book = <span class="keyword">new</span> Book(rs.getInt(<span class="string">"id"</span>), rs.getString(<span class="string">"name"</span>),</span><br><span class="line">						rs.getString(<span class="string">"author"</span>), rs.getDouble(<span class="string">"price"</span>));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			closeAll();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> book;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Book&gt; <span class="title">find</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		List&lt;Book&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		rs = query(<span class="string">"select * from book"</span>);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">while</span>(rs.next()) &#123;</span><br><span class="line">				Book book = <span class="keyword">new</span> Book(rs.getInt(<span class="string">"id"</span>), rs.getString(<span class="string">"name"</span>),</span><br><span class="line">						rs.getString(<span class="string">"author"</span>), rs.getDouble(<span class="string">"price"</span>));</span><br><span class="line">				list.add(book);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			closeAll();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> list;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="增加（Save）"><a href="#增加（Save）" class="headerlink" title="增加（Save）"></a>增加（Save）</h2><p>1、图书增加的界面-bookAdd.jsp：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div align=<span class="string">"center"</span>&gt;</span><br><span class="line">    	&lt;form action=<span class="string">"&lt;%=path %&gt;/BookAddServlet"</span> method=<span class="string">"post"</span> border = <span class="string">"1"</span>&gt;</span><br><span class="line">    		图书名称：&lt;input name=<span class="string">"name"</span> /&gt;&lt;br/&gt;</span><br><span class="line">    		图书作者：&lt;input name=<span class="string">"author"</span> /&gt;&lt;br/&gt;</span><br><span class="line">    		图书价格：&lt;input name=<span class="string">"price"</span> /&gt;&lt;br/&gt;</span><br><span class="line">    		&lt;input type=<span class="string">"submit"</span> value=<span class="string">"提交"</span> /&gt;&amp;nbsp;&amp;nbsp;</span><br><span class="line">    		&lt;input type=<span class="string">"reset"</span> value=<span class="string">"重置"</span> /&gt;</span><br><span class="line">    	&lt;/form&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"> &lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>2、图书增加的servlet-BookAddServlet：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		request.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">		response.setContentType(<span class="string">"text/html;charset = utf-8"</span>);</span><br><span class="line">		PrintWriter out = response.getWriter();</span><br><span class="line">		</span><br><span class="line">		IBookDao dao = <span class="keyword">new</span> BookDao();</span><br><span class="line">		String name = request.getParameter(<span class="string">"name"</span>);</span><br><span class="line">		String author = request.getParameter(<span class="string">"author"</span>);</span><br><span class="line">		<span class="keyword">double</span> price = Double.parseDouble(request.getParameter(<span class="string">"price"</span>));</span><br><span class="line">		Book book = <span class="keyword">new</span> Book(name, author, price);</span><br><span class="line">		dao.save(book);</span><br><span class="line">		response.sendRedirect(<span class="string">"BookListServlet"</span>);</span><br><span class="line">	</span><br><span class="line">		out.flush();</span><br><span class="line">		out.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="查询（List）"><a href="#查询（List）" class="headerlink" title="查询（List）"></a>查询（List）</h2><p>1、图书列表展示界面-bookList.jsp：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"> 	&lt;div align=<span class="string">"center"</span>&gt;</span><br><span class="line"> 		 &lt;div align=<span class="string">"center"</span>&gt;</span><br><span class="line">           &lt;input type=<span class="string">"button"</span> value=<span class="string">"添加图书"</span> onclick=<span class="string">"window.location = 'bookAdd.jsp'"</span>&gt;</span><br><span class="line">       &lt;/div&gt;</span><br><span class="line"> 		&lt;table border=<span class="string">"1"</span> cellpadding=<span class="string">"1"</span> cellspacing=<span class="string">"1"</span> width=<span class="string">"800"</span>&gt;</span><br><span class="line"> 			&lt;caption&gt;图书列表&lt;/caption&gt;</span><br><span class="line"> 			&lt;tr&gt;</span><br><span class="line"> 				&lt;th&gt;图书编号&lt;/th&gt;</span><br><span class="line"> 				&lt;th&gt;图书名称&lt;/th&gt;</span><br><span class="line"> 				&lt;th&gt;图书作者&lt;/th&gt;</span><br><span class="line"> 				&lt;th&gt;图书价格&lt;/th&gt;</span><br><span class="line"> 				&lt;th&gt;操作&lt;/th&gt;</span><br><span class="line"> 			&lt;/tr&gt;</span><br><span class="line"> 			&lt;%</span><br><span class="line"> 				List&lt;Book&gt; list = (List&lt;Book&gt;) request.getAttribute(<span class="string">"books"</span>);</span><br><span class="line"> 				<span class="keyword">for</span>(Book book : list) &#123;</span><br><span class="line"> 			%&gt;</span><br><span class="line"> 			&lt;tr&gt;</span><br><span class="line"> 				&lt;td&gt;&lt;%=book.getId() %&gt;&lt;/td&gt;</span><br><span class="line"> 				&lt;td&gt;&lt;%=book.getName() %&gt;&lt;/td&gt;</span><br><span class="line"> 				&lt;td&gt;&lt;%=book.getAuthor() %&gt;&lt;/td&gt;</span><br><span class="line"> 				&lt;td&gt;&lt;%=book.getPrice() %&gt;&lt;/td&gt;</span><br><span class="line"> 				&lt;td&gt;</span><br><span class="line"> 					&lt;a href="&lt;%=path %&gt;/BookOneServlet?id=&lt;%=book.getId() %&gt;"&gt;更新&lt;/a&gt;</span><br><span class="line"> 					&lt;a href="&lt;%=path %&gt;/BookDelServlet?id=&lt;%=book.getId() %&gt;" onclick="return confirm('确定要删除吗？')"&gt;删除&lt;/a&gt;</span><br><span class="line"> 				&lt;/td&gt;</span><br><span class="line"> 			&lt;/tr&gt;</span><br><span class="line"> 			&lt;%&#125; %&gt;</span><br><span class="line"> 		&lt;/table&gt;</span><br><span class="line"> 	&lt;/div&gt;</span><br><span class="line"> &lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>2、图书列表的servlet-BookListServlet：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">		request.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">		response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">		PrintWriter out = response.getWriter();</span><br><span class="line">		</span><br><span class="line">		IBookDao dao = <span class="keyword">new</span> BookDao();</span><br><span class="line">		List&lt;Book&gt; list = dao.find();</span><br><span class="line">		request.setAttribute(<span class="string">"books"</span>, list);</span><br><span class="line">		request.getRequestDispatcher(<span class="string">"bookList.jsp"</span>).forward(request, response);</span><br><span class="line">		</span><br><span class="line">		out.flush();</span><br><span class="line">		out.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="更新（update）"><a href="#更新（update）" class="headerlink" title="更新（update）"></a>更新（update）</h2><p>1、更新操作在bookList界面里；</p>
+<p>2、更新操作需要两个servlet处理，一个先查找出要更新哪本图书的信息，一个处理更新操作。</p>
+<p>1）查找出要更新哪本图书的信息-BookOneServlet：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">		request.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">		response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">		PrintWriter out = response.getWriter();</span><br><span class="line">		</span><br><span class="line">		IBookDao dao = <span class="keyword">new</span> BookDao();</span><br><span class="line">		<span class="keyword">int</span> id = Integer.parseInt(request.getParameter(<span class="string">"id"</span>));</span><br><span class="line">		Book book = dao.findById(id);</span><br><span class="line">		request.setAttribute(<span class="string">"book"</span>, book);</span><br><span class="line">		request.getRequestDispatcher(<span class="string">"bookUpdate.jsp"</span>).forward(request, response);</span><br><span class="line">		</span><br><span class="line">		out.flush();</span><br><span class="line">		out.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>图书更新界面-bookUpdate.jsp：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  	&lt;div align=<span class="string">"center"</span>&gt;</span><br><span class="line">  		&lt;%</span><br><span class="line">  			Book b = (Book)request.getAttribute(<span class="string">"book"</span>);</span><br><span class="line">  		%&gt;</span><br><span class="line">    	&lt;form action=<span class="string">"&lt;%=path %&gt;/BookUpdateServlet"</span> method=<span class="string">"post"</span> border = <span class="string">"1"</span>&gt;</span><br><span class="line">    		&lt;input name=<span class="string">"id"</span> type=<span class="string">"hidden"</span> value=<span class="string">"&lt;%=b.getId() %&gt;"</span> /&gt;</span><br><span class="line">    		图书名称：&lt;input name=<span class="string">"name"</span> value=<span class="string">"&lt;%=b.getName() %&gt;"</span>/&gt;&lt;br/&gt;</span><br><span class="line">    		图书作者：&lt;input name=<span class="string">"author"</span> value=<span class="string">"&lt;%=b.getAuthor() %&gt;"</span> /&gt;&lt;br/&gt;</span><br><span class="line">    		图书价格：&lt;input name=<span class="string">"price"</span> value=<span class="string">"&lt;%=b.getPrice() %&gt;"</span> /&gt;&lt;br/&gt;</span><br><span class="line">    		&lt;input type=<span class="string">"submit"</span> value=<span class="string">"提交"</span> /&gt;&amp;nbsp;&amp;nbsp;</span><br><span class="line">    		&lt;input type=<span class="string">"reset"</span> value=<span class="string">"重置"</span> /&gt;</span><br><span class="line">    	&lt;/form&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>2）处理更新操作-BookUpdateServlet：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">		request.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">		response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">		PrintWriter out = response.getWriter();</span><br><span class="line">		</span><br><span class="line">		IBookDao dao = <span class="keyword">new</span> BookDao();</span><br><span class="line">		<span class="keyword">int</span> id = Integer.parseInt(request.getParameter(<span class="string">"id"</span>));</span><br><span class="line">		String name = request.getParameter(<span class="string">"name"</span>);</span><br><span class="line">		String author = request.getParameter(<span class="string">"author"</span>);</span><br><span class="line">		<span class="keyword">double</span> price = Double.parseDouble(request.getParameter(<span class="string">"price"</span>));</span><br><span class="line">		Book book = <span class="keyword">new</span> Book(id, name, author, price);</span><br><span class="line">		dao.update(book);</span><br><span class="line">		response.sendRedirect(<span class="string">"BookListServlet"</span>);</span><br><span class="line">		</span><br><span class="line">		out.flush();</span><br><span class="line">		out.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="删除（delete）"><a href="#删除（delete）" class="headerlink" title="删除（delete）"></a>删除（delete）</h2><p>1、删除操作在bookList界面里；</p>
+<p>2、删除图书的servlet-BookDelServlet：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">		request.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">		response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">		PrintWriter out = response.getWriter();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> id = Integer.parseInt(request.getParameter(<span class="string">"id"</span>));</span><br><span class="line">		IBookDao dao = <span class="keyword">new</span> BookDao();</span><br><span class="line">		dao.delete(id);</span><br><span class="line">		response.sendRedirect(<span class="string">"BookListServlet"</span>);</span><br><span class="line">		</span><br><span class="line">		out.flush();</span><br><span class="line">		out.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此，一张实体表的CRUD操作就完成了。这样看来，用 jsp + servlet 技术开发Java的web应用代码冗余量确实不少。</p>
+<p>一张表的简单CRUD操作就需要5个servlet，维护起来不太方便，而且 jsp 界面里还有部分java代码，没有做到真正的分层。</p>
+
+      
+     
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/19/Linux-Common-Two/" class="archive-article-date">
-  	<time datetime="2019-06-19T07:23:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/19/Linux-Common-Two/">Linux（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Linux基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaWeb</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
+        			<a href="/categories/学习总结//" class="article-tag-list-link color5">学习总结</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/06/study-note-Three/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/18/Linux-Common-One/" class="archive-article-date">
-  	<time datetime="2019-06-18T03:00:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/04/study-note-Two/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">学习笔记（二）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/18/Linux-Common-One/">Linux（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Linux基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前期准备"><span class="toc-number">1.</span> <span class="toc-text">前期准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#连接数据库"><span class="toc-number">2.</span> <span class="toc-text">连接数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#增加（Save）"><span class="toc-number">3.</span> <span class="toc-text">增加（Save）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询（List）"><span class="toc-number">4.</span> <span class="toc-text">查询（List）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更新（update）"><span class="toc-number">5.</span> <span class="toc-text">更新（update）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除（delete）"><span class="toc-number">6.</span> <span class="toc-text">删除（delete）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/06/常用Linux命令/" class="archive-article-date">
-  	<time datetime="2019-06-06T08:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/06/常用Linux命令/">常用Linux命令</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Linux常用命令</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Linux//" class="article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+
+  <!-- 来必力City版安装代码 -->
+
+  <!-- 这一句是适配样式 -->
+  <section class="duoshuo" id="comments">
+    <!-- 以下是 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80MzA5MC8xOTYzNg==">
+      <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+           if (typeof LivereTower === 'function') { return; }
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+      </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+  </section>
 
 
+ 
           </div>
         </div>
       </div>
@@ -346,10 +439,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
