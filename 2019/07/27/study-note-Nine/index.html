@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Python Selenium | xuexue&#39;s blog</title>
+  <title>学习笔记（九） | xuexue&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="xuexue&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/Python-Selenium/index.html">
+  <meta name="description" content="笔记：Linux基础命令。">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习笔记（九）">
+<meta property="og:url" content="http://yoursite.com/2019/07/27/study-note-Nine/index.html">
 <meta property="og:site_name" content="xuexue&#39;s blog">
+<meta property="og:description" content="笔记：Linux基础命令。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-03T10:42:33.783Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xuexue&#39;s blog">
+<meta name="twitter:title" content="学习笔记（九）">
+<meta name="twitter:description" content="笔记：Linux基础命令。">
   
     <link rel="alternative" href="/atom.xml" title="xuexue&#39;s blog" type="application/atom+xml">
   
@@ -155,73 +160,800 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-study-note-Nine" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/27/Python-Selenium/" class="archive-article-date">
-  	<time datetime="2019-02-27T08:38:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+      	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/27/Python-Selenium/">Python Selenium基础</a>
+    <h1 class="article-title" itemprop="name">
+      学习笔记（九）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      	 
+		<br>
+		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+		<span class="icon-sort"></span>
+		<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+          	阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+		</span>
+		</a>
+		
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>笔记：Linux基础命令。 <a id="more"></a></p>
+<h2 id="Linux基础"><a href="#Linux基础" class="headerlink" title="Linux基础"></a>Linux基础</h2><h3 id="使用命令帮助"><a href="#使用命令帮助" class="headerlink" title="使用命令帮助"></a>使用命令帮助</h3><p>1、需要知道某个命令的<strong>简要说明</strong>，可以使用whatis ；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">whatis sudo</span><br><span class="line">	sudo (8)             - execute a command as another user</span><br></pre></td></tr></table></figure>
+<p>2、需要知道某个命令的<strong>更详细的介绍</strong>，可用info命令；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">info sudo</span><br></pre></td></tr></table></figure>
+<p>3、man：<strong>查询命令的说明文档</strong>，在man的帮助手册中，将帮助文档分为了9个类别，对于有的关键字可能存在多个类别中， 我们就需要指定特定的类别来查看；（一般我们查询bash命令，归类在1类中）； </p>
+<p> man页面所属的分类标识(常用的是分类1和分类3) ：</p>
+<ol>
+<li><strong>用户可以操作的命令或者是可执行文件</strong>； </li>
+<li>系统核心可调用的函数与工具等；</li>
+<li><strong>一些常用的函数与数据库</strong>；</li>
+<li>设备文件的说明；</li>
+<li>设置文件或者某些文件的格式；</li>
+<li>游戏；</li>
+<li>惯例与协议等。例如Linux标准文件系统、网络协议、ASCⅡ，码等说明内容；</li>
+<li>系统管理员可用的管理条令；</li>
+<li>与内核有关的文件。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">whatis printf</span><br><span class="line">	printf (1)           - format and print data</span><br><span class="line">	printf (3)           - formatted output conversion</span><br><span class="line"><span class="meta">#</span>看到printf在分类1和分类3中都有；分类1中的页面是命令操作及可执行文件的帮助；而3是常用函数库说明；如果我们想看的是C语言中printf的用法，可以指定查看分类3的帮助</span><br><span class="line">man 3 printf</span><br></pre></td></tr></table></figure>
+<p>根据命令中部分关键字来查询命令，适用于只记住部分命令的场合； </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>查找GNOME的config配置工具命令</span><br><span class="line">man -k GNOME config|grep 1</span><br></pre></td></tr></table></figure>
+<p>4、which：<strong>查看程序的binary文件所在路径</strong>；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">which sudo</span><br><span class="line">	/usr/bin/sudo</span><br></pre></td></tr></table></figure>
+<p>5、whereis ：<strong>查看程序的搜索路径</strong>；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">whereis sudo|tr ' ' '\n'</span><br><span class="line">    sudo:</span><br><span class="line">    /usr/bin/sudo</span><br><span class="line">    /usr/lib/sudo</span><br><span class="line">    /usr/share/man/man8/sudo.8.gz</span><br></pre></td></tr></table></figure>
+<h3 id="文件及目录管理"><a href="#文件及目录管理" class="headerlink" title="文件及目录管理"></a>文件及目录管理</h3><p>文件管理不外乎文件或目录的创建、删除、查询、移动，有<strong>mkdir/rm/mv</strong> ；</p>
+<ul>
+<li>文件查询是重点，<strong>用find来进行查询</strong>；find的参数丰富，也非常强大；</li>
+<li>有时候，需要<strong>给文件创建一个别名，需要用到ln</strong>，使用这个别名和使用原文件是相同的效果；</li>
+</ul>
+<p>1、创建和删除；</p>
+<ul>
+<li>创建：mkdir</li>
+<li>删除：rm</li>
+<li><strong>删除非空目录：rm -rf file目录</strong></li>
+<li>删除日志 rm <em> log (等价: $find ./ -name “</em>log” -exec rm {} ;)</li>
+<li>移动：mv</li>
+<li><strong>复制：cp (复制目录：cp -r )</strong></li>
+</ul>
+<p>查看当前目录下文件个数:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ | wc -l</span><br></pre></td></tr></table></figure>
+<p>2、目录切换：</p>
+<ul>
+<li>找到文件/目录位置：cd</li>
+<li>切换到上一个工作目录： cd -</li>
+<li>切换到home目录： cd or cd ~</li>
+<li><strong>显示当前路径: pwd</strong></li>
+<li>更改当前工作路径为path: $cd path</li>
+</ul>
+<p>3、列出目录项：</p>
+<ul>
+<li>显示当前目录下的文件 ls</li>
+<li><strong>按时间排序，以列表的方式显示目录项 ls -lrt</strong></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>给每项文件前面增加一个id编号(看上去更加整洁)</span><br><span class="line">ls | cat -n</span><br><span class="line">	 1	test.sh</span><br><span class="line">     2	tt</span><br></pre></td></tr></table></figure>
+<p>4、查找目录及文件find / locate：</p>
+<p>1）搜寻文件或目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find ./ -name "test*"|xargs file</span><br><span class="line">	./tt/test.sh: Bourne-Again shell script, UTF-8 Unicode text executable</span><br><span class="line">	./test.sh:    Bourne-Again shell script, UTF-8 Unicode text executable</span><br></pre></td></tr></table></figure>
+<p>2）查找目标文件夹中是否有sh文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find ./ -name '*.sh'</span><br><span class="line">	./tt/test.sh</span><br><span class="line">	./test.sh</span><br></pre></td></tr></table></figure>
+<p>3）递归当前目录及子目录删除所有.log文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ -name "*.log" -exec rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+<p>4）<strong>find是实时查找，如果需要更快的查询，可试试locate</strong>；<strong>locate会为文件系统建立索引数据库</strong>，如果有文件更新，需要<strong>定期执行更新命令来更新索引库</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>寻找包含有string的路径</span><br><span class="line">locate string</span><br><span class="line"><span class="meta">#</span>与find不同，locate并不是实时查找。你需要更新数据库，以获得最新的文件索引信息</span><br><span class="line">updatedb</span><br></pre></td></tr></table></figure>
+<p>5、查看文件内容：</p>
+<p>查看文件：<strong>cat vi head tail more</strong></p>
+<p>1）显示时同时显示行号：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat test.sh -n</span><br></pre></td></tr></table></figure>
+<p>2）按页显示列表内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -al|more</span><br></pre></td></tr></table></figure>
+<p>3）只看前10行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -10 **</span><br></pre></td></tr></table></figure>
+<p>4）显示文件第一行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -1 test.sh</span><br></pre></td></tr></table></figure>
+<p>5）显示文件倒数第五行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -5 test.sh</span><br></pre></td></tr></table></figure>
+<p>6）查看两个文件间的差别：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">diff file1 file2</span><br></pre></td></tr></table></figure>
+<p>7）动态显示文本最新信息:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -f test.sh</span><br></pre></td></tr></table></figure>
+<p>6、查找文件内容：使用<strong>egrep查询文件内容</strong>；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">egrep 'a' test.txt</span><br></pre></td></tr></table></figure>
+<p>7、文件与目录权限修改：</p>
+<ul>
+<li>改变文件的拥有者 chown</li>
+<li><strong>改变文件读、写、执行等属性 chmod</strong></li>
+<li>递归子目录修改： chown -R tuxapp source/</li>
+<li>增加脚本可执行权限： chmod a+x myscript</li>
+</ul>
+<p>8、给文件<strong>增加别名</strong>：创建符号链接/硬链接；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln cc ccAgain #硬连接；删除一个，将仍能找到；</span><br><span class="line">ln -s cc ccTo #符号链接(软链接)；删除源，另一个无法使用；（后面一个ccTo 为新建的文件）</span><br></pre></td></tr></table></figure>
+<p>9、管道和重定向：</p>
+<ul>
+<li><strong>批处理命令连接执行，使用 |</strong></li>
+<li><strong>串联: 使用分号 ;</strong></li>
+<li>前面成功，则执行后面一条，否则，不执行：&amp;&amp;</li>
+<li>前面失败，则后一条执行：||</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>能够提示命名是否执行成功or失败</span><br><span class="line">ls test &amp;&amp; echo  suss! || echo failed.</span><br><span class="line"><span class="meta">#</span>与上述相同效果的是</span><br><span class="line">if ls test; then echo suss; else echo fail; fi</span><br></pre></td></tr></table></figure>
+<p>重定向：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls test/*.sh &amp;&gt; list.txt</span><br></pre></td></tr></table></figure>
+<p>清空文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:&gt; list.txt</span><br></pre></td></tr></table></figure>
+<p>重定向：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo list1.txt &gt;&gt; list2.txt</span><br></pre></td></tr></table></figure>
+<p>10、设置环境变量：</p>
+<p>启动帐号后自动执行的是 文件为 .profile，然后通过这个文件可设置自己的环境变量；</p>
+<p>安装的软件路径一般需要加入到path中：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH=$APPDIR:/opt/app/soft/bin:$PATH:/usr/local/bin:$TUXDIR/bin:$ORACLE_HOME/bin;export PATH</span><br></pre></td></tr></table></figure>
+<p>11、Bash快捷输入或删除：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>快捷键</span><br><span class="line">Ctl-U   #删除光标到行首的所有字符,在某些设置下,删除全行</span><br><span class="line">Ctl-W   #删除当前光标到前边的最近一个空格之间的字符</span><br><span class="line">Ctl-H   #backspace,删除光标前边的字符</span><br><span class="line">Ctl-R   #匹配最相近的一个文件，然后输出</span><br></pre></td></tr></table></figure>
+<p>12、综合应用：查找record.log中包含AAA，但不包含BBB的记录的总数；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat -v record.log | grep AAA | grep -v BBB | wc -l</span><br></pre></td></tr></table></figure>
+<h3 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h3><h4 id="find-文件查找"><a href="#find-文件查找" class="headerlink" title="find 文件查找"></a>find 文件查找</h4><p>1）查找txt和pdf文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . \( -name "*.txt" -o -name "*.pdf" \) -print</span><br></pre></td></tr></table></figure>
+<p>正则方式查找.txt和pdf：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -regex  ".*\(\.txt|\.pdf\)$"</span><br></pre></td></tr></table></figure>
+<p>-iregex： 忽略大小写的正则</p>
+<p>2）否定参数，查找所有非txt文本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . ! -name "*.txt" -print</span><br></pre></td></tr></table></figure>
+<p>3）指定搜索深度，打印出当前目录的文件（深度为1）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -maxdepth 1 -type f</span><br></pre></td></tr></table></figure>
+<p>1、定制搜索：</p>
+<p>1）按类型搜索：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type d -print  #只列出所有目录</span><br></pre></td></tr></table></figure>
+<p><strong>-type f 文件 / l 符号链接 / d 目录</strong></p>
+<p>find支持的文件检索类型可以区分普通文件和符号链接、目录等，但是二进制文件和文本文件无法直接通过find的类型区分出来；</p>
+<p><strong>file命令可以检查文件具体类型</strong>（二进制或文本）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file test.sh </span><br><span class="line">	test.sh: Bourne-Again shell script, UTF-8 Unicode text executable</span><br></pre></td></tr></table></figure>
+<p>可以用以下命令组合来实现查找本地目录下的所有二进制文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -lrt | awk '&#123;print $9&#125;' | xargs file | grep ELF | awk '&#123;print $1&#125;' |tr -d ':'</span><br></pre></td></tr></table></figure>
+<p>2）按时间搜索：</p>
+<ul>
+<li>-atime 访问时间 (单位是天，分钟单位则是-amin，以下类似）</li>
+<li>-mtime 修改时间 （内容被修改）</li>
+<li>-ctime 变化时间 （元数据或权限变化）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>最近第7天被访问过的所有文件</span><br><span class="line">find . -atime 7 -type f -print</span><br><span class="line"><span class="meta">#</span>最近7天内被访问过的所有文件</span><br><span class="line">find . -atime -7 -type f -print</span><br><span class="line"><span class="meta">#</span>查询7天前被访问过的所有文件</span><br><span class="line">find . -atime +7 -type f -print</span><br></pre></td></tr></table></figure>
+<p>3）按大小搜索：</p>
+<p>w字 k M G 寻找大于2k的文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -size +2k</span><br></pre></td></tr></table></figure>
+<p>按权限查找：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -perm 644 -print #找具有可执行权限的所有文件</span><br></pre></td></tr></table></figure>
+<p>按用户查找：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -user xuexue -print #找用户xuexue所拥有的文件</span><br></pre></td></tr></table></figure>
+<p>2、找到后的后续动作：</p>
+<p>1）删除：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>删除当前目录下所有的txt文件</span><br><span class="line">find . -type f -name "*.txt" -delete</span><br></pre></td></tr></table></figure>
+<p>2）执行动作（强大的exec）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>将当前目录下的所有权变更为xuexue</span><br><span class="line"><span class="meta">#</span>&#123;&#125;是一个特殊的字符串，对于每一个匹配的文件，&#123;&#125;会被替换成相应的文件名；</span><br><span class="line">find . -type f -user root -exec chown xuexue &#123;&#125; \;</span><br><span class="line"><span class="meta">#</span>将找到的文件全都copy到另一个目录</span><br><span class="line">find . -type f -mtime -1 -name "*.sh" -exec cp &#123;&#125; OLD \;</span><br></pre></td></tr></table></figure>
+<p>3、-print 的定界符：</p>
+<p>默认使用’\n’作为文件的定界符；</p>
+<p>-print0 使用’\0’作为文件的定界符，这样就可以搜索包含空格的文件；</p>
+<h4 id="grep-文本搜索"><a href="#grep-文本搜索" class="headerlink" title="grep 文本搜索"></a>grep 文本搜索</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep match_patten file #默认访问匹配行</span><br></pre></td></tr></table></figure>
+<p>常用参数：</p>
+<ul>
+<li><p><strong>-o 只输出匹配的文本行</strong>  VS  <strong>-v 只输出没有匹配的文本行</strong></p>
+</li>
+<li><p><strong>-c 统计文件中包含文本的次数</strong></p>
+<p> grep -c “text” filename</p>
+</li>
+<li><p>-n 打印匹配的行号</p>
+</li>
+<li>-i 搜索时忽略大小写</li>
+<li>-l 只打印文件名</li>
+</ul>
+<p>1、在多级目录中对文本递归搜索(程序员搜代码的最爱）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep "sh" . -R -n</span><br></pre></td></tr></table></figure>
+<p>2、匹配多个模式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -e "sh" -e "vitural" test.sh</span><br></pre></td></tr></table></figure>
+<p>3、综合应用：将日志中的所有带where条件的sql查找查找出来：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat LOG.* | tr a-z A-Z | grep "FROM " | grep "WHERE" &gt; b</span><br></pre></td></tr></table></figure>
+<p>4、查找中文示例：工程目录中utf-8格式和gb2312格式两种文件，要查找字的是中文；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>1、查找到它的utf-8编码和gb2312编码分别是E4B8ADE69687和D6D0CEC4</span><br><span class="line"><span class="meta">#</span>2、查询</span><br><span class="line">grep -rnP "\xE4\xB8\xAD\xE6\x96\x87|\xD6\xD0\xCE\xC4" *即可</span><br></pre></td></tr></table></figure>
+<h4 id="xargs-命令行参数转换"><a href="#xargs-命令行参数转换" class="headerlink" title="xargs 命令行参数转换"></a>xargs 命令行参数转换</h4><p><strong>xargs 能够将输入数据转化为特定命令的命令行参数</strong>；这样，可以配合很多命令来组合使用。比如grep，比如find；</p>
+<p> 1、将多行输出转化为单行输出：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat test.sh | xargs</span><br></pre></td></tr></table></figure>
+<p>n 是多行文本间的定界符</p>
+<p>2、将单行转化为多行输出：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat test.sh | xargs -n 1  #-n：指定每行显示的字段数</span><br></pre></td></tr></table></figure>
+<p>3、xargs参数说明：</p>
+<ul>
+<li>-d 定义定界符 （默认为空格 多行的定界符为 n）</li>
+<li><strong>-n 指定输出为多行</strong></li>
+<li><strong>-I {} 指定替换字符串</strong>，这个字符串在xargs扩展时会被替换掉，用于待执行的命令需要多个参数时</li>
+<li>-0：指定0为输入定界符</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>统计程序行数</span><br><span class="line">find test.sh -type f -name "*.sh" -print0 | xargs -0 wc -l</span><br></pre></td></tr></table></figure>
+<h4 id="sort-排序"><a href="#sort-排序" class="headerlink" title="sort 排序"></a>sort 排序</h4><p>字段说明：</p>
+<ul>
+<li><strong>-n 按数字进行排序</strong> VS <strong>-d 按字典序进行排序</strong></li>
+<li><strong>-r 逆序排序</strong></li>
+<li>-k N 指定按第N列排序</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort -nrk 1 list</span><br></pre></td></tr></table></figure>
+<h4 id="uniq-消除重复行"><a href="#uniq-消除重复行" class="headerlink" title="uniq 消除重复行"></a>uniq 消除重复行</h4><p>1、消除重复行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort list | uniq</span><br></pre></td></tr></table></figure>
+<p>2、统计各行在文件中出现的次数：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort list | uniq -c</span><br></pre></td></tr></table></figure>
+<p>3、找出重复行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort list | uniq -d</span><br></pre></td></tr></table></figure>
+<p>可指定每行中需要比较的重复内容：-s 开始位置 -w 比较字符数</p>
+<h4 id="用tr进行转换"><a href="#用tr进行转换" class="headerlink" title="用tr进行转换"></a>用tr进行转换</h4><p>1、通用用法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>加解密转换，替换对应字符</span><br><span class="line">echo 12345 | tr '0-9' '9876543210' </span><br><span class="line">	87654</span><br><span class="line"><span class="meta">#</span>制表符转空格</span><br><span class="line">cat list | tr '\t' ' '</span><br></pre></td></tr></table></figure>
+<p>2、tr删除字符：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>删除所有数字</span><br><span class="line">cat list | tr -d '0-9' </span><br><span class="line"><span class="meta">#</span>-c 求补集</span><br><span class="line">cat file | tr -d -c '0-9 \n'  #删除非数字数据</span><br></pre></td></tr></table></figure>
+<p>3、tr压缩字符：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>tr -s 压缩文本中出现的重复字符；最常用于压缩多余的空格</span><br><span class="line">cat list | tr -s ' '</span><br></pre></td></tr></table></figure>
+<p>4、字符类：</p>
+<p>tr中可用各种字符类：</p>
+<ul>
+<li>alnum：字母和数字</li>
+<li>alpha：字母</li>
+<li>digit：数字</li>
+<li>space：空白字符</li>
+<li>lower：小写</li>
+<li>upper：大写</li>
+<li>cntrl：控制（非可打印）字符</li>
+<li>print：可打印字符</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>使用方法：tr [:class:] [:class:]</span><br><span class="line">tr '[:lower:]' '[:upper:]'</span><br></pre></td></tr></table></figure>
+<h4 id="cut-按列切分文本"><a href="#cut-按列切分文本" class="headerlink" title="cut 按列切分文本"></a>cut 按列切分文本</h4><p>1、截取文件的第2列和第4列：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -f2,4 list</span><br></pre></td></tr></table></figure>
+<p>2、截取文件除第3列的所有列：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -f3 --complement list</span><br></pre></td></tr></table></figure>
+<p>3、cut 取的范围：</p>
+<ul>
+<li>N- 第N个字段到结尾</li>
+<li>-M 第1个字段为M</li>
+<li>N-M N到M个字段</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>打印第一到5个字符</span><br><span class="line">cut -c1-5 list</span><br><span class="line"><span class="meta">#</span>打印前2个字符</span><br><span class="line">cut -c-2 list</span><br></pre></td></tr></table></figure>
+<p>4、cut 取的单位：</p>
+<ul>
+<li>-b 以字节为单位</li>
+<li>-c 以字符为单位</li>
+<li>-f 以字段为单位（使用定界符）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>截取文本的第5到第7列</span><br><span class="line">echo string | cut -c5-7</span><br><span class="line">	ng</span><br></pre></td></tr></table></figure>
+<h4 id="paste-按列拼接文本"><a href="#paste-按列拼接文本" class="headerlink" title="paste 按列拼接文本"></a>paste 按列拼接文本</h4><p>1、将两个文本按列拼接到一起：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paste file1 file2</span><br></pre></td></tr></table></figure>
+<p>2、默认的定界符是制表符，可以用-d指明定界符：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paste file1 file2 -d ","</span><br></pre></td></tr></table></figure>
+<h4 id="wc-统计行和字符的工具"><a href="#wc-统计行和字符的工具" class="headerlink" title="wc 统计行和字符的工具"></a>wc 统计行和字符的工具</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wc -l list #统计行数</span><br><span class="line">wc -w list #统计单词数</span><br><span class="line">wc -c list #统计字符数</span><br></pre></td></tr></table></figure>
+<h4 id="sed-文本替换利器"><a href="#sed-文本替换利器" class="headerlink" title="sed 文本替换利器"></a>sed 文本替换利器</h4><p>1、首处替换：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed 's/text/replace_text/' list  #替换每一行的第一处匹配的text</span><br></pre></td></tr></table></figure>
+<p>2、全局替换：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed 's/text/replace_text/g' list</span><br></pre></td></tr></table></figure>
+<p>默认替换后，输出替换后的内容，如果需要直接替换原文件,使用-i：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i 's/text/repalce_text/g' list</span><br></pre></td></tr></table></figure>
+<p>3、移除空白行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed '/^$/d' list</span><br></pre></td></tr></table></figure>
+<p>4、双引号求值：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>sed通常用单引号来引用；也可使用双引号，使用双引号后，双引号会对表达式求值</span><br><span class="line">sed 's/$var/HLLOE/'</span><br><span class="line"><span class="meta">#</span>当使用双引号时，我们可以在sed样式和替换字符串中指定变量</span><br><span class="line">eg:</span><br><span class="line">p=patten</span><br><span class="line">r=replaced</span><br><span class="line">echo "line con a patten" | sed "s/$p/$r/g"</span><br><span class="line">	line con a replaced</span><br></pre></td></tr></table></figure>
+<p>5、其它示例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>字符串插入字符：将文本中每行内容（ABCDEF） 转换为 ABC/DEF</span><br><span class="line">sed 's/^.\&#123;3\&#125;/&amp;\//g' file</span><br></pre></td></tr></table></figure>
+<h4 id="awk-数据流处理工具"><a href="#awk-数据流处理工具" class="headerlink" title="awk 数据流处理工具"></a>awk 数据流处理工具</h4><p>1）awk脚本结构：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk ' BEGIN&#123; statements &#125; statements2 END&#123; statements &#125; '</span><br></pre></td></tr></table></figure>
+<p>2）工作方式：</p>
+<ul>
+<li>执行begin中语句块；</li>
+<li>从文件或stdin中读入一行，然后执行statements2，重复这个过程，直到文件全部被读取完毕；</li>
+<li>执行end语句块；</li>
+</ul>
+<p>1、print 打印当前行：</p>
+<p>1）使用不带参数的print时，会打印当前行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo -e "line1\nline2" | awk 'BEGIN&#123;print "start"&#125; &#123;print &#125; END&#123; print "End" &#125;'</span><br></pre></td></tr></table></figure>
+<p>2）print 以逗号分割时，参数以空格定界：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo | awk ' &#123;var1 = "v1" ; var2 = "V2"; var3="v3"; \</span><br><span class="line">print var1, var2 , var3; &#125;'</span><br><span class="line">	v1 V2 v3</span><br></pre></td></tr></table></figure>
+<p>3）使用-拼接符的方式（”“作为拼接符）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo | awk ' &#123;var1 = "v1" ; var2 = "V2"; var3="v3"; \</span><br><span class="line">print var1"-"var2"-"var3; &#125;'</span><br><span class="line">	v1-V2-v3</span><br></pre></td></tr></table></figure>
+<p>2、特殊变量： NR NF $0 $1 $2；</p>
+<p>NR：<strong>表示记录数量，在执行过程中对应当前行号</strong>；</p>
+<p>NF：<strong>表示字段数量，在执行过程总对应当前行的字段数</strong>；</p>
+<p>$0：这个变量<strong>包含执行过程中当前行的文本内容</strong>；</p>
+<p>$1：<strong>第一个字段的文本内容</strong>；</p>
+<p>$2：<strong>第二个字段的文本内容</strong>；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo -e "line1 f2 f3\n line2 \n line 3" | awk '&#123;print NR":"$0"-"$1"-"$2&#125;'</span><br><span class="line">	1:line1 f2 f3-line1-f2</span><br><span class="line">	2: line2 -line2-</span><br><span class="line">	3: line 3-line-3</span><br></pre></td></tr></table></figure>
+<p>1）打印每一行的第二和第三个字段：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk '&#123;print $2, $3&#125;' file</span><br></pre></td></tr></table></figure>
+<p>2）统计文件的行数：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk ' END &#123;print NR&#125;' file</span><br></pre></td></tr></table></figure>
+<p>3）累加每一行的第一个字段：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">echo -e "1\n 2\n 3\n 4\n" | awk 'BEGIN&#123;num = 0 ;</span><br><span class="line">print "begin";&#125; &#123;sum += $1;&#125; END &#123;print "=="; print sum &#125;'</span><br><span class="line">	begin</span><br><span class="line">	==</span><br><span class="line">	10</span><br></pre></td></tr></table></figure>
+<p>3、传递外部变量：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var=1000</span><br><span class="line">echo | awk '&#123;print vara&#125;' vara=$var #  输入来自stdin</span><br><span class="line">awk '&#123;print vara&#125;' vara=$var file # 输入来自文件</span><br></pre></td></tr></table></figure>
+<p>4、用样式对awk处理的行进行过滤：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">awk 'NR &lt; 5' #行号小于5</span><br><span class="line">awk 'NR==1,NR==4 &#123;print&#125;' file #行号等于1和4的打印出来</span><br><span class="line">awk '/linux/' #包含linux文本的行（可以用正则表达式来指定，超级强大）</span><br><span class="line">awk '!/linux/' #不包含linux文本的行</span><br></pre></td></tr></table></figure>
+<p>5、设置定界符：使用-F来设置定界符（默认为空格）；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F: '&#123;print $NF&#125;' /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>6、读取命令输出：使用getline，将外部shell命令的输出读入到变量cmdout中；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo | awk '&#123;"grep root /etc/passwd" | getline cmdout; print cmdout &#125;'</span><br></pre></td></tr></table></figure>
+<p>7、在awk中使用循环：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for(i=0;i&lt;10;i++)&#123;print $i;&#125;</span><br><span class="line">for(i in array)&#123;print array[i];&#125;</span><br></pre></td></tr></table></figure>
+<p>eg：以下字符串，打印出其中的时间串：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2015_04_02 20:20:08: mysqli connect failed, please check connect info</span><br><span class="line"><span class="meta">$</span>echo '2015_04_02 20:20:08: mysqli connect failed, please check connect info'|awk -F ":" '&#123; for(i=1;i&lt;=;i++) printf("%s:",$i)&#125;'</span><br><span class="line"><span class="meta">&gt;</span>2015_04_02 20:20:08:  # 这种方式会将最后一个冒号打印出来</span><br><span class="line"><span class="meta">$</span>echo '2015_04_02 20:20:08: mysqli connect failed, please check connect info'|awk -F':' '&#123;print $1 ":" $2 ":" $3; &#125;'</span><br><span class="line"><span class="meta">&gt;</span>2015_04_02 20:20:08   # 这种方式满足需求</span><br></pre></td></tr></table></figure>
+<p>而如果需要将后面的部分也打印出来(时间部分和后文分开打印)：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>echo '2015_04_02 20:20:08: mysqli connect failed, please check connect info'|awk -F':' '&#123;print $1 ":" $2 ":" $3; print $4;&#125;'</span><br><span class="line"><span class="meta">&gt;</span>2015_04_02 20:20:08</span><br><span class="line"><span class="meta">&gt;</span>mysqli connect failed, please check connect info</span><br></pre></td></tr></table></figure>
+<p>以逆序的形式打印行：(tac命令的实现）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">seq 9| \</span><br><span class="line">awk '&#123;lifo[NR] = $0; lno=NR&#125; \</span><br><span class="line">END&#123; for(;lno&gt;-1;lno--)&#123;print lifo[lno];&#125;</span><br><span class="line">&#125; '</span><br></pre></td></tr></table></figure>
+<p>8、awk结合grep找到指定的服务，然后将其kill掉：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -fe| grep msv8 | grep -v MFORWARD | awk '&#123;print $2&#125;' | xargs kill -9;</span><br></pre></td></tr></table></figure>
+<p>9、awk实现head、tail命令：</p>
+<p>1）head：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk 'NR&lt;=10&#123;print&#125;' filename</span><br></pre></td></tr></table></figure>
+<p>2）tail：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">awk '&#123;buffer[NR%10] = $0;&#125; END&#123;for(i=0;i&lt;11;i++)&#123; \</span><br><span class="line">print buffer[i %10]&#125; &#125; ' filename</span><br></pre></td></tr></table></figure>
+<p>10、打印指定列：</p>
+<p>1）awk方式实现：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -lrt | awk '&#123;print $6&#125;'</span><br></pre></td></tr></table></figure>
+<p>2）cut方式实现：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -lrt | cut -f6</span><br></pre></td></tr></table></figure>
+<p>11、打印指定文本区域：</p>
+<p>1）确定行号：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seq 100| awk 'NR==4,NR==6&#123;print&#125;'</span><br></pre></td></tr></table></figure>
+<p>2）确定文本：打印处于start_pattern 和end_pattern之间的文本；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">awk '/start_pattern/, /end_pattern/' filename</span><br><span class="line">seq 100 | awk '/13/,/15/'</span><br><span class="line">cat /etc/passwd| awk '/mai.*mail/,/news.*news/'</span><br></pre></td></tr></table></figure>
+<p>12、awk常用内建函数：</p>
+<p>index(string,search_string)：返回search_string在string中出现的位置</p>
+<p>sub(regex,replacement_str,string)：将正则匹配到的第一处内容替换为replacement_str;</p>
+<p>match(regex,string)：检查正则表达式是否能够匹配字符串；</p>
+<p>length(string)：返回字符串长度</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo | awk '&#123;"grep root /etc/passwd" | getline cmdout; print length(cmdout) &#125;'</span><br></pre></td></tr></table></figure>
+<p>printf 类似c语言中的printf，对输出进行格式化：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seq 10 | awk '&#123;printf "-&gt;%4s\n", $1&#125;'</span><br></pre></td></tr></table></figure>
+<h4 id="迭代文件中的行、单词和字符"><a href="#迭代文件中的行、单词和字符" class="headerlink" title="迭代文件中的行、单词和字符"></a>迭代文件中的行、单词和字符</h4><p>1、迭代文件中的每一行：</p>
+<p>1）while 循环法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">while read line;</span><br><span class="line">do</span><br><span class="line">echo $line;</span><br><span class="line">done &lt; file.txt</span><br><span class="line"></span><br><span class="line">改成子shell:</span><br><span class="line">cat file.txt | (while read line;do echo $line;done)</span><br></pre></td></tr></table></figure>
+<p>2）awk法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat file.txt| awk '&#123;print&#125;'</span><br></pre></td></tr></table></figure>
+<p>2、迭代一行中的每一个单词：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for word in $line;</span><br><span class="line">do</span><br><span class="line">echo $word;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>3、迭代每一个字符：</p>
+<p>${string:start_pos:num_of_chars}：从字符串中提取一个字符；(bash文本切片）</p>
+<p>${ #word}:返回变量word的长度</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for((i=0;i&lt;$&#123; #word&#125;;i++))</span><br><span class="line">do</span><br><span class="line">echo $&#123;word:i:1);</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<p>以ASCII字符显示文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>od -c filename</span><br></pre></td></tr></table></figure>
+<h3 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h3><p>日常磁盘管理中，我们最常用的有查看当前磁盘使用情况，查看当前目录所占大小，以及打包压缩与解压缩；</p>
+<p>1、查看磁盘空间：</p>
+<p>1）查看磁盘空间利用大小：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>-h: human缩写，以易读的方式显示结果（即带单位：比如M/G，如果不加这个参数，显示的数字以B为单位）</span><br><span class="line">df -h</span><br></pre></td></tr></table></figure>
+<p>2）查看当前目录所占空间大小：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -sh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-h 人性化显示</li>
+<li>-s 递归整个目录的大小</li>
+</ul>
+<p>3）查看当前目录下所有子文件夹排序后的大小：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for i in `ls`; do du -sh $i; done | sort</span><br><span class="line">du -sh `ls` | sort</span><br></pre></td></tr></table></figure>
+<p>2、打包 / 压缩：在linux中打包和压缩和分两步来实现的；</p>
+<p>1）打包：打包是将多个文件归并到一个文件；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf etc.tar</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-c ：打包选项</li>
+<li>-v ：显示打包进度</li>
+<li>-f ：使用档案文件</li>
+</ul>
+<p>2）压缩：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gzip demo.txt</span><br><span class="line">	生成 demo.txt.gz</span><br></pre></td></tr></table></figure>
+<p>3、解包/解压缩：</p>
+<p>1）解包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf demo.tar</span><br></pre></td></tr></table></figure>
+<p>-x 解包选项</p>
+<p>解压后缀为 .tar.gz的文件</p>
+<ul>
+<li><p>先解压缩，生成**.tar：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunzip demo.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf  demo.tar</span><br><span class="line">bzip2 -d demo.tar.bz2#-d decompose,解压缩</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>2）tar解压参数说明：</p>
+<ul>
+<li>-z 解压gz文件</li>
+<li>-j 解压bz2文件</li>
+<li>-J 解压xz文件</li>
+</ul>
+<h3 id="进程管理工具"><a href="#进程管理工具" class="headerlink" title="进程管理工具"></a>进程管理工具</h3><p>使用进程管理工具，我们可以<strong>查询程序当前的运行状态，或终止一个进程</strong>；</p>
+<p>任何进程都与文件关联；我们会用到 <strong>lsof 工具（list opened files），作用是列举系统中已经被打开的文件</strong>。<strong>在linux环境中，任何事物都是文件</strong>，设备是文件，目录是文件，甚至sockets也是文件。用好lsof命令，对日常的linux管理非常有帮助。</p>
+<p>1、查询进程：</p>
+<p>1）查询正在运行的进程信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef</span><br></pre></td></tr></table></figure>
+<p>查询归属于用户xuexue的进程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep xuexue</span><br><span class="line">ps -lu xuexue</span><br></pre></td></tr></table></figure>
+<p>2）查询进程ID（适合只记得部分进程字段）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgrep -l re #查询进程名中含有re的进程</span><br></pre></td></tr></table></figure>
+<p>3）以完整的格式显示所有的进程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ajx</span><br></pre></td></tr></table></figure>
+<p>4）显示进程信息，并实时更新：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure>
+<p>5）查看端口占用的进程状态：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:3306</span><br></pre></td></tr></table></figure>
+<p>6）查看用户username的进程所打开的文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -u xuexue</span><br></pre></td></tr></table></figure>
+<p>7）查询init进程当前打开的文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -c init</span><br></pre></td></tr></table></figure>
+<p>8）查询指定的进程ID(14075)打开的文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -p 14075</span><br></pre></td></tr></table></figure>
+<p>9）查询指定目录下被进程开启的文件（使用+D 递归目录）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof +d mydir1</span><br></pre></td></tr></table></figure>
+<p>2、终止进程：</p>
+<p>1）杀死指定PID的进程 (PID为Process ID)：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill PID</span><br></pre></td></tr></table></figure>
+<p>2）杀死相关进程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 3434</span><br></pre></td></tr></table></figure>
+<p>3）杀死job工作 (job为job number)：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill %job</span><br></pre></td></tr></table></figure>
+<p>3、进程监控：</p>
+<p>1）查看系统中使用CPU、使用内存最多的进程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure>
+<p>对于进程，平时我们最常想知道的就是哪些进程占用CPU最多，占用内存最多。</p>
+<ul>
+<li>P：根据CPU使用百分比大小进行排序。</li>
+<li>M：根据驻留内存大小进行排序。</li>
+<li>i：使top不显示任何闲置或者僵死进程。</li>
+</ul>
+<p>4、分析线程栈：</p>
+<p>使用<strong>命令pmap，来输出进程内存的状况</strong>，可以用来分析线程堆栈；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pmap PID</span><br></pre></td></tr></table></figure>
+<p>5、综合运用：</p>
+<p>1）将用户xuexue下的所有进程名以av_开头的进程终止：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -u xuexue |  awk '/av_/ &#123;print "kill -9 " $1&#125;' | sh</span><br></pre></td></tr></table></figure>
+<p>2）将用户xuexue下所有进程名中包含HOST的进程终止：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -fe| grep xuexue|grep HOST |awk '&#123;print $2&#125;' | xargs kill -9;</span><br></pre></td></tr></table></figure>
+<h3 id="性能监控"><a href="#性能监控" class="headerlink" title="性能监控"></a>性能监控</h3><p>在使用操作系统的过程中，我们经常需要查看当前的性能如何，需要了解CPU、内存和硬盘的使用情况； </p>
+<p>1、监控CPU：</p>
+<p>1）查看CPU使用率：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sar -u</span><br></pre></td></tr></table></figure>
+<p>2）查看CPU平均负载：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>sar指定-q后，就能查看运行队列中的进程数、系统上的进程大小、平均负载等；</span><br><span class="line">sar -q 1 2</span><br></pre></td></tr></table></figure>
+<p>2、查询内存：</p>
+<p>1）查看内存使用状况 sar指定-r之后，可查看内存使用状况：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sar -r 1 2</span><br></pre></td></tr></table></figure>
+<p>2）查看内存使用量：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -m</span><br></pre></td></tr></table></figure>
+<p>3、查询页面交换：页面发生交换时，服务器的吞吐量会大幅下降；服务器状况不良时，如果怀疑因为内存不足而导致了页面交换的发生，可以使用sar -W这个命令来确认是否发生了大量的交换；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sar -W 1 3</span><br></pre></td></tr></table></figure>
+<p>4、查询硬盘使用：</p>
+<p>1）查看磁盘空间利用情况：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
+<p>2）查询当前目录下空间使用情况：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -sh  #-h是人性化显示 s是递归整个目录的大小</span><br></pre></td></tr></table></figure>
+<p>3）查看该目录下所有文件夹的排序后的大小：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for i in `ls`; do du -sh $i; done | sort</span><br><span class="line">或者</span><br><span class="line">du -sh `ls`</span><br></pre></td></tr></table></figure>
+<p>5、综合应用：</p>
+<p>1）当系统中sar不可用时，可以使用以下工具替代：linux下有 vmstat、Unix系统有prstat：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>查看cpu、内存、使用情况： vmstat n m （n 为监控频率、m为监控次数）</span><br><span class="line">vmstat 1 3</span><br></pre></td></tr></table></figure>
+<p>2）使用watch 工具监控变化：当需要持续的监控应用的某个数据变化时，watch工具能满足要求； 执行watch命令后，会进入到一个界面，输出当前被监控的数据，一旦数据变化，便会高亮显示变化情况；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -d -n 1 './redis-cli info | grep memory'</span><br></pre></td></tr></table></figure>
+<h3 id="网络工具"><a href="#网络工具" class="headerlink" title="网络工具"></a>网络工具</h3><p>1、查询网络服务和端口：</p>
+<p><strong>netstat 命令用于显示各种网络相关信息</strong>，如网络连接，路由表，接口状态 (Interface Statistics)，masquerade 连接，多播成员 (Multicast Memberships) 等等。</p>
+<p>1）列出所有端口 (包括监听和未监听的)：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -a</span><br></pre></td></tr></table></figure>
+<p>2）列出所有 tcp 端口：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -at</span><br></pre></td></tr></table></figure>
+<p>3）列出所有有监听的服务状态：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -l</span><br></pre></td></tr></table></figure>
+<p>4）使用netstat工具查询端口：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -antp | grep 6379</span><br></pre></td></tr></table></figure>
+<p>5）<strong>lsof（list open files）是一个列出当前系统打开文件的工具</strong>。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等； 在查询网络端口时，经常会用到这个工具。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">查询7902端口现在运行什么程序</span><br><span class="line"><span class="meta">#</span>第一步，查询使用该端口的进程的PID；</span><br><span class="line">lsof -i:7902</span><br><span class="line"><span class="meta">#</span>查到30294</span><br><span class="line"><span class="meta">#</span>使用ps工具查询进程详情：</span><br><span class="line">ps -fe | grep 30294</span><br></pre></td></tr></table></figure>
+<p>2、 网络路由：</p>
+<p>1）查看路由状态：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route -n</span><br></pre></td></tr></table></figure>
+<p>2）发送ping包到地址IP：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping 127.0.0.1</span><br></pre></td></tr></table></figure>
+<p>3）探测前往地址IP的路由路径：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">traceroute 127.0.0.1</span><br></pre></td></tr></table></figure>
+<p>4）DNS查询，寻找域名domain对应的IP：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host domain</span><br></pre></td></tr></table></figure>
+<p>5）反向DNS查询：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host IP</span><br></pre></td></tr></table></figure>
+<p>3、镜像下载：直接下载文件或者网页；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget url</span><br></pre></td></tr></table></figure>
+<p>常用选项：</p>
+<ul>
+<li>–limit-rate :下载限速</li>
+<li>-o：指定日志文件；输出都写入日志；</li>
+<li>-c：断点续传</li>
+</ul>
+<p>4、ftp sftp lftp ssh：</p>
+<p>1）SSH登陆：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh ID@host #ssh登陆远程服务器host，ID为用户名。</span><br></pre></td></tr></table></figure>
+<p>2）ftp/sftp文件传输：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sftp ID@host</span><br></pre></td></tr></table></figure>
+<p>登陆服务器host，ID为用户名。sftp登陆后，可以使用下面的命令进一步操作：</p>
+<ul>
+<li>get filename ：下载文件</li>
+<li>put filename ： 上传文件</li>
+<li>ls ： 列出host上当前路径的所有文件</li>
+<li>cd ： 在host上更改当前路径</li>
+<li>lls： 列出本地主机上当前路径的所有文件</li>
+<li>lcd ： 在本地主机更改当前路径</li>
+</ul>
+<p>3）lftp同步文件夹(类似rsync工具)：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lftp -u user:pass host</span><br><span class="line">lftp user@host:~&gt; mirror -n</span><br></pre></td></tr></table></figure>
+<p>5、网络复制：</p>
+<p>1）将本地localpath指向的文件上传到远程主机的path路径：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp localpath ID@host:path</span><br></pre></td></tr></table></figure>
+<p>2）以ssh协议，遍历下载path路径下的整个文件系统，到本地的localpath：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r ID@site:path localpath</span><br></pre></td></tr></table></figure>
+<h3 id="用户管理工具"><a href="#用户管理工具" class="headerlink" title="用户管理工具"></a>用户管理工具</h3><p>1、用户：</p>
+<p>1）添加用户：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -m username</span><br></pre></td></tr></table></figure>
+<p>该命令为用户创建相应的帐号和用户目录/home/username；</p>
+<p>用户添加之后，设置密码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>密码以交互方式创建</span><br><span class="line">passwd username</span><br></pre></td></tr></table></figure>
+<p>2）删除用户：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">userdel -r username</span><br></pre></td></tr></table></figure>
+<p>不带选项使用 userdel，只会删除用户。用户的目录将仍会在/home目录下。要完全的删除用户信息，使用-r选项；</p>
+<p>帐号切换：登录帐号为userA用户状态下，切换到userB用户帐号工作：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su userB</span><br></pre></td></tr></table></figure>
+<p>2、用户的组：</p>
+<p>1）将用户加入到组：</p>
+<p>默认情况下，添加用户操作也会相应的增加一个同名的组，用户属于同名组； 查看当前用户所属的组：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groups</span><br></pre></td></tr></table></figure>
+<p>一个用户可以属于多个组，将用户加入到组：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -G groupNmame username</span><br></pre></td></tr></table></figure>
+<p>变更用户所属的根组(将用户加入到新的组，并从原有的组中除去）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -g groupName username</span><br></pre></td></tr></table></figure>
+<p>2）查看系统所有组：</p>
+<p>系统的所有用户及所有组信息分别记录在两个文件中：/etc/passwd , /etc/group 默认情况下这两个文件对所有用户可读：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>查看所有用户及权限</span><br><span class="line">more /etc/passwd</span><br><span class="line"><span class="meta">#</span>查看所有的用户组及权限</span><br><span class="line">more /etc/group</span><br></pre></td></tr></table></figure>
+<p>3、用户权限：</p>
+<p>使用<strong>ls -l可查看文件的属性字段</strong>，文件属性字段总共有10个字母组成，<strong>第一个字母表示文件类型</strong>，如果这个字母是一个减号”-”,则说明该文件是一个普通文件。字母”d”表示该文件是一个目录，字母”d”,是dirtectory(目录)的缩写。 <strong>后面的9个字母为该文件的权限标识，3个为一组，分别表示文件所属用户、用户所在组、其它用户的读写和执行权限</strong>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls -l </span><br><span class="line"><span class="meta">	#</span>这个文件对文件拥有者colin这个用户可读写、可执行；</span><br><span class="line"><span class="meta">	#</span>对colin所在的组（king）可读可写；对其它用户只可读；</span><br><span class="line">	-rwxrw-r-- colin king 725 2013-11-12 15:37 /home/colin/a</span><br></pre></td></tr></table></figure>
+<p>1）更改读写权限：使用<strong>chmod命令更改文件的读写权限</strong>，更改读写权限有两种方法，一种是字母方式，一种是数字方式；</p>
+<p>字母方式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod userMark(+|-)PermissionsMark</span><br></pre></td></tr></table></figure>
+<p>userMark取值：</p>
+<ul>
+<li>u：用户</li>
+<li>g：组</li>
+<li>o：其它用户</li>
+<li>a：所有用户</li>
+</ul>
+<p>PermissionsMark取值：</p>
+<ul>
+<li>r：读</li>
+<li>w：写</li>
+<li>x：执行</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod a+x main         对所有用户给文件main增加可执行权限</span><br><span class="line">chmod g+w blogs        对组用户给文件blogs增加可写权限</span><br></pre></td></tr></table></figure>
+<p>数字方式：数字方式直接设置所有权限，相比字母方式，更加简洁方便；</p>
+<p>使用三位八进制数字的形式来表示权限，第一位指定属主的权限，第二位指定组权限，第三位指定其他用户的权限，每位通过4(读)、2(写)、1(执行)三种数值的和来确定权限。如6(4+2)代表有读写权，7(4+2+1)有读、写和执行的权限。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 740 main     将main的用户权限设置为rwxr-----</span><br></pre></td></tr></table></figure>
+<p>2）更改文件或目录的拥有者：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chown username dirOrFile</span><br><span class="line"><span class="meta">#</span>使用-R选项递归更改该目下所有文件的拥有者</span><br><span class="line">chown -R weber server/</span><br></pre></td></tr></table></figure>
+<p>4、环境变量：</p>
+<p>bashrc与profile都用于保存用户的环境信息，bashrc用于交互式non-loginshell，而profile用于交互式login shell。</p>
+<p>/etc/profile，/etc/bashrc 是系统全局环境变量设定<br>~/.profile，~/.bashrc用户目录下的私有环境变量设定</p>
+<p>当登入系统获得一个shell进程时，其读取环境设置脚本分为三步：</p>
+<ul>
+<li>首先读入的是全局环境变量设置文件/etc/profile，然后根据其内容读取额外的文档，如/etc/profile.d和/etc/inputrc；</li>
+<li>读取当前登录用户Home目录下的文件~/.bash_profile，其次读取~/.bash_login，最后读取~/.profile，这三个文档设定基本上是一样的，读取有优先关系；</li>
+<li>读取~/.bashrc。</li>
+</ul>
+<p>~/.profile与~/.bashrc的区别：</p>
+<ul>
+<li>这两者都具有个性化定制功能</li>
+<li>~/.profile可以设定本用户专有的路径，环境变量，等，它只能登入的时候执行一次</li>
+<li>~/.bashrc也是某用户专有设定文档，可以设定路径，命令别名，每次shell script的执行都会使用它一次</li>
+</ul>
+<h3 id="系统管理及IPC资源管理"><a href="#系统管理及IPC资源管理" class="headerlink" title="系统管理及IPC资源管理"></a>系统管理及IPC资源管理</h3><p>1、系统管理：</p>
+<p>1）查询系统版本：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+<p>2）查询硬件信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>查看CPU使用情况</span><br><span class="line">sar -u 5 10</span><br><span class="line"><span class="meta">#</span>查询CPU信息</span><br><span class="line">cat /proc/cpuinfo</span><br><span class="line"><span class="meta">#</span>查看CPU的核的个数</span><br><span class="line">cat /proc/cpuinfo | grep processor | wc -l</span><br><span class="line"><span class="meta">#</span>查看内存信息</span><br><span class="line">cat /proc/meminfo</span><br><span class="line"><span class="meta">#</span>显示内存page大小（以KByte为单位）</span><br><span class="line">pagesize</span><br><span class="line"><span class="meta">#</span>显示架构</span><br><span class="line">arch</span><br></pre></td></tr></table></figure>
+<p>3）设置系统时间：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>显示当前系统时间</span><br><span class="line">date</span><br><span class="line"><span class="meta">#</span>设置系统日期和时间(格式为2014-09-15 17:05:00)</span><br><span class="line">date -s 2014-09-15 17:05:00</span><br><span class="line"><span class="meta">#</span>设置时区</span><br><span class="line">选择时区信息。命令为：tzselect</span><br><span class="line">根据系统提示，选择相应的时区信息</span><br><span class="line"><span class="meta">#</span>强制把系统时间写入CMOS（这样，重启后时间也正确了）</span><br><span class="line">clock -w</span><br><span class="line"><span class="meta">#</span>格式化输出当前日期时间</span><br><span class="line">date +%Y%m%d.%H%M%S</span><br><span class="line">	20190803.173538</span><br></pre></td></tr></table></figure>
+<p>2、IPC资源管理：</p>
+<p>1）IPC资源查询：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>查看系统使用的IPC资源</span><br><span class="line">ipcs</span><br><span class="line"><span class="meta">#</span>查看系统使用的IPC共享内存资源</span><br><span class="line">ipcs -m</span><br><span class="line"><span class="meta">#</span>查看系统使用的IPC队列资源</span><br><span class="line">ipcs -q</span><br><span class="line"><span class="meta">#</span>查看系统使用的IPC信号量资源</span><br><span class="line">ipcs -s</span><br></pre></td></tr></table></figure>
+<p>应用示例：查看IPC资源被谁占用</p>
+<p>有个IPCKEY：51036 ，需要查询其是否被占用；</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>1、首先通过计算器将其转为十六进制</span><br><span class="line">51036 -&gt; c75c</span><br><span class="line"><span class="meta">#</span>2、如果知道是被共享内存占用</span><br><span class="line">ipcs -m | grep c75c</span><br><span class="line"><span class="meta">#</span>3、如果不确定，则直接查找</span><br><span class="line">ipcs | grep c75c</span><br></pre></td></tr></table></figure>
+<p>2）检测和设置系统资源限制：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>显示当前所有的系统资源limit 信息</span><br><span class="line">ulimit – a</span><br><span class="line"><span class="meta">#</span>对生成的 core 文件的大小不进行限制</span><br><span class="line">ulimit – c unlimited</span><br></pre></td></tr></table></figure>
+<p>参考链接：<a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/base/index.html" target="_blank" rel="noopener">https://linuxtools-rst.readthedocs.io/zh_CN/latest/base/index.html</a></p>
+
+      
+     
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Python Selenium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/自动化测试//" class="article-tag-list-link color1">自动化测试</a>
+        			<a href="/categories/学习总结//" class="article-tag-list-link color5">学习总结</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/27/study-note-Nine/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/07/17/study-note-Eight/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">学习笔记（八）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux基础"><span class="toc-number">1.</span> <span class="toc-text">Linux基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用命令帮助"><span class="toc-number">1.1.</span> <span class="toc-text">使用命令帮助</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件及目录管理"><span class="toc-number">1.2.</span> <span class="toc-text">文件及目录管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文本处理"><span class="toc-number">1.3.</span> <span class="toc-text">文本处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#find-文件查找"><span class="toc-number">1.3.1.</span> <span class="toc-text">find 文件查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#grep-文本搜索"><span class="toc-number">1.3.2.</span> <span class="toc-text">grep 文本搜索</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#xargs-命令行参数转换"><span class="toc-number">1.3.3.</span> <span class="toc-text">xargs 命令行参数转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sort-排序"><span class="toc-number">1.3.4.</span> <span class="toc-text">sort 排序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#uniq-消除重复行"><span class="toc-number">1.3.5.</span> <span class="toc-text">uniq 消除重复行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#用tr进行转换"><span class="toc-number">1.3.6.</span> <span class="toc-text">用tr进行转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cut-按列切分文本"><span class="toc-number">1.3.7.</span> <span class="toc-text">cut 按列切分文本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#paste-按列拼接文本"><span class="toc-number">1.3.8.</span> <span class="toc-text">paste 按列拼接文本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#wc-统计行和字符的工具"><span class="toc-number">1.3.9.</span> <span class="toc-text">wc 统计行和字符的工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sed-文本替换利器"><span class="toc-number">1.3.10.</span> <span class="toc-text">sed 文本替换利器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#awk-数据流处理工具"><span class="toc-number">1.3.11.</span> <span class="toc-text">awk 数据流处理工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代文件中的行、单词和字符"><span class="toc-number">1.3.12.</span> <span class="toc-text">迭代文件中的行、单词和字符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#磁盘管理"><span class="toc-number">1.4.</span> <span class="toc-text">磁盘管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程管理工具"><span class="toc-number">1.5.</span> <span class="toc-text">进程管理工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#性能监控"><span class="toc-number">1.6.</span> <span class="toc-text">性能监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络工具"><span class="toc-number">1.7.</span> <span class="toc-text">网络工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户管理工具"><span class="toc-number">1.8.</span> <span class="toc-text">用户管理工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#系统管理及IPC资源管理"><span class="toc-number">1.9.</span> <span class="toc-text">系统管理及IPC资源管理</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+
+  <!-- 来必力City版安装代码 -->
+
+  <!-- 这一句是适配样式 -->
+  <section class="duoshuo" id="comments">
+    <!-- 以下是 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80MzA5MC8xOTYzNg==">
+      <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+           if (typeof LivereTower === 'function') { return; }
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+      </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+  </section>
 
 
+ 
           </div>
         </div>
       </div>
@@ -248,9 +980,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
